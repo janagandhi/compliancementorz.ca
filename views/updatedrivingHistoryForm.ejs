@@ -1,0 +1,2959 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="extra-libs/signature/jquery.signature.css"> -->
+    <link rel="stylesheet" type="text/css"
+        href="https://ashaviglobal.com/agreement/template/dist/css/jquery.signature.css">
+    <style type="text/css">
+        .gap {
+            text-align: center;
+            background-color: #e2181870;
+
+        }
+
+        .thClass {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+
+        /* Signature */
+        .kbw-signature {
+            width: 100%;
+            height: 250px;
+        }
+
+        .signature canvas {
+            width: 100% !important;
+            height: auto;
+        }
+
+/* #signature-pad{
+    width: 400px;
+    height: 200px;
+} */
+
+
+        /* Signature */
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarDriver.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-md-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+
+                        <div id="editmodal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h3 align="center" class="card-title">Edit View Driver Licenses or
+                                                    Permits</h3>
+                                                <div class="card-body">
+                                                    <form class="form-horizontal" id="updateAddress"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="updateAddress_details">
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input type="hidden" name="id" id="id">
+                                                                    <div class="form-group row">
+                                                                        <label for="province"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Province</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="province" value="" id="province">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="License"
+                                                                            class="col-sm-3 control-label col-form-label">License</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="license" value="" id="license">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="State"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Attachment</label>
+                                                                        <div class="col-md-9">
+
+                                                                            <input id="atachmentEdit" type="file"
+                                                                                accept="application/pdf" accept=""
+                                                                                onchange="convertToBase64('atachmentEdit','atachment_fileEdit');" />
+                                                                            <input type="hidden"
+                                                                                name="atachment_fileEdit"
+                                                                                id="atachment_fileEdit">
+                                                                            <a class="btn btn-primary" target="_blank"
+                                                                                id="attachment_file_link" href="">View
+                                                                                <span
+                                                                                    class="glyphicon glyphicon-edit"></span><i
+                                                                                    style="font-size: 15px;"
+                                                                                    class="fas fa-search"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="Type"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Type</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="type" value="" id="type">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="Expiry"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Expiry</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="expiry" value="" id="expiry">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <!-- <div class="form-group row">
+                                                                        <label for="PostalCode"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            PostalCode</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="postalCode" value=""
+                                                                                id="postalCode">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br> -->
+                                                                    <!-- <div class="form-group row">
+                                                                        <label for="FromDate"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            From Date</label>
+                                                                        <div class="col-md-9">
+                                                                            <input readonly type="date"
+                                                                                class="form-control" name="fromDate"
+                                                                                value="" id="fromDate">
+                                                                        </div>
+                                                                    </div> -->
+                                                                    <!-- <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="ToDate"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            To Date</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="date" readonly
+                                                                                class="form-control" name="toDate"
+                                                                                value="" id="toDate">
+                                                                        </div>
+                                                                    </div> -->
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button type="Submit" id="submitBtn"
+                                                                    class="btn btn-primary">Update</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="editmodalAccident" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h3 align="center" class="card-title">Edit Accident</h3>
+                                                <div class="card-body">
+                                                    <form class="form-horizontal" id="updateAccident"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="updateAccident_details">
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input type="hidden" name="id" id="id">
+                                                                    <div class="form-group row">
+                                                                        <label for="FromDate"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Date</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="date" class="form-control"
+                                                                                name="accidentsDate" value=""
+                                                                                id="accidentsDate">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="accidentsNature"
+                                                                            class="col-sm-3 control-label col-form-label">Nature
+                                                                            of
+                                                                            Accident </label>
+                                                                        <div class="col-md-9">
+                                                                            <select class="form-select"
+                                                                                name="accidentsNature"
+                                                                                id="accidentsNature">
+                                                                                <option value="">Select</option>
+                                                                                <option value="HEAD-ON">HEAD-ON</option>
+                                                                                <option value="REAR-END">REAR-END
+                                                                                </option>
+                                                                                <option value="UPSET">UPSET</option>
+                                                                                <option value="ETC">ETC</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="accidentsFatalities"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Fatalities</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="accidentsFatalities" value=""
+                                                                                id="accidentsFatalities">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="accidentsInjuries"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Injuries</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="accidentsInjuries" value=""
+                                                                                id="accidentsInjuries">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="accidentsHazardous"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Hazardous Material Spill </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="accidentsHazardous" value=""
+                                                                                id="accidentsHazardous">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button type="Submit" id="submitBtn"
+                                                                    class="btn btn-primary">Update</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="editmodalViolations" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h3 align="center" class="card-title">Edit Violations</h3>
+                                                <div class="card-body">
+                                                    <form class="form-horizontal" id="updateViolations"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="updateViolations_details">
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input type="hidden" name="id" id="id">
+                                                                    <div class="form-group row">
+                                                                        <label for="traficConvintionsDate"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Date</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="date" class="form-control"
+                                                                                name="traficConvintionsDate" value=""
+                                                                                id="traficConvintionsDate">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="traficConvintionsCharge"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Charge </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="traficConvintionsCharge" value=""
+                                                                                id="traficConvintionsCharge">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="traficConvintionsLocation"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Location </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="traficConvintionsLocation"
+                                                                                value="" id="traficConvintionsLocation">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="traficConvintionsPenalty"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Penalty </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="traficConvintionsPenalty" value=""
+                                                                                id="traficConvintionsPenalty">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button type="Submit" id="submitBtn"
+                                                                    class="btn btn-primary">Update</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div id="addmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                            aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h3 align="center" class="card-title">Add driver licenses or permits
+                                                    held in the last 3 years</h3>
+                                                <div class="card-body">
+                                                    <form class="form-horizontal" id="addAddress"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="addAddress_details">
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input type="hidden" id="id">
+                                                                    <input type="hidden" id="company_id"
+                                                                        name="company_id">
+                                                                    <input type="hidden" id="driverId" name="driverId">
+                                                                    <div class="form-group row">
+                                                                        <label for="province"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Province</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="province" value="" id="province">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="license"
+                                                                            class="col-sm-3 control-label col-form-label">License</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="license" value="" id="license">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="attachment"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Upload Doc </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="file" class="form-control"
+                                                                                name="attachment" value=""
+                                                                                id="attachment">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="type"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Type</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="type" value="" id="type">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="expiry"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Expiry</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="expiry" value="" id="expiry">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button type="Submit" id="submitBtn"
+                                                                    class="btn btn-primary">Update</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="card-body1">
+                            <a href='javascript:void(0)' id='' class='btn  btn-primary viewmodalclass'><span
+                                    class='fas fa-search'> View/Edit Driver Licenses or Permits</span></a>
+                            <a href='javascript:void(0)' id='' class='btn  btn-primary viewmodalclassAccident'><span
+                                    class='fas fa-search'> View/Edit Driver Accidents/Incidents</span></a>
+                            <a href='javascript:void(0)' id='' class='btn  btn-primary viewmodalclassViolations'><span
+                                    class='fas fa-search'> View/Edit Driver Violations</span></a>
+                            <div class="row p-b-30">
+                                <div class="col-md-12">
+
+
+                                    <form class="form-horizontal" id="updateEmployment"
+                                        style="background: #27a9e30d;border-radius: 35px;">
+                                        <div class="card-body1" id="updateEmployment_details">
+                                            <span>Approvals Status: <h5 id="approveStatus"></h5></span>
+                                            <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                            <div style="text-align: center;">
+                                                <span>
+                                                    <h4>
+                                                        <%- CompanyName %>
+                                                    </h4>
+                                                </span>
+                                                <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                            </div>
+                                            <br>
+
+                                            <input type="hidden" class="form-control" value="<%- driverID %>"
+                                                name="driverId" value="" id="id">
+                                            <input type="hidden" class="form-control" value="<%- company_id %>"
+                                                name="company_id" value="" id="company_id">
+                                            <input type="hidden" class="form-control" name="approveStatus" value="0"
+                                                id="approveStatus">
+                                            <input type="hidden" class="form-control" name="actionData" value=""
+                                                id="actionData">
+                                            <div class="row">
+                                                <div class="col-md-12">
+
+                                                    <div class="form-group row">
+                                                        <label for="accidents"
+                                                            class="col-sm-3 control-label col-form-label">Do you have
+                                                            any accidents/incidents which you may have been involved in
+                                                            the last 5 years (even if not at fault)?</label>
+                                                        <div class="col-md-9">
+                                                            <select class="form-select" name="accidents" id="accidents">
+                                                                <option value="">Select Yes/No</option>
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div id="accidentsDiv">
+
+                                                        <div class="containeraccidentsDiv">
+                                                            <button class="add_form_fieldaccidentsDiv btn-primary">Add
+                                                                driver history accidents &nbsp;
+                                                                <span style="font-size:16px; font-weight:bold;">+
+                                                                </span>
+                                                            </button>
+                                                        </div>
+
+                                                        <!-- <div class="form-group row">
+                                                            <label for="FromDate"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                Date</label>
+                                                            <div class="col-md-9">
+                                                                <input type="date" class="form-control"
+                                                                    name="accidentsDate" value="" id="accidentsDate">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="accidentsNature"
+                                                                class="col-sm-3 control-label col-form-label">Nature of
+                                                                Accident </label>
+                                                            <div class="col-md-9">
+                                                                <select class="form-select" name="accidentsNature"
+                                                                    id="accidentsNature">
+                                                                    <option value="">Select</option>
+                                                                    <option value="HEAD-ON">HEAD-ON</option>
+                                                                    <option value="REAR-END">REAR-END</option>
+                                                                    <option value="UPSET">UPSET</option>
+                                                                    <option value="ETC">ETC</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="accidentsFatalities"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                Fatalities</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control"
+                                                                    name="accidentsFatalities" value=""
+                                                                    id="accidentsFatalities">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="accidentsInjuries"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                Injuries</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control"
+                                                                    name="accidentsInjuries" value=""
+                                                                    id="accidentsInjuries">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="accidentsHazardous"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                Hazardous material spill </label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control"
+                                                                    name="accidentsHazardous" value=""
+                                                                    id="accidentsHazardous">
+                                                            </div>
+                                                        </div> -->
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="traficConvintions"
+                                                            class="col-sm-3 control-label col-form-label">Traffic
+                                                            inspection and forfeitures for the past 3 years (other than
+                                                            parking violations) </label>
+                                                        <div class="col-md-9">
+                                                            <select class="form-select" name="traficConvintions"
+                                                                id="traficConvintions">
+                                                                <option value="">Select Yes/No</option>
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div id="traficConvintionsDiv">
+
+                                                        <div class="containerviolationDiv">
+                                                            <button class="add_form_fieldviolationDiv btn-primary">Add
+                                                                driver history violation &nbsp;
+                                                                <span style="font-size:16px; font-weight:bold;">+
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                        <!-- <div class="form-group row">
+                                                            <label for="traficConvintionsDate"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                Date</label>
+                                                            <div class="col-md-9">
+                                                                <input type="date" class="form-control"
+                                                                    name="traficConvintionsDate" value=""
+                                                                    id="traficConvintionsDate">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="traficConvintionsCharge"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                Charge </label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control"
+                                                                    name="traficConvintionsCharge" value=""
+                                                                    id="traficConvintionsCharge">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="traficConvintionsLocation"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                Location </label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control"
+                                                                    name="traficConvintionsLocation" value=""
+                                                                    id="traficConvintionsLocation">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="traficConvintionsPenalty"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                Penalty </label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control"
+                                                                    name="traficConvintionsPenalty" value=""
+                                                                    id="traficConvintionsPenalty">
+                                                            </div>
+                                                        </div> -->
+                                                    </div>
+                                                    <br>
+                                                    <div class="container1">
+                                                        <button class="add_form_field">Add driver licenses or permits
+                                                            held in the last 3 years &nbsp;
+                                                            <span style="font-size:16px; font-weight:bold;">+
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="deniedLicense"
+                                                            class="col-sm-8 control-label col-form-label">Have you ever
+                                                            been denied a license, permit or privilege to operate a
+                                                            motor vehicle?</label>
+                                                        <div class="col-md-4">
+                                                            <select class="form-select" name="deniedLicense"
+                                                                id="deniedLicense">
+                                                                <option value="">Select Yes/No</option>
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="licensePermit"
+                                                            class="col-sm-8 control-label col-form-label">Has any
+                                                            license, permit or privilege ever been suspended or
+                                                            revoked?</label>
+                                                        <div class="col-md-4">
+                                                            <select class="form-select" name="licensePermit"
+                                                                id="licensePermit">
+                                                                <option value="">Select Yes/No</option>
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="drivingExperience"
+                                                            class="col-sm-8 control-label col-form-label">Driving
+                                                            Experience</label>
+                                                        <div class="col-md-4">
+                                                            <select class="form-select" name="drivingExperience"
+                                                                id="drivingExperience">
+                                                                <option value="">Select Yes/No</option>
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div id="drivingExperienceDiv">
+                                                        <div class="form-group row">
+                                                            <label for="classofEquipment"
+                                                                class="col-sm-3 control-label col-form-label">Class of
+                                                                Equipment:</label>
+                                                            <div class="col-md-9">
+                                                                <select class="form-select" name="classofEquipment"
+                                                                    id="classofEquipment">
+                                                                    <option value="">Please select</option>
+                                                                    <option value="Straight Truck">Straight Truck
+                                                                    </option>
+                                                                    <option value="Tractor & Semi- Trailer">Tractor &
+                                                                        Semi- Trailer</option>
+                                                                    <option value="Tractor-Two Trailers">Tractor-Two
+                                                                        Trailers</option>
+                                                                    <option value="Motorcoach">Motorcoach (More than 8
+                                                                        passengers )</option>
+                                                                    <option value="Motorcoach School Bus">Motorcoach
+                                                                        School Bus</option>
+                                                                    <option value="More than 15 passengers">More than 15
+                                                                        passengers</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="equipmentType"
+                                                                class="col-sm-3 control-label col-form-label">Choose
+                                                                Type of Equipment:</label>
+                                                            <div class="col-md-9">
+                                                                <select class="form-select" name="equipmentType"
+                                                                    id="equipmentType">
+                                                                    <option value="">Please select</option>
+                                                                    <option value="Van">Van</option>
+                                                                    <option value="Tank">Tank</option>
+                                                                    <option value="Flat">Flat</option>
+                                                                    <option value="Dump">Dump</option>
+                                                                    <option value="Reefer">Reefer</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="equipmentStartDate"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                Start Date</label>
+                                                            <div class="col-md-9">
+                                                                <input type="date" class="form-control"
+                                                                    name="equipmentStartDate" value=""
+                                                                    id="equipmentStartDate">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="equipmentEndDate"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                End Date</label>
+                                                            <div class="col-md-9">
+                                                                <input type="date" class="form-control"
+                                                                    name="equipmentEndDate" value=""
+                                                                    id="equipmentEndDate">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="aprox"
+                                                                class="col-sm-3 control-label col-form-label">Approx of
+                                                                Miles / Kms:</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control" name="aprox"
+                                                                    value="" id="aprox">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="listProvinces"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                List provinces & states operated in for last five years:
+                                                            </label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control"
+                                                                    name="listProvinces" value="" id="listProvinces">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="listCourses"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                List courses and training other then
+                                                                as shown elsewhere
+                                                                in this application </label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control"
+                                                                    name="listCourses" value="" id="listCourses">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="education"
+                                                                class="col-sm-3 control-label col-form-label">
+                                                                Education: Last school Attended</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control" name="education"
+                                                                    value="" id="education">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                </div>
+                                                <h5>Declaration:</h5><br>
+
+                                              
+
+
+                                                This certifies that this application was completed by me, and that all
+                                                entries on it and information in it are true and complete to the best of
+                                                my knowledge.
+                                                <!-- <img src="uploads/attachment/drivinghistoryaddressSignature/drivinghistoryaddressSignature16556477266969zm53.PNG" alt="user"  width="150"></a> -->
+                                                <img src="" id="signature" alt="Signature" width="150"></a>
+
+
+                                               
+
+
+
+                                            </div>
+                                            <div id="signatureDiv">
+                                                <div class="row">
+                                                    <div class="col-md-3 col-xs-hidden">
+                                                    </div>
+                                                    <div style="text-align: center" class="col-md-6 col-xs-12">
+                                                        <label for="name" class="col-md-4 control-label col-form-label"><b>Employee
+                                                            Signature</b></label>
+                                                        <br />
+                                                        <!-- <div id="" class="signature"></div> -->
+                                                        <section class="signature-component">                                                  
+                                                            <canvas style="background-color: #fff;border: 2px solid #131212;" id="signature-pad"  width="350" height="200"></canvas>
+                                                            <!-- <canvas style="background-color: #fff;border: 2px solid #131212;" id="signature-pad" width="400" height="200"></canvas> -->
+                                                            <div>
+                                                              <!-- <a id="save">Save</a> -->
+                                                              <!-- <a id="clear">Clear</a> -->
+                                                              <button id="clear" class="clear">Clear Signature</button>
+                                                              <!-- <a id="showPointsToggle">Show points?</a> -->
+                                                            </div>
+                                                          </section>
+
+                                                    </div>
+                                                    <div class="col-md-3 col-xs-hidden">
+
+                                                    </div>
+                                                </div>
+
+                                                <br />
+                                                <!-- <button id="clear" class="clear">Clear Signature</button>
+                                                <textarea id="signpad" class="signpad" name="signature_image"
+                                                    style="display: none"></textarea>
+                                                <span></span> -->
+                                              
+
+                                            </div>
+                                            <br>
+                                            <div id="commentsSection">
+
+                                            </div>
+                                            <div class="border-top">
+                                                <div style="text-align: center;" class="card-body">
+                                                    <button type="Submit" id="submitBtn"
+                                                        class="btn btn-primary"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+
+                            </div>
+
+
+
+                            <div id="viewmodal" class="modal fade" tabindex="-1" role="dialog"
+                                aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                                data-keyboard="false">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3 align="center" class="card-title">View/Edit Driver Licenses or Permits
+                                            </h3>
+                                            <div class="card-body">
+
+                                                <h5 align="center" class="card-title">
+                                                    <%- title %>
+                                                </h5>
+                                                <div class="table-responsive">
+
+                                                    <table id="table" class="table table-striped table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <!-- <th>Id</th> -->
+                                                                <th class="thClass">Province</th>
+                                                                <th class="thClass">License</th>
+                                                                <th class="thClass">Attachment</th>
+                                                                <th class="thClass">Type</th>
+                                                                <th class="thClass">Expiry</th>
+                                                                <th class="thClass">Edit</th>
+                                                                <!-- <th class="thClass">Delete</th> -->
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <!-- <span id="tableDtls"></span> -->
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="viewmodalAccident" class="modal fade" tabindex="-1" role="dialog"
+                                aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                                data-keyboard="false">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3 align="center" class="card-title"> View/Edit Driver Accidents/Incidents
+                                            </h3>
+                                            <div class="card-body">
+
+                                                <h5 align="center" class="card-title">
+                                                    <%- title %>
+                                                </h5>
+                                                <div class="table-responsive">
+
+                                                    <table id="tableAccident"
+                                                        class="table table-striped table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <!-- <th>Id</th> -->
+                                                                <th class="thClass">Accidents Date</th>
+                                                                <th class="thClass">Accidents Nature</th>
+                                                                <th class="thClass">Accidents Fatalities</th>
+                                                                <th class="thClass">Accidents Injuries</th>
+                                                                <th class="thClass">Accidents Hazardous</th>
+                                                                <th class="thClass">Edit</th>
+                                                                <!-- <th class="thClass">Delete</th> -->
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <!-- <span id="tableDtls"></span> -->
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="viewmodalViolations" class="modal fade" tabindex="-1" role="dialog"
+                                aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                                data-keyboard="false">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3 align="center" class="card-title"> View/Edit Driver Violations</h3>
+                                            <div class="card-body">
+
+                                                <h5 align="center" class="card-title">
+                                                    <%- title %>
+                                                </h5>
+                                                <div class="table-responsive">
+
+                                                    <table id="tableViolations"
+                                                        class="table table-striped table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <!-- <th>Id</th> -->
+                                                                <th class="thClass">Traffic Convictions Date</th>
+                                                                <th class="thClass">Traffic Convictions Charge</th>
+                                                                <th class="thClass">Traffic Convictions Location</th>
+                                                                <th class="thClass">Traffic Convictions Penalty</th>
+                                                                <th class="thClass">Edit</th>
+                                                                <!-- <th class="thClass">Delete</th> -->
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <!-- <span id="tableDtls"></span> -->
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Container fluid  -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <footer class="footer text-center">
+                    <!-- All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a> -->
+                </footer>
+                <!-- ============================================================== -->
+                <!-- End footer -->
+                <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <%- include('includes/footer.ejs') %>
+
+        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script> -->
+        <script type="text/javascript" src="assets/extra-libs/signature/jquery.signature.min.js"></script>
+        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script>  -->
+        <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            /*!
+ * Modified
+ * Signature Pad v1.5.3
+ * https://github.com/szimek/signature_pad
+ *
+ * Copyright 2016 Szymon Nowak
+ * Released under the MIT license
+ */
+var SignaturePad = (function(document) {
+    "use strict";
+
+    var log = console.log.bind(console);
+
+    var SignaturePad = function(canvas, options) {
+        var self = this,
+            opts = options || {};
+
+        this.velocityFilterWeight = opts.velocityFilterWeight || 0.7;
+        this.minWidth = opts.minWidth || 0.5;
+        this.maxWidth = opts.maxWidth || 2.5;
+        this.dotSize = opts.dotSize || function() {
+                return (self.minWidth + self.maxWidth) / 2;
+            };
+        this.penColor = opts.penColor || "black";
+        this.backgroundColor = opts.backgroundColor || "rgba(0,0,0,0)";
+        this.throttle = opts.throttle || 0;
+        this.throttleOptions = {
+            leading: true,
+            trailing: true
+        };
+        this.minPointDistance = opts.minPointDistance || 0;
+        this.onEnd = opts.onEnd;
+        this.onBegin = opts.onBegin;
+
+        this._canvas = canvas;
+        this._ctx = canvas.getContext("2d");
+        this._ctx.lineCap = 'round';
+        this.clear();
+
+        // we need add these inline so they are available to unbind while still having
+        //  access to 'self' we could use _.bind but it's not worth adding a dependency
+        this._handleMouseDown = function(event) {
+            if (event.which === 1) {
+                self._mouseButtonDown = true;
+                self._strokeBegin(event);
+            }
+        };
+
+        var _handleMouseMove = function(event) {
+           event.preventDefault();
+            if (self._mouseButtonDown) {
+                self._strokeUpdate(event);
+                if (self.arePointsDisplayed) {
+                    var point = self._createPoint(event);
+                    self._drawMark(point.x, point.y, 5);
+                }
+            }
+        };
+
+        // this._handleMouseMove = _.throttle(_handleMouseMove, self.throttle, self.throttleOptions);
+        this._handleMouseMove = _handleMouseMove;
+
+        this._handleMouseUp = function(event) {
+            if (event.which === 1 && self._mouseButtonDown) {
+                self._mouseButtonDown = false;
+                self._strokeEnd(event);
+            }
+        };
+
+        this._handleTouchStart = function(event) {
+            if (event.targetTouches.length == 1) {
+                var touch = event.changedTouches[0];
+                self._strokeBegin(touch);
+            }
+        };
+
+        var _handleTouchMove = function(event) {
+            // Prevent scrolling.
+            event.preventDefault();
+
+            var touch = event.targetTouches[0];
+            self._strokeUpdate(touch);
+            if (self.arePointsDisplayed) {
+                var point = self._createPoint(touch);
+                self._drawMark(point.x, point.y, 5);
+            }
+        };
+        // this._handleTouchMove = _.throttle(_handleTouchMove, self.throttle, self.throttleOptions);
+        this._handleTouchMove = _handleTouchMove;
+
+        this._handleTouchEnd = function(event) {
+            var wasCanvasTouched = event.target === self._canvas;
+            if (wasCanvasTouched) {
+                event.preventDefault();
+                self._strokeEnd(event);
+            }
+        };
+
+        this._handleMouseEvents();
+        this._handleTouchEvents();
+    };
+
+    SignaturePad.prototype.clear = function() {
+        var ctx = this._ctx,
+            canvas = this._canvas;
+
+        ctx.fillStyle = this.backgroundColor;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        this._reset();
+    };
+
+    // SignaturePad.prototype.showPointsToggle = function() {
+    //     this.arePointsDisplayed = !this.arePointsDisplayed;
+    // };
+
+    SignaturePad.prototype.toDataURL = function(imageType, quality) {
+        var canvas = this._canvas;
+        return canvas.toDataURL.apply(canvas, arguments);
+    };
+
+    SignaturePad.prototype.fromDataURL = function(dataUrl) {
+        var self = this,
+            image = new Image(),
+            ratio = window.devicePixelRatio || 1,
+            width = this._canvas.width / ratio,
+            height = this._canvas.height / ratio;
+
+        this._reset();
+        image.src = dataUrl;
+        image.onload = function() {
+            self._ctx.drawImage(image, 0, 0, width, height);
+        };
+        this._isEmpty = false;
+    };
+
+    SignaturePad.prototype._strokeUpdate = function(event) {
+        var point = this._createPoint(event);
+        if(this._isPointToBeUsed(point)){
+            this._addPoint(point);
+        }
+    };
+
+    var pointsSkippedFromBeingAdded = 0;
+    SignaturePad.prototype._isPointToBeUsed = function(point) {
+        // Simplifying, De-noise
+        if(!this.minPointDistance)
+            return true;
+
+        var points = this.points;
+        if(points && points.length){
+            var lastPoint = points[points.length-1];
+            if(point.distanceTo(lastPoint) < this.minPointDistance){
+                // log(++pointsSkippedFromBeingAdded);
+                return false;
+            }
+        }
+        return true;
+    };
+
+    SignaturePad.prototype._strokeBegin = function(event) {
+        this._reset();
+        this._strokeUpdate(event);
+        if (typeof this.onBegin === 'function') {
+            this.onBegin(event);
+        }
+    };
+
+    SignaturePad.prototype._strokeDraw = function(point) {
+        var ctx = this._ctx,
+            dotSize = typeof(this.dotSize) === 'function' ? this.dotSize() : this.dotSize;
+
+        ctx.beginPath();
+        this._drawPoint(point.x, point.y, dotSize);
+        ctx.closePath();
+        ctx.fill();
+    };
+
+    SignaturePad.prototype._strokeEnd = function(event) {
+        var canDrawCurve = this.points.length > 2,
+            point = this.points[0];
+
+        if (!canDrawCurve && point) {
+            this._strokeDraw(point);
+        }
+        if (typeof this.onEnd === 'function') {
+            this.onEnd(event);
+        }
+    };
+
+    SignaturePad.prototype._handleMouseEvents = function() {
+        this._mouseButtonDown = false;
+
+        this._canvas.addEventListener("mousedown", this._handleMouseDown);
+        this._canvas.addEventListener("mousemove", this._handleMouseMove);
+        document.addEventListener("mouseup", this._handleMouseUp);
+    };
+
+    SignaturePad.prototype._handleTouchEvents = function() {
+        // Pass touch events to canvas element on mobile IE11 and Edge.
+        this._canvas.style.msTouchAction = 'none';
+        this._canvas.style.touchAction = 'none';
+
+        this._canvas.addEventListener("touchstart", this._handleTouchStart);
+        this._canvas.addEventListener("touchmove", this._handleTouchMove);
+        this._canvas.addEventListener("touchend", this._handleTouchEnd);
+    };
+
+    SignaturePad.prototype.on = function() {
+        this._handleMouseEvents();
+        this._handleTouchEvents();
+    };
+
+    SignaturePad.prototype.off = function() {
+        this._canvas.removeEventListener("mousedown", this._handleMouseDown);
+        this._canvas.removeEventListener("mousemove", this._handleMouseMove);
+        document.removeEventListener("mouseup", this._handleMouseUp);
+
+        this._canvas.removeEventListener("touchstart", this._handleTouchStart);
+        this._canvas.removeEventListener("touchmove", this._handleTouchMove);
+        this._canvas.removeEventListener("touchend", this._handleTouchEnd);
+    };
+
+    SignaturePad.prototype.isEmpty = function() {
+        return this._isEmpty;
+    };
+
+    SignaturePad.prototype._reset = function() {
+        this.points = [];
+        this._lastVelocity = 0;
+        this._lastWidth = (this.minWidth + this.maxWidth) / 2;
+        this._isEmpty = true;
+        this._ctx.fillStyle = this.penColor;
+    };
+
+    SignaturePad.prototype._createPoint = function(event) {
+        var rect = this._canvas.getBoundingClientRect();
+        return new Point(
+            event.clientX - rect.left,
+            event.clientY - rect.top
+        );
+    };
+
+    SignaturePad.prototype._addPoint = function(point) {
+        var points = this.points,
+            c2, c3,
+            curve, tmp;
+
+        points.push(point);
+
+        if (points.length > 2) {
+            // To reduce the initial lag make it work with 3 points
+            // by copying the first point to the beginning.
+            if (points.length === 3) points.unshift(points[0]);
+
+            tmp = this._calculateCurveControlPoints(points[0], points[1], points[2]);
+            c2 = tmp.c2;
+            tmp = this._calculateCurveControlPoints(points[1], points[2], points[3]);
+            c3 = tmp.c1;
+            curve = new Bezier(points[1], c2, c3, points[2]);
+            this._addCurve(curve);
+
+            // Remove the first element from the list,
+            // so that we always have no more than 4 points in points array.
+            points.shift();
+        }
+    };
+
+    SignaturePad.prototype._calculateCurveControlPoints = function(s1, s2, s3) {
+        var dx1 = s1.x - s2.x,
+            dy1 = s1.y - s2.y,
+            dx2 = s2.x - s3.x,
+            dy2 = s2.y - s3.y,
+
+            m1 = {
+                x: (s1.x + s2.x) / 2.0,
+                y: (s1.y + s2.y) / 2.0
+            },
+            m2 = {
+                x: (s2.x + s3.x) / 2.0,
+                y: (s2.y + s3.y) / 2.0
+            },
+
+            l1 = Math.sqrt(1.0 * dx1 * dx1 + dy1 * dy1),
+            l2 = Math.sqrt(1.0 * dx2 * dx2 + dy2 * dy2),
+
+            dxm = (m1.x - m2.x),
+            dym = (m1.y - m2.y),
+
+            k = l2 / (l1 + l2),
+            cm = {
+                x: m2.x + dxm * k,
+                y: m2.y + dym * k
+            },
+
+            tx = s2.x - cm.x,
+            ty = s2.y - cm.y;
+
+        return {
+            c1: new Point(m1.x + tx, m1.y + ty),
+            c2: new Point(m2.x + tx, m2.y + ty)
+        };
+    };
+
+    SignaturePad.prototype._addCurve = function(curve) {
+        var startPoint = curve.startPoint,
+            endPoint = curve.endPoint,
+            velocity, newWidth;
+
+        velocity = endPoint.velocityFrom(startPoint);
+        velocity = this.velocityFilterWeight * velocity +
+            (1 - this.velocityFilterWeight) * this._lastVelocity;
+
+        newWidth = this._strokeWidth(velocity);
+        this._drawCurve(curve, this._lastWidth, newWidth);
+
+        this._lastVelocity = velocity;
+        this._lastWidth = newWidth;
+    };
+
+    SignaturePad.prototype._drawPoint = function(x, y, size) {
+        var ctx = this._ctx;
+
+        ctx.moveTo(x, y);
+        ctx.arc(x, y, size, 0, 2 * Math.PI, false);
+        this._isEmpty = false;
+    };
+
+    SignaturePad.prototype._drawMark = function(x, y, size) {
+        var ctx = this._ctx;
+
+        ctx.save();
+        ctx.moveTo(x, y);
+        ctx.arc(x, y, size, 0, 2 * Math.PI, false);
+        ctx.fillStyle = 'rgba(255, 0, 0, 0.2)';
+        ctx.fill();
+        ctx.restore();
+    };
+
+    SignaturePad.prototype._drawCurve = function(curve, startWidth, endWidth) {
+        var ctx = this._ctx,
+            widthDelta = endWidth - startWidth,
+            drawSteps, width, i, t, tt, ttt, u, uu, uuu, x, y;
+
+        drawSteps = Math.floor(curve.length());
+        ctx.beginPath();
+        for (i = 0; i < drawSteps; i++) {
+            // Calculate the Bezier (x, y) coordinate for this step.
+            t = i / drawSteps;
+            tt = t * t;
+            ttt = tt * t;
+            u = 1 - t;
+            uu = u * u;
+            uuu = uu * u;
+
+            x = uuu * curve.startPoint.x;
+            x += 3 * uu * t * curve.control1.x;
+            x += 3 * u * tt * curve.control2.x;
+            x += ttt * curve.endPoint.x;
+
+            y = uuu * curve.startPoint.y;
+            y += 3 * uu * t * curve.control1.y;
+            y += 3 * u * tt * curve.control2.y;
+            y += ttt * curve.endPoint.y;
+
+            width = startWidth + ttt * widthDelta;
+            this._drawPoint(x, y, width);
+        }
+        ctx.closePath();
+        ctx.fill();
+    };
+
+    SignaturePad.prototype._strokeWidth = function(velocity) {
+        return Math.max(this.maxWidth / (velocity + 1), this.minWidth);
+    };
+
+    var Point = function(x, y, time) {
+        this.x = x;
+        this.y = y;
+        this.time = time || new Date().getTime();
+    };
+
+    Point.prototype.velocityFrom = function(start) {
+        return (this.time !== start.time) ? this.distanceTo(start) / (this.time - start.time) : 1;
+    };
+
+    Point.prototype.distanceTo = function(start) {
+        return Math.sqrt(Math.pow(this.x - start.x, 2) + Math.pow(this.y - start.y, 2));
+    };
+
+    var Bezier = function(startPoint, control1, control2, endPoint) {
+        this.startPoint = startPoint;
+        this.control1 = control1;
+        this.control2 = control2;
+        this.endPoint = endPoint;
+    };
+
+    // Returns approximated length.
+    Bezier.prototype.length = function() {
+        var steps = 10,
+            length = 0,
+            i, t, cx, cy, px, py, xdiff, ydiff;
+
+        for (i = 0; i <= steps; i++) {
+            t = i / steps;
+            cx = this._point(t, this.startPoint.x, this.control1.x, this.control2.x, this.endPoint.x);
+            cy = this._point(t, this.startPoint.y, this.control1.y, this.control2.y, this.endPoint.y);
+            if (i > 0) {
+                xdiff = cx - px;
+                ydiff = cy - py;
+                length += Math.sqrt(xdiff * xdiff + ydiff * ydiff);
+            }
+            px = cx;
+            py = cy;
+        }
+        return length;
+    };
+
+    Bezier.prototype._point = function(t, start, c1, c2, end) {
+        return start * (1.0 - t) * (1.0 - t) * (1.0 - t) +
+            3.0 * c1 * (1.0 - t) * (1.0 - t) * t +
+            3.0 * c2 * (1.0 - t) * t * t +
+            end * t * t * t;
+    };
+
+    return SignaturePad;
+})(document);
+
+var signaturePad = new SignaturePad(document.getElementById('signature-pad'), {
+    backgroundColor: 'rgba(255, 255, 255, 0)',
+    penColor: 'rgb(0, 0, 0)',
+    velocityFilterWeight: .7,
+    minWidth: 0.5,
+    maxWidth: 2.5,
+    throttle: 16, // max x milli seconds on event update, OBS! this introduces lag for event update
+    minPointDistance: 3,
+});
+var saveButton = document.getElementById('save'),
+    clearButton = document.getElementById('clear'),
+    showPointsToggle = document.getElementById('showPointsToggle');
+
+// saveButton.addEventListener('click', function(event) {
+//     var data = signaturePad.toDataURL('image/png');
+//     window.open(data);
+// });
+clearButton.addEventListener('click', function(event) {
+    signaturePad.clear();
+});
+// showPointsToggle.addEventListener('click', function(event) { 
+//     signaturePad.showPointsToggle();
+//     showPointsToggle.classList.toggle('toggle');
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            var signature = $('.signature').signature({ syncField: '.signpad', syncFormat: 'PNG' });
+
+            $('.signpad').draggable();
+            $('.clear').click(function (e) {
+                // alert('ddd');
+                e.preventDefault();
+                signature.signature('clear');
+                $(".signpad").val('');
+            });
+
+            //   jQuery(document).ready(function () {
+
+            // $("#toDate").on("change",function(){
+            //                 $("#toDate").focusout(function() {
+            //                 alert('qwwe')
+            //     var selected = $(this).val();
+            //     alert(selected);
+            // });
+
+            function getMonthDifference(startDate, endDate) {
+                // console.log(startDate);
+                // console.log(endDate);
+                return (
+                    endDate.getMonth() -
+                    startDate.getMonth() +
+                    12 * (endDate.getFullYear() - startDate.getFullYear())
+                );
+            }
+            function toDate1(parms) {
+                let fromDate = jQuery('#fromDate' + parms).val();
+                if (fromDate == 'undefined' || fromDate == '') {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Please fill From Date before To Date',
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                    })
+                    jQuery('#toDate' + parms).val('');
+                } else {
+                    let todate = jQuery('#toDate' + parms).val();
+                    let currentDuration = getMonthDifference(new Date(fromDate), new Date(todate));
+
+
+                    jQuery('#singleDurationInput' + parms).val(currentDuration);
+                    jQuery('#singleDuration' + parms).html('<b>Duration in month</b> : ' + currentDuration)
+                }
+            }
+            // })
+
+
+            //     $('#toDate'+parms).on("keyup", function() {
+            //        alert('test')
+            //     console.log(fromdate);
+            //    console.log(todate);
+            //    })
+            /****************************************
+             *       Basic Table                   *
+             ****************************************/
+            // $('#zero_config').DataTable();
+            function convertToBase64(inputfile, parms) {
+                //Read File
+                // alert(inputfile)
+                // alert(parms)
+
+                var selectedFile = document.getElementById(inputfile).files;
+                // console.log(selectedFile);
+                //Check File is not Empty
+                if (selectedFile.length > 0) {
+                    // Select the very first file from list
+                    var fileToLoad = selectedFile[0];
+                    var filesize = selectedFile[0].size;
+                    if (filesize <= '2069405') {
+                        // console.log(filesize);
+                        // FileReader function for read the file.
+                        var fileReader = new FileReader();
+                        var base64;
+                        // Onload of file read the file content
+                        fileReader.onload = function (fileLoadedEvent) {
+                            base64 = fileLoadedEvent.target.result;
+                            // Print data in console
+                            // console.log(parms);
+                            $("#" + parms).val(base64);
+                            var div = document.getElementById(parms);
+                            div.innerHTML += base64;
+
+                        };
+                        // Convert data to base64
+                        fileReader.readAsDataURL(fileToLoad);
+                    } else {
+                        Swal.fire(
+                            'Too Big!',
+                            'Upload image size within 2 MB.',
+                            'danger'
+                        )
+                        return false;
+                    }
+                }
+            }
+
+            $(document).ready(function () {
+
+                $(document).on('click', '.viewmodalclass', function () {
+                    // alert('test') 
+                    // let id = $(this).attr('data-id');
+                    let id = $('body #updateEmployment #updateEmployment_details #id').val();
+                    // alert(id)
+                    // console.log(id);
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/getdrivingHistory",
+                        type: "GET",
+                        data: { id: id },
+                        success: function (data) {
+                            // console.log(data.data);
+                            if (data.status) {
+                                $("body #table tbody").html(data.data);
+                                // $('body #viewmodal >table > tbody').html(data.data);
+
+                                $('body #viewmodal').modal('show');
+                            } else {
+                                // Swal.fire('Any fool can use a computer')
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+                $(document).on('click', '.viewmodalclassAccident', function () {
+                    // alert('test') 
+                    // let id = $(this).attr('data-id');
+                    let id = $('body #updateEmployment #updateEmployment_details #id').val();
+                    // alert(id)
+                    // console.log(id);
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/getdrivingHistoryAccident",
+                        type: "GET",
+                        data: { id: id },
+                        success: function (data) {
+                            if (data.status) {
+                                $("body #tableAccident tbody").html(data.data);
+                                // $('body #viewmodal >table > tbody').html(data.data);
+
+                                $('body #viewmodalAccident').modal('show');
+                            } else {
+                                // Swal.fire('Any fool can use a computer')
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+                $(document).on('click', '.viewmodalclassViolations', function () {
+                    // alert('test') 
+                    // let id = $(this).attr('data-id');
+                    let id = $('body #updateEmployment #updateEmployment_details #id').val();
+                    // alert(id)
+                    // console.log(id);
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/getdrivingHistoryViolations",
+                        type: "GET",
+                        data: { id: id },
+                        success: function (data) {
+                            if (data.status) {
+                                $("body #tableViolations tbody").html(data.data);
+                                // $('body #viewmodal >table > tbody').html(data.data);
+
+                                $('body #viewmodalViolations').modal('show');
+                            } else {
+                                // Swal.fire('Any fool can use a computer')
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+
+
+                $(document).on('click', '.editmodalclassaddress', function () {
+                    // alert('test')
+                    let id = $(this).attr('data-id');
+                    // let id = $('body #updateDriver #id').val();
+                    // alert(id)
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/getupdatedrivingHistoryAddress",
+                        type: "GET",
+                        data: { id: id },
+                        success: function (data) {
+                            if (data.status) {
+                                $('body #editmodal #id').val(data.data.id);
+                                $('body #editmodal #province').val(data.data.province);
+                                $('body #editmodal #license').val(data.data.license);
+                                // $('body #editmodal #attachment').val(data.data.attachment);
+                                // console.log(data.data);
+                                if (data.data.attachment != "") {
+                                    let attachmentlink = 'uploads/attachment/drivinghistoryaddressAttachment/' + data.data.attachment;
+                                    $("body #editmodal #attachment_file_link").attr("href", attachmentlink);
+                                } else {
+                                    $("body #editmodal #attachment_file_link").hide();
+                                }
+
+                                $('body #editmodal #type').val(data.data.type);
+                                $('body #editmodal #expiry').val(data.data.expiry);
+                                $('body #viewmodal').modal('hide');
+                                $('body #editmodal').modal('show');
+                            } else {
+                                // Swal.fire('Any fool can use a computer')
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+                $(document).on('click', '.editmodalclassaccident', function () {
+                    // alert('test')
+                    let id = $(this).attr('data-id');
+                    // let id = $('body #updateDriver #id').val();
+                    // alert(id)
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/getupdatedrivingHistoryAccident",
+                        type: "GET",
+                        data: { id: id },
+                        success: function (data) {
+                            if (data.status) {
+                                $('body #editmodalAccident #id').val(data.data.id);
+                                $('body #editmodalAccident #accidentsDate').val(data.data.accidentsDate);
+                                $('body #editmodalAccident #accidentsNature').val(data.data.accidentsNature);
+                                $('body #editmodalAccident #accidentsFatalities').val(data.data.accidentsFatalities);
+                                $('body #editmodalAccident #accidentsInjuries').val(data.data.accidentsInjuries);
+                                $('body #editmodalAccident #accidentsHazardous').val(data.data.accidentsHazardous);
+                                $('body #viewmodalAccident').modal('hide');
+                                $('body #editmodalAccident').modal('show');
+                            } else {
+                                // Swal.fire('Any fool can use a computer')
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+                $(document).on('click', '.editmodalclassViolations', function () {
+                    // alert('test')
+                    let id = $(this).attr('data-id');
+                    // let id = $('body #updateDriver #id').val();
+                    // alert(id)
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/getupdatedrivingHistoryViolations",
+                        type: "GET",
+                        data: { id: id },
+                        success: function (data) {
+                            if (data.status) {
+                                $('body #editmodalViolations #id').val(data.data.id);
+                                $('body #editmodalViolations #traficConvintionsDate').val(data.data.traficConvintionsDate);
+                                $('body #editmodalViolations #traficConvintionsCharge').val(data.data.traficConvintionsCharge);
+                                $('body #editmodalViolations #traficConvintionsLocation').val(data.data.traficConvintionsLocation);
+                                $('body #editmodalViolations #traficConvintionsPenalty').val(data.data.traficConvintionsPenalty);
+                                $('body #viewmodalViolations').modal('hide');
+                                $('body #editmodalViolations').modal('show');
+                            } else {
+                                // Swal.fire('Any fool can use a computer')
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+                $(document).on('click', '.addmodalclass', function () {
+                    // alert('test')
+                    let id = $(this).attr('data-id');
+                    let prvTo = $(this).attr('data-prvTo');
+                    let currFrom = $(this).attr('data-currFrom');
+                    let company_id = $(this).attr('data-company_id');
+                    let driverId = $(this).attr('data-driverId');
+                    // let id = $('body #updateDriver #id').val();
+                    // alert(id)
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/getupdatedrivingHistoryAddress",
+                        type: "GET",
+                        data: { id: id },
+                        success: function (data) {
+                            if (data.status) {
+                                $('body #addmodal #id').val(data.data.id);
+                                // $('body #addmodal #fromDate').val(prvTo);
+                                // $('body #addmodal #toDate').val(currFrom);
+                                $('body #addmodal #company_id').val(company_id);
+                                $('body #addmodal #driverId').val(driverId);
+                                $('body #viewmodal').modal('hide');
+                                $('body #addmodal').modal('show');
+                            } else {
+                                // Swal.fire('Any fool can use a computer')
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+                $(document).on('click', '.deletemodalclass', function () {
+                    // alert('test')
+                    let id = $(this).attr('data-id');
+
+                    // console.log($(this).attr("data-id"));
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to update this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, update it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                            $.ajax({
+                                url: "/deleteemploymenthistoryAddress",
+                                type: "POST",
+                                data: { id: id },
+
+                                success: function (data) {
+                                    if (data.status) {
+                                        const Toast = Swal.mixin({
+                                            toast: true,
+                                            position: 'top-end',
+                                            showConfirmButton: false,
+                                            timer: 2000,
+                                            timerProgressBar: true,
+                                            didOpen: (toast) => {
+                                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                            }
+                                        })
+                                        Toast.fire({
+                                            icon: 'success',
+                                            title: data.message
+                                        });
+                                        setTimeout(function () {
+                                            window.location.reload();
+                                        }, 2000);
+                                    } else {
+                                        Swal.fire({
+                                            title: 'Error!',
+                                            text: 'Something went wrong',
+                                            icon: 'error',
+                                            confirmButtonText: 'Cool'
+                                        })
+                                    }
+
+                                }
+                            });
+
+
+                        }
+                    })
+                });
+
+                // jQuery('#fromDate').datepicker({
+                //     format: 'dd/mm/yyyy',
+                //     maxDate: new Date(),
+                //     closeOnSelected: true,
+                //     autoclose: true,
+                //     endDate: "today"
+                // });
+                jQuery('.mydatepickerDOB').datepicker({
+                    format: 'dd/mm/yyyy',
+                    maxDate: new Date(),
+                    closeOnSelected: true,
+                    autoclose: true,
+                    endDate: "today"
+                });
+
+                jQuery('.mydatepicker').datepicker({
+                    format: 'dd/mm/yyyy',
+                    closeOnSelected: true,
+                    autoclose: true,
+                });
+                jQuery('#datepicker-autoclose').datepicker({
+                    autoclose: true,
+                    todayHighlight: true,
+                    maxDate: new Date()
+                });
+
+                // --------------------------------------Multiple form---------------------------------
+                var max_fields = 10;
+                var wrapper = $(".container1");
+                var add_button = $(".add_form_field");
+
+                var x = 1;
+                $(add_button).click(function (e) {
+                    e.preventDefault();
+                    if (x < max_fields) {
+                        x++;
+                        let onchangeData = "convertToBase64('atachment" + x + "','atachment_file" + x + "');";
+                        $(wrapper).append('<div>   <div class="form-group row"><label for="province"class="col-sm-3 control-label col-form-label">Province</label><div class="col-md-9"><input type="text" class="form-control" required name="province[]"value="" id="province"></div> </div><div class="form-group row"><label for="license" class="col-sm-3 control-label col-form-label">License</label><div class="col-md-9"><input type="text" class="form-control" name="license[]"value="" id="license"></div></div><div class="form-group row"><label for="attachment"class="col-sm-3 control-label col-form-label">Upload doc</label><div class="col-md-9"> <input type="file" id="atachment' + x + '" accept="application/pdf" onchange="' + onchangeData + '" /><input type="hidden" name="atachment_file[]" id="atachment_file' + x + '"> </div></div><div class="form-group row"><label for="type"class="col-sm-3 control-label col-form-label">Type</label><div class="col-md-9"> <input type="text" class="form-control" name="type[]" value="" id="type"></div></div><div class="form-group row"><label for="expiry"class="col-sm-3 control-label col-form-label">Expiry</label> <div class="col-md-9"><input type="date" class="form-control" name="expiry[]" value="" id="expiry"></div></div><input type="hidden" name="singleDurationInput[]"  id="singleDurationInput' + x + '"> <span id="singleDuration' + x + '"></span> <a href="#" class="btn btn-danger delete">Delete</a></div></div>'); //add input box
+                    } else {
+                        alert('You Reached the limits')
+                    }
+                });
+
+                $(wrapper).on("click", ".delete", function (e) {
+                    e.preventDefault();
+                    $(this).parent('div').remove();
+                    x--;
+                })
+
+
+                // -----------------------------------Multiple form Accident---------------------------------
+
+                var max_fieldsAccident = 10;
+                var wrapperAccident = $(".containeraccidentsDiv");
+                var add_buttonAccident = $(".add_form_fieldaccidentsDiv");
+
+                var x = 1;
+                $(add_buttonAccident).click(function (e) {
+                    e.preventDefault();
+                    if (x < max_fieldsAccident) {
+                        x++;
+                        let onchangeData = "convertToBase64('atachment" + x + "','atachment_file" + x + "');";
+                        $(wrapperAccident).append('<div> <div class="form-group row"><label for="FromDate" class="col-sm-3 control-label col-form-label">Date</label><div class="col-md-9"><input type="date" class="form-control" name="accidentsDate[]" required value="" id="accidentsDate"></div></div><div class="form-group row"><label for="accidentsNature" class="col-sm-3 control-label col-form-label">Nature of Accident</label><div class="col-md-9"><select class="form-select" name="accidentsNature[]" id="accidentsNature"><option value="">Select</option><option value="HEAD-ON">HEAD-ON</option><option value="REAR-END">REAR-END</option><option value="UPSET">UPSET</option><option value="ETC">ETC</option></select></div></div><div class="form-group row"><label for="accidentsFatalities" class="col-sm-3 control-label col-form-label">Fatalities</label><div class="col-md-9"><input type="text" class="form-control" name="accidentsFatalities[]" value="" id="accidentsFatalities"></div></div><div class="form-group row"><label for="accidentsInjuries" class="col-sm-3 control-label col-form-label">Injuries</label><div class="col-md-9"><input type="text" class="form-control" name="accidentsInjuries[]" value="" id="accidentsInjuries"></div></div><div class="form-group row"><label for="accidentsHazardous" class="col-sm-3 control-label col-form-label">Hazardous Material Spill</label><div class="col-md-9"><input type="text" class="form-control" name="accidentsHazardous[]" value="" id="accidentsHazardous"></div></div> <a href="#" class="btn btn-danger deleteAccident">Delete</a></div>'); //add input box
+                    } else {
+                        alert('You Reached the limits')
+                    }
+                });
+
+                $(wrapperAccident).on("click", ".deleteAccident", function (e) {
+                    e.preventDefault();
+                    $(this).parent('div').remove();
+                    x--;
+                })
+
+                // -----------------------------------Multiple form Violation---------------------------------
+                var max_fieldsviolation = 10;
+                var wrapperviolation = $(".containerviolationDiv");
+                var add_buttonviolation = $(".add_form_fieldviolationDiv");
+
+                var x = 1;
+                $(add_buttonviolation).click(function (e) {
+                    e.preventDefault();
+                    if (x < max_fieldsviolation) {
+                        x++;
+                        let onchangeData = "convertToBase64('atachment" + x + "','atachment_file" + x + "');";
+                        $(wrapperviolation).append('<div> <div class="form-group row"><label for="traficConvintionsDate" class="col-sm-3 control-label col-form-label">Date</label><div class="col-md-9"><input type="date" class="form-control" name="traficConvintionsDate[]" required id="traficConvintionsDate"></div></div><div class="form-group row"><label for="traficConvintionsCharge" class="col-sm-3 control-label col-form-label">Charge</label><div class="col-md-9"><input type="text" class="form-control" name="traficConvintionsCharge[]" value="" id="traficConvintionsCharge"></div></div><div class="form-group row"><label for="traficConvintionsLocation" class="col-sm-3 control-label col-form-label">Location</label><div class="col-md-9"><input type="text" class="form-control" name="traficConvintionsLocation[]" value="" id="traficConvintionsLocation"></div></div><div class="form-group row"><label for="traficConvintionsPenalty" class="col-sm-3 control-label col-form-label">Penalty</label><div class="col-md-9"><input type="text" class="form-control" name="traficConvintionsPenalty[]" value="" id="traficConvintionsPenalty"></div></div> <a href="#" class="btn btn-danger deleteviolation">Delete</a></div>'); //add input box
+                    } else {
+                        alert('You Reached the limits')
+                    }
+                });
+
+                $(wrapperviolation).on("click", ".deleteviolation", function (e) {
+                    e.preventDefault();
+                    $(this).parent('div').remove();
+                    x--;
+                })
+
+
+                // --------------------------------------Multiple form---------------------------------
+
+            });
+            let date = new Date();
+            var currentdate =
+                ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+                ("00" + date.getDate()).slice(-2) + "/" +
+                date.getFullYear();
+            function calculateAge(birthDate, otherDate) {
+                birthDate = new Date(birthDate);
+                otherDate = new Date(otherDate);
+
+                var years = (otherDate.getFullYear() - birthDate.getFullYear());
+
+                if (otherDate.getMonth() < birthDate.getMonth() ||
+                    otherDate.getMonth() == birthDate.getMonth() && otherDate.getDate() < birthDate.getDate()) {
+                    years--;
+                }
+
+                return years;
+            }
+
+
+            // var age = calculateAge("02/24/1991", "02/24/2010");
+
+
+            $("#accidentsDiv").hide();
+            $("#traficConvintionsDiv").hide();
+            $("#drivingExperienceDiv").hide();
+
+
+
+            $('#accidents').on('change', function () {
+
+                if ($('#accidents').val() == "Yes") {
+                    $("#accidentsDiv").show();
+                    // alert('checked')
+                } else if ($('#accidents').val() == "No") {
+                    $("#accidentsDiv").hide();
+                    // alert('un checked')
+                }
+
+            })
+            $('#traficConvintions').on('change', function () {
+
+                if ($('#traficConvintions').val() == "Yes") {
+                    $("#traficConvintionsDiv").show();
+                    // alert('checked')
+                } else if ($('#traficConvintions').val() == "No") {
+                    $("#traficConvintionsDiv").hide();
+                    // alert('un checked')
+                }
+
+            })
+
+            $('#drivingExperience').on('change', function () {
+
+                if ($('#drivingExperience').val() == "Yes") {
+                    $("#drivingExperienceDiv").show();
+                } else if ($('#drivingExperience').val() == "No") {
+                    $("#drivingExperienceDiv").hide();
+                }
+
+            })
+
+            // $('#fmcrs').on('change', function () {
+            //     if ($('#fmcrs').val() == "Yes") {
+            //         $("body #updateEmployment_details #jobDesignated [value=No]").attr("selected", false);
+            //         $("body #updateEmployment_details #jobDesignated [value=Yes]").attr("selected", true);
+            //     } else if ($('#fmcrs').val() == "No") {
+            //         $("body #updateEmployment_details #jobDesignated [value=Yes]").attr("selected", false);
+            //         $("body #updateEmployment_details #jobDesignated [value=No]").attr("selected", true);
+            //     }
+            // })
+
+            $("body #updateEmployment_details #comments").hide('');
+            let id = $('#updateEmployment_details #id').val();
+            // console.log($(this).attr("data-id"));
+            // alert(id)
+            $.ajax({
+                url: "/editupdatedrivingHistoryForm",
+                type: "GET",
+                data: { id: id },
+                success: function (data) {
+                    if (data.status) {
+                        let approveStatus;
+                        if (data.data.approveStatus == 0) {
+                            // alert(0)
+                            approveStatus = 'Waiting For admin approval'
+                        } else {
+                            // alert(1)
+                            approveStatus = 'Approved'
+                        }
+                        $('#accidents').on('change', function () {
+                            if ($('#updateEmployment_details #accidents').val() == 'Yes') {
+                                $("#accidentsDiv").show();
+                                // alert('checked')
+                            } else {
+                                $("#accidentsDiv").hide();
+                                // alert('un checked')
+                            }
+                        })
+                        $('#traficConvintions').on('change', function () {
+                            if ($('#updateEmployment_details #traficConvintions').val() == 'Yes') {
+                                $("#traficConvintionsDiv").show();
+                                // alert('checked')
+                            } else {
+                                $("#traficConvintionsDiv").hide();
+                                // alert('un checked')
+                            }
+                        })
+
+                        $('#drivingExperience').on('change', function () {
+                            if ($('#updateEmployment_details #drivingExperience').val() == 'Yes') {
+                                $("#drivingExperienceDiv").show();
+                                // alert('checked')
+                            } else {
+                                $("#drivingExperienceDiv").hide();
+                                // alert('un checked')
+                            }
+                        })
+
+                        $("#signatureDiv").hide();
+                        $(".containeraccidentsDiv").hide();
+                        $(".containerviolationDiv").hide();
+                        let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.data.signature;
+                        $("body #updateEmployment_details #signature").attr("src", signaturePath);
+
+                        $("body #updateEmployment_details #commentsSection").html('<input required type="text" class="form-control" placeholder="Please enter comments this will help admin to approve this request" name="comment" value="" id="comments">');
+                        $("body #updateEmployment_details #approveStatus").text(approveStatus);
+                        $("body #updateEmployment_details #submitBtn").text('Update');
+                        $('body #updateEmployment_details #actionData').val('Update');
+                        $("body #updateEmployment_details #accidents [value=" + '"' + data.data.accidents + '"' + "]").attr("selected", true);
+                        if ($('#updateEmployment_details #accidents').val() == 'Yes') {
+                            $("#accidentsDiv").show();
+                            // alert('checked')
+                        } else {
+                            $("#accidentsDiv").hide();
+                            // alert('un checked')
+                        }
+                        $('body #updateEmployment_details #accidentsDate').val(data.data.accidentsDate);
+                        $("body #updateEmployment_details #accidentsNature [value=" + '"' + data.data.accidentsNature + '"' + "]").attr("selected", true);
+                        $('body #updateEmployment_details #accidentsFatalities').val(data.data.accidentsFatalities);
+                        $('body #updateEmployment_details #accidentsInjuries').val(data.data.accidentsInjuries);
+                        $('body #updateEmployment_details #accidentsHazardous').val(data.data.accidentsHazardous);
+                        $("body #updateEmployment_details #traficConvintions [value=" + '"' + data.data.traficConvintions + '"' + "]").attr("selected", true);
+                        if ($('#updateEmployment_details #traficConvintions').val() == "Yes") {
+                            $("#traficConvintionsDiv").show();
+                            // alert('checked')
+                        } else if ($('#traficConvintions').val() == "No") {
+                            $("#traficConvintionsDiv").hide();
+                            // alert('un checked')
+                        }
+                        $('body #updateEmployment_details #traficConvintionsDate').val(data.data.traficConvintionsDate);
+                        $('body #updateEmployment_details #traficConvintionsCharge').val(data.data.traficConvintionsCharge);
+                        $('body #updateEmployment_details #traficConvintionsLocation').val(data.data.traficConvintionsLocation);
+                        $('body #updateEmployment_details #traficConvintionsPenalty').val(data.data.traficConvintionsPenalty);
+                        $("body #updateEmployment_details #deniedLicense [value=" + '"' + data.data.deniedLicense + '"' + "]").attr("selected", true);
+                        $("body #updateEmployment_details #licensePermit [value=" + '"' + data.data.licensePermit + '"' + "]").attr("selected", true);
+                        $("body #updateEmployment_details #drivingExperience [value=" + '"' + data.data.drivingExperience + '"' + "]").attr("selected", true);
+                        if ($('#updateEmployment_details #drivingExperience').val() == 'Yes') {
+                            $("#drivingExperienceDiv").show();
+                        } else {
+                            $("#drivingExperienceDiv").hide();
+                        }
+                        $("body #updateEmployment_details #classofEquipment [value=" + '"' + data.data.classofEquipment + '"' + "]").attr("selected", true);
+                        $("body #updateEmployment_details #equipmentType [value=" + '"' + data.data.equipmentType + '"' + "]").attr("selected", true);
+
+                        $('body #updateEmployment_details #equipmentStartDate').val(data.data.equipmentStartDate);
+                        $('body #updateEmployment_details #equipmentEndDate').val(data.data.equipmentEndDate);
+                        $('body #updateEmployment_details #aprox').val(data.data.aprox);
+                        $('body #updateEmployment_details #listProvinces').val(data.data.listProvinces);
+                        $('body #updateEmployment_details #listCourses').val(data.data.listCourses);
+                        $('body #updateEmployment_details #education').val(data.data.education);
+
+                        $('body #updateEmployment_details .container1').hide()
+                    } else {
+                        // alert('test')
+                        $("body #updateEmployment_details #signature").hide();
+                        $("body #updateEmployment_details #commentsSection").html('');
+                        $("body #updateEmployment_details #submitBtn").text('Create');
+                        $('body #updateEmployment_details #actionData').val('Create');
+                        // window.location = "/";
+                    }
+
+                }
+            });
+            // });
+
+
+
+
+            function handlemultipleNames(parms, values) {
+                let arr = []
+                $('input[name="' + parms + '[]"]').each(function () {
+                    arr.push(this.value);
+                    values = arr
+                });
+                return values
+            }
+            $("#updateEmployment").submit(function (event) {
+                event.preventDefault();
+                var values = {};
+                $.each($('#updateEmployment').serializeArray(), function (i, field) {
+                    values[field.name] = field.value;
+                });
+
+        //    gtest1
+    //             var data = signaturePad.toDataURL('image/png');
+    // console.log(data);
+                // console.log(signpad);
+                // return false
+                if ($("#updateEmployment #submitBtn").text() != "Update") {
+                    // if ($('.signpad').length > 0) {
+                        // var signpad = $(".signpad").val();
+                        var signpad = signaturePad.toDataURL('image/png');
+                        console.log(signpad);
+                        
+                        if (signpad == "" || signpad == "undefined" || signpad == null || signpad == "0") {
+                            flag = false;
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Signature requird to proceed further',
+                                icon: 'error',
+                                confirmButtonText: 'Ok'
+                            })
+                            return false
+                        }
+                        values['signature'] = signpad;
+                    // }
+                }
+
+
+                var address = [];
+                var state = [];
+                var city = [];
+                var country = [];
+                var province = [];
+                var postalCode = [];
+                var fromDate = [];
+                var toDate = [];
+                // address = handlemultipleNames('address', values);
+                // state = handlemultipleNames('state', values);
+                // city = handlemultipleNames('city', values);
+                // country = handlemultipleNames('country', values);
+                // province = handlemultipleNames('province', values);
+                // postalCode = handlemultipleNames('postalCode', values);
+                // fromDate = handlemultipleNames('fromDate', values);
+                // toDate = handlemultipleNames('toDate', values);
+                var address = $("input[name='address[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['addressarr'] = address
+                var state = $("input[name='state[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['statearr'] = state
+                var city = $("input[name='city[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['cityarr'] = city
+                var country = $("input[name='country[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['countryarr'] = country
+                var province = $("input[name='province[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['provincearr'] = province
+                var postalCode = $("input[name='postalCode[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['postalCodearr'] = postalCode
+                var fromDate = $("input[name='fromDate[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['fromDatearr'] = fromDate
+                var toDate = $("input[name='toDate[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['toDatearr'] = toDate
+
+                // values['addressarr'] = address;
+                // values['statearr'] = state;
+                // values['cityarr'] = city;
+                // values['countryarr'] = country;
+                // values['provincearr'] = province;
+                // values['postalCodearr'] = postalCode;
+                // values['fromDatearr'] = fromDate;
+                // values['toDatearr'] = toDate;
+
+                // console.log(DriverAddress.length);
+
+                var province = $("input[name='province[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['provinceArr'] = province
+                var license = $("input[name='license[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['licenseArr'] = license
+                var attachment = $("input[name='attachment[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['attachmentArr'] = attachment
+                var atachment_file = $("input[name='atachment_file[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['atachment_fileArr'] = atachment_file
+                var type = $("input[name='type[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['typeArr'] = type
+                var expiry = $("input[name='expiry[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['expiryArr'] = expiry
+
+                // console.log('province');
+                // console.log(province);
+
+                // -----------Accident-------------
+                var accidentsDate = $("input[name='accidentsDate[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['accidentsDateArr'] = accidentsDate
+                var accidentsNature = $("select[name='accidentsNature[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['accidentsNatureArr'] = accidentsNature
+                var accidentsFatalities = $("input[name='accidentsFatalities[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['accidentsFatalitiesArr'] = accidentsFatalities
+                var accidentsInjuries = $("input[name='accidentsInjuries[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['accidentsInjuriesArr'] = accidentsInjuries
+                var accidentsHazardous = $("input[name='accidentsHazardous[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['accidentsHazardousArr'] = accidentsHazardous
+
+                // if (($('#accidents').val() == "Yes") && values['accidentsDateArr'].length < 1) {
+                // alert($('#accidents').val())
+                if ($("#updateEmployment #submitBtn").text() != "Update") {
+                    if ($('#accidents').val() == "Yes") {
+
+
+                        if (values['accidentsDateArr'].length < 1) {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Please fill Add driver history accidents',
+                                icon: 'error',
+                                confirmButtonText: 'Ok'
+                            })
+                            return false
+                        }
+                    }
+                }
+
+                // -----------Accident-------------
+                // -----------Violation-------------
+                var traficConvintionsDate = $("input[name='traficConvintionsDate[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['traficConvintionsDateArr'] = traficConvintionsDate
+                var traficConvintionsCharge = $("input[name='traficConvintionsCharge[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['traficConvintionsChargeArr'] = traficConvintionsCharge
+                var traficConvintionsLocation = $("input[name='traficConvintionsLocation[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['traficConvintionsLocationArr'] = traficConvintionsLocation
+                var traficConvintionsPenalty = $("input[name='traficConvintionsPenalty[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['traficConvintionsPenaltyArr'] = traficConvintionsPenalty
+                // -----------Violation-------------
+                if ($("#updateEmployment #submitBtn").text() != "Update") {
+                    if (province.length < 1) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please fill Add driver licenses or permits',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        })
+                        return false
+                    }
+                }
+
+
+
+                let singleDurationInput = []
+                var total = 0;
+                $('input[name="singleDurationInput[]"]').each(function () {
+                    singleDurationInput.push(this.value);
+                    total += parseInt(this.value)
+                    // values['singleDurationInput'] = singleDurationInput
+                });
+                delete values['accidentsNature'];
+                // console.log(total);
+                // if (actionData != 'Update') {
+                //     if (total < 120) {
+                //         // alert('atleast')
+                //         Swal.fire({
+                //             title: 'Error!',
+                //             text: 'Atleast need 120 months to proceed further',
+                //             icon: 'error',
+                //             confirmButtonText: 'Ok'
+                //         })
+                //         return false
+                //     }
+                // }
+
+                // alert(datas)
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to update this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#updateEmployment #submitBtn").text('Please wait');
+                        $("#updateEmployment #submitBtn").attr('disabled', true);
+                        $.ajax({
+                            url: "/updatedrivingHistory",
+                            type: "POST",
+                            data: values,
+                            success: function (data) {
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+
+                            }
+                        });
+
+
+                    }
+                })
+            });
+
+
+
+            $("#updateAddress").submit(function (event) {
+                event.preventDefault();
+                var values = {};
+                $.each($('#updateAddress').serializeArray(), function (i, field) {
+                    values[field.name] = field.value;
+                    // console.log(values[field.name]);
+                });
+
+                // alert(datas)
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to update this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#submitBtn").text('Please wait');
+                        $("#submitBtn").attr('disabled', true);
+                        $.ajax({
+                            url: "/UpdatedrivingHistoryAddressID",
+                            type: "POST",
+                            data: values,
+                            success: function (data) {
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+
+                            }
+                        });
+
+
+                    }
+                })
+            });
+            $("#updateAccident").submit(function (event) {
+                event.preventDefault();
+                var values = {};
+                $.each($('#updateAccident').serializeArray(), function (i, field) {
+                    values[field.name] = field.value;
+                    // console.log(values[field.name]);
+                });
+
+                // alert(datas)
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to update this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#submitBtn").text('Please wait');
+                        $("#submitBtn").attr('disabled', true);
+                        $.ajax({
+                            url: "/UpdatedrivingHistoryAccidentID",
+                            type: "POST",
+                            data: values,
+                            success: function (data) {
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+
+                            }
+                        });
+
+
+                    }
+                })
+            });
+            $("#updateViolations").submit(function (event) {
+                event.preventDefault();
+                var values = {};
+                $.each($('#updateViolations').serializeArray(), function (i, field) {
+                    values[field.name] = field.value;
+                    // console.log(values[field.name]);
+                });
+
+                // alert(datas)
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to update this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#submitBtn").text('Please wait');
+                        $("#submitBtn").attr('disabled', true);
+                        $.ajax({
+                            url: "/UpdatedrivingHistoryViolationsID",
+                            type: "POST",
+                            data: values,
+                            success: function (data) {
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+
+                            }
+                        });
+
+
+                    }
+                })
+            });
+            $("#addAddress").submit(function (event) {
+                event.preventDefault();
+                var values = {};
+                $.each($('#addAddress').serializeArray(), function (i, field) {
+                    values[field.name] = field.value;
+                    // console.log(values[field.name]);
+                });
+
+                // alert(datas)
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to update this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, update it!'
+                }).then((result) => {
+                    $("#submitBtn").text('Please wait');
+                    $("#submitBtn").attr('disabled', true);
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            url: "/AddemploymenthistoryAddressID",
+                            type: "POST",
+                            data: values,
+                            success: function (data) {
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+
+                            }
+                        });
+
+
+                    }
+                })
+            });
+
+
+    //         function fromDate1(parms){
+    // //    alert('test')
+    // console.log(parms);
+    // // jQuery("#fromDate"+parms).focus();
+    // // jQuery("#fromDate"+parms).blur();
+    // jQuery('#fromDate'+parms).datepicker({
+    //                 format: 'dd/mm/yyyy',
+    //                 maxDate: new Date(),
+    //                 closeOnSelected: true,
+    //                 autoclose: true,
+    //                 endDate: "today"
+    //             })
+    //         }
+        </script>
+        <script src="sweetAlert/sweetalert2.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="/assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="/assets/extra-libs/multicheck/multicheck.css">
+    <link href="/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="/dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://ashaviglobal.com/agreement/template/dist/css/jquery.signature.css">">
+    <link rel="stylesheet" type="text/css"
+        href="https://compliancementorz.com/company_info/template/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+
+
+    <style type="text/css">
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+
+
+        /* To group email with comma start */
+        .multiple_emails-container {
+            border: 1px #00ff00 solid;
+            border-radius: 1px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            padding: 0;
+            margin: 0;
+            cursor: text;
+            width: 100%;
+        }
+
+        .multiple_emails-container input {
+
+            width: 100%;
+            border: 0;
+            outline: none;
+            margin-bottom: 30px;
+            padding-left: 5px;
+
+        }
+
+        .multiple_emails-container input {
+            border: 0 !important;
+        }
+
+        .multiple_emails-container input.multiple_emails-error {
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px red !important;
+            outline: thin auto red !important;
+        }
+
+        .multiple_emails-container ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .multiple_emails-email {
+            margin: 3px 5px 3px 5px;
+            padding: 3px 5px 3px 5px;
+            border: 1px #BBD8FB solid;
+            border-radius: 3px;
+            background: #F3F7FD;
+        }
+
+        .multiple_emails-close {
+            float: left;
+            margin: 0 3px;
+        }
+
+        /* To group email with comma end */
+
+
+
+
+        /* Signature */
+        .kbw-signature {
+            width: 100%;
+            height: 250px;
+        }
+
+        .signature canvas {
+            width: 100% !important;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+
+
+
+
+
+
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="">
+
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+
+                <div style="background-color: #01acc83d;" class="card">
+
+
+                    <input type="hidden" id="FormID" value="<%- FormID %>">
+
+
+
+                    <form class="form-horizontal" id="updateRef">
+                        <div class="card-body">
+                            <h3 style="background-color: #0a0a0a;color: #fff;" align="center" class="card-title">Form ID
+                                #: <span id="formIDHeading"></span></h3>
+                            <br>
+                            <center>
+                                <img style="width: 22%;border-radius: 70px;" src="/images/verification.png"
+                                    alt="homepage" class="light-logo" />
+                            </center>
+                            <hr>
+                            <br>
+                            <input type="hidden" id="formID" name="formID">
+                            <input type="hidden" id="company_id" name="company_id">
+                            <input type="hidden" id="driverId" name="driverId">
+                            <input type="hidden" value="1" id="status" name="status">
+
+
+                            <div class="row">
+                                <label for="employeeName" class="col-md-1 control-label col-form-label">I,</label>
+                                <div class="col-md-3">
+                                    <input type="text" placeholder="Employee Name" class="form-control"
+                                        name="employeeName" id="employeeName">
+                                </div>
+                                <div class="col-md-4">
+                                    am applying for employment at
+                                </div>
+                                <div class="col-md-4"><input type="text" class="form-control"
+                                        placeholder="prospective Employer Name" name="prospectiveEmployerName"
+                                        id="prospectiveEmployerName">
+                                </div>
+
+                            </div>
+                            <p align="justify"> (my "Potential Employer") and want to provide my consent for
+                                only this application I agree that my Potential Employer and
+                                its service provider, Compliance Mentorz Inc. ("Service
+                                Provider"), may contact all my former employers to conduct a
+                                reference and driving safety check that includes the
+                                collection and assessment of information about my dates of
+                                employment, employment status, job duties and driving
+                                experience, reason for leaving, job performance and
+                                incident/accident record. I agree that my Potential Employer
+                                and its Service Provider may contact all organizations who
+                                have issued educational awards or credentials that I have
+                                identified to confirm my awards and credentials. I
+                                understand that Service Provider retains employment history
+                                records on behalf of a number of employers in the trucking
+                                industry. I agree that Service Provider, on behalf of my
+                                Potential Employer, may check these records to confirm my
+                                employment history and conduct a reference and driving
+                                safety check that includes an assessment of my dates of
+                                employment, employment status, job duties and driving
+                                experience, reason for leaving, job performance and
+                                incident/accident record. I agree that that my Potential
+                                Employer and Service Provider may use and disclose my
+                                personal information as required for the above-noted
+                                purposes and agree that each of the organizations that are
+                                contacted for the above-noted purposes may disclose
+                                information to either my Potential Employer or its Service
+                                Provider. I will not hold my Potential Employer or Service
+                                Provider or said organizations liable for this disclosure. I
+                                agree that Service Provider may retain all personal
+                                information it collects for the above-noted purposes on
+                                behalf of my Potential Employer, who shall control and have
+                                a full right of access to records of my personal information
+                                that Service Provider creates and retains. I will not hold
+                                Service Provider liable for any losses arising out of its
+                                retention or handling of my personal information. I
+                                understand that I have the right to (1) to review the
+                                information provided by previous employers, (2) have errors
+                                corrected and re-submitted by previous employers and (3)
+                                have a rebuttal statement attached to information I allege
+                                to be erroneous if my previous employer and I cannot agree
+                                on the accuracy of information. I understand that I may
+                                direct any questions I have about this consent and about how
+                                Service Provider handles personal information on behalf of
+                                my Potential Employer to Compliance Mentorz Inc. at
+                                info@compliancementorz.com or by phone at 1-905-486-1666. I
+                                certify that this application was completed by me and that
+                                all entries on it and information in it are true and
+                                complete to the best of my knowledge. I understand that any
+                                misstatement or omission of information in this application
+                                may result in my dismissal. This document applies to the
+                                following previous employer </p><input type="text" class="form-control"
+                                name="prospectiveEmployerName" placeholder="Employer Name" id="prospectiveEmployerName"
+                                required="">
+
+                            <label for="name" class="col-md-4 control-label col-form-label">Employee
+                                Signature</label>
+                            <br>
+                            <img id="signature" alt="user" width="150">
+                            <br>
+                            <input type="text" class="form-control" id="employeeName" placeholder="Employee Name">
+                            <br>
+                            <span></span>
+                            <hr>
+
+
+                            <h4 style="text-align:center;">SAFETY PERFORMANCE HISTORY
+                                RECORDS REQUEST</h4>
+                            <h5 style="text-align:center;">PART 1: TO BE COMPLETED BY
+                                PROSPECTIVE EMPLOYE</h5>
+                            <div class="form-group row">
+                                <label for="prospectiveEmployerName"
+                                    class="col-md-2 control-label col-form-label">I</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" placeholder="Prospective employee name"
+                                        name="prospectiveEmployerName" id="prospectiveEmployerName">
+                                </div>
+                                <label for="employeeSin" class="col-md-3 control-label col-form-label">Social
+                                    Security Number:</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" placeholder="Social Security Number"
+                                        name="employeeSin" id="employeeSin">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="employeeDOB" class="col-md-2 control-label col-form-label">DOB</label>
+                                <div class="col-md-4">
+                                    <input type="date" class="form-control" placeholder="employeeDOB" name="employeeDOB"
+                                        id="employeeDOB">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="previousEmployerName" class="col-md-2 control-label col-form-label">Previous
+                                    Employer:</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" placeholder="Previous Employer"
+                                        name="previousEmployerName" id="previousEmployerName">
+                                </div>
+                                <label for="previousEmployerEmail"
+                                    class="col-md-3 control-label col-form-label">Previous Employer Official
+                                    Email:</label>
+                                <div class="col-md-3">
+                                    <div class="example example_markup">
+                                        <div class="bs-example">
+                                            <input type="text" class="form-control" name="previousEmployerEmail"
+                                                id="previousEmployerEmail" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="previousEmployerCSZ" class="col-md-2 control-label col-form-label">City,
+                                    State, Zip:</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" placeholder="City, State, Zip"
+                                        name="previousEmployerCSZ" value="" id="previousEmployerCSZ">
+                                </div>
+
+
+                                <label for="previousEmployerPhone"
+                                    class="col-md-3 control-label col-form-label">Telephone:</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" placeholder="Telephone"
+                                        name="previousEmployerPhone" value="" id="previousEmployerPhone">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="previousEmployerStreet"
+                                    class="col-md-2 control-label col-form-label">Street:</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" placeholder="Previous Employer Street"
+                                        name="previousEmployerStreet" value="" id="previousEmployerStreet">
+                                </div>
+                                <label for="previousEmployerFax" class="col-md-3 control-label col-form-label">Fax
+                                    NO:</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" placeholder="Fax" name="previousEmployerFax"
+                                        value="" id="previousEmployerFax">
+                                </div>
+                            </div>
+                            <h4>TO:</h4>
+                            <div class="form-group row">
+                                <label for="prospectiveEmployerName"
+                                    class="col-md-2 control-label col-form-label">Prospective
+                                    Employer:</label>
+                                <div class="col-md-2">
+                                    <input type="text" readonly="" class="form-control"
+                                        placeholder="Prospective Employer" name="prospectiveEmployerName"
+                                        id="prospectiveEmployerName">
+                                </div>
+                                <label for="prospectiveEmployerAttention"
+                                    class="col-md-2 control-label col-form-label">Attention:</label>
+                                <div class="col-md-2">
+                                    <input type="text" readonly="" class="form-control" placeholder="Attention"
+                                        name="prospectiveEmployerAttention" id="prospectiveEmployerAttention">
+                                </div>
+                                <label for="prospectiveEmployerPhone"
+                                    class="col-md-2 control-label col-form-label">Telephone:</label>
+                                <div class="col-md-2">
+                                    <input type="text" readonly="" class="form-control" placeholder="Telephone"
+                                        name="prospectiveEmployerPhone" id="prospectiveEmployerPhone">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="prospectiveEmployerStreet"
+                                    class="col-md-2 control-label col-form-label">Street:</label>
+                                <div class="col-md-4">
+                                    <input type="text" readonly="" class="form-control" placeholder="Street"
+                                        name="prospectiveEmployerStreet" id="prospectiveEmployerStreet">
+                                </div>
+                                <label for="prospectiveEmployerCSZ" class="col-md-3 control-label col-form-label">City,
+                                    State, Zip:</label>
+                                <div class="col-md-3">
+                                    <input type="text" readonly="" class="form-control" placeholder="City, State, Zip"
+                                        name="prospectiveEmployerCSZ" id="prospectiveEmployerCSZ">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                In compliance with §40.25(g) and 391.23(h), release of
+                                this information must be made in a written form that
+                                ensures confidentiality, such as fax, email, or letter
+                                <label for="prospectiveEmployerFax"
+                                    class="col-md-2 control-label col-form-label">Prospective
+                                    employer’s fax number::</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" placeholder="prospectiveEmployerFax"
+                                        name="prospectiveEmployerFax" id="prospectiveEmployerFax">
+                                </div>
+                                <label for="prospectiveEmployerEmail"
+                                    class="col-md-3 control-label col-form-label">Prospective
+                                    employer’s email address:</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" placeholder="prospectiveEmployerEmail"
+                                        name="prospectiveEmployerEmail" id="prospectiveEmployerEmail">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="name" class="col-md-2 control-label col-form-label">Applicant’s
+                                    Signature:</label>
+                                <div class="col-md-4">
+                                    <img id="signature" alt="user" width="150">
+                                    <br>
+
+                                </div>
+                                <label for="name" class="col-md-3 control-label col-form-label">
+                                    Date:</label>
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" placeholder="Applicant’s Signature" name=""
+                                        value="" id="">
+                                </div>
+                            </div>
+                            <br>
+                            <hr>
+                            <h4 style="text-align:center;">PART 2: TO BE COMPLETED BY
+                                PREVIOUS EMPLOYER</h4>
+                            <h5 style="text-align:center;">EMPLOYMENT VERIFICATION</h5>
+                            <div class="form-group row">
+                                <label for="employedBy" class="col-md-9 control-label col-form-label">The
+                                    applicant named above was employed by us:</label>
+                                <div class="col-md-3">
+                                    <select class="select2 form-control custom-select" name="employedBy"
+                                        style="width: 100%; height:36px;">
+                                        <option value="">Select Here</option>
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="jobDesignation" class="col-md-2 control-label col-form-label">Employed
+                                    as:</label>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control" placeholder="Employed as"
+                                        name="jobDesignation" value="" id="jobDesignation">
+                                </div>
+                                <label for="previousfrom" class="col-md-2 control-label col-form-label">From:</label>
+                                <div class="col-md-2">
+                                    <input type="text" readonly class="form-control" placeholder="From"
+                                        name="previousfrom" id="previousfrom">
+                                </div>
+                                <label for="previousto" class="col-md-2 control-label col-form-label">To:</label>
+                                <div class="col-md-2">
+                                    <input type="text" readonly class="form-control" placeholder="To" name="previousto"
+                                        id="previousto">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="motorVehicleForYou" class="col-md-9 control-label col-form-label">1. Did
+                                    he/she drive motor vehicle for you? :</label>
+                                <div class="col-md-3">
+                                    <select class="select2 form-control custom-select" name="motorVehicleForYou"
+                                        style="width: 100%; height:36px;">
+                                        <option value="">Select Here</option>
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="whatType" class="col-md-9 control-label col-form-label">If
+                                    yes, what type?</label>
+                                <div class="col-md-3">
+                                    <select class="select2 form-control custom-select" name="whatType"
+                                        style="width: 100%; height:36px;">
+                                        <option value="">Select Here</option>
+                                        <option value="Straight Truck">Straight Truck
+                                        </option>
+                                        <option value="Tractor-Semi trailer">
+                                            Tractor-Semi trailer</option>
+                                        <option value="Bus">Bus</option>
+                                        <option value="Cargo Tank">Cargo Tank</option>
+                                        <option value="Doubles/Triples">Doubles/Triples
+                                        </option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <input type="text" class="form-control" placeholder="Other" name="whatTypeOther"
+                                        value="" id="whatTypeOther">
+                                    <input type="text" class="form-control" placeholder="Comment" name="whatTypeComment"
+                                        value="" id="whatTypeComment">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="reasonForLeaving" class="col-md-9 control-label col-form-label">2.
+                                    Reason for leaving your employment: </label>
+                                <div class="col-md-3">
+                                    <select class="select2 form-control custom-select" name="reasonForLeaving"
+                                        style="width: 100%; height:36px;">
+                                        <option value="">Select Here</option>
+                                        <option value="Discharged">Discharged</option>
+                                        <option value="Resignation">Resignation</option>
+                                        <option value="LayOff">LayOff</option>
+                                        <option value="MilitaryDuty">MilitaryDuty
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="completeByCompany" class="col-md-2 control-label col-form-label">Complete
+                                    by company</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" placeholder="Complete by company"
+                                        name="completeByCompany" id="completeByCompany">
+                                </div>
+                                <label for="previousEmployerAddress"
+                                    class="col-md-1 control-label col-form-label">Address:</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" placeholder="Address"
+                                        name="previousEmployerAddress" id="previousEmployerAddress">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="previousEmployerCSZ" class="col-md-2 control-label col-form-label">City,
+                                    State, Postal Code</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" placeholder="City, State, Postal Code"
+                                        name="previousEmployerCSZ" value="" id="previousEmployerCSZ">
+                                </div>
+                                <label for="previousEmployerPhone"
+                                    class="col-md-1 control-label col-form-label">Telephone:</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" placeholder="Telephone"
+                                        name="previousEmployerPhone" value="" id="previousEmployerPhone">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="name" class="col-md-2 control-label col-form-label">Signature</label>
+                                <div class="col-md-4">
+                                    <div id="signatureDiv">
+                                        <div class="row1">
+                                            <div class="col-md-3 col-xs-hidden">
+                                            </div>
+                                            <div style="text-align: center" class="col-md-6 col-xs-12">
+                                                <section class="signature-component">
+                                                    <canvas style="background-color: #fff;border: 2px solid #131212;"
+                                                        id="signature-pad" width="350" height="200"></canvas>
+                                                    <div>
+                                                        <button id="clear" class="clear">Clear Signature</button>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                            <div class="col-md-3 col-xs-hidden">
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                    </div>
+
+
+                                    <br>
+                                </div>
+                                <label for="name" class="col-md-3 control-label col-form-label">Date:</label>
+                                <div class="col-md-3">
+                                    <!-- <input type="date" class="form-control"
+                                    placeholder="Date" name="previousEmployerDate" value="" 
+                                    id="previousEmployerDate"> -->
+                                </div>
+                            </div>
+                            <br>
+                            <hr>
+                            <h4 style="text-align:center;">PART 3: TO BE COMPLETED BY
+                                PREVIOUS EMPLOYER</h4>
+                            <h5 style="text-align:center;">ACCIDENT HISTORY</h5>
+
+                            ACCIDENTS: Complete the following for any accidents included
+                            on your accident register (§390.15 (b)) that
+                            involved the “applicant in the 2 years prior to the
+                            application date shown above, or check 0 here if there is
+                            no accident register data for this driver
+
+                            <div class="form-group row">
+                                <label for="previousEmployerAnyInuries"
+                                    class="col-md-9 control-label col-form-label">Please
+                                    select YES if you have any injuries</label>
+                                <div class="col-md-3">
+                                    <select class="select2 form-control custom-select table_selectbox"
+                                        name="previousEmployerAnyInuries" style="width: 100%; height:36px;">
+                                        <option value="">Select Here</option>
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                            <table style="background-color: #0a0a0ac2;color: #fff;"
+                                class="table table-bordered part3table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Injuries</th>
+                                        <th scope="col">Fatalities</th>
+                                        <th scope="col">Hazmat Spill</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td><input type="date" class="form-control" placeholder="Date"
+                                                name="previousEmployertableoneDate" value=""
+                                                id="previousEmployertableoneDate"> </td>
+                                        <td><input type="text" class="form-control" placeholder="Location"
+                                                name="previousEmployertableoneLocation" value=""
+                                                id="previousEmployertableoneLocation"> </td>
+                                        <td><input type="text" class="form-control" placeholder="Injuries"
+                                                name="previousEmployertableoneInjuries" value=""
+                                                id="previousEmployertableoneInjuries"> </td>
+                                        <td><input type="text" class="form-control" placeholder="Fatalities"
+                                                name="previousEmployertableoneFatalities" value=""
+                                                id="previousEmployertableoneFatalities"> </td>
+                                        <td><input type="text" class="form-control" placeholder="Hazmatspill"
+                                                name="previousEmployertableoneHazmatSpill" value=""
+                                                id="previousEmployertableoneHazmatSpill"> </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td><input type="date" class="form-control" placeholder="Date"
+                                                name="previousEmployertableTwoDate" value=""
+                                                id="previousEmployertableTwoDate"> </td>
+                                        <td><input type="text" class="form-control" placeholder="Location"
+                                                name="previousEmployertableTwoLocation" value=""
+                                                id="previousEmployertableTwoLocation"> </td>
+                                        <td><input type="text" class="form-control" placeholder="Injuries"
+                                                name="previousEmployertableTwoInjuries" value=""
+                                                id="previousEmployertableTwoInjuries"> </td>
+                                        <td><input type="text" class="form-control" placeholder="Fatalities"
+                                                name="previousEmployertableTwoFatalities" value=""
+                                                id="previousEmployertableTwoFatalities"> </td>
+                                        <td><input type="text" class="form-control" placeholder="Hazmatspill"
+                                                name="previousEmployertableTwoHazmatSpill" value=""
+                                                id="previousEmployertableTwoHazmatSpill"> </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td><input type="date" class="form-control" placeholder="Date"
+                                                name="previousEmployertableThreeDate" value=""
+                                                id="previousEmployertableThreeDate"> </td>
+                                        <td><input type="text" class="form-control" placeholder="Location"
+                                                name="previousEmployertableThreeLocation" value=""
+                                                id="previousEmployertableThreeLocation"> </td>
+                                        <td><input type="text" class="form-control" placeholder="Injuries"
+                                                name="previousEmployertableThreeInjuries" value=""
+                                                id="previousEmployertableThreeInjuries"> </td>
+                                        <td><input type="text" class="form-control" placeholder="Fatalities"
+                                                name="previousEmployertableThreeFatalities" value=""
+                                                id="previousEmployertableThreeFatalities"> </td>
+                                        <td><input type="text" class="form-control" placeholder="Hazmatspill"
+                                                name="previousEmployertableThreeHazmatSpill" value=""
+                                                id="previousEmployertableThreeHazmatSpill"> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="form-group row">
+                                <label for="companyPolicies" class="col-md-6 control-label col-form-label">Please
+                                    provide information concerning any other accidents
+                                    involving the applicant that were reported to
+                                    government agencies or insurers or retained under
+                                    internal company policies:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Policy" name="companyPolicies"
+                                        id="companyPolicies">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="name" class="col-md-6 control-label col-form-label">Any
+                                    other remarks:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Remarks" name="remarks"
+                                        value="" id="remarks">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="name" class="col-md-6 control-label col-form-label">Please Enter your email
+                                    for Reference</label>
+                                <div class="col-md-6">
+                                    <input required type="text" class="form-control"
+                                        placeholder="Please Enter your email for Reference" name="ApprovedFromEmail"
+                                        value="" id="ApprovedFromEmail">
+                                </div>
+                            </div>
+
+                            <div class="border-top">
+                                <div style="text-align: center;" class="card-body">
+                                    <button id="updateRefBtn" type="Submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <!-- All Jquery -->
+                <!-- ============================================================== -->
+                <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+                <!-- Bootstrap tether Core JavaScript -->
+                <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+                <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+                <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+                <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+                <!--Wave Effects -->
+                <script src="/dist/js/waves.js"></script>
+                <!--Menu sidebar -->
+                <script src="/dist/js/sidebarmenu.js"></script>
+                <!--Custom JavaScript -->
+                <script src="/dist/js/custom.min.js"></script>
+                <!--This page JavaScript -->
+                <!-- <script src="/dist/js/pages/dashboards/dashboard1.js"></script> -->
+                <!-- Charts js Files -->
+                <script src="/assets/libs/flot/excanvas.js"></script>
+                <script src="/assets/libs/flot/jquery.flot.js"></script>
+                <script src="/assets/libs/flot/jquery.flot.pie.js"></script>
+                <script src="/assets/libs/flot/jquery.flot.time.js"></script>
+                <script src="/assets/libs/flot/jquery.flot.stack.js"></script>
+                <script src="/assets/libs/flot/jquery.flot.crosshair.js"></script>
+                <script src="/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+                <script src="/dist/js/pages/chart/chart-page-init.js"></script>
+
+                <script src="/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+                <script src="/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+                <script src="/assets/extra-libs/DataTables/datatables.min.js"></script>
+
+                <script src="/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                <script>
+                    /****************************************
+                     *       Basic Table                   *
+                     ****************************************/
+                    // $('#zero_config').DataTable();
+
+                    $(document).ready(function () {
+                        $("#create_driver_button").hide()
+                        $("#create_driver_button").click(function () {
+
+                            $('body #module_content_modal').modal('show');
+                        });
+
+
+                    });
+
+
+                    // alert('test')
+                    // $('body #viewmodal').modal('hide');
+                    let id = $("#FormID").val();
+                    // alert(id)
+                    // let cmpid = $('#extype').val();
+                    // return false
+                    $.ajax({
+                        url: "/PreviousEmployerDatas",
+                        type: "POST",
+                        data: { id: id },
+                        success: function (data) {
+                            console.log(data.data);
+                            if (data.data.status == 0) {
+                                $("body #formIDHeading").html(data.data.formID);
+                                $("body #formID").val(data.data.formID);
+                                $("body #company_id").val(data.data.company_id);
+                                $("body #driverId").val(data.data.driverId);
+                                $("body #employeeName").val(data.data.employeeName);
+                                $("body #employeeSin").val(data.data.employeeSin);
+                                $("body #employeeDOB").val(data.data.employeeDOB);
+                                $("body #employeein").val(data.data.employeein);
+                                $("body #employeeCSZ").val(data.data.employeeCSZ);
+                                $("body #employeePhone").val(data.data.employeePhone);
+                                $("body #employeeStreet").val(data.data.employeeStreet);
+                                $("body #employeeFax").val(data.data.employeeFax);
+                                $("body #prospectiveEmployerName").val(data.data.prospectiveEmployerName);
+                                $("body #prospectiveEmployerAttention").val(data.data.prospectiveEmployerAttention);
+                                $("body #prospectiveEmployerPhone").val(data.data.prospectiveEmployerPhone);
+                                $("body #prospectiveEmployerStreet").val(data.data.prospectiveEmployerStreet);
+                                $("body #prospectiveEmployerCSZ").val(data.data.prospectiveEmployerCSZ);
+                                $("body #prospectiveEmployerFax").val(data.data.prospectiveEmployerFax);
+                                $("body #prospectiveEmployerEmail").val(data.data.prospectiveEmployerEmail);
+                                $("body #employedBy [value=" + '"' + data.data.employedBy + '"' + "]").attr("selected", true);
+                                $("body #jobDesignation").val(data.data.jobDesignation);
+                                $("body #previousfrom").val(data.data.previousfrom);
+                                $("body #previousto").val(data.data.previousto);
+                                $("body #motorVehicleForYou [value=" + '"' + data.data.motorVehicleForYou + '"' + "]").attr("selected", true);
+                                $("body #whatType [value=" + '"' + data.data.whatType + '"' + "]").attr("selected", true);
+                                $("body #whatTypeOther").val(data.data.whatTypeOther);
+                                $("body #whatTypeComment").val(data.data.whatTypeComment);
+                                $("body #reasonForLeaving [value=" + '"' + data.data.reasonForLeaving + '"' + "]").attr("selected", true);
+                                $("body #completeByCompany").val(data.data.completeByCompany);
+                                $("body #previousEmployerName").val(data.data.previousEmployerName);
+                                $("body #previousEmployerEmail").val(data.data.previousEmployerEmail);
+                                $("body #previousEmployerAddress").val(data.data.previousEmployerAddress);
+                                $("body #previousEmployerCSZ").val(data.data.previousEmployerCSZ);
+                                $("body #previousEmployerStreet").val(data.data.previousEmployerStreet);
+                                $("body #previousEmployerFax").val(data.data.previousEmployerFax);
+                                $("body #previousEmployerPhone").val(data.data.previousEmployerPhone);
+                                $("body #previousEmployerDate").val(data.data.previousEmployerDate);
+                                $("body #previousEmployerAnyInuries [value=" + '"' + data.data.previousEmployerAnyInuries + '"' + "]").attr("selected", true);
+                                $("body #previousEmployertableoneDate").val(data.data.previousEmployertableoneDate);
+                                $("body #previousEmployertableoneLocation").val(data.data.previousEmployertableoneLocation);
+                                $("body #previousEmployertableoneInjuries").val(data.data.previousEmployertableoneInjuries);
+                                $("body #previousEmployertableoneFatalities").val(data.data.previousEmployertableoneFatalities);
+                                $("body #previousEmployertableoneHazmatSpill").val(data.data.previousEmployertableoneHazmatSpill);
+                                $("body #previousEmployertableTwoDate").val(data.data.previousEmployertableTwoDate);
+                                $("body #previousEmployertableTwoLocation").val(data.data.previousEmployertableTwoLocation);
+                                $("body #previousEmployertableTwoInjuries").val(data.data.previousEmployertableTwoInjuries);
+                                $("body #previousEmployertableTwoFatalities").val(data.data.previousEmployertableTwoFatalities);
+                                $("body #previousEmployertableTwoHazmatSpill").val(data.data.previousEmployertableTwoHazmatSpill);
+                                $("body #previousEmployertableThreeDate").val(data.data.previousEmployertableThreeDate);
+                                $("body #previousEmployertableThreeLocation").val(data.data.previousEmployertableThreeLocation);
+                                $("body #previousEmployertableThreeInjuries").val(data.data.previousEmployertableThreeInjuries);
+                                $("body #previousEmployertableThreeFatalities").val(data.data.previousEmployertableThreeFatalities);
+                                $("body #previousEmployertableThreeHazmatSpill").val(data.data.previousEmployertableThreeHazmatSpill);
+                                $("body #companyPolicies").val(data.data.companyPolicies);
+                                $("body #remarks").val(data.data.remarks);
+                                // let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                // alert(data.data.driverSign)
+                                $("body #signature").attr("src", data.data.driverSign);
+                            } else {
+                                Swal.fire({
+                                    title: "Form Already Filled",
+                                    text: "Thanks for your Inputs",
+                                    type: "success",
+                                    showConfirmButton: false,
+                                    allowOutsideClick: false,
+                                })
+                            }
+
+                        }
+                    });
+
+
+                    jQuery('.mydatepicker_license').datepicker({
+                        format: 'dd/mm/yyyy',
+                    });
+                    jQuery('.mydatepicker').datepicker({
+                        format: 'dd/mm/yyyy',
+                    });
+                    jQuery('#datepicker-autoclose').datepicker({
+                        autoclose: true,
+                        todayHighlight: true
+                    });
+
+                    function convertToBase64(inputfile, parms) {
+                        var selectedFile = document.getElementById(inputfile).files;
+                        console.log(selectedFile);
+                        //Check File is not Empty
+                        if (selectedFile.length > 0) {
+                            // Select the very first file from list
+                            var fileToLoad = selectedFile[0];
+                            var filesize = selectedFile[0].size;
+                            if (filesize <= '2069405') {
+                                console.log(filesize);
+                                // FileReader function for read the file.
+                                var fileReader = new FileReader();
+                                var base64;
+                                // Onload of file read the file content
+                                fileReader.onload = function (fileLoadedEvent) {
+                                    base64 = fileLoadedEvent.target.result;
+                                    // Print data in console
+                                    console.log(parms);
+                                    $("#" + parms).val(base64);
+                                    var div = document.getElementById(parms);
+                                    div.innerHTML += base64;
+
+                                };
+                                // Convert data to base64
+                                fileReader.readAsDataURL(fileToLoad);
+                            } else {
+                                Swal.fire(
+                                    'Too Big!',
+                                    'Upload image size within 2 MB.',
+                                    'danger'
+                                )
+                                return false;
+                            }
+                        }
+                    }
+
+
+
+                    $("#updateRef").submit(function (event) {
+
+                        event.preventDefault();
+                        var values = {};
+                        $.each($('#updateRef').serializeArray(), function (i, field) {
+                            values[field.name] = field.value;
+                            // console.log(values[field.name]);
+                        });
+
+
+                        var signpad = signaturePad.toDataURL('image/png');
+                        // if (signpad == "" || signpad == "undefined" || signpad == null || signpad == "0") {
+                        if (signaturePad.isEmpty()) {
+                            flag = false;
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Signature requird to proceed further',
+                                icon: 'error',
+                                confirmButtonText: 'Ok'
+                            })
+                            return false
+                        }
+                        values['companySign'] = signpad;
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: "You want to update this!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Yes, update it!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $("#updateRefBtn").text('Please wait');
+                                $("#updateRefBtn").attr('disabled', true);
+                                $.ajax({
+                                    url: "/superadminupdateReferenceManagement",
+                                    type: "POST",
+                                    data: values,
+                                    success: function (data) {
+                                        if (data.status) {
+                                            const Toast = Swal.mixin({
+                                                toast: true,
+                                                position: 'top-end',
+                                                showConfirmButton: false,
+                                                timer: 2000,
+                                                timerProgressBar: true,
+                                                didOpen: (toast) => {
+                                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                }
+                                            })
+                                            Toast.fire({
+                                                icon: 'success',
+                                                title: data.message
+                                            }); setTimeout(function () {
+                                                window.location.reload();
+                                            }, 2000);
+                                        } else {
+                                            Swal.fire({
+                                                title: 'Error!',
+                                                text: 'Something went wrong',
+                                                icon: 'error',
+                                                confirmButtonText: 'Cool'
+                                            })
+                                        }
+
+                                    }
+                                });
+
+
+                            }
+                        })
+                    });
+
+                    // $(".sendMailToPrev").click(function (event) { 
+                    $(document).on('click', '.sendMailToPrev', function (event) {
+                        //  $(this).closest('form').submit();
+                        // $(this).closest('form').submit(function (event) {
+                        // $("#sendMailToPrev").submit(function (event) {
+                        event.preventDefault();
+                        // $("#EditDriverbtn").text('Please wait');
+                        // $("#EditDriverbtn").attr('disabled', true);
+                        var values = {};
+                        $.each($(this).closest('form').serializeArray(), function (i, field) {
+                            values[field.name] = field.value;
+                        });
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: "You won't be able to update this!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Yes, update it!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+
+                                $.ajax({
+                                    url: "/superadminCreateReference",
+                                    type: "POST",
+                                    data: values,
+                                    success: function (data) {
+                                        if (data.status) {
+                                            const Toast = Swal.mixin({
+                                                toast: true,
+                                                position: 'top-end',
+                                                showConfirmButton: false,
+                                                timer: 2000,
+                                                timerProgressBar: true,
+                                                didOpen: (toast) => {
+                                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                }
+                                            })
+                                            Toast.fire({
+                                                icon: 'success',
+                                                title: data.message
+                                            });
+                                            // setTimeout(function () {
+                                            //     window.location.reload();
+                                            // }, 2000);
+                                        } else {
+                                            Swal.fire({
+                                                title: 'Error!',
+                                                text: 'Something went wrong',
+                                                icon: 'error',
+                                                confirmButtonText: 'Cool'
+                                            })
+                                        }
+
+                                    }
+                                });
+
+
+                            }
+                        })
+                    });
+                </script>
+                <script src="/sweetAlert/sweetalert2.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <script>
+                    //To group email with comma start
+                    (function ($) {
+
+                        $.fn.multiple_emails = function (options) {
+
+                            // Default options
+                            var defaults = {
+                                checkDupEmail: true,
+                                theme: "Bootstrap",
+                                position: "top"
+                            };
+
+                            // Merge send options with defaults
+                            var settings = $.extend({}, defaults, options);
+
+                            var deleteIconHTML = "";
+                            if (settings.theme.toLowerCase() == "Bootstrap".toLowerCase()) {
+                                deleteIconHTML = '<a href="#" class="multiple_emails-close" title="Remove"><span class="glyphicon glyphicon-remove"></span></a>';
+                            }
+                            else if (settings.theme.toLowerCase() == "SemanticUI".toLowerCase() || settings.theme.toLowerCase() == "Semantic-UI".toLowerCase() || settings.theme.toLowerCase() == "Semantic UI".toLowerCase()) {
+                                deleteIconHTML = '<a href="#" class="multiple_emails-close" title="Remove"><i class="remove icon"></i></a>';
+                            }
+                            else if (settings.theme.toLowerCase() == "Basic".toLowerCase()) {
+                                //Default which you should use if you don't use Bootstrap, SemanticUI, or other CSS frameworks
+                                deleteIconHTML = '<a href="#" class="multiple_emails-close" title="Remove"><i class="basicdeleteicon">Remove</i></a>';
+                            }
+
+                            return this.each(function () {
+                                //$orig refers to the input HTML node
+                                var $orig = $(this);
+                                var $list = $('<ul class="multiple_emails-ul" />'); // create html elements - list of email addresses as unordered list
+
+                                if ($(this).val() != '' && IsJsonString($(this).val())) {
+                                    $.each(jQuery.parseJSON($(this).val()), function (index, val) {
+                                        $list.append($('<li class="multiple_emails-email"><span class="email_name" data-email="' + val.toLowerCase() + '">' + val + '</span></li>')
+                                            .prepend($(deleteIconHTML)
+                                                .click(function (e) { $(this).parent().remove(); refresh_emails(); e.preventDefault(); })
+                                            )
+                                        );
+                                    });
+                                }
+
+                                var $input = $('<input type="text" class="multiple_emails-input text-left" />').on('keyup', function (e) { // input
+                                    $(this).removeClass('multiple_emails-error');
+                                    var input_length = $(this).val().length;
+
+                                    var keynum;
+                                    if (window.event) { // IE         
+                                        keynum = e.keyCode;
+                                    }
+                                    else if (e.which) { // Netscape/Firefox/Opera         
+                                        keynum = e.which;
+                                    }
+
+                                    //if(event.which == 8 && input_length == 0) { $list.find('li').last().remove(); } //Removes last item on backspace with no input
+
+                                    // Supported key press is tab, enter, space or comma, there is no support for semi-colon since the keyCode differs in various browsers
+                                    if (keynum == 9 || keynum == 32 || keynum == 188) {
+                                        display_email($(this), settings.checkDupEmail);
+                                    }
+                                    else if (keynum == 13) {
+                                        display_email($(this), settings.checkDupEmail);
+                                        //Prevents enter key default
+                                        //This is to prevent the form from submitting with  the submit button
+                                        //when you press enter in the email textbox
+                                        e.preventDefault();
+                                    }
+
+                                }).on('blur', function (event) {
+                                    if ($(this).val() != '') { display_email($(this), settings.checkDupEmail); }
+                                });
+
+                                var $container = $('<div class="multiple_emails-container" />').click(function () { $input.focus(); }); // container div
+
+                                // insert elements into DOM
+                                if (settings.position.toLowerCase() === "top")
+                                    $container.append($list).append($input).insertAfter($(this));
+                                else
+                                    $container.append($input).append($list).insertBefore($(this));
+
+                                /*
+                                t is the text input device.
+                                Value of the input could be a long line of copy-pasted emails, not just a single email.
+                                As such, the string is tokenized, with each token validated individually.
+                                
+                                If the dupEmailCheck variable is set to true, scans for duplicate emails, and invalidates input if found.
+                                Otherwise allows emails to have duplicated values if false.
+                                */
+                                function display_email(t, dupEmailCheck) {
+
+                                    //Remove space, comma and semi-colon from beginning and end of string
+                                    //Does not remove inside the string as the email will need to be tokenized using space, comma and semi-colon
+                                    var arr = t.val().trim().replace(/^,|,$/g, '').replace(/^;|;$/g, '');
+                                    //Remove the double quote
+                                    arr = arr.replace(/"/g, "");
+                                    //Split the string into an array, with the space, comma, and semi-colon as the separator
+                                    arr = arr.split(/[\s,;]+/);
+
+                                    var errorEmails = new Array(); //New array to contain the errors
+
+                                    var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+
+                                    for (var i = 0; i < arr.length; i++) {
+                                        //Check if the email is already added, only if dupEmailCheck is set to true
+                                        if (dupEmailCheck === true && $orig.val().indexOf(arr[i]) != -1) {
+                                            if (arr[i] && arr[i].length > 0) {
+                                                new function () {
+                                                    var existingElement = $list.find('.email_name[data-email=' + arr[i].toLowerCase().replace('.', '\\.').replace('@', '\\@') + ']');
+                                                    existingElement.css('font-weight', 'bold');
+                                                    setTimeout(function () { existingElement.css('font-weight', ''); }, 1500);
+                                                }(); // Use a IIFE function to create a new scope so existingElement won't be overriden
+                                            }
+                                        }
+                                        else if (pattern.test(arr[i]) == true) {
+                                            $list.append($('<li class="multiple_emails-email"><span class="email_name" data-email="' + arr[i].toLowerCase() + '">' + arr[i] + '</span></li>')
+                                                .prepend($(deleteIconHTML)
+                                                    .click(function (e) { $(this).parent().remove(); refresh_emails(); e.preventDefault(); })
+                                                )
+                                            );
+                                        }
+                                        else
+                                            errorEmails.push(arr[i]);
+                                    }
+                                    // If erroneous emails found, or if duplicate email found
+                                    if (errorEmails.length > 0)
+                                        t.val(errorEmails.join("; ")).addClass('multiple_emails-error');
+                                    else
+                                        t.val("");
+                                    refresh_emails();
+                                }
+
+                                function refresh_emails() {
+                                    var emails = new Array();
+                                    var container = $orig.siblings('.multiple_emails-container');
+                                    container.find('.multiple_emails-email span.email_name').each(function () { emails.push($(this).html()); });
+                                    $orig.val(JSON.stringify(emails)).trigger('change');
+                                }
+
+                                function IsJsonString(str) {
+                                    try { JSON.parse(str); }
+                                    catch (e) { return false; }
+                                    return true;
+                                }
+
+                                return $(this).hide();
+
+                            });
+
+                        };
+
+                    })(jQuery);
+
+
+
+
+                    //Plug-in function for the bootstrap version of the multiple email
+                    $(function () {
+                        //To render the input device to multiple email input using BootStrap icon
+                        $('#RefPreviousEmployerEmail').multiple_emails({ position: "bottom" });
+                        //OR $('#RefPreviousEmployerEmail').multiple_emails("Bootstrap");
+
+                        //Shows the value of the input device, which is in JSON format
+                        $('#current_emailsBS').text($('#RefPreviousEmployerEmail').val());
+
+                    });
+
+   //To group email with comma end
+
+
+                </script>
+                <script src="/dist/js/signatureMobile.js"></script>
+                <script>
+
+                </script>
+
+</body>
+
+</html>

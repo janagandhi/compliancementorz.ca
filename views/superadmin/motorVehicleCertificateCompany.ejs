@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://ashaviglobal.com/agreement/template/dist/css/jquery.signature.css">
+    <style type="text/css">
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+
+        /* Signature */
+        .kbw-signature {
+            background-color: #fff;
+            /* width: 100%; */
+            /* height: 250px; */
+        }
+
+        /* .signature canvas {
+            width: 100% !important;
+            height: auto;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('../includes/header.ejs') %>
+            <%- include('../includes/sidebar.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+
+
+
+
+
+
+
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <span id="originData">
+                                            <input type="hidden" id="company_id" value="<%- company_id %>">
+                                        </span>
+                                        <!-- Select Company
+                                        <select class="form-select selectboxcss" name="exptype" id="exptype">
+                                            <option value="">Select Company</option>
+                                            <% getCompanydata.forEach(function(row){ %>
+                                                <option value="<%= row.id %>">
+                                                    <%= row.name %>
+                                                </option>
+                                                <% }) %>
+
+                                        </select> -->
+                                    </div>
+
+                                </div>
+                                <!-- <button class="btn btn-success" id="create_trailer_button"> Add Trailer <span class="glyphicon glyphicon-edit"></span>   <i style="font-size: 15px;" class="fas fa-plus"></i></button> -->
+                                <h5 align="center" class="card-title">
+                                    <%- title %>
+                                </h5>
+                                <div class="table-responsive">
+                                    <table id="updateDrivingHistory" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Driver Name</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- view modal -->
+                        <!-- Motor Vehicle Driver’s CERTIFICATION OF COMPLIANCE  -->
+                        <div id="viewmodalMotor" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title"> View Motor Vehicle Driver’s CERTIFICATION
+                                        </h3>
+                                        <h4 align="center" class="card-title">
+                                            <?php  ?>
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+
+                                                    <div class="form-horizontal" id="Motor"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="Motor_details">
+                                                            <h4 id="CertificateauthDtls"></h4>
+                                                            <div class="col-md-6">
+                                                            </div>
+                                                            <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                                            <div style="text-align: center;">
+                                                                <span>
+                                                                    <h4>
+
+                                                                    </h4>
+                                                                </span>
+                                                                <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                                            </div>
+                                                            <br>
+
+
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <!-- <h3>Motor Vehicle Driver’s CERTIFICATION OF COMPLIANCE </h3> -->
+                                                                    <h4>WITH DRIVER LICENSE REQUIREMENTS </h4>
+                                                                    <p align="justify">MOTOR CARRIER INSTRUCTIONS: The
+                                                                        requirements in
+                                                                        Part383 apply to every driver who operates in
+                                                                        intrastate, interstate, or foreign commerce and
+                                                                        operates a vehicle weighing 26,001 pounds or
+                                                                        more, can transport more than 15 people, or
+                                                                        transports hazardous materials that require
+                                                                        placarding.</p>
+                                                                    <p align="justify"> The requirements in Part 391
+                                                                        apply to every
+                                                                        driver who operates in interstate commerce and
+                                                                        operates a vehicle weighing 10,001 pounds or
+                                                                        more, can transport more than 15 people, or
+                                                                        transports hazardous materials that require
+                                                                        placarding. </p>
+
+                                                                    <h4> DRIVER REQUIREMENTS:</h4>
+                                                                    <p align="justify">Parts 383 and 391 of the Federal
+                                                                        Motor Carrier
+                                                                        Safety Regulations contain some requirements
+                                                                        that you as a driver must comply with. These
+                                                                        requirements are in effect as of July 1, 1987.
+                                                                        They are as follows: </p>
+                                                                    <h4>1. POSSESS ONLY ONE LICENSE:</h4>
+                                                                    <p align="justify"> You, as a commercial vehicle
+                                                                        driver, may not
+                                                                        possess more than one license.
+                                                                        If you currently have more than one license, you
+                                                                        should keep the license from your state of
+                                                                        residence and return the additional licenses to
+                                                                        the states that issued them. DESTROYING a
+                                                                        license does not close the record in the state
+                                                                        that issued it; you must notify the state. If a
+                                                                        multiple license has been lost, stolen, or
+                                                                        destroyed, you should close your record by
+                                                                        notifying the state of issuance that you no
+                                                                        longer want to be licensed by that state. </h4>
+
+                                                                    <h4> 2. NOTIFICATION OF LICENSE SUSPENSION,
+                                                                        REVOCATION OR CANCELLATION:</h4>
+                                                                    <p align="justify"> Sections 392.42 and 383.33 of
+                                                                        the Federal Motor
+                                                                        Carrier Safety Regulations require that you
+                                                                        notify your employer the NEXT BUSINESS DAY of
+                                                                        any revocation or suspension of your driver’s
+                                                                        license. In addition, section 383.31 requires
+                                                                        that any time you violate a state or local
+                                                                        traffic law (other than parking), you
+                                                                        mustreportitwithin30daysto: 1) your employing
+                                                                        motor carrier and 2) the state that issued your
+                                                                        license (if the violation occurs in a state
+                                                                        other than the one which issued your
+                                                                        license).The notification to both the employer
+                                                                        and state must be in Writing. </p>
+
+                                                                    <h4> The following license is the only one I will
+                                                                        possess:</h4>
+                                                                    <table>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <b>Driver’s Name (Printed)</b>:
+                                                                            </td>
+                                                                            <td>
+                                                                                <p id="driverName">
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <b>Driver’s License No:</b>
+                                                                            </td>
+                                                                            <td>
+                                                                                <p id="driver_license"></p>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <b>Exp Date:</b>
+                                                                            </td>
+                                                                            <td>
+                                                                                <p id="license_expiry"></p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                    <br>
+
+
+
+
+                                                                    DRIVER CERTIFICATION: I certify that I have
+                                                                    read and understood the above requirements. <br>
+                                                                    <table>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <b>Drivers Signature:</b>
+                                                                            </td>
+                                                                            <td>
+                                                                                <img src="" id="signature" alt="user"
+                                                                                    width="150">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <b>Date:</b>
+                                                                            </td>
+                                                                            <td>
+                                                                                <p id="getupdatedDate"></p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medical Declaration start  -->
+                        <div id="viewmodalMedicalModal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title"> View Medical Declaration </h3>
+                                        <h4 align="center" class="card-title">
+                                            <?php  ?>
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+
+                                                    <div class="form-horizontal" id="Medical"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="Medical_details">
+                                                            <h4 id="CertificateauthDtls"></h4>
+
+                                                            <div class="col-md-6">
+                                                            </div>
+                                                            <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                                            <div style="text-align: center;">
+                                                                <span>
+                                                                    <h4>
+
+                                                                    </h4>
+                                                                </span>
+                                                                <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                                            </div>
+                                                            <br>
+
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+
+                                                                    <!-- <h3>Motor Vehicle Driver’s CERTIFICATION OF COMPLIANCE </h3> -->
+                                                                    <h4>WITH DRIVER LICENSE REQUIREMENTS </h4>
+                                                                    <p align="justify">On March 3rd, 1999 Transport
+                                                                        Canada and the US
+                                                                        federal Highway
+                                                                        administration (FHWA) entered into a reciprocal
+                                                                        agreement
+                                                                        regarding the physical requirements for a
+                                                                        Canadian drivers of a
+                                                                        commercial vehicle in the US, as currently
+                                                                        contained in the
+                                                                        federal Motor carriers safety regulation, part
+                                                                        391.41 et seq,
+                                                                        and vice-versa, the reciprocal agreement will
+                                                                        remove the
+                                                                        requirements for a Canadian driver to carry a
+                                                                        copy of a medical
+                                                                        examiners certificate indicating that the driver
+                                                                        is physically
+                                                                        qualified to drive (In effect, the existence of
+                                                                        a valid driver’s
+                                                                        license issued by the province of <b
+                                                                            id="companyProvince">
+                                                                        </b> is deemed to be proof that a driver is
+                                                                        physically
+                                                                        qualified to
+                                                                        drive in US) however, FHWA will not recognize an
+                                                                        <b id="companyProvince">
+                                                                        </b> license if the driver has certain medical
+                                                                        conditions and those
+                                                                        conditions would prohibit them from driving in
+                                                                        the US.
+                                                                    </p>
+
+                                                                    <p align="justify"> I certify that I am qualified to
+                                                                        operate a
+                                                                        commercial vehicle in
+                                                                        the United States. I further certify that: </p>
+                                                                    <p>A) I have no clinical diagnosis of diabetes
+                                                                        currently requiring
+                                                                        insulin for control </p>
+                                                                    <p>B) I have no established medical history or
+                                                                        clinical diagnosis of
+                                                                        epilepsy </p>
+                                                                    <p align="justify">C) I don’t have impaired hearing
+                                                                        (A driver must
+                                                                        be able to first
+                                                                        perceive a forced whispered voice in the better
+                                                                        ear at not less
+                                                                        than 5 feet with or without the use of a hearing
+                                                                        aid, or does
+                                                                        not have an average hearing loss in the better
+                                                                        ear greater than
+                                                                        40 decibels at 500 Hz, 100 Hz, or 200 Hz with or
+                                                                        without a
+                                                                        hearing aid when tested by an audiometric device
+                                                                        calibrated to
+                                                                        American National Standard Z24.5-1951) </p>
+                                                                    <p>D) I have not been issued a waiver by the
+                                                                        province of <b id="companyProvince">
+                                                                        </b> allowing me to operate a commercial motor
+                                                                        vehicle pursuant
+                                                                        to section 20 or 22 of the <b
+                                                                            id="companyProvince">
+                                                                        </b> regulation 340/94.</p>
+
+                                                                    <p>I further agree to inform Auto Fill Company Name
+                                                                        from 1st Page
+                                                                        should my medical status change, or if I can no
+                                                                        longer certify
+                                                                        conditions A to D, described above. </p>
+
+                                                                    <table>
+                                                                        <tr>
+                                                                            <td><b>Driver’s Name (Printed)</b></td>:
+                                                                            <td>
+                                                                                <p id="driverName"></p>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>Drivers Signature:</b> </td>
+                                                                            <td>
+                                                                                <img src="" id="signature" alt="user"
+                                                                                    width="150">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <b>Date:</b>
+                                                                            </td>
+                                                                            <td>
+                                                                                <p id="getupdatedDate"></p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                        </div>
+
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <!-- Driverack  start  -->
+                        <div id="viewmodalDriverackModal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title"> View Driver Acknowledgement </h3>
+                                        <h4 align="center" class="card-title">
+                                            <?php  ?>
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div id="Driverack" class="col-md-12"
+                                                    style="background: #27a9e324;border-radius: 35px;">
+                                                    <h4 id="CertificateauthDtls"></h4>
+                                                    <p I><b id="driverName">
+                                                        </b> have been explained and I understand it is illegal to
+                                                        Falsify in logbooks
+                                                        and I have to log all time markers (e.g., Tolls, border
+                                                        crossing, fuel times etc.) Properly and exactly as per
+
+                                                        <b id="eventsCalTimezone"></b>
+
+                                                    </p>
+                                                    <p>If any falsification in my logs is found while auditing by
+                                                        company, I agree that I will be subjected to fines and penalties
+                                                    </p>
+
+                                                    <p>Fines and penalties will be determined by safety and compliance
+                                                        officer looking into number of counts and difference of hours.
+                                                    </p>
+
+                                                    <table>
+                                                        <tr>
+                                                            <td style="width: 59%;"><b>Driver’s Name (Printed)</b>:</td>
+                                                            <td>
+                                                                <p id="driverName"> </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>Drivers Signature:</b>:</td>
+                                                            <td><img src="" id="signature" alt="user" width="150"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>Date:</b>:</td>
+                                                            <td>
+                                                                <p id="getupdatedDate"></p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- pspDisclosure  start  -->
+                        <div id="viewmodalpspDisclosure" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title"> View PSP Disclosure </h3>
+                                        <h4 align="center" class="card-title">
+                                            <?php  ?>
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div id="pspDisclosure" class="col-md-12"
+                                                    style="background: #27a9e324;border-radius: 35px;">
+                                                    <center> REGARDING BACKGROUND REPORTS FROM THE PSP Online Service
+                                                    </center>
+                                                    <br>
+                                                    <p align="justify">In connection with your application for
+                                                        employment with <b id="companyName">
+                                                        </b> its employees,
+                                                        agents or contractors may obtain one or more reports regarding
+                                                        your driving, and safety inspection history from the Federal
+                                                        Motor Carrier Safety Administration (FMCSA).
+
+                                                    </p>
+                                                    <p align="justify">
+                                                        When the application for employment is submitted in person, if
+                                                        the Prospective Employer uses any information it obtains from
+                                                        FMCSA in a decision to not hire you or to make any other adverse
+                                                        employment decision regarding you, the Prospective
+                                                        Employer will provide you with a copy of the report upon which
+                                                        its decision was based and a written summary of your rights
+                                                        under the Fair Credit Reporting Act before taking any final
+                                                        adverse action. If any final adverse action is taken against you
+                                                        based
+                                                        upon your driving history or safety report, the Prospective
+                                                        Employer will notify you that the action has been taken and that
+                                                        the
+                                                        action was based in part or in whole on this report
+                                                    </p>
+                                                    <p align="justify">When the application for employment is submitted
+                                                        by mail, telephone, computer, or other similar means, if the
+                                                        Prospective
+                                                        Employer uses any information it obtains from FMCSA in a
+                                                        decision to not hire you or to make any other adverse employment
+                                                        decision regarding you, the Prospective Employer must provide
+                                                        you within three business days of taking adverse action oral,
+                                                        written or electronic notification: that adverse action has been
+                                                        taken based in whole or in part on information obtained from
+                                                        FMCSA; the name, address, and the toll free telephone number of
+                                                        FMCSA; that the FMCSA did not make the decision to take the
+                                                        adverse action and is unable to provide you the specific reasons
+                                                        why the adverse action was taken; and that you may, upon
+                                                        providing proper identification, request a free copy of the
+                                                        report and may dispute with the FMCSA the accuracy or
+                                                        completeness
+                                                        of any information or report. If you request a copy of a driver
+                                                        record from the Prospective Employer who procured the report,
+                                                        then, within 3 business days of receiving your request, together
+                                                        with proper identification, the Prospective Employer must send
+                                                        or provide to you a copy of your report and a summary of your
+                                                        rights under the Fair Credit Reporting Act.
+                                                    </p>
+
+                                                    <p align="justify">Neither the Prospective Employer nor the FMCSA
+                                                        contractor supplying the crash and safety information has the
+                                                        capability to
+                                                        correct any safety data that appears to be incorrect. You may
+                                                        challenge the accuracy of the data by submitting a request to
+                                                        https://dataqs.fmcsa.dot.gov. If you challenge crash or
+                                                        inspection information reported by a State, FMCSA cannot change
+                                                        or
+                                                        correct this data. Your request will be forwarded by the DataQs
+                                                        system to the appropriate State for adjudication
+                                                    </p>
+
+                                                    <p align="justify">
+                                                        Any crash or inspection in which you were involved will display
+                                                        on your PSP report. Since the PSP report does not report, or
+                                                        assign, or imply fault, it will include all Commercial Motor
+                                                        Vehicle (CMV) crashes where you were a driver or co-driver and
+                                                        where those crashes were reported to FMCSA, regardless of fault.
+                                                        Similarly, all inspections, with or without violations, appear
+                                                        on the PSP report. State citations associated with Federal Motor
+                                                        Carrier Safety Regulations (FMCSR) violations that have been
+                                                        adjudicated by a court of law will also appear, and remain, on a
+                                                        PSP report.
+
+                                                    </p>
+                                                    <p align="justify">
+                                                        The Prospective Employer cannot obtain background reports from
+                                                        FMCSA without your
+                                                        authorization.
+
+                                                    </p>
+                                                    <h4>
+                                                        <center>AUTHORIZATION</center>
+                                                    </h4>
+                                                    <p align="justify">
+                                                        f you agree that the Prospective Employer may obtain such
+                                                        background reports, please read the following and sign below:
+                                                        I authorize <b id="companyName"> </b>
+                                                        to access the FMCSA Pre-Employment Screening Program (PSP)
+                                                        system to seek information regarding my commercial driving
+                                                        safety record and information regarding my safety inspection
+                                                        history. I understand that I am authorizing the release of
+                                                        safety performance information including crash data from the
+                                                        previous
+                                                        five (5) years and inspection history from the previous three
+                                                        (3) years. I understand and acknowledge that this release of
+                                                        information may assist the Prospective Employer to make a
+                                                        determination regarding my suitability as an employee.
+                                                    </p>
+                                                    <p align="justify">
+                                                        I further understand that neither the Prospective Employer nor
+                                                        the FMCSA contractor supplying the crash and safety information
+                                                        has the capability to correct any safety data that appears to be
+                                                        incorrect. I understand I may challenge the accuracy of the data
+                                                        by submitting a request to https://dataqs.fmcsa.dot.gov. If I
+                                                        challenge crash or inspection information reported by a State,
+                                                        FMCSA cannot change or correct this data. I understand my
+                                                        request will be forwarded by the DataQs system to the
+                                                        appropriate State for adjudication
+                                                    </p>
+                                                    <p align="justify">
+                                                        I understand that any crash or inspection in which I was
+                                                        involved will display on my PSP report. Since the PSP report
+                                                        does not
+                                                        report, or assign, or imply fault, I acknowledge it will include
+                                                        all CMV crashes where I was a driver or co-driver and where
+                                                        those crashes were reported to FMCSA, regardless of fault.
+                                                        Similarly, I understand all inspections, with or without
+                                                        violations,
+                                                        will appear on my PSP report, and State citations associated
+                                                        with FMCSR violations that have been adjudicated by a court of
+                                                        law will also appear, and remain, on my PSP report.
+                                                    </p>
+                                                    <p align="justify">I have read the above Disclosure Regarding
+                                                        Background Reports provided to me by Prospective Employer and I
+                                                        understand
+                                                        that if I sign this Disclosure and Authorization, Prospective
+                                                        Employer may obtain a report of my crash and inspection history.
+                                                        I
+                                                        hereby authorize Prospective Employer and its employees,
+                                                        authorized agents, and/or affiliates to obtain the information
+                                                        authorized above.</p>
+
+
+                                                    <table>
+                                                        <tr>
+                                                            <td style="width: 59%;"><b>Date:</b>
+                                                                <p id="certificateDate"></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <b>Drivers Signature:</b> <br>
+                                                                <img src="" id="signature" alt="user" width="150"><br>
+                                                                <p id="driverName"> </p> <br>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    <br>
+                                                    <input class="form-check-input" id="Iagree" name="Iagree"
+                                                        type="checkbox" value="1" id="flexCheckDefault Iagree">
+
+                                                    I certify that I have read and
+                                                    understood the above requirements. <br><br>
+                                                    <p align="justify">
+                                                        NOTICE: This form is made available to monthly account
+                                                        holders by NIC on behalf of the U.S. Department of
+                                                        Transportation,
+                                                        Federal Motor Carrier Safety Administration (FMCSA).
+                                                        Account holders are required by federal law to obtain an
+                                                        Applicant’s
+                                                        written or electronic consent prior to accessing the
+                                                        Applicant’s PSP report. Further, account holders are
+                                                        required by FMCSA to
+                                                        use the language contained in this Disclosure and
+                                                        Authorization form to obtain an Applicant’s consent. The
+                                                        language must be
+                                                        used in whole, exactly as provided. Further, the
+                                                        language on this form must exist as one stand-alone
+                                                        document. The language
+                                                        may NOT be included with other consent forms or any
+                                                        other language.</p>
+                                                    <p align="justify">
+                                                        NOTICE: The prospective employment concept referenced in
+                                                        this form contemplatesthe definition of “employee”
+                                                        contained at
+                                                        49 C.F.R. 383.5.
+                                                    </p>
+                                                    </p>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <!-- clearingHouseConsent  start  -->
+                        <div id="viewmodalclearingHouseConsent" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title"> View Clearing House Consent</h3>
+                                        <h4 align="center" class="card-title">
+                                            <?php  ?>
+                                        </h4>
+                                        <div class="card-body">
+                                            <h4 id="CertificateauthDtls"></h4>
+                                            <div class="row p-b-30">
+                                                <div id="clearingHouseConsent" class="col-md-12"
+                                                    style="background: #27a9e324;border-radius: 35px;">
+
+                                                    <input type="hidden" id="company_id">
+                                                    <input type="hidden" id="driver_id">
+                                                    <center>
+                                                        <h3>SCHEDULE “A” “1” <br>
+                                                            THE COMMERCIAL DRIVER’S LICENSE DRUG AND ALCOHOL
+                                                            CLEARINGHOUSE
+                                                            CONSENT FORM
+                                                        </h3>
+                                                    </center>
+                                                    <center>
+                                                        <p align="justify">
+                                                            (TO BE EXECUTED BY ALL EMPLOYEES AND APPLICANTS WHO ARE
+                                                            OFFERED
+                                                            EMPLOYMENT
+
+                                                        </p>
+                                                    </center>
+                                                    <p align="justify">
+                                                        1. I understand that as a condition of employment, or continued
+                                                        employment, with the
+                                                        Company, I must register with the Commercial Driver’s License
+                                                        Drug and Alcohol
+                                                        Clearinghouse at clearinghouse.fmcsa.dot.gov and I must grant
+                                                        electronic consent for
+                                                        the Company to run a full Pre-Employment Query on my record with
+                                                        the Clearinghouse.</p>
+                                                    <p align="justify">2. I understand that a full Pre-Employment Query
+                                                        includes
+                                                        assessing the following specific
+                                                        records:</p>
+                                                    <p align="justify">a. A verified positive, adulterated, or
+                                                        substituted controlled
+                                                        substances test result; <br>
+                                                        b. An alcohol confirmation test with a concentration of 0.04 or
+                                                        higher;<br>
+                                                        c. An employer’s report of actual knowledge, meaning that the
+                                                        employer directly<br>
+                                                        observed the employee’s use of alcohol or controlled substances
+                                                        while on duty;<br>
+                                                        d. On duty alcohol use, meaning an employer has actual knowledge
+                                                        that an employee<br>
+                                                        has used alcohol while performing safety sensitive functions;
+                                                        e. Pre-duty alcohol use, meaning that an employer has actual
+                                                        knowledge that an<br>
+                                                        employee has used alcohol within 4 hours of performing safety
+                                                        sensitive functions;<br>
+                                                        f. Alcohol use following an accident, unless 8 hours have passed
+                                                        following the accident
+                                                        or until a post accident alcohol test is conducted, whichever
+                                                        occurs first;<br>
+                                                        g. Controlled substance use, meaning that no driver shall used a
+                                                        controlled substance
+                                                        while performing a safety sensitive function unless a licensed
+                                                        medical practitioner
+                                                        who is familiar with the driver’s medical history has advised
+                                                        the driver that the
+                                                        substance will not adversely affect the driver’s ability to
+                                                        safely operate a commercial
+                                                        motor vehicle;<br>
+                                                        h. A SAP report of the successful completion of the
+                                                        return-to-duty process;<br>
+                                                        i. A negative return-to-duty test; and<br>
+                                                        j. A SAP report of the successful completion of follow-up
+                                                        testing.<br></p>
+                                                    <p align="justify">
+                                                        3. I understand that I cannot perform a safety sensitive
+                                                        function for the Company if my
+                                                        Clearinghouse record indicates a violation as listed in Part 2
+                                                        above unless/until I have
+                                                        completed the SAP evaluation, referral and education/treatment
+                                                        process as described in
+                                                        this Policy.
+                                                        Page 29 INITIALS J S
+                                                        JASMEET SINGH
+                                                        My signature below confirms that I have read and understood the
+                                                        above terms and that I agree
+                                                        to abide by them.
+                                                    </p>
+                                                    <table>
+                                                        <tr>
+                                                            <td style="width: 59%;"><b>Dated this <span>
+                                                                        <p id="certificateDate"></p>
+                                                                    </span> at <p id="companyProvince"></p></b></td>
+                                                            <!-- <td><span> id="driverName"> </span></td> -->
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b> Printed Name of Employee as it appears on DL:</b>
+                                                                <span>
+                                                                    <p id="driverName"></p>
+                                                                </span>
+                                                            </td>
+                                                            <!-- <td></td> -->
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b> Driver’s License #: <span>
+                                                                        <p id="driver_license"></p>
+                                                                    </span></b>
+                                                            </td>
+                                                            <td><b>Province: <span>
+                                                                        <p id="province"></p>
+                                                                    </span></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b> Employee Date of Birth : <span>
+                                                                        <p id="dob"></p>
+                                                                    </span></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>Employee Signature:</b></td>
+                                                            <td><img src="" id="signature" alt="user" width="150"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>Supervisor Signature:</b></td>
+                                                            <td><img src="" id="adminSignature" alt="user" width="150">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    </p>
+                                                    <br>
+                                                    <br>
+
+                                                    <center>
+                                                        <h3>SCHEDULE “A” “2”<br>
+                                                            THE COMMERCIAL DRIVER’S LICENSE DRUG AND ALCOHOL
+                                                            CLEARINGHOUSE
+                                                            ANNUAL CONSENT FORM FOR LIMITED QUERIE</h3>
+                                                    </center>
+                                                    <center>(TO BE EXECUTED BY ALL CURRENT EMPLOYEES AND ALL APPLICANTS
+                                                        WHO ARE OFFERED EMPLOYMENT)</center>
+
+                                                    <p align="justify">
+                                                        My signature below confirms that I agree to allow the Company or
+                                                        their representative,
+                                                        Denning Health Group, to conduct an Annual Limited Query on my
+                                                        record with the Commercial
+                                                        Driver’s License (CDL) Drug and Alcohol Clearinghouse.
+                                                        I understand that a Limited Query will not reveal any of the
+                                                        details of my record with the
+                                                        Clearinghouse.</p>
+                                                    <p align="justify">Furthermore, I understand that, if the Limited
+                                                        Query reveals
+                                                        that the Clearinghouse has
+                                                        information on me indicating that I have been in violation, I
+                                                        must immediately register with the
+                                                        Clearinghouse at clearinghouse.fmcsa.dot.gov and grant
+                                                        permission for the Company or their
+                                                        representative to run a Full Query on my record with the
+                                                        Clearinghouse. I understand that the
+                                                        Company or their representative must run the Full Query within
+                                                        24 hours of receiving the
+                                                        results of the Limited Query indicating a violation on my part.
+                                                    </p>
+                                                    <p align="justify"> I agree that, if I fail to register with the
+                                                        Clearinghouse
+                                                        within 24 hours, I will be removed from
+                                                        safety sensitive functions until the Company or their
+                                                        representative is able to conduct the Full
+                                                        Query and the results confirm that my record contains no
+                                                        violations as outlined in this Policy.</p>
+                                                    <p align="justify">I agree that, if my record with the Clearinghouse
+                                                        reveals that I
+                                                        have engaged in prohibited
+                                                        conduct (i.e. a violation) as outlined in this Policy or the DOT
+                                                        rules, I will be removed from
+                                                        safety sensitive functions until/unless I have completed the SAP
+                                                        evaluation, referral and
+                                                        education/treatment process as described in this Policy.</p>
+                                                    <p align="justify"> I understand that, if any information is added
+                                                        to my
+                                                        Clearinghouse record within the 30-day
+                                                        period immediately following the Company’s or their
+                                                        representative’s Query on me, the
+                                                        Company will be notified by the Federal Motor Carrier Safety
+                                                        Administration (FMCSA).</p>
+                                                    <p align="justify"> My signature below confirms that I have read and
+                                                        understood the
+                                                        above terms and that I grant
+                                                        permission for an Annual Limited Query on my record with the
+                                                        Commercial Driver’s License
+                                                        Drug and Alcohol Clearinghouse for the duration of my employment
+                                                        with the Company.</p> <br>
+                                                    <table>
+                                                        <tr>
+                                                            <td style="width: 59%;"><b>Dated this <span>
+                                                                        <p id="certificateDate"></p>
+                                                                    </span> at <p id="companyProvince"></p></b></td>
+                                                            <!-- <td><p id="driverName"> </p></td> -->
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b> Printed Name of Employee as it appears on DL:</b>
+                                                                <p id="driverName"></p>
+                                                            </td>
+                                                            <!-- <td></td> -->
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b> Driver’s License #: <p id="driver_license"></p></b>
+                                                            </td>
+                                                            <td><b>Province: <p id="province"></p></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b> Employee Date of Birth : <p id="dob"></p></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>Employee Signature:</b>:</td>
+                                                            <td><img src="" id="signature" alt="user" width="150"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>Supervisor Signature:</b>:</td>
+                                                            <td><img src="" id="adminSignature" alt="user" width="150">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+                                                    <div id="signatureDiv">
+                                                        <div id="" class="signature"></div>
+                                                        <br />
+                                                        <button id="clear" class="clear">Clear Signature</button>
+                                                        <textarea id="signpad" class="signpad" name="signature_image"
+                                                            style="display: none"></textarea>
+                                                        <!-- <input type="text" readonly class="form-control" value="test"
+                                                            placeholder="Employee Name">
+                                                        <br> -->
+                                                        <span></span>
+                                                        <br><br><br>
+                                                        <input class="form-check-input" id="Iagree" name="Iagree"
+                                                            type="checkbox" value="1" id="flexCheckDefault Iagree">
+
+                                                        I certify that I have read and
+                                                        understood the above requirements. <br><br><br>
+                                                    </div>
+
+
+
+
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- viewmodalcompensatedwork  start  -->
+                        <div id="viewmodalcompensatedwork" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title"> View Compensated Work</h3>
+                                        <h4 align="center" class="card-title">
+                                            <?php  ?>
+                                        </h4>
+                                        <div class="card-body">
+                                            <h4 id="CertificateauthDtls"></h4>
+                                            <div class="row p-b-30">
+                                                <div id="compensatedwork" class="col-md-12"
+                                                    style="background: #27a9e324;border-radius: 35px;">
+
+                                                    <input type="hidden" id="company_id">
+                                                    <input type="hidden" id="driver_id">
+
+                                                    <center>
+                                                        <h3>Driver Certification for other compensated work
+                                                        </h3>
+                                                    </center>
+                                                    <p align="justify">
+                                                        When employed by a motor carrier, a driver must report to the
+                                                        carrier all on-duty time including time working for other
+                                                        employers. The definition of on-duty time found in Section
+                                                        395.2 paragraphs (8) and (9) of the Federal Motor Carrier Safety
+                                                        Regulations includes time performing any other work in the
+                                                        capacity of, or in the employer or service of, acommon,
+                                                        contract or private motor carrier, also performing any
+                                                        compensated work for any non-motor carrier entity.</p>
+
+                                                    <div class="form-group row">
+                                                        <label for="certificateIDSixFirtstPrams"
+                                                            class="col-sm-3 control-label col-form-label">Are you
+                                                            currently working for another employer </label>
+                                                        <div class="col-md-9">
+                                                            <select disabled class="form-select"
+                                                                name="certificateIDSixFirtstPrams"
+                                                                id="certificateIDSixFirtstPrams">
+                                                                <option value="">Select Yes/No</option>
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="certificateIDSixSecondPrams"
+                                                            class="col-sm-3 control-label col-form-label">Currently do
+                                                            have your intent to work for another employer while still
+                                                            employed by this company?</label>
+                                                        <div class="col-md-9">
+                                                            <select disabled class="form-select"
+                                                                name="certificateIDSixSecondPrams"
+                                                                id="certificateIDSixSecondPrams">
+                                                                <option value="">Select Yes/No</option>
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                                <option value="None">None</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    </p>
+
+                                                    <table>
+                                                        <tr>
+                                                            <td style="width: 59%;"><b>Dated this <span>
+                                                                        <p id="certificateDate"></p>
+                                                                    </span> at <p id="companyProvince"></p></b></td>
+                                                            <!-- <td><p id="driverName"> </p></td> -->
+                                                        </tr>
+                                                        <!-- <tr>
+                                                            <td><b> Printed Name of Employee as it appears on DL:</b>
+                                                                <p id="driverName"></p>
+                                                            </td>
+                                                        </tr> -->
+                                                        <tr>
+                                                            <td><b>Employee Signature:</b>:</td>
+                                                            <td><img src="" id="signature" alt="user" width="150"></td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    </p>
+                                                    <br>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- viewmodaldrugAndAlcohol  start  -->
+                        <div id="viewmodaldrugAndAlcohol" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title"> View Drug And Alcohol</h3>
+                                        <h4 align="center" class="card-title">
+                                            <?php  ?>
+                                        </h4>
+                                        <div class="card-body">
+                                            <h4 id="CertificateauthDtls"></h4>
+                                            <div class="row p-b-30">
+                                                <div id="compensatedwork" class="col-md-12"
+                                                    style="background: #27a9e324;border-radius: 35px;">
+
+                                                    <input type="hidden" id="company_id">
+                                                    <input type="hidden" id="driver_id">
+
+                                                    <center>
+                                                        <h3>Review and Sign Consent - Consent to Previous Employment +
+                                                            Drug & Alcohol History Verification
+                                                        </h3>
+                                                    </center>
+
+                                                    <p align="justify">
+                                                        I, <span id="driverName"></span>, am applying for employment at
+                                                        <span id="companyName"></span>. (my "Potential Employer") and
+                                                        want to provide my
+                                                        consent for only this application
+
+                                                        l agree that my Potential Employer and its service
+                                                        provider,Compliance Mentroz ("Service Provider”), may
+                                                        contact all my former employers to
+                                                        conduct a reference and driving safety check that includes the
+                                                        collection and assessment of information about my dates of
+                                                        employment, employment status, job
+                                                        duties and driving experience, reason for leaving, job
+                                                        performance and incident/accident record.</p>
+                                                    <p align="justify">I agree that my Potential Employer and its
+                                                        Service Provider may contact all organizations who have issued
+                                                        educational awards or credentials that I have
+                                                        identified to confirm my awards and credentials.</p>
+                                                    <p align="justify">I understand that Service Provider retains
+                                                        employment history records on behalf of anumber of employers in
+                                                        the trucking industry. I agree that Service Provider,
+                                                        on behalf of my Potential Employer, may check these records to
+                                                        confirm my employment history and conduct a reference and
+                                                        driving safety check that includes
+                                                        an assessment of my dates of employment, employment status, job
+                                                        duties and driving experience, reason for leaving, job
+                                                        performance and incident/accident
+                                                        record.</p>
+                                                    <p align="justify">I agree that that my Potential Employer and
+                                                        Service Provider may use and disclose my personal information as
+                                                        required for the above-noted purposes and agree
+                                                        that each of the organizations that are contacted for the
+                                                        above-noted purposes may disclose information to either my
+                                                        Potential Employer or its Service Provider.
+                                                        Iwill not hold my Potential Employer or Service Provider or said
+                                                        organizations liable for this disclosure.
+                                                    </p>
+                                                    <p align="justify">I agree that Service Provider may retain all
+                                                        personal information it collects for the above-noted purposes on
+                                                        behalf of my Potential Employer, who shall contro!
+                                                        and have a full right of access to records of my personal
+                                                        information that Service Provider creates and retains. I will
+                                                        not hold Service Provider liable for any losses
+                                                        arising out of its retention or handling of my personal
+                                                        information.</p>
+                                                    <p align="justify">I understand that I have the right to (1) to
+                                                        review
+                                                        the information provided by previous employers, (2) have errors
+                                                        corrected and re-submitted by previous
+                                                        employers and (3) have a rebuttal statement attached to
+                                                        information I allege to be erroneous if my previous employer and
+                                                        I cannot agree on the accuracy of
+                                                        information.
+                                                    </p>
+                                                    <p align="justify">l understand that I may direct any questions I
+                                                        have about this consent and about how Service Provider handles
+                                                        personal information on behalf of my Potential
+                                                        Employer to Compliance Mentroz. at info@compliancementorz.com or
+                                                        by phone at +1 (905) 486-1666</p>
+                                                    <p align="justify">I certify that this application was completed by
+                                                        me
+                                                        and that all entries on it and information in it are true and
+                                                        complete to the best of my knowledge. I understand
+                                                        that any misstatement or omission of information in this
+                                                        application may result in my dismissal.</p>
+                                                    <p align="justify">I hereby authorize release of information from my
+                                                        Department of Transportation regulated drug and alcohol testing
+                                                        records by my previous employer, to the
+                                                        prospective employer named below and /or its service provider
+                                                        Compliance Mentroz. This release is in accordance
+                                                        with DOT Regulation 49 CFR
+                                                        Part 40, Section 40.25. I understand that information to be
+                                                        released by my previous employer, is limited to the following
+                                                        DOT-regulated testing items:</p>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <p align="justify">
+                                                        1.Alcohol tests with a result of 0.04 or higher:
+                                                    </p>
+                                                    <p align="justify">
+                                                        2.Verified positive drug tsts;
+                                                    </p>
+                                                    <p align="justify">
+                                                        3.Refusals to be tested;
+                                                    </p>
+                                                    <p align="justify">
+                                                        4.Other violations of DOT agency drug and alcohol testing
+                                                        regulations;
+                                                    </p>
+                                                    <p align="justify">
+                                                        Information obtained from previous employers of a drug and
+                                                        alcohol rule violation;
+                                                    </p>
+                                                    <p align="justify">
+                                                        Documentation,if any,of completion of the return-to-duty process
+                                                        following a rule violation.
+                                                    </p>
+
+
+                                                    <table>
+                                                        <tr>
+                                                            <td style="width: 59%;"><b>Dated this <span>
+                                                                        <p id="certificateDate"></p>
+                                                                    </span> at <p id="companyProvince"></p></b></td>
+                                                            <!-- <td><p id="driverName"> </p></td> -->
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>Driver Name : </b>
+                                                                <p id="driverName"></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>Employee Signature:</b>:</td>
+                                                            <td><img src="" id="signature" alt="user" width="150"></td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    </p>
+                                                    <br>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- ============================================================== -->
+                        <!-- End Page wrapper  -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Wrapper -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <%- include('../includes/footer.ejs') %>
+                        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+                        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+                        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+
+                        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                        <script type="text/javascript"
+                            src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+                        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script> -->
+                        <script type="text/javascript"
+                            src="assets/extra-libs/signature/jquery.signature.min.js"></script>
+                        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script>  -->
+                        <script>
+                            var signature = $('.signature').signature({ syncField: '.signpad', syncFormat: 'PNG' });
+
+                            $('.signpad').draggable();
+                            $('.clear').click(function (e) {
+                                // alert('ddd');
+                                e.preventDefault();
+                                signature.signature('clear');
+                                $(".signpad").val('');
+                            });
+
+
+
+
+                            /****************************************
+                             *       Basic Table                   *
+                             ****************************************/
+                            // $('#zero_config').DataTable();
+
+                            $(document).ready(function () {
+                                $('.close1').click(function () {
+                                    location.reload();
+                                });
+                                $("#userRole").text('Admin')
+
+
+                                $(document).on('click', '#viewmodalidMotor', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    let certificateID = $(this).attr('data-certificateID');
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                                        type: "GET",
+                                        data: { id: id, certificateID: certificateID },
+                                        success: function (data) {
+                                            console.log(data);
+                                            console.log(data.driverName);
+                                            if (data.status) {
+                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                                $("body #Motor #signature").attr("src", signaturePath);
+                                                $('body #Motor #driverName').text(data.driverName);
+                                                $('body #Motor #driver_license').text(data.driver_license);
+                                                $('body #Motor #license_expiry').text(data.license_expiry);
+                                                $('body #Motor #getupdatedDate').text(data.getupdatedDate);
+                                                $('body #Motor #eventsCalTimezone').text(data.eventsCalTimezone);
+                                                if (data.CertificateauthDtls) {
+                                                    $('body #Motor #CertificateauthDtls').text("Driver Approved");
+                                                } else {
+                                                    $('body #Motor #CertificateauthDtls').text("Waiting for Driver Approval");
+                                                }
+                                                $('body #viewmodalMotor').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+                                $(document).on('click', '#viewmodalMedical', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    let certificateID = $(this).attr('data-certificateID');
+                                    // alert(id)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                                        type: "GET",
+                                        data: { id: id, certificateID: certificateID },
+                                        success: function (data) {
+                                            console.log(data);
+                                            console.log(data.driverName);
+                                            if (data.status) {
+                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                                $("body #Medical #signature").attr("src", signaturePath);
+                                                $('body #Medical #driverName').text(data.driverName);
+                                                $('body #Medical #companyProvince').text(data.companyProvince);
+                                                $('body #Medical #getupdatedDate').text(data.getupdatedDate);
+                                                $('body #Medical #eventsCalTimezone').text(data.eventsCalTimezone);
+                                                if (data.CertificateauthDtls) {
+                                                    $('body #Medical #CertificateauthDtls').text("Driver Approved");
+                                                } else {
+                                                    $('body #Medical #CertificateauthDtls').text("Waiting for Driver Approval");
+                                                }
+                                                $('body #viewmodalMedicalModal').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+                                $(document).on('click', '#viewmodalDriverack', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    let certificateID = $(this).attr('data-certificateID');
+                                    // alert(id)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                                        type: "GET",
+                                        data: { id: id, certificateID: certificateID },
+                                        success: function (data) {
+                                            console.log(data);
+                                            console.log(data.driverName);
+                                            if (data.status) {
+                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                                $("body #Driverack #signature").attr("src", signaturePath);
+                                                $('body #Driverack #driverName').text(data.driverName);
+                                                $('body #Driverack #companyProvince').text(data.companyProvince);
+                                                $('body #Driverack #getupdatedDate').text(data.getupdatedDate);
+                                                $('body #Driverack #eventsCalTimezone').text(data.eventsCalTimezone);
+                                                if (data.CertificateauthDtls) {
+                                                    $('body #Driverack #CertificateauthDtls').text("Driver Approved");
+                                                } else {
+                                                    $('body #Driverack #CertificateauthDtls').text("Waiting for Driver Approval");
+                                                }
+                                                $('body #viewmodalDriverackModal').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+                                $(document).on('click', '#viewmodalpspDisclosure', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    let certificateID = $(this).attr('data-certificateID');
+                                    // alert(id)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                                        type: "GET",
+                                        data: { id: id, certificateID: certificateID },
+                                        success: function (data) {
+                                            // console.log(data);
+                                            // console.log(data.driverName);
+                                            // let date1
+                                            // if (data.certificateDate) {
+                                            // var event = new Date(data.certificateDate);
+
+                                            //     date1 = JSON.stringify(event)
+                                            //     date1 = date1.slice(1, 11)
+                                            // }else{
+                                            //     date1 = '';
+                                            // }
+                                            if (data.status) {
+                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                                $("body #pspDisclosure #signature").attr("src", signaturePath);
+                                                $('body #pspDisclosure #driverName').text(data.driverName);
+                                                $('body #pspDisclosure #companyProvince').text(data.companyProvince);
+                                                $('body #pspDisclosure #getupdatedDate').text(data.getupdatedDate);
+                                                $('body #pspDisclosure #eventsCalTimezone').text(data.eventsCalTimezone);
+                                                $('body #pspDisclosure #companyName').text(data.companyName);
+                                                $('body #pspDisclosure #certificateDate').text(data.certificateDate);
+                                                $('body #pspDisclosure #Iagree').attr('checked', 'checked');
+                                                $('body #pspDisclosure #Iagree').attr('disabled', true);
+
+                                                if (data.CertificateauthDtls) {
+                                                    $('body #pspDisclosure #CertificateauthDtls').text("Driver Approved");
+                                                } else {
+                                                    $('body #pspDisclosure #CertificateauthDtls').text("Waiting for Driver Approval");
+                                                }
+                                                $('body #viewmodalpspDisclosure').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+                                $('body #clearingHouseConsent #signatureDiv').hide();
+                                $(document).on('click', '#viewmodalclearingHouseConsent', function () {
+                                    // alert('test')  
+                                    let driverID = $(this).attr('data-id');
+                                    let company_id = $(this).attr('data-company_id');
+                                    let certificateID = $(this).attr('data-certificateID');
+                                    // alert(id)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                                        type: "GET",
+                                        data: { id: driverID, company_id: company_id, certificateID: certificateID },
+                                        success: function (data) {
+                                            console.log(data);
+                                            console.log(data.driverName);
+                                            if (data.status) {
+                                                if (data.CertificateauthDtlsf) {
+                                                    // $('body #clearingHouseConsent #signatureDiv').hide();
+                                                    $('body #clearingHouseConsent #Iagree').attr('checked', 'checked');
+                                                    $('body #clearingHouseConsent #Iagree').attr('disabled', true);
+
+                                                } else {
+                                                    // $('body #clearingHouseConsent #signatureDiv').show();
+                                                    $('body #clearingHouseConsent').show();
+
+                                                }
+                                                console.log('-----------------');
+                                                if (data.adminSignature == "") {
+                                                    $('body #clearingHouseConsent #signatureDiv').show();
+                                                    $('body #clearingHouseConsent #adminSignature').hide();
+                                                }
+                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                                // console.log(signaturePath);
+                                                // alert(data.signature)
+                                                // alert(signaturePath)
+                                                if (data.signature != "") {
+                                                    $('body #clearingHouseConsent #signature').attr("src", signaturePath);
+                                                } else {
+                                                    $('body #clearingHouseConsent #signature').hide();
+                                                }
+
+                                                let adminsignaturePath = 'uploads/attachment/clearHouseSupervisor/' + data.adminSignature;
+                                                console.log(adminsignaturePath);
+
+                                                if (data.adminSignature != "") {
+                                                    $('body #clearingHouseConsent #adminSignature').attr("src", adminsignaturePath);
+                                                } else {
+                                                    $('body #clearingHouseConsent #adminSignature').hide();
+                                                }
+
+
+                                                // $("body #clearingHouseConsent #signature").attr("src", signaturePath);
+                                                $('body #clearingHouseConsent #driverName').text(data.driverName);
+                                                $('body #clearingHouseConsent #companyProvince').text(data.companyProvince);
+                                                $('body #clearingHouseConsent #getupdatedDate').text(data.getupdatedDate);
+                                                $('body #clearingHouseConsent #eventsCalTimezone').text(data.eventsCalTimezone);
+                                                $('body #clearingHouseConsent #companyName').text(data.companyName);
+                                                $('body #clearingHouseConsent #certificateDate').text(data.certificateDate);
+                                                $('body #clearingHouseConsent #driver_license').text(data.driver_license);
+                                                $('body #clearingHouseConsent #province').text(data.province);
+                                                $('body #clearingHouseConsent #dob').text(data.dob);
+                                                $('body #clearingHouseConsent #driver_id').val(driverID);
+                                                $('body #clearingHouseConsent #company_id').val(company_id);
+                                                // $('body #clearingHouseConsent #adminSignature').attr("src", adminsignaturePath);
+
+                                                // if(adminsignaturePath == ""){
+                                                //     $('body #clearingHouseConsent #adminSignature').attr("src", adminsignaturePath);
+                                                // }else{
+                                                //     $('body #clearingHouseConsent #signatureDiv').hide();
+                                                // }
+
+                                                if (data.CertificateauthDtls) {
+                                                    $('body #viewmodalclearingHouseConsent #CertificateauthDtls').text("Driver Approved");
+                                                } else {
+                                                    $('body #viewmodalclearingHouseConsent #CertificateauthDtls').text("Waiting for Driver Approval");
+                                                }
+                                                $('body #viewmodalclearingHouseConsent').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+                                $('body #viewmodalcompensatedwork #signatureDiv').hide();
+                                $(document).on('click', '#viewmodalcompensatedwork', function () {
+                                    // alert('test')
+                                    let driverID = $(this).attr('data-id');
+                                    let company_id = $(this).attr('data-company_id');
+                                    let certificateID = $(this).attr('data-certificateID');
+                                    // alert(certificateID)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                                        type: "GET",
+                                        data: { id: driverID, company_id: company_id, certificateID: certificateID },
+                                        success: function (data) {
+                                            console.log(data);
+                                            console.log(data.driverName);
+                                            if (data.status) {
+                                                //   alert(data.certificateIDSixFirtstPrams)
+                                                console.log('-----------------');
+                                                if (data.CertificateauthDtlsf) {
+                                                    // $('body #viewmodalcompensatedwork #signatureDiv').hide();
+                                                    $('body #viewmodalcompensatedwork #Iagree').attr('checked', 'checked');
+                                                    $('body #viewmodalcompensatedwork #Iagree').attr('disabled', true);
+
+                                                } else {
+                                                    // $('body #viewmodalcompensatedwork #signatureDiv').show();
+                                                    $('body #viewmodalcompensatedwork').show();
+                                                }
+
+                                                //     let date1
+                                                // if (data.certificateDate) {
+                                                // var event = new Date(data.certificateDate);
+
+                                                //     date1 = JSON.stringify(event)
+                                                //     date1 = date1.slice(1, 11)
+                                                // }else{
+                                                //     date1 = '';
+                                                // }
+
+                                                // alert(data.companyProvince)
+                                                if (data.adminSignature == "") {
+                                                    $('body #viewmodalcompensatedwork #signatureDiv').show();
+                                                    $('body #viewmodalcompensatedwork #adminSignature').hide();
+                                                }
+                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                                $("body #viewmodalcompensatedwork #signature").attr("src", signaturePath);
+                                                $('body #viewmodalcompensatedwork #driverName').text(data.driverName);
+                                                $("body #viewmodalcompensatedwork #certificateIDSixFirtstPrams [value=" + '"' + data.certificateIDSixFirtstPrams + '"' + "]").attr("selected", true);
+                                                $("body #viewmodalcompensatedwork #certificateIDSixSecondPrams [value=" + '"' + data.certificateIDSixSecondPrams + '"' + "]").attr("selected", true);
+                                                $('#certificateIDSixSecondPrams #Iagree').attr('checked', 'checked');
+                                                $('#certificateIDSixSecondPrams #Iagree').attr('disabled', true);
+                                                $('body #viewmodalcompensatedwork #dob').text(data.dob);
+                                                $('body #viewmodalcompensatedwork #driver_id').val(driverID);
+                                                $('body #viewmodalcompensatedwork #company_id').val(company_id);
+                                                $('body #viewmodalcompensatedwork #certificateDate').text(data.certificateDate);
+                                                $('body #viewmodalcompensatedwork #companyProvince').text(data.companyProvince);
+                                                if (data.CertificateauthDtls) {
+                                                    $('body #viewmodalcompensatedwork #CertificateauthDtls').text("Driver Approved");
+                                                } else {
+                                                    $('body #viewmodalcompensatedwork #CertificateauthDtls').text("Waiting for Driver Approval");
+                                                }
+                                                $('body #viewmodalcompensatedwork').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+
+                                $('body #viewmodaldrugAndAlcohol #signatureDiv').hide();
+                                $(document).on('click', '#viewmodaldrugAndAlcohol', function () {
+                                    // alert('test')
+                                    let driverID = $(this).attr('data-id');
+                                    let company_id = $(this).attr('data-company_id');
+                                    let certificateID = $(this).attr('data-certificateID');
+                                    // alert(certificateID)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                                        type: "GET",
+                                        data: { id: driverID, company_id: company_id, certificateID: certificateID },
+                                        success: function (data) {
+                                            console.log(data);
+                                            console.log(data.driverName);
+                                            if (data.status) {
+                                                //   alert(data.certificateIDSixFirtstPrams)
+                                                console.log('-----------------');
+                                                if (data.CertificateauthDtlsf) {
+                                                    // $('body #viewmodaldrugAndAlcohol #signatureDiv').hide();
+                                                    $('body #viewmodaldrugAndAlcohol #Iagree').attr('checked', 'checked');
+                                                    $('body #viewmodaldrugAndAlcohol #Iagree').attr('disabled', true);
+
+                                                } else {
+                                                    // $('body #viewmodaldrugAndAlcohol #signatureDiv').show();
+                                                    $('body #viewmodaldrugAndAlcohol').show();
+                                                }
+
+                                                let date1
+                                                // if (data.certificateDate) {
+                                                //     var event = new Date(data.certificateDate);
+
+                                                //     date1 = JSON.stringify(event)
+                                                //     date1 = date1.slice(1, 11)
+                                                // } else {
+                                                //     date1 = '';
+                                                // }
+
+
+
+                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                                $("body #viewmodaldrugAndAlcohol #signature").attr("src", signaturePath);
+                                                $('body #viewmodaldrugAndAlcohol #driverName').text(data.driverName);
+                                                $('body #viewmodaldrugAndAlcohol #companyName').text(data.companyName);
+                                                $('#certificateIDSixSecondPrams #Iagree').attr('checked', 'checked');
+                                                $('#certificateIDSixSecondPrams #Iagree').attr('disabled', true);
+                                                $('body #viewmodaldrugAndAlcohol #dob').text(data.dob);
+                                                $('body #viewmodaldrugAndAlcohol #driver_id').val(driverID);
+                                                $('body #viewmodaldrugAndAlcohol #company_id').val(company_id);
+                                                $('body #viewmodaldrugAndAlcohol #certificateDate').text(data.certificateDate);
+                                                $('body #viewmodaldrugAndAlcohol #companyProvince').text(data.companyProvince);
+                                                if (data.CertificateauthDtls) {
+                                                    $('body #viewmodaldrugAndAlcohol #CertificateauthDtls').text("Driver Approved");
+                                                } else {
+                                                    $('body #viewmodaldrugAndAlcohol #CertificateauthDtls').text("Waiting for Driver Approval");
+                                                }
+                                                $('body #viewmodaldrugAndAlcohol').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+
+
+
+
+
+
+
+                                $('body #viewmodalclearingHouseConsent #Iagree').on('change', function () {
+                                    if (this.checked) {
+                                        // alert(this.checked)
+                                        let company_id = $("#clearingHouseConsent #company_id").val();
+                                        let driverId = $("#clearingHouseConsent #driver_id").val();
+                                        let certificateDate = $("clearingHouseConsent #certificateDate").val();
+
+                                        if ($('.signpad').length > 0) {
+                                            var signpad = $(".signpad").val();
+                                            if (signpad == "" || signpad == "undefined" || signpad == null || signpad == "0") {
+                                                flag = false;
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Signature requird to proceed further',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Ok'
+                                                })
+
+                                                $('body #clearingHouseConsent #Iagree').prop('checked', false);
+                                                return false
+                                            }
+                                            // values['signature'] = signpad;
+                                        }
+                                        // alert(driverId)
+                                        console.log(signpad);
+                                        $.ajax({
+                                            url: "/certificateapprovalUpdate",
+                                            type: "POST",
+                                            data: { company_id: company_id, driverId: driverId, certificateID: 5, approve: this.checked, date: certificateDate, adminSignature: signpad },
+                                            success: function (data) {
+                                                console.log(data.data);
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    });
+                                                    setTimeout(function () {
+                                                        window.location.reload();
+                                                    }, 2000);
+
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                    // window.location = "/";
+                                                }
+
+                                            }
+                                        });
+                                    } else {
+                                        // $("#ifbelowthreeYears").hide();
+                                        // alert('un checked')
+                                        // alert(this.checked)
+                                    }
+
+                                })
+                            });
+
+                            function convertToBase64(inputfile, parms) {
+                                //Read File
+                                // alert(inputfile)
+                                // alert(parms)
+
+                                var selectedFile = document.getElementById(inputfile).files;
+                                console.log(selectedFile);
+                                //Check File is not Empty
+                                if (selectedFile.length > 0) {
+                                    // Select the very first file from list
+                                    var fileToLoad = selectedFile[0];
+                                    var filesize = selectedFile[0].size;
+                                    if (filesize <= '2069405') {
+                                        console.log(filesize);
+                                        // FileReader function for read the file.
+                                        var fileReader = new FileReader();
+                                        var base64;
+                                        // Onload of file read the file content
+                                        fileReader.onload = function (fileLoadedEvent) {
+                                            base64 = fileLoadedEvent.target.result;
+                                            // Print data in console
+                                            console.log(parms);
+                                            $("#" + parms).val(base64);
+                                            var div = document.getElementById(parms);
+                                            div.innerHTML += base64;
+
+                                        };
+                                        // Convert data to base64
+                                        fileReader.readAsDataURL(fileToLoad);
+                                    } else {
+                                        Swal.fire(
+                                            'Too Big!',
+                                            'Upload image size within 2 MB.',
+                                            'danger'
+                                        )
+                                        return false;
+                                    }
+                                }
+                            }
+
+
+
+                            // $('#exptype').on('change', function () {
+                            // let cmpid = this.value;
+                            // alert(cmpid)
+                            let cmpid = $('body #originData #company_id').val();
+                            // alert(cmpid)
+                            $("#updateDrivingHistory").dataTable().fnDestroy();
+
+                            let customer = $('#updateDrivingHistory').DataTable({
+                                processing: true,
+                                serverSide: true,
+                                order: [[0, 'ASC']],
+                                lengthMenu: [[10, 50, 100, 250, 500, 1000], [10, 50, 100, 250, 500, 1000]],
+                                pageLength: 10,
+                                searching: true,
+                                ajax: {
+                                    url: "/getupdatemotorVehicleCertificateSuperadminSuperadmin",
+                                    data: function (data) {
+                                        data.cmpid = cmpid
+                                        // data.search_key = $("#searchKey").val(),
+                                        // data.search_val = $("#searchVal").val()
+                                    },
+                                    type: "GET",
+                                },
+                                columns: [
+                                    { "data": "slno" },
+                                    { "data": "firstName" },
+                                    { "data": "action" }
+                                ],
+                                select: true
+                            });
+
+
+                            // });
+
+
+
+
+                        </script>
+                        <script src="sweetAlert/sweetalert2.min.js"></script>
+</body>
+
+</html>

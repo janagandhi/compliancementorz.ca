@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <style type="text/css">
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarCompany.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+
+                        <div class="card">
+                            <div class="card-body">
+                                <button class="btn btn-success" id="create_truck_button"> Add Truck <span
+                                        class="glyphicon glyphicon-edit"></span> <i style="font-size: 15px;"
+                                        class="fas fa-plus"></i></button>
+                                <h5 align="center" class="card-title">
+                                    <%- title %>
+                                </h5>
+                                <div class="table-responsive">
+                                    <table id="listtruck" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Truck Unit</th>
+                                                <th>Vehicle Type</th>
+                                                <th>VIN Number</th>
+                                                <th>Active</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ============================================================== -->
+                        <!-- End PAge Content -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Right sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- .right-sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- End Right sidebar -->
+                        <!-- ============================================================== -->
+
+
+                        <!-- <button class="btn  btn-danger" data-target="#deletemodal" data-toggle="modal">Delete
+                <span class="glyphicon glyphicon-edit"></span><i style="font-size: 15px;" class="fas fa-trash"></i>
+                </button>  -->
+
+
+
+
+
+                        <!-- edit modal -->
+
+
+
+                        <div id="editmodal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">Edit truck</h3>
+                                        <h4 align="center" class="card-title">
+                                            <?php  ?>
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+
+
+                                                    <form class="form-horizontal" id="edit_truck">
+                                                        <div class="card-body" id="edit_truck_details">
+                                                            <!-- <h3 align="center" class="card-title">Create truck</h3> -->
+                                                            <div style="text-align: center;">
+                                                                <img style="width: 35%;border-radius: 70px;"
+                                                                    src="images/truck.png" alt="homepage"
+                                                                    class="light-logo" />
+                                                            </div>
+                                                            <br>
+
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input type="hidden" name="id" id="id">
+                                                                    <div class="form-group row">
+                                                                        <label for="truck_unit"
+                                                                            class="col-sm-3 control-label col-form-label">Truck Unit </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="truck_unit" value=""
+                                                                                id="truck_unit">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="vehicle_type"
+                                                                            class="col-sm-3 control-label col-form-label">Vehicle
+                                                                            Type # Annexure A </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="vehicle_type" value=""
+                                                                                id="vehicle_type">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="vin_number"
+                                                                            class="col-sm-3 control-label col-form-label">VIN
+                                                                            Number</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="vin_number" value=""
+                                                                                id="vin_number">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="license_plate_number"
+                                                                            class="col-sm-3 control-label col-form-label">License Plate Number </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="license_plate_number" value=""
+                                                                                id="license_plate_number">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="state"
+                                                                            class="col-sm-3 control-label col-form-label">State
+                                                                        </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="state" value="" id="state">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="rin"
+                                                                            class="col-sm-3 control-label col-form-label">RIN
+                                                                        </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="rin" value="" id="rin">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="fuel_card"
+                                                                            class="col-sm-3 control-label col-form-label">Fuel Card Assigned </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="fuel_card" value=""
+                                                                                id="fuel_card">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="ip_pass"
+                                                                            class="col-sm-3 control-label col-form-label">IP
+                                                                            PASS TRANSPONDER </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="ip_pass" value="" id="ip_pass">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <label for="bridge_transponder"
+                                                                            class="col-sm-3 control-label col-form-label">AMABASSADOR
+                                                                            BRIDGE TRASNPONDER </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="bridge_transponder" value=""
+                                                                                id="bridge_transponder">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="    annual_safety_current"
+                                                                            class="col-sm-3 control-label col-form-label">ANNUAL
+                                                                            SAFETY :( CURRENT YEAR ) </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text"
+                                                                                class="form-control mydatepicker"
+                                                                                name="annual_safety_current" value=""
+                                                                                id="annual_safety_current">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="annual_safety_current"
+                                                                            class="col-sm-3 control-label col-form-label">ANNUAL
+                                                                            SAFETY :( CURRENT YEAR ) Attachment </label>
+                                                                        <div class="col-md-9">
+
+                                                                            <input id="annual_safety_current_attachment"
+                                                                                type="file" accept="application/pdf"
+                                                                                accept=""
+                                                                                onchange="convertToBase64('annual_safety_current_attachment','annual_safety_current_attachment_file');" />
+                                                                            <input type="hidden"
+                                                                                name="annual_safety_current_attachment_file"
+                                                                                id="annual_safety_current_attachment_file">
+                                                                            <!-- <a target="_blank" id="" href="">View</a> -->
+                                                                            <a class="btn btn-primary" target="_blank"
+                                                                                id="annual_safety_current_attachment_file_link_edit"
+                                                                                href="">View <span
+                                                                                    class="glyphicon glyphicon-edit"></span><i
+                                                                                    style="font-size: 15px;"
+                                                                                    class="fas fa-search"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="annual_safety_last"
+                                                                            class="col-sm-3 control-label col-form-label">ANNUAL
+                                                                            SAFETY : ( LAST YEAR ) </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text"
+                                                                                class="form-control mydatepicker"
+                                                                                name="annual_safety_last" value=""
+                                                                                id="annual_safety_last">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="incorporation_name"
+                                                                            class="col-sm-3 control-label col-form-label">ANNUAL
+                                                                            SAFETY : ( LAST YEAR ) Atachment</label>
+                                                                        <div class="col-md-9">
+
+                                                                            <input id="annual_safety_last_attachment"
+                                                                                type="file" accept="application/pdf"
+                                                                                onchange="convertToBase64('annual_safety_last_attachment','annual_safety_last_attachment_file');" />
+                                                                            <input type="hidden"
+                                                                                name="annual_safety_last_attachment_file"
+                                                                                id="annual_safety_last_attachment_file">
+                                                                            <!-- <a target="_blank" id="annual_safety_last_attachment_file_link" href="">View</a> -->
+                                                                            <a class="btn btn-primary" target="_blank"
+                                                                                id="annual_safety_last_attachment_file_link_edit"
+                                                                                href="">View <span
+                                                                                    class="glyphicon glyphicon-edit"></span><i
+                                                                                    style="font-size: 15px;"
+                                                                                    class="fas fa-search"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="preventive_maintenance"
+                                                                            class="col-sm-3 control-label col-form-label">Preventive Maintenance </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text"
+                                                                                class="form-control mydatepicker"
+                                                                                name="preventive_maintenance" value=""
+                                                                                id="preventive_maintenance">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <label for="preventive_maintenance"
+                                                                            class="col-sm-3 control-label col-form-label">Preventive Maintenance Atachment</label>
+                                                                        <div class="col-md-9">
+
+                                                                            <input
+                                                                                id="preventive_maintenance_attachment"
+                                                                                type="file" accept="application/pdf"
+                                                                                onchange="convertToBase64('preventive_maintenance_attachment','preventive_maintenance_attachment_file');" />
+                                                                            <input type="hidden"
+                                                                                name="preventive_maintenance_attachment_file"
+                                                                                id="preventive_maintenance_attachment_file">
+                                                                            <a class="btn btn-primary" target="_blank"
+                                                                                id="preventive_maintenance_attachment_file_link_edit"
+                                                                                href="">View <span
+                                                                                    class="glyphicon glyphicon-edit"></span><i
+                                                                                    style="font-size: 15px;"
+                                                                                    class="fas fa-search"></i></a>
+                                                                            <!-- <a target="_blank" id="annual_safety_current_attachment_file_link" href="">View</a> -->
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <label for="nextyearDate"
+                                                                            class="col-sm-3 control-label col-form-label">Next
+                                                                            year </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text"
+                                                                                class="form-control nextyearDate"
+                                                                                id="nextyearDate" name="nextyearDate"
+                                                                                value="">
+                                                                            <div class="input-group-append">
+                                                                                <!-- <span class="input-group-text"><i class="fa fa-calendar"></i></span> -->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="border-top">
+                                                                <div style="text-align: center;" class="card-body">
+                                                                    <button type="Submit"
+                                                                        class="btn btn-primary">Update</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                </form>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- edit modal -->
+
+
+
+
+
+
+
+
+
+                        <!-- view modal -->
+
+
+                        <!-- <div class="modal fade viewmodal" role="dialog">
+                         -->
+                        <div id="viewmodal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">View truck</h3>
+                                        <h4 align="center" class="card-title">
+                                            <?php  ?>
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+
+
+                                                    <!-- <form class="form-horizontal" id="create_truck"> -->
+                                                    <div class="card-body" id="view_truck_details">
+                                                        <!-- <h3 align="center" class="card-title">Create truck</h3> -->
+                                                        <div style="text-align: center;">
+                                                            <img style="width: 35%;border-radius: 70px;"
+                                                                src="images/truck.png" alt="homepage"
+                                                                class="light-logo" />
+                                                        </div>
+                                                        <br>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group row">
+                                                                    <label for="truck_unit"
+                                                                        class="col-sm-3 control-label col-form-label">Truck Unit </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" readonly class="form-control"
+                                                                            name="truck_unit" value="" id="truck_unit">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="vehicle_type"
+                                                                        class="col-sm-3 control-label col-form-label">Vehicle
+                                                                        Type # Annexure A </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" readonly class="form-control"
+                                                                            name="vehicle_type" value=""
+                                                                            id="vehicle_type">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="vin_number"
+                                                                        class="col-sm-3 control-label col-form-label">VIN
+                                                                        Number</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" readonly class="form-control"
+                                                                            name="vin_number" value="" id="vin_number">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="license_plate_number"
+                                                                        class="col-sm-3 control-label col-form-label">License Plate Number </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" readonly class="form-control"
+                                                                            name="license_plate_number" value=""
+                                                                            id="license_plate_number">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="state"
+                                                                        class="col-sm-3 control-label col-form-label">State
+                                                                    </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" readonly class="form-control"
+                                                                            name="state" value="" id="state">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="rin"
+                                                                        class="col-sm-3 control-label col-form-label">RIN
+                                                                    </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" readonly class="form-control"
+                                                                            name="rin" value="" id="rin">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="fuel_card"
+                                                                        class="col-sm-3 control-label col-form-label">Fuel Card Assigned</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" readonly class="form-control"
+                                                                            name="fuel_card" value="" id="fuel_card">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="ip_pass"
+                                                                        class="col-sm-3 control-label col-form-label">Ip Pass Transponder </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" readonly class="form-control"
+                                                                            name="ip_pass" value="" id="ip_pass">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label for="bridge_transponder"
+                                                                        class="col-sm-3 control-label col-form-label">Amabassador Bridge Trasnponder </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" readonly class="form-control"
+                                                                            name="bridge_transponder" value=""
+                                                                            id="bridge_transponder">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="    annual_safety_current"
+                                                                        class="col-sm-3 control-label col-form-label">Annual Safety ( Current Year ) </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" readonly
+                                                                            class="form-control mydatepicker"
+                                                                            name="annual_safety_current" value=""
+                                                                            id="annual_safety_current">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="annual_safety_current"
+                                                                        class="col-sm-3 control-label col-form-label">Annual Safety ( Current Year ) Attachment </label>
+                                                                    <div class="col-md-9">
+
+                                                                        <!-- <input id="annual_safety_current_attachment" type="file" accept="application/pdf" onchange="convertToBase64('annual_safety_current_attachment','annual_safety_current_attachment_file');" />
+                                                                <input type="hidden" name="annual_safety_current_attachment_file" id="annual_safety_current_attachment_file"> -->
+                                                                        <!-- <a target="_blank" id="annual_safety_current_attachment_file_link_view" href="">View</a> -->
+                                                                        <a class="btn btn-primary" target="_blank"
+                                                                            id="annual_safety_current_attachment_file_link_view"
+                                                                            href="">View <span
+                                                                                class="glyphicon glyphicon-edit"></span><i
+                                                                                style="font-size: 15px;"
+                                                                                class="fas fa-search"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="annual_safety_last"
+                                                                        class="col-sm-3 control-label col-form-label">Annual Safety ( Last Year ) </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" readonly
+                                                                            class="form-control mydatepicker"
+                                                                            name="annual_safety_last" value=""
+                                                                            id="annual_safety_last">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="incorporation_name"
+                                                                        class="col-sm-3 control-label col-form-label">Annual Safety : ( Last Year ) Atachment</label>
+                                                                    <div class="col-md-9">
+
+
+                                                                        <!-- <a target="_blank" id="" href="">View</a> -->
+                                                                        <a class="btn btn-primary" target="_blank"
+                                                                            id="annual_safety_last_attachment_file_link_view"
+                                                                            href="">View <span
+                                                                                class="glyphicon glyphicon-edit"></span><i
+                                                                                style="font-size: 15px;"
+                                                                                class="fas fa-search"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="preventive_maintenance"
+                                                                        class="col-sm-3 control-label col-form-label">Preventive Maintenance </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" readonly
+                                                                            class="form-control mydatepicker"
+                                                                            name="preventive_maintenance" value=""
+                                                                            id="preventive_maintenance">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label for="nextyearDate"
+                                                                        class="col-sm-3 control-label col-form-label">Next
+                                                                        year </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text"
+                                                                            class="form-control nextyearDate"
+                                                                            id="nextyearDate" name="nextyearDate"
+                                                                            value="">
+                                                                        <div class="input-group-append">
+                                                                            <!-- <span class="input-group-text"><i class="fa fa-calendar"></i></span> -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+
+                                                        </div>
+                                                        <!--  <div class="border-top">
+                                                        <div style="text-align: center;" class="card-body">
+                                                            <button type="Submit" class="btn btn-primary">Create</button>
+                                                        </div>
+                                                    </div> -->
+                                                    </div>
+                                                </div>
+                                                <!-- </form> -->
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- view modal -->
+
+
+
+
+                        <!-- create truck -->
+
+
+
+
+
+
+
+                        <div id="module_content_modal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+
+                                <div class="modal-content">
+                                    <!-- <div class="modal-header">
+
+</div> -->
+                                    <div class="modal-header">
+
+                                        <!-- <h4 align="center" class="modal-title" id="module_content_title">Add truck</h4> -->
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-hidden="true">×</button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <!-- <div style="z-index: 1;" class="ribbon ribbon-bookmark  ribbon-default">Online Learning</div> -->
+                                        <div class="modal-content">
+                                            <div class="container-fluid">
+                                                <!-- ============================================================== -->
+                                                <!-- Start Page Content -->
+                                                <!-- ============================================================== -->
+                                                <div class="row">
+                                                    <!-- <div class="col-md-1"> -->
+                                                    <!-- </div> -->
+                                                    <div class="col-md-12">
+                                                        <div class="card">
+                                                            <form class="form-horizontal" id="create_truck">
+                                                                <div class="card-body">
+                                                                    <h3 align="center" class="card-title">Add Truck</h3>
+                                                                    <div style="text-align: center;">
+                                                                        <img style="width: 35%;border-radius: 70px;"
+                                                                            src="images/truck.png" alt="homepage"
+                                                                            class="light-logo" />
+                                                                    </div>
+                                                                    <br>
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group row">
+                                                                                <label for="truck_unit"
+                                                                                    class="col-sm-3 control-label col-form-label">Truck Unit</label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="truck_unit" value=""
+                                                                                        id="truck_unit">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="vehicle_type"
+                                                                                    class="col-sm-3 control-label col-form-label">Vehicle
+                                                                                    Type # Annexure A </label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="vehicle_type" value=""
+                                                                                        id="vehicle_type">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="vin_number"
+                                                                                    class="col-sm-3 control-label col-form-label">VIN
+                                                                                    Number</label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="vin_number" value=""
+                                                                                        id="vin_number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="license_plate_number"
+                                                                                    class="col-sm-3 control-label col-form-label">License Plate Number</label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="license_plate_number"
+                                                                                        value=""
+                                                                                        id="license_plate_number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="state"
+                                                                                    class="col-sm-3 control-label col-form-label">State
+                                                                                </label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="state" value=""
+                                                                                        id="state">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="rin"
+                                                                                    class="col-sm-3 control-label col-form-label">RIN
+                                                                                </label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control" name="rin"
+                                                                                        value="" id="rin">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="fuel_card"
+                                                                                    class="col-sm-3 control-label col-form-label">Fuel Card Assigned </label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="fuel_card" value=""
+                                                                                        id="fuel_card">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="ip_pass"
+                                                                                    class="col-sm-3 control-label col-form-label">Ip Pass Transponder </label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="ip_pass" value=""
+                                                                                        id="ip_pass">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group row">
+                                                                                <label for="bridge_transponder"
+                                                                                    class="col-sm-3 control-label col-form-label">Ambassador Bridge Transponder</label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="bridge_transponder"
+                                                                                        value=""
+                                                                                        id="bridge_transponder">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="    annual_safety_current"
+                                                                                    class="col-sm-3 control-label col-form-label">Annnual Safety (Current Year)</label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control mydatepicker"
+                                                                                        name="annual_safety_current"
+                                                                                        value=""
+                                                                                        id="   annual_safety_current">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="annual_safety_current"
+                                                                                    class="col-sm-3 control-label col-form-label">Annnual Safety (Current Year) Attachment
+                                                                                </label>
+                                                                                <div class="col-md-9">
+
+                                                                                    <input
+                                                                                        id="annual_safety_current_attachment_insert"
+                                                                                        type="file"
+                                                                                        accept="application/pdf"
+                                                                                        onchange="convertToBase64('annual_safety_current_attachment_insert','annual_safety_current_attachment_insert_file');" />
+                                                                                    <input type="hidden"
+                                                                                        name="annual_safety_current_attachment_file"
+                                                                                        id="annual_safety_current_attachment_insert_file">
+                                                                                    <!-- <a target="_blank" id="annual_safety_current_attachment_file_link" href="">View</a> -->
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="annual_safety_last"
+                                                                                    class="col-sm-3 control-label col-form-label">Annnual Safety ( Last Year ) </label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control mydatepicker"
+                                                                                        name="annual_safety_last"
+                                                                                        value=""
+                                                                                        id="annual_safety_last">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="incorporation_name"
+                                                                                    class="col-sm-3 control-label col-form-label">Annnual Safety ( Last Year )
+                                                                                    Atachment</label>
+                                                                                <div class="col-md-9">
+
+                                                                                    <input
+                                                                                        id="annual_safety_last_attachment_insert"
+                                                                                        type="file"
+                                                                                        accept="application/pdf"
+                                                                                        onchange="convertToBase64('annual_safety_last_attachment_insert','annual_safety_last_attachment_insert_file');" />
+                                                                                    <input type="hidden"
+                                                                                        name="annual_safety_last_attachment_file"
+                                                                                        id="annual_safety_last_attachment_insert_file">
+                                                                                    <!-- <a target="_blank" id="annual_safety_current_attachment_file_link" href="">View</a> -->
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="preventive_maintenance"
+                                                                                    class="col-sm-3 control-label col-form-label">Preventive Maintenance </label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control mydatepicker"
+                                                                                        name="preventive_maintenance"
+                                                                                        value=""
+                                                                                        id="preventive_maintenance">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="preventive_maintenance"
+                                                                                    class="col-sm-3 control-label col-form-label">Preventive Maintenance Atachment</label>
+                                                                                <div class="col-md-9">
+
+                                                                                    <input
+                                                                                        id="preventive_maintenance_attachment_insert"
+                                                                                        type="file"
+                                                                                        accept="application/pdf"
+                                                                                        onchange="convertToBase64('preventive_maintenance_attachment_insert','preventive_maintenance_attachment_insert_file');" />
+                                                                                    <input type="hidden"
+                                                                                        name="preventive_maintenance_attachment_file"
+                                                                                        id="preventive_maintenance_attachment_insert_file">
+                                                                                    <!-- <a target="_blank" id="annual_safety_current_attachment_file_link" href="">View</a> -->
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="nextyearDate"
+                                                                                    class="col-sm-3 control-label col-form-label">Next
+                                                                                    year </label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control nextyearDate"
+                                                                                        id="nextyearDate"
+                                                                                        name="nextyearDate" value="">
+                                                                                    <div class="input-group-append">
+                                                                                        <!-- <span class="input-group-text"><i class="fa fa-calendar"></i></span> -->
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+
+
+                                                                        </div>
+
+
+
+
+                                                                    </div>
+                                                                    <div class="border-top">
+                                                                        <div style="text-align: center;"
+                                                                            class="card-body">
+                                                                            <button type="Submit"
+                                                                                class="btn btn-primary">Add</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <!-- <button type="button" class="btn btn-info waves-effect" id="next_btn">Next</button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <!-- create truck -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- End Container fluid  -->
+                            <!-- ============================================================== -->
+                            <!-- ============================================================== -->
+                            <!-- footer -->
+                            <!-- ============================================================== -->
+                            <footer class="footer text-center">
+                                <!-- All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a> -->
+                            </footer>
+                            <!-- ============================================================== -->
+                            <!-- End footer -->
+                            <!-- ============================================================== -->
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- End Page wrapper  -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Wrapper -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <%- include('includes/footer.ejs') %>
+                        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+                        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+                        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+                        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                        <script>
+
+
+
+                            /****************************************
+                             *       Basic Table                   *
+                             ****************************************/
+                            // $('#zero_config').DataTable();
+
+
+                            $(document).on('click', '.activecheckbox', function () {
+                                let id = $(this).attr('data-id');
+                                let activeStatus;
+                                // alert(id)
+                                if (this.checked == true) {
+                                    activeStatus = 0
+                                } else {
+                                    activeStatus = 1
+                                }
+                                // alert(activeStatus)
+                                // return false
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You Want update settings?",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, Update it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+
+
+                                        $.ajax({
+                                            url: "/superadmintrukactive",
+                                            type: "POST",
+                                            data: { id: id, activeStatus: activeStatus },
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    }); 
+                                                    setTimeout(function () {
+                                                        window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+
+
+
+                            $(document).ready(function () {
+
+                                /*datwpicker*/
+                                jQuery('.nextyearDate').datepicker({
+                                    format: 'dd/mm/yyyy',
+                                });
+                                jQuery('.mydatepicker').datepicker({
+                                    format: 'dd/mm/yyyy',
+                                });
+                                jQuery('#datepicker-autoclose').datepicker({
+                                    autoclose: true,
+                                    todayHighlight: true
+                                });
+
+                                $("#create_truck_button").click(function () {
+                                    $('body #module_content_modal').modal('show');
+                                });
+
+                                let customer = $('#listtruck').DataTable({
+                                    processing: true,
+                                    serverSide: true,
+                                    order: [[0, 'ASC']],
+                                    lengthMenu: [[10, 50, 100, 250, 500, 1000], [10, 50, 100, 250, 500, 1000]],
+                                    pageLength: 10,
+                                    searching: true,
+                                    ajax: {
+                                        url: "/getTruck",
+                                        data: function (data) {
+                                            // data.search_key = $("#searchKey").val(),
+                                            // data.search_val = $("#searchVal").val()
+                                        },
+                                        type: "GET",
+                                    },
+                                    columns: [
+                                        { "data": "slno" },
+                                        { "data": "truck_unit" },
+                                        { "data": "vehicle_type" },
+                                        { "data": "vin_number" },
+                                        { "data": "active" },
+                                        { "data": "action" }
+                                    ],
+                                    select: true
+                                });
+
+
+                            });
+
+                            $(document).on('click', '.viewmodalclass', function () {
+                                // alert('test')
+                                let id = $(this).attr('data-id');
+                                // alert(id)
+                                // console.log($(this).attr("data-id"));
+                                $.ajax({
+                                    url: "/editTruck",
+                                    type: "GET",
+                                    data: { id: id },
+                                    success: function (data) {
+                                        console.log(data.data);
+                                        if (data.data.id != "") {
+                                            $('body #viewmodal #view_truck_details #id').val(data.data.id);
+                                            $('body #viewmodal #view_truck_details #truck_unit').val(data.data.truck_unit);
+                                            $('body #viewmodal #view_truck_details #vehicle_type').val(data.data.vehicle_type);
+                                            $('body #viewmodal #view_truck_details #vin_number').val(data.data.vin_number);
+                                            $('body #viewmodal #view_truck_details #license_plate_number').val(data.data.license_plate_number);
+                                            $('body #viewmodal #view_truck_details #state').val(data.data.state);
+                                            $('body #viewmodal #view_truck_details #rin').val(data.data.rin);
+                                            $('body #viewmodal #view_truck_details #fuel_card').val(data.data.fuel_card);
+                                            $('body #viewmodal #view_truck_details #ip_pass').val(data.data.ip_pass);
+                                            $('body #viewmodal #view_truck_details #bridge_transponder').val(data.data.bridge_transponder);
+                                            $('body #viewmodal #view_truck_details #annual_safety_current').val(data.data.annual_safety_current);
+                                            $('body #viewmodal #view_truck_details #annual_safety_last').val(data.data.annual_safety_last);
+                                            if (data.data.annual_safety_current_attachment != "") {
+                                                let saf_current = 'uploads/attachment/truck_annual_safety_current/' + data.data.annual_safety_current_attachment;
+                                                $("#viewmodal #view_truck_details #annual_safety_current_attachment_file_link_view").attr("href", saf_current);
+                                            } else {
+                                                $("#annual_safety_current_attachment_file_link_view").hide();
+                                            }
+                                            if (data.data.annual_safety_last_attachment != "") {
+                                                let saf_last = 'uploads/attachment/truck_annual_safety_last/' + data.data.annual_safety_last_attachment;
+                                                $("#viewmodal #view_truck_details #annual_safety_last_attachment_file_link_view").attr("href", saf_last);
+                                            } else {
+                                                $("#annual_safety_last_attachment_file_link_view").hide();
+                                            }
+
+                                            if (data.data.preventive_maintenance_attachment != "") {
+                                                let saf_last = 'uploads/attachment/truck_preventive_maintenance_attachment/' + data.data.preventive_maintenance_attachment;
+                                                $("#viewmodal #view_truck_details #preventive_maintenance_attachment_file_link_view").attr("href", saf_last);
+                                            } else {
+                                                $("#preventive_maintenance_attachment_file_link_view").hide();
+                                            }
+
+                                            $('body #viewmodal #view_truck_details #preventive_maintenance').val(data.data.preventive_maintenance);
+                                            $('body #viewmodal #view_truck_details #nextyearDate').val(data.data.nextyearDate);
+                                            $('body #viewmodal').modal('show');
+                                        } else {
+                                            // Swal.fire('Any fool can use a computer')
+                                            Swal.fire({
+                                                title: 'Error!',
+                                                text: 'Something went wrong',
+                                                icon: 'error',
+                                                confirmButtonText: 'Cool'
+                                            })
+                                            // window.location = "/";
+                                        }
+
+                                    }
+                                });
+                            });
+
+                            $(document).on('click', '.editmodalclass', function () {
+                                // alert('test')
+                                let id = $(this).attr('data-id');
+                                // alert(id)
+                                // console.log($(this).attr("data-id"));
+                                $.ajax({
+                                    url: "/editTruck",
+                                    type: "GET",
+                                    data: { id: id },
+                                    success: function (data) {
+                                        console.log(data);
+                                        if (data.data.id != "") {
+                                            $('body #editmodal #edit_truck_details #id').val(data.data.id);
+                                            $('body #editmodal #edit_truck_details #truck_unit').val(data.data.truck_unit);
+                                            $('body #editmodal #edit_truck_details #vehicle_type').val(data.data.vehicle_type);
+                                            $('body #editmodal #edit_truck_details #vin_number').val(data.data.vin_number);
+                                            $('body #editmodal #edit_truck_details #license_plate_number').val(data.data.license_plate_number);
+                                            $('body #editmodal #edit_truck_details #state').val(data.data.state);
+                                            $('body #editmodal #edit_truck_details #rin').val(data.data.rin);
+                                            $('body #editmodal #edit_truck_details #fuel_card').val(data.data.fuel_card);
+                                            $('body #editmodal #edit_truck_details #ip_pass').val(data.data.ip_pass);
+                                            $('body #editmodal #edit_truck_details #bridge_transponder').val(data.data.bridge_transponder);
+                                            $('body #editmodal #edit_truck_details #annual_safety_current').val(data.data.annual_safety_current);
+                                            $('body #editmodal #edit_truck_details #annual_safety_last').val(data.data.annual_safety_last);
+                                            if (data.data.annual_safety_current_attachment != "") {
+                                                let saf_current = 'uploads/attachment/truck_annual_safety_current/' + data.data.annual_safety_current_attachment;
+                                                $("#editmodal #edit_truck_details #annual_safety_current_attachment_file_link_edit").attr("href", saf_current);
+                                            } else {
+                                                $("#annual_safety_current_attachment_file_link_edit").hide();
+                                            }
+                                            if (data.data.annual_safety_last_attachment != "") {
+                                                let saf_last = 'uploads/attachment/truck_annual_safety_last/' + data.data.annual_safety_last_attachment;
+                                                $("#editmodal #edit_truck_details #annual_safety_last_attachment_file_link_edit").attr("href", saf_last);
+                                            } else {
+                                                $("#annual_safety_last_attachment_file_link_edit").hide();
+                                            }
+
+                                            if (data.data.preventive_maintenance_attachment != "") {
+                                                let saf_last = 'uploads/attachment/truck_preventive_maintenance_attachment/' + data.data.preventive_maintenance_attachment;
+                                                $("#editmodal #edit_truck_details #preventive_maintenance_attachment_file_link_edit").attr("href", saf_last);
+                                            } else {
+                                                $("#preventive_maintenance_attachment_file_link_edit").hide();
+                                            }
+
+                                            $('body #editmodal #edit_truck_details #preventive_maintenance').val(data.data.preventive_maintenance);
+                                            $('body #editmodal #edit_truck_details #nextyearDate').val(data.data.nextyearDate);
+                                            $('body #editmodal').modal('show');
+                                        } else {
+                                            // Swal.fire('Any fool can use a computer')
+                                            Swal.fire({
+                                                title: 'Error!',
+                                                text: 'Something went wrong',
+                                                icon: 'error',
+                                                confirmButtonText: 'Cool'
+                                            })
+                                            // window.location = "/";
+                                        }
+
+                                    }
+                                });
+                            });
+
+
+                            $(document).on('click', '#deletetruck', function () {
+                                let id = $(this).attr('data-id');
+
+                                // alert(id)
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to revert this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, delete it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+
+
+                                        $.ajax({
+                                            url: "/deleteTruck",
+                                            type: "POST",
+                                            data: { id: id },
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    }); setTimeout(function () {
+                                                        window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+
+
+                            function convertToBase64(inputfile, parms) {
+                                //Read File
+                                // alert(inputfile)
+                                // alert(parms)
+
+                                var selectedFile = document.getElementById(inputfile).files;
+                                console.log(selectedFile);
+                                //Check File is not Empty
+                                if (selectedFile.length > 0) {
+                                    // Select the very first file from list
+                                    var fileToLoad = selectedFile[0];
+                                    var filesize = selectedFile[0].size;
+                                    if (filesize <= '2069405') {
+                                        console.log(filesize);
+                                        // FileReader function for read the file.
+                                        var fileReader = new FileReader();
+                                        var base64;
+                                        // Onload of file read the file content
+                                        fileReader.onload = function (fileLoadedEvent) {
+                                            base64 = fileLoadedEvent.target.result;
+                                            // Print data in console
+                                            console.log(parms);
+                                            $("#" + parms).val(base64);
+                                            var div = document.getElementById(parms);
+                                            div.innerHTML += base64;
+
+                                        };
+                                        // Convert data to base64
+                                        fileReader.readAsDataURL(fileToLoad);
+                                    } else {
+                                        Swal.fire(
+                                            'Too Big!',
+                                            'Upload image size within 2 MB.',
+                                            'danger'
+                                        )
+                                        return false;
+                                    }
+                                }
+                            }
+
+
+
+                            $("#edit_truck").submit(function (event) {
+                                event.preventDefault();
+                                var values = {};
+                                $.each($('#edit_truck').serializeArray(), function (i, field) {
+                                    values[field.name] = field.value;
+                                    // console.log(values[field.name]);
+                                });
+
+                                // var id = getValue("name");
+                                console.log(values);
+                                // let license_attachment_file_edit = $("#license_attachment_file_edit").val();
+                                //     console.log(license_attachment_file_edit);
+                                // console.log(datas.getAll.name);
+
+                                let ab = $('body #editmodal #edit_truck_details #annual_safety_current_attachment_file').val();
+                                // alert(ab)
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to update this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, update it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        $("#submitBtn").text('Please wait');
+                                        $("#submitBtn").attr('disabled', true);
+                                        $.ajax({
+                                            url: "/updateTruck",
+                                            type: "POST",
+                                            data: values,
+                                            //  data : {image : ab },  
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    }); setTimeout(function () {
+                                                        window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+
+
+                            $("#create_truck").submit(function (event) {
+                                event.preventDefault();
+                                var values = {};
+                                $.each($('#create_truck').serializeArray(), function (i, field) {
+                                    values[field.name] = field.value;
+                                    // console.log(values[field.name]);
+                                });
+                                // console.log(values);
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to update this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, update it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        $("#submitBtn").text('Please wait');
+                                        $("#submitBtn").attr('disabled', true);
+                                        $.ajax({
+                                            url: "/createTruck",
+                                            type: "POST",
+                                            data: values,
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    }); setTimeout(function () {
+                                                        window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+
+
+
+
+                        </script>
+                        <script src="sweetAlert/sweetalert2.min.js"></script>
+</body>
+
+</html>

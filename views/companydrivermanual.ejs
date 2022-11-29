@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <style type="text/css">
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+		.float_left{
+			float:left;
+		}
+		.form-group{
+			width:100%
+		}
+		.col-md-1{
+		  max-width:11%
+		}
+		.l_10 {
+			margin-left: 10px;
+		}
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarCompany.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" va id="company_id" value="<%- company_id %>" name="company_id">
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+
+                                    <!-- <div class="col-md-6">
+                                        Select Company
+                                        <select class="form-select selectboxcss" name="exptype" id="exptype">
+                                            <option value="">Select Company</option>
+                                            <% getCompanydata.forEach(function(row){ %>
+                                                <option value="<%= row.id %>">
+                                                    <%= row.name %>
+                                                </option>
+                                                <% }) %>
+
+                                        </select>
+                                    </div> -->
+
+                                </div>
+                                <!-- <button class="btn btn-success" id="create_trailer_button"> Add Trailer <span class="glyphicon glyphicon-edit"></span>   <i style="font-size: 15px;" class="fas fa-plus"></i></button> -->
+                                <h5 align="center" class="card-title">
+                                    <!-- <%- title %> -->
+                                </h5>
+                                <div class="table-responsive">
+                                    <table id="updatedrivermanualDetails" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:10%">Id</th>
+                                                <th style="width:15%">First Name</th>
+                                                <th style="width:15%">Approve Status</th>
+                                                <th>Result</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- view modal -->
+
+
+
+                        <div id="viewmodal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">View Driver Interview Questions</h3>
+                                        <h4 align="center" class="card-title">
+
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+
+                                                    <!-- <form class="form-horizontal" id="updateQuestions" style="background: #27a9e324;border-radius: 35px;"> -->
+                                                    <div class="card-body" id="updateQuestions_details_view">
+                                                        <span>Approvals Status: <h5 id="approveStatus"></h5></span>
+                                                        <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                                        <div style="text-align: center;">
+                                                            <span>
+                                                                <h4></h4>
+                                                            </span>
+                                                            <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                                        </div>
+                                                        <br>
+
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="driverId" value="" id="driverId">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="company_id" value="" id="company_id">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="approveStatus" value="1" id="approveStatus">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="actionData" value="" id="actionData">
+                                                        <div class="row">
+
+
+
+
+
+                                                            <div class="col-md-2">
+
+
+                                                            </div>
+
+                                                            <div class="col-md-8">
+                                                                <div class="col-md-8 float_left">
+																	<b>Name of Driver : </b><span id="vdriverName"></span> 
+																</div>
+																<div class="col-md-4 float_left">
+																	<b>Result : </b><span class="no_result"></span><b class="l_10"> Right :</b> <span id="vans_right"></span>
+																	<b  class="l_10"> Wrong :</b><span id="vans_wrong"></span>
+																</div><br><br><br>
+
+                                                                <div class="form-group row">
+                                                                    <label for="question1"
+                                                                        class="col-sm-3 control-label col-form-label">Q1.In the event a driver receives a speed infraction what are the disciplinary action will be taken?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question1" value="" id="question1">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans1" name="rightorwrong[1]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans_1" name="rightorwrong[1]" value="0"> No
+																		</div>
+																	</div>
+																</div>
+
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question2"
+                                                                        class="col-sm-3 control-label col-form-label">Q2.How many duty cycles are available? What are they? </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question2" value="" id="question2">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans2" name="rightorwrong[2]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans_2" name="rightorwrong[2]" value="0"> No
+																		</div>
+																	</div>
+																</div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question3"
+                                                                        class="col-sm-3 control-label col-form-label">Q3.What is preventable Accident?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question3" value="" id="question3">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans3" name="rightorwrong[3]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans_3" name="rightorwrong[3]" value="0"> No
+																		</div>
+																	</div>
+																</div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question4"
+                                                                        class="col-sm-3 control-label col-form-label">Q4.What are the basic causes of an accidents?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question4" value="" id="question4">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans4" name="rightorwrong[4]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans_4" name="rightorwrong[4]" value="0"> No
+																		</div>
+																	</div>
+																</div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question5"
+                                                                        class="col-sm-3 control-label col-form-label">Q5.What is securing the scene?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question5" value="" id="question5">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans5" name="rightorwrong[5]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans_5" name="rightorwrong[5]" value="0"> No
+																		</div>
+																	</div>
+																</div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question6"
+                                                                        class="col-sm-3 control-label col-form-label">Q6. Am I allowed to drive a vehicle above the speed of 105 Km/H?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question6" value="" id="question6">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans6" name="rightorwrong[6]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans_6" name="rightorwrong[6]" value="0"> No
+																		</div>
+																	</div>
+																</div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question7"
+                                                                        class="col-sm-3 control-label col-form-label">Q7. Am I allowed to disconnect dash cams while on duty or off duty?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question7" value="" id="question7">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans7" name="rightorwrong[7]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans_7" name="rightorwrong[7]" value="0"> No
+																		</div>
+																	</div>
+																</div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question8"
+                                                                        class="col-sm-3 control-label col-form-label">Q8.Am I allowed take less rest to cover the destination quickly?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question8" value="" id="question8">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans8" name="rightorwrong[8]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans_8" name="rightorwrong[8]" value="0"> No
+																		</div>
+																	</div>
+																</div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question9"
+                                                                        class="col-sm-3 control-label col-form-label">Q9.What is cargo securement?.</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question9" value="" id="question9">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans9" name="rightorwrong[9]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans_9" name="rightorwrong[9]" value="0"> No
+																		</div>
+																	</div>
+																</div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question10"
+                                                                        class="col-sm-3 control-label col-form-label">Q10.Am I allowed to drive entire 14 hours during 14 hours on duty time?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question10" value="" id="question10">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans10" name="rightorwrong[10]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans_10" name="rightorwrong[10]" value="0"> No
+																		</div>
+																	</div>
+																</div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question11"
+                                                                        class="col-sm-3 control-label col-form-label">Q11.How many hours can I drive during 14 hours of on duty time?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question11" value="" id="question11">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans11" name="rightorwrong[11]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans_11" name="rightorwrong[11]" value="0"> No
+																		</div>
+																	</div>
+																</div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question12"
+                                                                        class="col-sm-3 control-label col-form-label">Q12.How many hours of off duty is required in 16 hours working window?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question12" value="" id="question12">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans12" name="rightorwrong[12]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="vans_12" name="rightorwrong[12]" value="0"> No
+																		</div>
+																	</div>
+																</div>
+																<br>
+                                                    <div class="form-group row">
+                                                        <label for="question10"
+                                                            class="col-sm-3 control-label col-form-label">Q13. What is the minimum time for a rest break?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question13"
+                                                                value="" id="question13">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans13" name="rightorwrong[13]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_13" name="rightorwrong[13]" value="0"> No
+															</div>
+														</div>
+													</div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question11"
+                                                            class="col-sm-3 control-label col-form-label">Q14. Can I switch cycle? </label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question14"
+                                                                value="" id="question14">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans14" name="rightorwrong[14]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_14" name="rightorwrong[14]" value="0"> No
+															</div>
+														</div>
+													</div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q15. What is Cycle reset?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question15"
+                                                                value="" id="question15">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans15" name="rightorwrong[15]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_15" name="rightorwrong[15]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question11"
+                                                            class="col-sm-3 control-label col-form-label">Q16. What is the limit of personal conveyance?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question16"
+                                                                value="" id="question16">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans16" name="rightorwrong[16]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_16" name="rightorwrong[16]" value="0"> No
+															</div>
+														</div>
+													</div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q17. What if I exceed the limit of personal conveyance?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question17"
+                                                                value="" id="question17">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans17" name="rightorwrong[17]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_17" name="rightorwrong[17]" value="0"> No
+															</div>
+														</div>
+													</div>
+													 <br>
+                                                    <div class="form-group row">
+                                                        <label for="question10"
+                                                            class="col-sm-3 control-label col-form-label">Q18. Am I allowed to split Sleeper Berth times into 2?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question18"
+                                                                value="" id="question18">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans18" name="rightorwrong[18]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_18" name="rightorwrong[18]" value="0"> No
+															</div>
+														</div>
+													</div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question11"
+                                                            class="col-sm-3 control-label col-form-label">Q19. Am I allowed to drive a motor vehicle without doing a PTI?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question19"
+                                                                value="" id="question19">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans19" name="rightorwrong[19]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_19" name="rightorwrong[19]" value="0"> No
+															</div>
+														</div>
+													</div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q20. What are the checks needs to be done in a pre‐trip inspection?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question20"
+                                                                value="" id="question20">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans20" name="rightorwrong[20]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_20" name="rightorwrong[20]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q21. Can a driver drive the vehicle with a passenger?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question21"
+                                                                value="" id="question21">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans21" name="rightorwrong[21]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_21" name="rightorwrong[21]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q22. What is an unsafe act?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question22"
+                                                                value="" id="question22">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans22" name="rightorwrong[22]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_22" name="rightorwrong[22]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q23. What is jackknifing?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question23"
+                                                                value="" id="question23">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans23" name="rightorwrong[23]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_23" name="rightorwrong[23]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q24. Why accident reporting is necessary?  </label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question24"
+                                                                value="" id="question24">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans24" name="rightorwrong[24]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_24" name="rightorwrong[24]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q25. What are information required post accident?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question25"
+                                                                value="" id="question25">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans25" name="rightorwrong[25]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_25" name="rightorwrong[25]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q26. Is it wise to accept guilt at the accident spot?  </label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question26"
+                                                                value="" id="question26">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans26" name="rightorwrong[26]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_26" name="rightorwrong[26]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q27. What is social media policy?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question27"
+                                                                value="" id="question27">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans27" name="rightorwrong[27]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_27" name="rightorwrong[27]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q28. What is Highway traffic act (HTA)?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question28"
+                                                                value="" id="question28">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans28" name="rightorwrong[28]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_28" name="rightorwrong[28]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q29. What is C‐ TPAT procedure?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question29"
+                                                                value="" id="question29">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans29" name="rightorwrong[29]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_29" name="rightorwrong[29]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q30. What is President’s Safety Award?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question30"
+                                                                value="" id="question30">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans30" name="rightorwrong[30]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_30" name="rightorwrong[30]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q31. What is Accident Reporting & Investigation Policy?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question31"
+                                                                value="" id="question31">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans31" name="rightorwrong[31]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_31" name="rightorwrong[31]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q32.  What are the accident investigation procedure?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question32"
+                                                                value="" id="question32">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans32" name="rightorwrong[32]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="vans_32" name="rightorwrong[32]" value="0"> No
+															</div>
+														</div>
+													</div>
+
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- </form> -->
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- edit modal -->
+
+                        <!-- edit modal -->
+
+
+
+                        <div id="editmodal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">Edit Driver Manual</h3>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+
+                                                    <form class="form-horizontal" id="updateQuestions"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="updateQuestions_details">
+                                                            <span>Approvals Status: <h5 id="approveStatus"></h5></span>
+                                                            <div class="col-md-6">
+                                                                <a class="btn btn-success" id="approve_button">Approve
+                                                                    <span class="glyphicon glyphicon-edit"></span> <i
+                                                                        style="font-size: 15px;"
+                                                                        class="fas fa-check"></i></a>
+                                                            </div>
+
+                                                            <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                                            <div style="text-align: center;">
+                                                                <span>
+                                                                    <h4></h4>
+                                                                </span>
+                                                                <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                                            </div>
+                                                            <br>
+
+                                                            <input type="hidden" class="form-control" name="driverId"
+                                                                value="" id="driverId">
+                                                            <input type="hidden" class="form-control" name="company_id"
+                                                                value="" id="company_id">
+                                                            <input type="hidden" class="form-control"
+                                                                name="approveStatus" value="1" id="approveStatus">
+                                                            <input type="hidden" class="form-control" name="actionData"
+                                                                value="" id="actionData">
+                                                            <div class="row">
+                                                                <div class="col-md-2"> </div>
+                                                                <div class="col-md-8">
+																	<div class="col-md-8 float_left">
+																		<b>Name of Driver : </b><span id="driverName"></span> 
+																	</div>
+																	<div class="col-md-4 float_left">
+																		<b>Result : </b><span class="no_result"></span><b class="l_10"> Right :</b> <span id="ans_right"></span>
+																		<b  class="l_10"> Wrong :</b><span id="ans_wrong"></span>
+																	</div>
+																	<br><br><br>
+                                                                  <div class="form-group row">
+                                                                    <label for="question1"
+                                                                        class="col-sm-3 control-label col-form-label">Q1.In the event a driver receives a speed infraction what are the disciplinary action will be taken?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question1" value="" id="question1">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																		<label class="col-md-3"> Is This Correct?</label>
+																		<div class="col-md-9">
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans1" name="rightorwrong[1]" value="1"> Yes
+																			</div>
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans_1" name="rightorwrong[1]" value="0"> No
+																			</div>
+																		</div>
+                                                                </div>
+
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question2"
+                                                                        class="col-sm-3 control-label col-form-label">Q2.How many duty cycles are available? What are they? </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question2" value="" id="question2">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																		<label class="col-md-3"> Is This Correct?</label>
+																		<div class="col-md-9">
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans2" name="rightorwrong[2]"  value="1"> Yes
+																			</div>
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans_2" name="rightorwrong[2]" value="0"> No
+																			</div>
+																		</div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question3"
+                                                                        class="col-sm-3 control-label col-form-label">Q3.What is preventable Accident?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question3" value="" id="question3">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																		<label class="col-md-3"> Is This Correct?</label>
+																		<div class="col-md-9">
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans3" name="rightorwrong[3]" value="1"> Yes
+																			</div>
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans_3" name="rightorwrong[3]" value="0"> No
+																			</div>
+																		</div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question4"
+                                                                        class="col-sm-3 control-label col-form-label">Q4.What are the basic causes of an accidents?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question4" value="" id="question4">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																		<label class="col-md-3"> Is This Correct?</label>
+																		<div class="col-md-9">
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans4" name="rightorwrong[4]" value="1"> Yes
+																			</div>
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans_4" name="rightorwrong[4]" value="0"> No
+																			</div>
+																		</div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question5"
+                                                                        class="col-sm-3 control-label col-form-label">Q5.What is securing the scene?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question5" value="" id="question5">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																		<label class="col-md-3"> Is This Correct?</label>
+																		<div class="col-md-9">
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans5" name="rightorwrong[5]" value="1"> Yes
+																			</div>
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans_5" name="rightorwrong[5]" value="0"> No
+																			</div>
+																		</div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question6"
+                                                                        class="col-sm-3 control-label col-form-label">Q6. Am I allowed to drive a vehicle above the speed of 105 Km/H?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question6" value="" id="question6">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																		<label class="col-md-3"> Is This Correct?</label>
+																		<div class="col-md-9">
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans6" name="rightorwrong[6]" value="1"> Yes
+																			</div>
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans_6" name="rightorwrong[6]" value="0"> No
+																			</div>
+																		</div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question7"
+                                                                        class="col-sm-3 control-label col-form-label">Q7. Am I allowed to disconnect dash cams while on duty or off duty?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question7" value="" id="question7">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																		<label class="col-md-3"> Is This Correct?</label>
+																		<div class="col-md-9">
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans7" name="rightorwrong[7]" value="1"> Yes
+																			</div>
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans_7" name="rightorwrong[7]" value="0"> No
+																			</div>
+																		</div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question8"
+                                                                        class="col-sm-3 control-label col-form-label">Q8.Am I allowed take less rest to cover the destination quickly?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question8" value="" id="question8">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																		<label class="col-md-3"> Is This Correct?</label>
+																		<div class="col-md-9">
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans8" name="rightorwrong[8]" value="1"> Yes
+																			</div>
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans_8" name="rightorwrong[8]" value="0"> No
+																			</div>
+																		</div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question9"
+                                                                        class="col-sm-3 control-label col-form-label">Q9.What is cargo securement?.</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question9" value="" id="question9">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																		<label class="col-md-3"> Is This Correct?</label>
+																		<div class="col-md-9">
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans9" name="rightorwrong[9]" value="1"> Yes
+																			</div>
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans_9" name="rightorwrong[9]" value="0"> No
+																			</div>
+																		</div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question10"
+                                                                        class="col-sm-3 control-label col-form-label">Q10.Am I allowed to drive entire 14 hours during 14 hours on duty time?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question10" value="" id="question10">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																		<label class="col-md-3"> Is This Correct?</label>
+																		<div class="col-md-9">
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans10" name="rightorwrong[10]" value="1"> Yes
+																			</div>
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans_10" name="rightorwrong[10]" value="0"> No
+																			</div>
+																		</div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question11"
+                                                                        class="col-sm-3 control-label col-form-label">Q11.How many hours can I drive during 14 hours of on duty time?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question11" value="" id="question11">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																		<label class="col-md-3"> Is This Correct?</label>
+																		<div class="col-md-9">
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans11" name="rightorwrong[11]" value="1"> Yes
+																			</div>
+																			<div class="col-md-1 float_left">
+																				<input type="radio"  id="ans_11" name="rightorwrong[11]" value="0"> No
+																			</div>
+																		</div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="question12"
+                                                                        class="col-sm-3 control-label col-form-label">Q12.How many hours of off duty is required in 16 hours working window?</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="question12" value="" id="question12">
+                                                                    </div>
+                                                                </div>
+																<div class="form-group row">
+																	<label class="col-md-3"> Is This Correct?</label>
+																	<div class="col-md-9">
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="ans12" name="rightorwrong[12]" value="1"> Yes
+																		</div>
+																		<div class="col-md-1 float_left">
+																			<input type="radio"  id="ans_12" name="rightorwrong[12]" value="0"> No
+																		</div>
+																	</div>
+                                                                </div>
+																<br>
+                                                    <div class="form-group row">
+                                                        <label for="question10"
+                                                            class="col-sm-3 control-label col-form-label">Q13. What is the minimum time for a rest break?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question13"
+                                                                value="" id="question13">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans13" name="rightorwrong[13]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_13" name="rightorwrong[13]" value="0"> No
+															</div>
+														</div>
+													</div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question11"
+                                                            class="col-sm-3 control-label col-form-label">Q14. Can I switch cycle? </label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question14"
+                                                                value="" id="question14">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans14" name="rightorwrong[14]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_14" name="rightorwrong[14]" value="0"> No
+															</div>
+														</div>
+													</div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q15. What is Cycle reset?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question15"
+                                                                value="" id="question15">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans15" name="rightorwrong[15]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_15" name="rightorwrong[15]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question11"
+                                                            class="col-sm-3 control-label col-form-label">Q16. What is the limit of personal conveyance?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question16"
+                                                                value="" id="question16">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans16" name="rightorwrong[16]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_16" name="rightorwrong[16]" value="0"> No
+															</div>
+														</div>
+													</div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q17. What if I exceed the limit of personal conveyance?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question17"
+                                                                value="" id="question17">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans17" name="rightorwrong[17]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_17" name="rightorwrong[17]" value="0"> No
+															</div>
+														</div>
+													</div>
+													 <br>
+                                                    <div class="form-group row">
+                                                        <label for="question10"
+                                                            class="col-sm-3 control-label col-form-label">Q18. Am I allowed to split Sleeper Berth times into 2?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question18"
+                                                                value="" id="question18">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans18" name="rightorwrong[18]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_18" name="rightorwrong[18]" value="0"> No
+															</div>
+														</div>
+													</div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question11"
+                                                            class="col-sm-3 control-label col-form-label">Q19. Am I allowed to drive a motor vehicle without doing a PTI?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question19"
+                                                                value="" id="question19">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans19" name="rightorwrong[19]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_19" name="rightorwrong[19]" value="0"> No
+															</div>
+														</div>
+													</div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q20. What are the checks needs to be done in a pre‐trip inspection?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question20"
+                                                                value="" id="question20">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans20" name="rightorwrong[20]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_20" name="rightorwrong[20]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q21. Can a driver drive the vehicle with a passenger?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question21"
+                                                                value="" id="question21">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans21" name="rightorwrong[21]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_21" name="rightorwrong[21]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q22. What is an unsafe act?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question22"
+                                                                value="" id="question22">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans22" name="rightorwrong[22]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_22" name="rightorwrong[22]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q23. What is jackknifing?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question23"
+                                                                value="" id="question23">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans23" name="rightorwrong[23]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_23" name="rightorwrong[23]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q24. Why accident reporting is necessary?  </label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question24"
+                                                                value="" id="question24">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans24" name="rightorwrong[24]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_24" name="rightorwrong[24]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q25. What are information required post accident?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question25"
+                                                                value="" id="question25">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans25" name="rightorwrong[25]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_25" name="rightorwrong[25]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q26. Is it wise to accept guilt at the accident spot?  </label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question26"
+                                                                value="" id="question26">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans26" name="rightorwrong[26]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_26" name="rightorwrong[26]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q27. What is social media policy?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question27"
+                                                                value="" id="question27">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans27" name="rightorwrong[27]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_27" name="rightorwrong[27]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q28. What is Highway traffic act (HTA)?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question28"
+                                                                value="" id="question28">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans28" name="rightorwrong[28]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_28" name="rightorwrong[28]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q29. What is C‐ TPAT procedure?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question29"
+                                                                value="" id="question29">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans29" name="rightorwrong[29]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_29" name="rightorwrong[29]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q30. What is President’s Safety Award?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question30"
+                                                                value="" id="question30">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans30" name="rightorwrong[30]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_30" name="rightorwrong[30]" value="0"> No
+															</div>
+														</div>
+													</div>
+													<br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">Q31. What is Accident Reporting & Investigation Policy?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question31"
+                                                                value="" id="question31">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans31" name="rightorwrong[31]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_31" name="rightorwrong[31]" value="0"> No
+															</div>
+													</div>
+                                                    <div class="form-group row" >
+                                                        <label for="question12" 
+                                                            class="col-sm-3 control-label col-form-label">Q32.  What are the accident investigation procedure?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question32"
+                                                                value="" id="question32">
+                                                        </div>
+                                                    </div>
+													<div class="form-group row">
+														<label class="col-md-3"> Is This Correct?</label>
+														<div class="col-md-9">
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans32" name="rightorwrong[32]" value="1"> Yes
+															</div>
+															<div class="col-md-1 float_left">
+																<input type="radio"  id="ans_32" name="rightorwrong[32]" value="0"> No
+															</div>
+														</div>
+													</div>
+
+                                                                </div>
+
+                                                                <div class="col-md-2">
+
+
+                                                                </div>
+
+
+
+
+
+
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button type="Submit" id="submitBtn"
+                                                                    class="btn btn-primary">Update</button>
+                                                            </div>
+                                                        </div>
+                                                </div>
+
+                                                </form>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- edit modal -->
+
+
+
+
+
+
+
+
+
+
+                        <!-- create trailer -->
+
+
+
+
+
+                        <!-- ============================================================== -->
+                        <!-- End Page wrapper  -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Wrapper -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <%- include('includes/footer.ejs') %>
+                        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+                        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+                        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+
+                        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                        <script>
+
+
+
+                            /****************************************
+                             *       Basic Table                   *
+                             ****************************************/
+                            // $('#zero_config').DataTable();
+
+                            $(document).ready(function () {
+
+
+                                let date = new Date();
+                                var currentdate =
+                                    ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+                                    ("00" + date.getDate()).slice(-2) + "/" +
+                                    date.getFullYear();
+
+                                $(document).on('click', '#viewmodalid', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    // alert(id)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editdrivermanual",
+                                        type: "GET",
+                                        data: { id: id },
+                                        success: function (data) {
+                                          //  console.log(data);
+                                            if (data.status) {
+                                                let approveStatus;
+                                                if (data.data.approveStatus == 0) {
+													$('#vans_right').hide();
+													$('#vans_wrong').hide();
+													$('.no_result').show();
+													$('.l_10').hide();
+													$('.no_result').html('No Result');
+                                                    // alert(0)
+                                                    $('#approve_button').show()
+                                                    approveStatus = 'Waiting For admin approval'
+                                                } else {
+													$('#vans_right').show();
+													$('#vans_wrong').show();
+													$('.no_result').hide();
+													$('#vans_right').html(data.data.result);
+													$('#vans_wrong').html(32-data.data.result);
+                                                    // alert(1)
+                                                    $('#approve_button').hide()
+                                                    approveStatus = 'Approved'
+                                                }
+												console.log(data.data.rightorwrong);
+												if(data.data.rightorwrong != ''){
+													var right_wrongs = JSON.parse(data.data.rightorwrong);
+													if(right_wrongs.length>0){
+														for(i =0; i<right_wrongs.length;i++){
+															j = i +1;
+															if(right_wrongs[i] ==1){
+																$( "#vans"+j ).prop( "checked", true );
+															}
+															else{
+																$( "#vans_"+j ).prop( "checked", true );
+															}
+														}
+													}
+												}
+                                                $("body #updateQuestions_details_view #approveStatus").text(approveStatus);
+                                                $("body #updateQuestions_details_view #submitBtn").text('Update');
+                                                $('body #updateQuestions_details_view #actionData').val('Update');
+                                               // $('#vans_right').html(data.data.result);
+                                                //$('#vans_wrong').html(32-data.data.result);
+                                                $('body #updateQuestions_details_view #question1').val(data.data.question1).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question2').val(data.data.question2).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question3').val(data.data.question3).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question4').val(data.data.question4).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question5').val(data.data.question5).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question6').val(data.data.question6).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question7').val(data.data.question7).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question8').val(data.data.question8).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question9').val(data.data.question9).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question10').val(data.data.question10).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question11').val(data.data.question11).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question12').val(data.data.question12).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question13').val(data.data.question13).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question14').val(data.data.question14).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question15').val(data.data.question15).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question16').val(data.data.question16).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question17').val(data.data.question17).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question18').val(data.data.question18).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question19').val(data.data.question19).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question20').val(data.data.question20).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question21').val(data.data.question21).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question22').val(data.data.question22).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question23').val(data.data.question23).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question24').val(data.data.question24).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question25').val(data.data.question25).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question26').val(data.data.question26).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question27').val(data.data.question27).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question28').val(data.data.question28).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question29').val(data.data.question29).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question30').val(data.data.question30).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question31').val(data.data.question31).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details_view #question32').val(data.data.question32).attr('readonly', 'readonly');
+
+                                                $('body #viewmodal').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+
+                                $(document).on('click', '#editmodalid', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    // alert(id)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editdrivermanual",
+                                        type: "GET",
+                                        data: { id: id },
+                                        success: function (data) {
+                                            console.log(data);
+                                            if (data.status) {
+                                                let approveStatus;
+                                                if (data.data.approveStatus == 0) {
+													$('#ans_right').hide();
+													$('#ans_wrong').hide();
+													$('.no_result').show();
+													$('.l_10').hide();
+													$('.no_result').html('No Result');
+													$('#ans_right').hide();
+													$('#ans_wrong').hide();
+                                                    $('#approve_button').show()
+                                                    approveStatus = 'Waiting For admin approval'
+                                                } else {
+													$('#ans_right').show();
+													$('#ans_wrong').show();
+													$('.no_result').hide();
+													
+													$('#ans_right').html(data.data.result);
+													$('#ans_wrong').html(32-data.data.result);
+                                                    $('#approve_button').hide()
+                                                    approveStatus = 'Approved'
+                                                }
+												if(data.data.rightorwrong != ''){
+													var right_wrongs = JSON.parse(data.data.rightorwrong);
+													if(right_wrongs.length>0){
+														for(i =0; i<right_wrongs.length;i++){
+															j = i +1;
+															if(right_wrongs[i] ==1){
+																$( "#ans"+j ).prop( "checked", true );
+															}
+															else{
+																$( "#ans_"+j ).prop( "checked", true );
+															}
+														}
+													}
+												}
+                                                $("body #updateQuestions_details #commentsSection").html('<input required type="text" class="form-control" placeholder="Please enter comments this will help admin to approve this request" name="comment" value="" id="comments">');
+                                                $("body #updateQuestions_details #driverId").val(data.data.driverId);
+                                                $("body #updateQuestions_details #company_id").val(data.data.company_id);
+                                                $("body #updateQuestions_details #approveStatus").text(approveStatus);
+                                                $("body #updateQuestions_details #driverName").text(data.driverData.driver_name);
+                                                $("body #updateQuestions_details #submitBtn").text('Update');
+                                                $('body #updateQuestions_details #actionData').val('Update');
+												
+
+                                                $('body #updateQuestions_details #question1').val(data.data.question1).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question2').val(data.data.question2).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question3').val(data.data.question3).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question4').val(data.data.question4).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question5').val(data.data.question5).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question6').val(data.data.question6).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question7').val(data.data.question7).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question8').val(data.data.question8).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question9').val(data.data.question9).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question10').val(data.data.question10).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question11').val(data.data.question11).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question12').val(data.data.question12).attr('readonly', 'readonly');
+												$('body #updateQuestions_details #question13').val(data.data.question13).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question14').val(data.data.question14).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question15').val(data.data.question15).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question16').val(data.data.question16).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question17').val(data.data.question17).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question18').val(data.data.question18).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question19').val(data.data.question19).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question20').val(data.data.question20).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question21').val(data.data.question21).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question22').val(data.data.question22).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question23').val(data.data.question23).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question24').val(data.data.question24).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question25').val(data.data.question25).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question26').val(data.data.question26).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question27').val(data.data.question27).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question28').val(data.data.question28).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question29').val(data.data.question29).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question30').val(data.data.question30).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question31').val(data.data.question31).attr('readonly', 'readonly');
+                                                $('body #updateQuestions_details #question32').val(data.data.question32).attr('readonly', 'readonly');
+
+                                                $('body #editmodal').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // $("body #updateQuestions_details #submitBtn").text('Create');
+                                                // $('body #updateQuestions_details #actionData').val('Create');
+                                                // $("body #updateQuestions_details #fastCardAttachment_file_link").hide();
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+
+                            });
+
+							$(document).ready(function () {
+								let cmpid = $('body #company_id').val();
+								$('body #create_trailer #company_id').val(cmpid);
+								$("#create_trailer_button").show()
+								$("#updatedrivermanualDetails").dataTable().fnDestroy();
+								let customer = $('#updatedrivermanualDetails').DataTable({
+									processing: true,
+									serverSide: true,
+									order: [[0, 'ASC']],
+									lengthMenu: [[10, 50, 100, 250, 500, 1000], [10, 50, 100, 250, 500, 1000]],
+									pageLength: 10,
+									searching: true,
+									ajax: {
+										url: "/company_get_drivermanual",
+										data: function (data) {
+											data.cmpid = cmpid
+											//data.search_key = $("#searchKey").val(),
+											//data.search_val = $("#searchVal").val()
+										},
+										type: "GET",
+									},
+									columns: [
+									{ "data": "slno" },
+									{ "data": "driver_name" },
+									{ "data": "approve" },
+									{ "data": "result" },
+									{ "data": "action" }
+									],
+									select: true
+								});
+							});
+
+
+                            $(document).on('click', '#deletedriverDtls', function () {
+                                let id = $(this).attr('data-id');
+
+                                // alert(id)
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to revert this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, delete it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+
+
+                                        $.ajax({
+                                            url: "/companydeletedrivermanual",
+                                            type: "POST",
+                                            data: { id: id },
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    }); setTimeout(function () {
+                                                        window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+
+
+
+
+                            $(document).on('click', '#approve_button', function () {
+
+                                let id = $('body #updateQuestions_details #driverId').val();
+
+                                // alert(id)
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You want to approve this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, approve it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+
+
+                                        $.ajax({
+                                            url: "/companyapproveQuestions",
+                                            type: "POST",
+                                            data: { id: id },
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    });
+                                                    setTimeout(function () {
+                                                        window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+
+                            $("#updateQuestions").submit(function (event) {
+                                event.preventDefault();
+
+                                var values = {};
+                                $.each($('#updateQuestions').serializeArray(), function (i, field) {
+                                    values[field.name] = field.value;
+                                    // console.log(values[field.name]);
+                                });
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You want to update this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, update it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        $("#submitBtn").text('Please wait');
+                                        $("#submitBtn").attr('disabled', true);
+										 var form = $(this);
+                                        $.ajax({
+                                            url: "/updatedrivermanual",
+                                            type: "POST",
+											data: form.serialize(),
+                                           // data: values,
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    });
+                                                    setTimeout(function () {
+                                                       window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+
+
+
+
+
+                        </script>
+                        <script src="sweetAlert/sweetalert2.min.js"></script>
+</body>
+
+</html>

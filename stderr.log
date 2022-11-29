@@ -1,0 +1,2 @@
+Mon, 28 Nov 2022 17:36:37 GMT body-parser deprecated undefined extended: provide extended option at app.js:50:17
+(node:2074755) [SEQUELIZE0004] DeprecationWarning: A boolean value was passed to options.operatorsAliases. This is a no-op with v5 and should be removed.
