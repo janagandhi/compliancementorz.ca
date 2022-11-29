@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <style type="text/css">
+        .gap {
+            text-align: center;
+            background-color: #e2181870;
+
+        }
+
+        .thClass {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarDriver.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid" style="background-color: #fff; ">
+                        <div class="container-fluid" style="background-color: #fff; ">
+
+
+
+
+
+                            <div class="card-body">
+                                <div class="row p-b-30">
+                                    <div class="col-12">
+
+
+                                        <div class="card-body" id="updateEmployment_details">
+                                            <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                            <div style="text-align: center;">
+                                                <span>
+                                                    <!-- <h3>
+                                                        DRIVER ACKNOWLEDGEMENT
+                                                    </h3> -->
+                                                </span>
+                                                <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                            </div>
+                                            <br>
+
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+
+
+                                                    <input type="hidden" name="company_id" id="company_id"
+                                                        value="<%-company_id %>">
+                                                    <input type="hidden" name="driverId" id="driverId"
+                                                        value="<%-driverId %>">
+                                                    <input type="hidden" name="certificateDate" id="certificateDate"
+                                                        value="<%-certificateDate %>">
+                                                    <center>
+                                                        <h3>SCHEDULE “A” “1” <br>
+                                                            THE COMMERCIAL DRIVER’S LICENSE DRUG AND ALCOHOL
+                                                            CLEARINGHOUSE
+                                                            CONSENT FORM
+                                                        </h3>
+                                                    </center>
+                                                    <center>
+                                                        <p align="justify">
+                                                            (TO BE EXECUTED BY ALL EMPLOYEES AND APPLICANTS WHO ARE
+                                                            OFFERED
+                                                            EMPLOYMENT)
+
+                                                        </p>
+                                                    </center>
+                                                    <p align="justify">
+                                                        1. I understand that as a condition of employment, or continued
+                                                        employment, with the
+                                                        Company, I must register with the Commercial Driver’s License
+                                                        Drug and Alcohol
+                                                        Clearinghouse at clearinghouse.fmcsa.dot.gov and I must grant
+                                                        electronic consent for
+                                                        the Company to run a full Pre-Employment Query on my record with
+                                                        the Clearinghouse.</p>
+                                                    <p align="justify">2. I understand that a full Pre-Employment Query
+                                                        includes
+                                                        assessing the following specific
+                                                        records:</p>
+                                                    <p align="justify">a. A verified positive, adulterated, or
+                                                        substituted controlled
+                                                        substances test result; <br>
+                                                        b. An alcohol confirmation test with a concentration of 0.04 or
+                                                        higher;<br>
+                                                        c. An employer’s report of actual knowledge, meaning that the
+                                                        employer directly<br>
+                                                        observed the employee’s use of alcohol or controlled substances
+                                                        while on duty;<br>
+                                                        d. On duty alcohol use, meaning an employer has actual knowledge
+                                                        that an employee<br>
+                                                        has used alcohol while performing safety sensitive functions;
+                                                        e. Pre-duty alcohol use, meaning that an employer has actual
+                                                        knowledge that an<br>
+                                                        employee has used alcohol within 4 hours of performing safety
+                                                        sensitive functions;<br>
+                                                        f. Alcohol use following an accident, unless 8 hours have passed
+                                                        following the accident
+                                                        or until a post accident alcohol test is conducted, whichever
+                                                        occurs first;<br>
+                                                        g. Controlled substance use, meaning that no driver shall used a
+                                                        controlled substance
+                                                        while performing a safety sensitive function unless a licensed
+                                                        medical practitioner
+                                                        who is familiar with the driver’s medical history has advised
+                                                        the driver that the
+                                                        substance will not adversely affect the driver’s ability to
+                                                        safely operate a commercial
+                                                        motor vehicle;<br>
+                                                        h. A SAP report of the successful completion of the
+                                                        return-to-duty process;<br>
+                                                        i. A negative return-to-duty test; and<br>
+                                                        j. A SAP report of the successful completion of follow-up
+                                                        testing.<br></p>
+                                                    <p align="justify">
+                                                        3. I understand that I cannot perform a safety sensitive
+                                                        function for the Company if my
+                                                        Clearinghouse record indicates a violation as listed in Part 2
+                                                        above unless/until I have
+                                                        completed the SAP evaluation, referral and education/treatment
+                                                        process as described in
+                                                        this Policy.
+                                                        Page 29 INITIALS J S
+                                                        JASMEET SINGH
+                                                        My signature below confirms that I have read and understood the
+                                                        above terms and that I agree
+                                                        to abide by them.
+                                                    </p>
+                                                    <b>Dated this </b>
+                                                    <%- certificateDate %> <b>at</b>
+                                                        <%- companyProvince %><br>
+                                                            <b>Printed Name of Employee as it appears on DL:</b>
+                                                            <%- driverName %> <br>
+                                                                <b> Driver’s License #: </b>
+                                                                <%- driver_license %> <br> <b> Province:</b> <%- companyProvince %>
+                                                                        <br>
+                                                                        <b>Employee Date of Birth (month-day-year):</b>
+                                                                        <%- DOB %>
+
+
+                                                                            </p>
+
+
+
+                                                                            <b>Employee Signature:</b>
+                                                                            <%if (getDrivinghistorySignature != "") { %>
+                                                                            <img
+                                                                                src="uploads/attachment/drivinghistoryaddressSignature/<%- getDrivinghistorySignature %>"
+                                                                                alt="user" width="150"></a> <br>
+                                                                                <% } %>
+                                                                            <div>
+                                                                                
+                                                                            <b>Supervisor Signature:</b> <br>
+                                                                            <%if (adminSignature != "") { %>
+                                                                                <img
+                                                                                    src="uploads/attachment/clearHouseSupervisor/<%- adminSignature %>"
+                                                                                    alt="user" width="150"></a> <br>
+                                                                                    <% } %>
+                                                                            
+                                                                            <br>
+                                                                            I certify that I have read and
+                                                                            understood the above requirements.
+                                                                            <br><br><br>
+
+                                                                            <br>
+
+                                                                            <center>
+                                                                                <h3>SCHEDULE “A” “2” <br>
+                                                                                    THE COMMERCIAL DRIVER’S
+                                                                                    LICENSE DRUG AND ALCOHOL
+                                                                                    CLEARINGHOUSE
+                                                                                    ANNUAL CONSENT FORM FOR
+                                                                                    LIMITED QUERIE</h3>
+                                                                            </center>
+                                                                            <center>(TO BE EXECUTED BY ALL
+                                                                                CURRENT EMPLOYEES AND ALL
+                                                                                APPLICANTS
+                                                                                WHO ARE OFFERED EMPLOYMENT)
+                                                                            </center>
+
+                                                                            <p align="justify">
+                                                                                My signature below confirms that
+                                                                                I agree to allow the Company or
+                                                                                their representative,
+                                                                                Denning Health Group, to conduct
+                                                                                an Annual Limited Query on my
+                                                                                record with the Commercial
+                                                                                Driver’s License (CDL) Drug and
+                                                                                Alcohol Clearinghouse.
+                                                                                I understand that a Limited
+                                                                                Query will not reveal any of the
+                                                                                details of my record with the
+                                                                                Clearinghouse.</p>
+                                                                            <p align="justify">Furthermore, I
+                                                                                understand that, if the Limited
+                                                                                Query reveals
+                                                                                that the Clearinghouse has
+                                                                                information on me indicating
+                                                                                that I have been in violation, I
+                                                                                must immediately register with
+                                                                                the
+                                                                                Clearinghouse at
+                                                                                clearinghouse.fmcsa.dot.gov and
+                                                                                grant
+                                                                                permission for the Company or
+                                                                                their
+                                                                                representative to run a Full
+                                                                                Query on my record with the
+                                                                                Clearinghouse. I understand that
+                                                                                the
+                                                                                Company or their representative
+                                                                                must run the Full Query within
+                                                                                24 hours of receiving the
+                                                                                results of the Limited Query
+                                                                                indicating a violation on my
+                                                                                part.</p>
+                                                                            <p align="justify"> I agree that, if
+                                                                                I fail to register with the
+                                                                                Clearinghouse
+                                                                                within 24 hours, I will be
+                                                                                removed from
+                                                                                safety sensitive functions until
+                                                                                the Company or their
+                                                                                representative is able to
+                                                                                conduct the Full
+                                                                                Query and the results confirm
+                                                                                that my record contains no
+                                                                                violations as outlined in this
+                                                                                Policy.</p>
+                                                                            <p align="justify">I agree that, if
+                                                                                my record with the Clearinghouse
+                                                                                reveals that I
+                                                                                have engaged in prohibited
+                                                                                conduct (i.e. a violation) as
+                                                                                outlined in this Policy or the
+                                                                                DOT
+                                                                                rules, I will be removed from
+                                                                                safety sensitive functions
+                                                                                until/unless I have completed
+                                                                                the SAP
+                                                                                evaluation, referral and
+                                                                                education/treatment process as
+                                                                                described in this Policy.</p>
+                                                                            <p align="justify"> I understand
+                                                                                that, if any information is
+                                                                                added to my
+                                                                                Clearinghouse record within the
+                                                                                30-day
+                                                                                period immediately following the
+                                                                                Company’s or their
+                                                                                representative’s Query on me,
+                                                                                the
+                                                                                Company will be notified by the
+                                                                                Federal Motor Carrier Safety
+                                                                                Administration (FMCSA).</p>
+                                                                            <p align="justify"> My signature
+                                                                                below confirms that I have read
+                                                                                and understood the
+                                                                                above terms and that I grant
+                                                                                permission for an Annual Limited
+                                                                                Query on my record with the
+                                                                                Commercial Driver’s License
+                                                                                Drug and Alcohol Clearinghouse
+                                                                                for the duration of my
+                                                                                employment
+                                                                                with the Company.</p> <br>
+                                                                                <b>Dated this </b>
+                                                                                <%- certificateDate %> <b>at</b>
+                                                                                    <%- companyProvince %><br>
+                                                                                <br>
+                                                                                <b>Printed Name of Employee as it
+                                                                                appears on DL:</b> <%- driverName %> <br>
+                                                                                    <b>Driver’s License #:</b> <%-
+                                                                                        driver_license %>
+                                                                                        <br>
+                                                                                        <b>Province:</b> <%- companyProvince %>
+                                                                                            <br>
+                                                                                            <b>Employee Date of
+                                                                                            Birth
+                                                                                            (month-day-year):</b>
+                                                                                            <%- DOB %> <br>
+                                                                                                </p>
+                                                                                                <b>Employee
+                                                                                                    Signature:</b>
+                                                                                                <br>
+                                                                                                <%if (getDrivinghistorySignature != "") { %>
+                                                                                                    <img
+                                                                                                        src="uploads/attachment/drivinghistoryaddressSignature/<%- getDrivinghistorySignature %>"
+                                                                                                        alt="user" width="150"></a> <br>
+                                                                                                        <% } %>
+                                                                                                <br>
+                                                                                                    <div>
+                                                                                                <b> Supervisor
+                                                                                                    Signature:
+                                                                                                </b>
+                                                                                            </div><br>
+
+                                                                                            <%if (adminSignature != "") { %>
+                                                                                                <img
+                                                                                                    src="uploads/attachment/clearHouseSupervisor/<%- adminSignature %>"
+                                                                                                    alt="user" width="150"></a> <br>
+                                                                                                    <% } %>
+
+                                                                                                <br>
+                                                                                                <br>
+                                                                                                <br>
+
+                                                                                                
+
+                                                                                                    <input class="form-check-input" id="Iagree"
+                                                                                                    name="Iagree" type="checkbox" value="1"
+                                                                                                    id="flexCheckDefault Iagree">
+ 
+                                                                                                I
+                                                                                                certify
+                                                                                                that I
+                                                                                                have
+                                                                                                read and
+                                                                                                understood
+                                                                                                the
+                                                                                                above
+                                                                                                requirements.
+                                                                                                <br><br><br>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Container fluid  -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- footer -->
+                    <!-- ============================================================== -->
+                    <footer class="footer text-center">
+                        <!-- All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a> -->
+                    </footer>
+                    <!-- ============================================================== -->
+                    <!-- End footer -->
+                    <!-- ============================================================== -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Page wrapper  -->
+                <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <%- include('includes/footer.ejs') %>
+        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script>
+            //   jQuery(document).ready(function () {
+
+            // $("#toDate").on("change",function(){
+            //                 $("#toDate").focusout(function() {
+            //                 alert('qwwe')
+            //     var selected = $(this).val();
+            //     alert(selected);
+            // });
+
+
+
+            $(document).ready(function () {
+                let company_id = $("#company_id").val();
+                let driverId = $("#driverId").val();
+                let certificateDate = $("#certificateDate").val();
+
+
+
+                // alert(driverId)
+                $.ajax({
+                    url: "/getcertificateDtls",
+                    type: "GET",
+                    data: { driverId: driverId, certificateID: 5, date: certificateDate },
+                    success: function (data) {
+                        if (data.message.adminSignature == "") {
+                            $('body #adminSignature').hide();
+                        }
+                        if (data.message.approve) {
+                            let adminsignaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.message.adminSignature;
+                            console.log(adminsignaturePath);
+                            $('body #adminSignature').attr("src", adminsignaturePath);
+
+                            $('#Iagree').attr('checked', 'checked');
+                            $('#Iagree').attr('disabled', true);
+
+                        } else {
+                            $('#Iagree').show();
+                        }
+
+                    }
+                });
+            })
+
+
+
+
+            $('#Iagree').on('change', function () {
+                if (this.checked) {
+                    // alert(this.checked)
+                    let company_id = $("#company_id").val();
+                    let driverId = $("#driverId").val();
+                    // let certificateDate = $("#certificateDate").val();
+                    $.ajax({
+                        url: "/certificateapproval",
+                        type: "POST",
+                        data: { company_id: company_id, driverId: driverId, certificateID: 5, approve: this.checked },
+                        success: function (data) {
+                            console.log(data.data);
+                            if (data.status) {
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 2000,
+                                    timerProgressBar: true,
+                                    didOpen: (toast) => {
+                                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                    }
+                                })
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: data.message
+                                });
+                                setTimeout(function () {
+                                    window.location.reload();
+                                }, 2000);
+
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                } else {
+                    // $("#ifbelowthreeYears").hide();
+                    // alert('un checked')
+                    alert(this.checked)
+                }
+
+            })
+
+            function getMonthDifference(startDate, endDate) {
+                console.log(startDate);
+                console.log(endDate);
+                return (
+                    endDate.getMonth() -
+                    startDate.getMonth() +
+                    12 * (endDate.getFullYear() - startDate.getFullYear())
+                );
+            }
+            function toDate1(parms) {
+                let fromDate = jQuery('#fromDate' + parms).val();
+                if (fromDate == 'undefined' || fromDate == '') {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Please fill From Date before To Date',
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                    })
+                    jQuery('#toDate' + parms).val('');
+                } else {
+                    let todate = jQuery('#toDate' + parms).val();
+                    let currentDuration = getMonthDifference(new Date(fromDate), new Date(todate));
+
+
+                    jQuery('#singleDurationInput' + parms).val(currentDuration);
+                    jQuery('#singleDuration' + parms).html('<b>Duration in month</b> : ' + currentDuration)
+                }
+            }
+            // })
+
+
+            //     $('#toDate'+parms).on("keyup", function() {
+            //        alert('test')
+            //     console.log(fromdate);
+            //    console.log(todate);
+            //    })
+            /****************************************
+             *       Basic Table                   *
+             ****************************************/
+            // $('#zero_config').DataTable();
+            function convertToBase64(inputfile, parms) {
+                //Read File
+                // alert(inputfile)
+                // alert(parms)
+
+                var selectedFile = document.getElementById(inputfile).files;
+                console.log(selectedFile);
+                //Check File is not Empty
+                if (selectedFile.length > 0) {
+                    // Select the very first file from list
+                    var fileToLoad = selectedFile[0];
+                    var filesize = selectedFile[0].size;
+                    if (filesize <= '2069405') {
+                        console.log(filesize);
+                        // FileReader function for read the file.
+                        var fileReader = new FileReader();
+                        var base64;
+                        // Onload of file read the file content
+                        fileReader.onload = function (fileLoadedEvent) {
+                            base64 = fileLoadedEvent.target.result;
+                            // Print data in console
+                            console.log(parms);
+                            $("#" + parms).val(base64);
+                            var div = document.getElementById(parms);
+                            div.innerHTML += base64;
+
+                        };
+                        // Convert data to base64
+                        fileReader.readAsDataURL(fileToLoad);
+                    } else {
+                        Swal.fire(
+                            'Too Big!',
+                            'Upload image size within 2 MB.',
+                            'danger'
+                        )
+                        return false;
+                    }
+                }
+            }
+
+
+
+            let date = new Date();
+            var currentdate =
+                ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+                ("00" + date.getDate()).slice(-2) + "/" +
+                date.getFullYear();
+            function calculateAge(birthDate, otherDate) {
+                birthDate = new Date(birthDate);
+                otherDate = new Date(otherDate);
+
+                var years = (otherDate.getFullYear() - birthDate.getFullYear());
+
+                if (otherDate.getMonth() < birthDate.getMonth() ||
+                    otherDate.getMonth() == birthDate.getMonth() && otherDate.getDate() < birthDate.getDate()) {
+                    years--;
+                }
+
+                return years;
+            }
+
+
+
+
+
+
+
+
+        </script>
+        <script src="sweetAlert/sweetalert2.min.js"></script>
+
+</body>
+
+</html>

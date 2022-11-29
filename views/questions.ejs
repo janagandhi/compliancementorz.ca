@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="extra-libs/signature/jquery.signature.css"> -->
+    <link rel="stylesheet" type="text/css"
+        href="https://ashaviglobal.com/agreement/template/dist/css/jquery.signature.css">
+    <style type="text/css">
+        .gap {
+            text-align: center;
+            background-color: #e2181870;
+
+        }
+
+        .thClass {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+
+        /* Signature */
+        .kbw-signature {
+            width: 100%;
+            height: 250px;
+        }
+
+        .signature canvas {
+            width: 100% !important;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarDriver.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+
+
+
+
+
+
+                        <div class="card-body">
+                            <div class="row p-b-30">
+                                <div class="col-12">
+
+
+                                    <form class="form-horizontal" id="updateQuestions"
+                                        style="background: #27a9e324;border-radius: 35px;">
+                                        <div class="card-body" id="updateQuestions_details">
+                                            <span>Approvals Status: <h5 id="approveStatus"></h5></span>
+                                            <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                            <div style="text-align: center;">
+                                                <span>
+                                                    <h4>
+                                                        <%- title %>
+                                                    </h4>
+                                                </span>
+                                                <img style="width: 17%" src="images/interview.png" alt="homepage" class="light-logo" />
+                                            </div>
+                                            <br>
+
+                                            <input type="hidden" class="form-control" value="<%- driverID %>"
+                                                name="driverId" value="" id="id">
+                                            <input type="hidden" class="form-control" value="<%- company_id %>"
+                                                name="company_id" value="" id="company_id">
+                                            <input type="hidden" class="form-control" name="approveStatus" value="0"
+                                                id="approveStatus">
+                                            <input type="hidden" class="form-control" name="actionData" value=""
+                                                id="actionData">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <b>Name of Driver  : </b><span><%- driverName %></span> <br>
+                                                    <b>License No  : </b><span><%- driver_license %></span><br><br><br>
+                                                    <div class="form-group row">
+                                                        <label for="question1"
+                                                            class="col-sm-3 control-label col-form-label">1. What are
+                                                            your strengths as a driver?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question1"
+                                                                value="" id="question1">
+                                                        </div>
+                                                    </div>
+
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question2"
+                                                            class="col-sm-3 control-label col-form-label">2. Why are you
+                                                            looking for a job?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question2"
+                                                                value="" id="question2">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question3"
+                                                            class="col-sm-3 control-label col-form-label">3. Why did you
+                                                            choose to approach our company?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question3"
+                                                                value="" id="question3">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question4"
+                                                            class="col-sm-3 control-label col-form-label">4. Can you
+                                                            provide references from your current or previous employers
+                                                            or we can verify it? Please provide
+                                                            contact details.</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question4"
+                                                                value="" id="question4">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question5"
+                                                            class="col-sm-3 control-label col-form-label">5. If you have
+                                                            any preferred area to haul loads and why?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question5"
+                                                                value="" id="question5">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question6"
+                                                            class="col-sm-3 control-label col-form-label">6. What
+                                                            training do you think you will require doing this
+                                                            job?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question6"
+                                                                value="" id="question6">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question7"
+                                                            class="col-sm-3 control-label col-form-label">7. What would
+                                                            your current employer have to do to make you stay?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question7"
+                                                                value="" id="question7">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question8"
+                                                            class="col-sm-3 control-label col-form-label">8. Tell me how
+                                                            you handled a problem with a dispatcher / customer?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question8"
+                                                                value="" id="question8">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question9"
+                                                            class="col-sm-3 control-label col-form-label">9. Tell me
+                                                            about the last roadside inspection you had and
+                                                            where?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question9"
+                                                                value="" id="question9">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question10"
+                                                            class="col-sm-3 control-label col-form-label">10. If you
+                                                            ever had problem at the border? If yes explain.</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question10"
+                                                                value="" id="question10">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question11"
+                                                            class="col-sm-3 control-label col-form-label">11. If you
+                                                            have a previous collision / citation, tell me about it and
+                                                            what you would do different now?</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question11"
+                                                                value="" id="question11">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group row">
+                                                        <label for="question12"
+                                                            class="col-sm-3 control-label col-form-label">12. Did you
+                                                            receive remedial training from the collision / citation? If
+                                                            answer to above is yes.</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="question12"
+                                                                value="" id="question12">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+
+<div class="row">
+    <div class="col-md-6">
+        <b>Drivers Signature  :</b> <img  src="uploads/attachment/drivinghistoryaddressSignature/<%- getDrivinghistorySignature %>" alt="user" width="150"></a>
+    </div>
+    <div class="col-md-6">
+        <b>Name of the Interviewer  :</b>
+        <input type="text" readonly class="form-control"
+        value="" id="interviewer">
+    </div>
+
+</div>
+                                                   
+                                                   
+
+                                                </div>
+
+
+
+
+                                            </div>
+
+                                            <br>
+                                            <div id="commentsSection">
+
+                                            </div>
+                                            <div class="border-top">
+                                                <div style="text-align: center;" class="card-body">
+                                                    <button type="Submit" id="submitBtn"
+                                                        class="btn btn-primary"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Container fluid  -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <footer class="footer text-center">
+                    <!-- All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a> -->
+                </footer>
+                <!-- ============================================================== -->
+                <!-- End footer -->
+                <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <%- include('includes/footer.ejs') %>
+
+        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script> -->
+        <script type="text/javascript" src="assets/extra-libs/signature/jquery.signature.min.js"></script>
+        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script>  -->
+        <script>
+
+            /****************************************
+             *       Basic Table                   *
+             ****************************************/
+            // $('#zero_config').DataTable();
+
+
+            $(document).ready(function () {
+
+
+                jQuery('.mydatepickerDOB').datepicker({
+                    format: 'dd/mm/yyyy',
+                    maxDate: new Date(),
+                    closeOnSelected: true,
+                    autoclose: true,
+                    endDate: "today"
+                });
+
+                jQuery('.mydatepicker').datepicker({
+                    format: 'dd/mm/yyyy',
+                    closeOnSelected: true,
+                    autoclose: true,
+                });
+                jQuery('#datepicker-autoclose').datepicker({
+                    autoclose: true,
+                    todayHighlight: true,
+                    maxDate: new Date()
+                });
+
+
+            });
+            let date = new Date();
+            var currentdate =
+                ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+                ("00" + date.getDate()).slice(-2) + "/" +
+                date.getFullYear();
+         
+            $("body #updateQuestions_details #comments").hide('');
+            let id = $('#updateQuestions_details #id').val();
+            // console.log($(this).attr("data-id"));
+            // alert(id)
+            $.ajax({
+                url: "/editquestions",
+                type: "GET",
+                data: { id: id },
+                success: function (data) {
+              
+                    if (data.status) {
+                        let approveStatus;
+                        if (data.data.approveStatus == 0) {
+                            // alert(0)
+                            approveStatus = 'Waiting For admin approval'
+                        } else {
+                            // alert(1)
+                            approveStatus = 'Approved'
+                        }
+                     
+
+                        // $("body #updateQuestions_details #commentsSection").html('<input required type="text" class="form-control" placeholder="Please enter comments this will help admin to approve this request" name="comment" value="" id="comments">');
+                        // $("body #updateQuestions_details #approveStatus").text(approveStatus);
+                        // $("body #updateQuestions_details #submitBtn").text('Update');
+                        // $('body #updateQuestions_details #actionData').val('Update');
+                        $('body #updateQuestions_details #submitBtn').hide();
+          
+                        $('body #updateQuestions_details #question1').val(data.data.question1).attr('readonly','readonly');
+                        $('body #updateQuestions_details #question2').val(data.data.question2).attr('readonly','readonly');
+                        $('body #updateQuestions_details #question3').val(data.data.question3).attr('readonly','readonly');
+                        $('body #updateQuestions_details #question4').val(data.data.question4).attr('readonly','readonly');
+                        $('body #updateQuestions_details #question5').val(data.data.question5).attr('readonly','readonly');
+                        $('body #updateQuestions_details #question6').val(data.data.question6).attr('readonly','readonly');
+                        $('body #updateQuestions_details #question7').val(data.data.question7).attr('readonly','readonly');
+                        $('body #updateQuestions_details #question8').val(data.data.question8).attr('readonly','readonly');
+                        $('body #updateQuestions_details #question9').val(data.data.question9).attr('readonly','readonly');
+                        $('body #updateQuestions_details #question10').val(data.data.question10).attr('readonly','readonly');
+                        $('body #updateQuestions_details #question11').val(data.data.question11).attr('readonly','readonly');
+                        $('body #updateQuestions_details #question12').val(data.data.question12).attr('readonly','readonly');
+                        $('body #updateQuestions_details #interviewer').val(data.data.interviewer).attr('readonly','readonly');
+                    
+                        $('body #updateQuestions_details .container1').hide()
+                    } else {
+                        // alert('test')
+                        $("body #updateQuestions_details #signature").hide();
+                        $("body #updateQuestions_details #commentsSection").html('');
+                        $("body #updateQuestions_details #submitBtn").text('Create');
+                        $('body #updateQuestions_details #actionData').val('Create');
+                        // window.location = "/";
+                    }
+
+                }
+            });
+            // });
+
+
+
+
+            $("#updateQuestions").submit(function (event) {
+                event.preventDefault();
+                var values = {};
+                $.each($('#updateQuestions').serializeArray(), function (i, field) {
+                    values[field.name] = field.value;
+                });
+           
+       
+
+
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to update this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#updateQuestions #submitBtn").text('Please wait');
+                        $("#updateQuestions #submitBtn").attr('disabled', true);
+                        $.ajax({
+                            url: "/updateQuestions",
+                            type: "POST",
+                            data: values,
+                            success: function (data) {
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+
+                            }
+                        });
+
+
+                    }
+                })
+            });
+
+
+
+
+        </script>
+        <script src="sweetAlert/sweetalert2.min.js"></script>
+
+</body>
+
+</html>

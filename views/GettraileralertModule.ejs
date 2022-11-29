@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <style type="text/css">
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+
+        .btn-default {
+            background-color: #000;
+        }
+
+        .toggle-off {
+            background-color: #27a9e3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarCompany.ejs') %>
+                <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"
+                    rel="stylesheet">
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- Alert Frequency :  -->
+                                        <!-- <%= getcmpdtls.alert_frequency %> -->
+                                        <!-- <input id="toggle-event" value="<%= getcmpdtls.id %>" type="checkbox" data-toggle="toggle" data-on="Week" data-off="Month"> -->
+                                        Select Duration
+                                        <select class="form-select selectboxcss" name="exprange" id="exprange">
+                                            <!-- <option value="">Select Duration</option> -->
+                                            <option value="expired_list">Expired list</option>
+                                            <option Selected value="7">7 Days Expiry</option>
+                                            <option value="15">15 Days Expiry</option>
+                                            <option value="30">30 Days Expiry</option>
+                                            <option value="60">60 Days Expiry</option>
+                                            <option value="90">90 Days Expiry</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        Select Expiry filter
+                                        <select class="form-select selectboxcss" name="exptype" id="exptype">
+                                            <option value="">Select Expiry</option>
+                                            <option value="annual_safety_current">Annual safety current expiry</option>
+                                            <option value="preventive_maintenance">Preventive Maintenance expiry
+                                            </option>
+                                            <option value="nextyearDate">Nextyear expiry</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <h5 align="center" class="card-title">
+                                    <%- title %>
+                                </h5>
+                                <div class="table-responsive">
+
+                                    <table id="listDriveralert" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <!-- <th>Company Name</th> -->
+                                                <th>Trailer Name</th>
+                                                <th id="exptypeDetails"></th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ============================================================== -->
+                        <!-- End PAge Content -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Right sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- .right-sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- End Right sidebar -->
+                        <!-- ============================================================== -->
+
+
+                        <!-- <button class="btn  btn-danger" data-target="#deletemodal" data-toggle="modal">Delete
+                <span class="glyphicon glyphicon-edit"></span><i style="font-size: 15px;" class="fas fa-trash"></i>
+                </button>  -->
+
+
+
+
+
+
+
+
+
+                        <!-- ============================================================== -->
+                        <!-- End Page wrapper  -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Wrapper -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <%- include('includes/footer.ejs') %>
+                        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+                        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+                        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+                        <script
+                            src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+                        <script>
+                            $(function () {
+                                // alert('<%= getcmpdtls.alert_frequency %>')
+                                if ('<%= getcmpdtls.alert_frequency %>' == 0) {
+                                    $('#toggle-event').bootstrapToggle('on') //week
+                                }
+                                else {
+                                    $('#toggle-event').bootstrapToggle('off') // month
+                                }
+
+                                $('#toggle-event').change(function () {
+                                    // alert($(this).prop('checked'))
+                                    // alert($(this).val())
+                                    let compID = $(this).val();
+                                    // alert('')
+                                    let id = compID;
+                                    let st = $(this).prop('checked');
+
+                                    $.ajax({
+                                        url: "/alertfreq",
+                                        type: "POST",
+                                        data: { id: id, st: st },
+                                        success: function (data) {
+                                            if (data.status) {
+                                                const Toast = Swal.mixin({
+                                                    toast: true,
+                                                    position: 'top-end',
+                                                    showConfirmButton: false,
+                                                    timer: 2000,
+                                                    timerProgressBar: true,
+                                                    didOpen: (toast) => {
+                                                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                    }
+                                                })
+                                                Toast.fire({
+                                                    icon: 'success',
+                                                    title: data.message
+                                                });
+                                                // setTimeout(function() {
+                                                // window.location.reload();
+                                                // }, 2000);
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                            }
+
+                                        }
+                                    });
+
+                                })
+                            })
+                        </script>
+
+                        <script>
+
+                            $(function () {
+                                $('#toggle-two').bootstrapToggle({
+                                    on: 'Enabled',
+                                    off: 'Disabled'
+                                });
+                            })
+                        </script>
+
+                        <script>
+
+
+
+                            /****************************************
+                             *       Basic Table                   *
+                             ****************************************/
+                            // $('#zero_config').DataTable();
+
+                            $(document).ready(function () {
+                                $('#exprange').on('change', function () {
+                                    $('#exptype option:first').attr('selected', true);
+                                    $("#exptype").val("");
+                                    $("select#exptype").val('').prop('selected', true);
+                                })
+
+                                let exptype;
+                                $('#exptype').on('change', function () {
+                                    let exprange = $('#exprange :selected').val();
+
+                                    exptype = this.value;
+                                    $('#exptypeDetails').text(exptype)
+                                    $("#listDriveralert").dataTable().fnDestroy();
+                                    let customer = $('#listDriveralert').DataTable({
+                                        order: [[0, 'ASC']],
+                                        searching: false,
+                                        bPaginate: true,
+                                        iDisplayLength: 10,
+                                        bLengthChange: false,
+                                        bProcessing: true,
+                                        searching: false,
+                                        ajax: {
+                                            url: "/GetTraileralert",
+                                            data: function (data) {
+                                                data.exptype = exptype,
+                                                    data.exprange = exprange
+                                                // data.search_key = $("#searchKey").val(),
+                                                // data.search_val = $("#searchVal").val()
+                                            },
+                                            type: "GET",
+                                        },
+                                        // data : 'test123',
+                                        columns: [
+                                            { "data": "slno" },
+                                            // { "data" : "companyname"},
+                                            { "data": "trailer_unit" },
+                                            { "data": exptype }
+                                        ],
+                                        select: true
+                                    });
+
+
+
+                                });
+
+
+
+
+
+
+
+
+                            });
+
+
+                            $(document).on('click', '#deletetrailer', function () {
+                                let id = $(this).attr('data-id');
+
+                                // alert(id)
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to revert this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, delete it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+
+
+                                        $.ajax({
+                                            url: "/deleteTrailer",
+                                            type: "POST",
+                                            data: { id: id },
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    }); setTimeout(function () {
+                                                        window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+
+
+
+                            $("#edit_trailer").submit(function (event) {
+                                event.preventDefault();
+                                var values = {};
+                                $.each($('#edit_trailer').serializeArray(), function (i, field) {
+                                    values[field.name] = field.value;
+                                    // console.log(values[field.name]);
+                                });
+
+                                // var id = getValue("name");
+                                console.log(values);
+                                // let license_attachment_file_edit = $("#license_attachment_file_edit").val();
+                                //     console.log(license_attachment_file_edit);
+                                // console.log(datas.getAll.name);
+
+                                let ab = $('body #editmodal #edit_trailer_details #annual_safety_current_attachment_file').val();
+                                // alert(ab)
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to update this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, update it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+
+                                        $.ajax({
+                                            url: "/updateTrailer",
+                                            type: "POST",
+                                            data: values,
+                                            //  data : {image : ab },  
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    }); setTimeout(function () {
+                                                        window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+
+
+
+
+
+
+
+                        </script>
+                        <script src="sweetAlert/sweetalert2.min.js"></script>
+</body>
+
+</html>

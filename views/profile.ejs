@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" href="dist/css/w3.css">
+<link rel="stylesheet" href="dist/css/crop_style.css">
+<style>
+    .w3-modal cropper{
+        display: none !important;
+    }
+</style>
+
+    <style type="text/css">
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+
+        .btn-default {
+            background-color: #000;
+        }
+
+        .toggle-off {
+            background-color: #27a9e3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarCompany.ejs') %>
+                <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"
+                    rel="stylesheet">
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- <a href="" id="" class="btn  btn-primary"><span class="fas fa-arrow-left"> Back</span></a> -->
+                                    </div>
+
+                                    <div class="col-md-6">
+
+
+                                    </div>
+
+                                </div>
+                                <h5 align="center" class="card-title">
+                                    <%- title %>
+                                </h5>
+
+
+
+
+                                <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <!-- <img src="/images/default-profile-picture.jpg"> -->
+
+                                            <%if (getUsers.image.length> 0) { %>
+                                                <img src="/uploads/<%- getUsers.image %>">
+                                                <% } else { %>
+                                                    <img src="/images/default-profile-picture.jpg">
+                                                    <% } %>
+
+                                                        <a class="open-modal l but lrg w3-button w3-green w3-margin">Update
+                                                            Profile Picture</a>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- <a class="open-modal l but lrg w3-button w3-green w3-margin">Open Image Cropper</a> -->
+
+                                    <div class="col-md-9">
+
+                                        <div class="card">
+                                            <form class="form-horizontal" id="UpdateProfile">
+                                                <div class="card-body">
+                                                    <h4 align="center" class="card-title">Update Profile</h4>
+                                                    <div class="form-group row">
+                                                        <label for="username"
+                                                            class="col-sm-3 text-right control-label col-form-label">username</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" name="username"
+                                                                value="<%- getUsers.username %>" readonly
+                                                                class="form-control" id="username" placeholder="USername">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for=""
+                                                            class="col-sm-3 text-right control-label col-form-label">Phone</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" name="phone"
+                                                                value="<%- getUsers.phone %>" class="form-control"
+                                                                id="phone" placeholder="Phone">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row">
+                                                        <label for="email1"
+                                                            class="col-sm-3 text-right control-label col-form-label">Name</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" value="<%- getUsers.name %>"
+                                                                name="name" class="form-control" id="name"
+                                                                placeholder="Name">
+                                                        </div>
+                                                    </div>
+                                                    <div align="center" class="border-top">
+                                                        <div class="card-body">
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- partial:index.partial.html -->
+
+                                <div class="w3-modal cropper">
+                                    <div class="w3-modal-content">
+                                        <span
+                                            class="w3-button w3-black w3-hover-red w3-display-topright w3-theme close-modal">&times;</span>
+                                        <h2 class="w3-black w3-center w3-padding"><strong>Profile Picture</strong></h2>
+                                        <div class="w3-container w3-white">
+                                            <div id="ic-main" class="ibox">
+                                                <div class="ic-btns clearfix">
+                                                    <div id="ic-upload-btn"
+                                                        class="l but lrg file-button w3-button w3-blue">
+                                                        <span id="ic-upload-btn-label"
+                                                            style="font-family: inherit;font-size: inherit;">Choose
+                                                            Image</span>
+                                                        <input class="file-input" type="file" />
+                                                    </div>
+                                                </div>
+                                                <div id="ic-cropper-wrap"></div>
+                                                <div class="ic-hidden ic-crop-btn-wrap"><br />
+                                                    <div id="ic-rotate-btn" class="l but lrg w3-button w3-grey">
+                                                        <svg x="0px" y="0px" width="50px" height="50px"
+                                                            viewBox="0 0 50 50" enable-background="new 0 0 50 50"
+                                                            xml:space="preserve">
+                                                            <path
+                                                                d="M41.038,24.1l-7.152,9.342L26.734,24.1H31.4c-0.452-4.397-4.179-7.842-8.696-7.842c-4.82,0-8.742,3.922-8.742,8.742 s3.922,8.742,8.742,8.742c1.381,0,2.5,1.119,2.5,2.5s-1.119,2.5-2.5,2.5c-7.576,0-13.742-6.165-13.742-13.742 s6.166-13.742,13.742-13.742c7.274,0,13.23,5.686,13.697,12.842H41.038z" />
+                                                        </svg>
+                                                        Rotate
+                                                    </div>
+                                                    <div id="ic-flip-btn" class="l but lrg w3-button w3-grey">Flip</div>
+                                                    <a id="ic-crop-btn" class="l but lrg w3-button w3-grey">Crop</a>
+                                                </div>
+
+
+
+                                            </div>
+                                            <center>
+                                                <div style="text-align: center;">
+                                                    <div style="text-align: center;" id="ic-result-wrap"
+                                                        class="ic-hidden ic-result-wrap" style="margin-top: 20px;">
+                                                        <div class="result-container"
+                                                            style="position: relative;width: fit-content;block-size: fit-content;padding: 0px;z-index: 1;">
+                                                            <div class="theresult"
+                                                                style="position: relative;width: fit-content;block-size: block;padding: 0px;margin: 0px;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br /><br />
+                                                    <a id="save_image" class="l but lrg w3-button w3-grey">Update
+                                                        photo</a>
+                                                </div>
+                                            </center>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Wrapper -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <%- include('includes/footer.ejs') %>
+                    <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+                    <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+                    <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+                    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+                    <script>
+                        $(document).ready(function () {
+                            $("#save_image").hide();
+            
+            
+            
+            
+                            $('#UpdateProfile').submit(function (event) {
+                                event.preventDefault();
+                                let formdata = $('#UpdateProfile').serialize();
+                                $.ajax({
+                                    url: '/UpdateProfile',
+                                    method: 'POST',
+                                    data: formdata,
+                                    success: function (data) {
+                                        if (data.status) {
+                                            const Toast = Swal.mixin({
+                                                toast: true,
+                                                position: 'top-end',
+                                                showConfirmButton: false,
+                                                timer: 2000,
+                                                timerProgressBar: true,
+                                                didOpen: (toast) => {
+                                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                }
+                                            })
+                                            Toast.fire({
+                                                icon: 'success',
+                                                title: data.message
+                                            }); setTimeout(function () {
+                                                window.location = "/profile";
+                                            }, 2000);
+            
+                                        }
+                                    }
+                                })
+                            })
+            
+            
+            
+                            $('#save_image').on('click', function (event) {
+                                event.preventDefault();
+                                let base64image = $('.result-image').attr('src');
+                                // console.log(base64image);
+            
+                                // postvalues = {base64image: base64image};
+                                // postvalues = base64image;
+            
+                                $.ajax({
+                                    url: '/uploadImage',
+                                    method: 'POST',
+                                    data: { base64image: base64image },
+                                    success: function (data) {
+                                        if (data.status) {
+                                            // alert("success");
+                                            const Toast = Swal.mixin({
+                                                toast: true,
+                                                position: 'top-end',
+                                                showConfirmButton: false,
+                                                timer: 2000,
+                                                timerProgressBar: true,
+                                                didOpen: (toast) => {
+                                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                }
+                                            })
+                                            Toast.fire({
+                                                icon: 'success',
+                                                title: data.message
+                                            }); setTimeout(function () {
+                                                window.location = "/profile";
+                                            }, 2000);
+            
+                                        }
+                                    }
+                                })
+                            })
+                        });
+                    </script>
+                    <script src="sweetAlert/sweetalert2.min.js"></script>
+                    <script src='https://jasonlau.biz/cropper-dev/jquery-1.12.4.js'></script>
+                    <script src="/dist/js/crop_script.js"></script>
+
+
+</body>
+
+</html>

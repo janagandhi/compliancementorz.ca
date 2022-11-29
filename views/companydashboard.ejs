@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>Company</title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- <style>
+    .selectboxcss{
+    width: 30%;
+    background-color: #27a9e3;
+    color: #fff;
+    /* width: 33%; */
+    height: 141%;
+    }
+</style> -->
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>)
+            <%- include('includes/sidebarCompany.ejs') %>)
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <!-- <h4 class="page-title"><%= name %></h4> -->
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <!-- <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                  <li class="breadcrumb-item active" aria-current="page">Library</li> -->
+                                        <!-- </ol> -->
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <!-- Column -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card card-hover">
+                                    <div class="box bg-cyan text-center">
+                                        <h1 class="font-light text-white"><i class="mdi mdi-factory"></i></h1>
+                                        <h6 class="text-white">Hi</h6>
+                                        <h6 class="text-white">
+                                            <%= name %>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Column -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card card-hover">
+                                    <div class="box bg-success text-center">
+                                        <h1 class="font-light text-white"><i class="mdi mdi-truck"></i></h1>
+                                        <h6 class="text-white">
+                                            <%= getTruckCount %>
+                                        </h6>
+                                        <h6 class="text-white">Truck Count</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Column -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card card-hover">
+                                    <div class="box bg-warning text-center">
+                                        <h1 class="font-light text-white"><i class="mdi mdi-truck-trailer"></i></h1>
+                                        <h6 class="text-white">
+                                            <%= getTrailerCount %>
+                                        </h6>
+                                        <h6 class="text-white">Trailer Count</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Column -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card card-hover">
+                                    <div class="box bg-danger text-center">
+                                        <h1 class="font-light text-white"><i class="mdi mdi-account"></i></h1>
+                                        <h6 class="text-white">
+                                            <%= getDriverCount %>
+                                        </h6>
+                                        <h6 class="text-white">Driver Count</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <!-- <table style="background-color: #fff;" class="table">
+                    <h4>7 Days due license Expiry</h4>
+                    <thead>
+                        <tr>
+                            <th scope="col"><b>Driver Name</b></th>
+                            <th scope="col"><b>License Expiry</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% company1data.forEach(function(row){ %>
+                            <tr>
+                                <td><%= row.driver_name %> </td>
+                                <td><%= row.license_expiry%></td>
+                            </tr>
+                            <% }) %>
+                  </tbody>
+                </table> -->
+
+                        </div>
+
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        Select Duration
+                                        <select class="form-select selectboxcss" name="exprange" id="exprange">
+                                            <!-- <option value="">Select Duration</option> -->
+                                            <option value="expired_list">Expired list</option>
+                                            <option Selected value="7">7 Days Expiry</option>
+                                            <option value="15">15 Days Expiry</option>
+                                            <option value="30">30 Days Expiry</option>
+                                            <option value="60">60 Days Expiry</option>
+                                            <option value="90">90 Days Expiry</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        Select Expiry filter
+                                        <select class="form-select selectboxcss" name="exptype" id="exptype">
+                                            <option value="">Select expiry</option>
+                                            <option value="license_expiry">License expiry</option>
+                                            <option value="passport_expiry">Passport expiry</option>
+                                            <option value="medical_due_date">Medical Due Date</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <h5 align="center" class="card-title">Driver Details</h5>
+                                <div class="table-responsive">
+
+                                    <table id="listDriveralert" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <!-- <th>Id</th> -->
+                                                <!-- <th>Company Name</th> -->
+                                                <th>Driver Name</th>
+                                                <th id="exptypeDetails">Alert Name</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        Select Expiry filter
+                                        <select class="form-select selectboxcss" name="exptypeTruck" id="exptypeTruck">
+                                            <option value="">Select Expiry</option>
+                                            <option value="annual_safety_current">Annual safety current expiry</option>
+                                            <option value="preventive_maintenance">Preventive Maintenance expiry
+                                            </option>
+                                            <option value="nextyearDate">Alert Name</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <h5 align="center" class="card-title">Truck Details</h5>
+                                <div class="table-responsive">
+
+                                    <table id="listTruckalert" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <!-- <th>Company Name</th> -->
+                                                <th>Truck Name</th>
+                                                <th id="exptypeTruckDetails">Alert Name</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        Select Expiry filter
+                                        <select class="form-select selectboxcss" name="exptypeTrailer"
+                                            id="exptypeTrailer">
+                                            <option value="">Select Expiry</option>
+                                            <option value="annual_safety_current">Annual safety current expiry</option>
+                                            <option value="preventive_maintenance">Preventive Maintenance expiry
+                                            </option>
+                                            <option value="nextyearDate">Nextyear expiry</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <h5 align="center" class="card-title">Trailer Details</h5>
+                                <div class="table-responsive">
+
+                                    <table id="listTraileralert" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <!-- <th>Company Name</th> -->
+                                                <th>Trailer Name</th>
+                                                <th id="exptypeTrailerDetails">Alert Name</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ============================================================== -->
+                        <!-- End PAge Content -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Right sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- .right-sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- End Right sidebar -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Container fluid  -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- footer -->
+                    <!-- ============================================================== -->
+                    <footer class="footer text-center">
+
+                    </footer>
+                    <!-- ============================================================== -->
+                    <!-- End footer -->
+                    <!-- ============================================================== -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Page wrapper  -->
+                <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <%- include('includes/footer.ejs') %>)
+        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#exprange').on('change', function () {
+                    $('#exptype option:first').attr('selected', true);
+                    $("#exptype").val("");
+                    $("select#exptypeTruck").val('').prop('selected', true);
+                    $('#exptypeTruck option:first').attr('selected', true);
+                    $("#exptypeTruck").val("");
+                    $("select#exptypeTruck").val('').prop('selected', true);
+                    $('#exptypeTrailer option:first').attr('selected', true);
+                    $("#exptypeTrailer").val("");
+                    $("select#exptypeTrailer").val('').prop('selected', true);
+                })
+
+                let exptype;
+                $('#exptype').on('change', function () {
+                    let exprange = $('#exprange :selected').val();
+
+                    exptype = this.value;
+                    $('#exptypeDetails').text(exptype)
+                    $("#listDriveralert").dataTable().fnDestroy();
+                    $("#listDriveralert").dataTable().fnDestroy();
+                    let customer = $('#listDriveralert').DataTable({
+                        order: [[0, 'ASC']],
+                        searching: false,
+                        bPaginate: true,
+                        iDisplayLength: 10,
+                        bLengthChange: false,
+                        bProcessing: true,
+                        ajax: {
+                            url: "/GetDriveralert",
+                            data: function (data) {
+                                data.exptype = exptype,
+                                    data.exprange = exprange
+                                // data.search_key = $("#searchKey").val(),
+                                // data.search_val = $("#searchVal").val()
+                            },
+                            type: "GET",
+                        },
+                        // data : 'test123',
+                        columns: [
+                            // { "data" : "id"},
+                            //{ "data" : "companyname"},
+                            { "data": "driver_name" },
+                            { "data": exptype }
+                        ],
+                        select: true
+                    });
+
+
+                });
+            });
+
+            $(document).ready(function () {
+
+                let exptypeTruck;
+                $('#exptypeTruck').on('change', function () {
+                    let exprange = $('#exprange :selected').val();
+
+                    exptypeTruck = this.value;
+                    $('#exptypeTruckDetails').text(exptypeTruck)
+                    $("#listTruckalert").dataTable().fnDestroy();
+                    let customer = $('#listTruckalert').DataTable({
+                        order: [[0, 'ASC']],
+                        searching: false,
+                        bPaginate: true,
+                        iDisplayLength: 10,
+                        bLengthChange: false,
+                        bProcessing: true,
+                        searching: false,
+                        ajax: {
+                            url: "/GetTruckalert",
+                            data: function (data) {
+                                data.exptypeTruck = exptypeTruck,
+                                    data.exprange = exprange
+                                // data.search_key = $("#searchKey").val(),
+                                // data.search_val = $("#searchVal").val()
+                            },
+                            type: "GET",
+                        },
+                        // data : 'test123',
+                        columns: [
+                            { "data": "slno" },
+                            // { "data" : "companyname"},
+                            { "data": "truck_unit" },
+                            { "data": exptypeTruck }
+                        ],
+                        select: true
+                    });
+
+
+                });
+            });
+
+            $(document).ready(function () {
+
+                let exptypeTrailer;
+                $('#exptypeTrailer').on('change', function () {
+                    let exprange = $('#exprange :selected').val();
+
+                    exptypeTrailer = this.value;
+                    $('#exptypeTrailerDetails').text(exptypeTrailer)
+                    $("#listTraileralert").dataTable().fnDestroy();
+                    let customer = $('#listTraileralert').DataTable({
+                        order: [[0, 'ASC']],
+                        searching: false,
+                        bPaginate: true,
+                        iDisplayLength: 10,
+                        bLengthChange: false,
+                        bProcessing: true,
+                        searching: false,
+                        ajax: {
+                            url: "/GetTraileralert",
+                            data: function (data) {
+                                data.exptype = exptypeTrailer,
+                                    data.exprange = exprange
+                                // data.search_key = $("#searchKey").val(),
+                                // data.search_val = $("#searchVal").val()
+                            },
+                            type: "GET",
+                        },
+                        // data : 'test123',
+                        columns: [
+                            { "data": "slno" },
+                            // { "data" : "companyname"},
+                            { "data": "trailer_unit" },
+                            { "data": exptypeTrailer }
+                        ],
+                        select: true
+                    });
+
+
+
+                });
+            });
+
+
+        </script>
+</body>
+
+</html>

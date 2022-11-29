@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>Admin Dashboard</title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+          <!-- Custom CSS -->
+
+
+
+     <link href="assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
+    <link href="assets/extra-libs/calendar/calendar.css" rel="stylesheet" />
+
+        <%- include('includes/header.ejs') %>)
+        <%- include('includes/sidebar.ejs') %>)
+        
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+          <!-- ============================================================== -->
+          <!-- Bread crumb and right sidebar toggle -->
+          <!-- ============================================================== -->
+          <div class="page-breadcrumb">
+              <div class="row">
+                  <div class="col-12 d-flex no-block align-items-center">
+                      <h4 class="page-title">Superadmin Dashboard</h4>
+                      <div class="ml-auto text-right">
+                          <nav aria-label="breadcrumb">
+                              <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                  <!-- <li class="breadcrumb-item active" aria-current="page">Library</li> -->
+                              </ol>
+                          </nav>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- ============================================================== -->
+          <!-- End Bread crumb and right sidebar toggle -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- Container fluid  -->
+          <!-- ============================================================== -->
+          <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Sales Cards  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <!-- Column -->
+                                    <div class="col-md-6 col-lg-3">
+                    <div class="card card-hover">
+                        <div class="box bg-secondary text-center">
+                            <h1 class="font-light text-white"><i class="mdi mdi-account"></i></h1>
+                             <h4 class="text-white"><%= getCmpCount %></h4>
+                            <h6 class="text-white">Overall Company</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-hover">
+                        <div class="box bg-success text-center">
+                            <h1 class="font-light text-white"><i class="mdi mdi-truck"></i></h1>
+                            <h4 class="text-white"><%= getTruckCount %></h4>
+                            <h6 class="text-white">Truck</h6>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Column -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-hover">
+                        <div class="box bg-danger text-center">
+                            <h1 class="font-light text-white"><i class="mdi mdi-truck-trailer"></i></h1>
+                            <h4 class="text-white"><%= getTrailerCount %></h4>
+                            <h6 class="text-white">Trailer</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-hover">
+                        <div class="box bg-warning text-center">
+                            <h1 class="font-light text-white"><i class="mdi mdi-briefcase-upload"></i></h1>
+                            <h4 class="text-white"><%= todaysday %></h4>
+                            <h6 class="text-white">Date today</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+                                <!-- column -->
+                                <div class="col-lg-7">
+                                                           <h5 class="card-title">Calender</h5>
+                    <div class="card">
+                        <div class="">
+                            <div class="row">
+                             
+                                <div class="col-lg-12">
+                                    <div class="card-body b-l calender-sidebar">
+                                        <div id="calendar"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                </div>
+                                <!-- <h5 class="card-title">Recent Login</h5> -->
+                                <div class="col-lg-5">
+                               <h5 class="card-title">Recent Login</h5>     
+                                            
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title m-b-0">Recent Login Details</h5>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><b>Name</b></th>
+                                    <th scope="col"><b>Login Time</b></th>
+                                    <th scope="col"><b>IP Address</b></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% getLogs.forEach(function(row){ %>
+                                    <tr>
+                                        <td><%= row.name %> </td>
+                                        <td><%= row.logindatetime%></td>
+                                        <td><%= row.ipaddress %></td>
+                                    </tr>
+                                    <% }) %>
+
+
+                              
+               
+                          </tbody>
+                        </table>
+                    </div>
+               
+                                   
+                                </div>
+                                <!-- column -->
+                            </div>
+        </div>
+          <!-- ============================================================== -->
+          <!-- End Container fluid  -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- footer -->
+          <!-- ============================================================== -->
+     
+          <!-- ============================================================== -->
+          <!-- End footer -->
+          <!-- ============================================================== -->
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+   
+    
+    <%- include('includes/footer.ejs') %>)
+    
+       
+
+        
+    <!-- Charts js Files -->
+
+
+
+
+    <script src="assets/libs/moment/min/moment.min.js"></script>
+    <script src="assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="dist/js/pages/calendar/cal-init.js"></script>
+
+    <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+    <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+    <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+
+<script>
+    $(document).ready(function()
+        {
+// calendar.addEvent({
+//               title: 'dynamic event',
+//               start: '2022-03-23',
+//               allDay: true
+//             });
+    
+
+
+
+var myCalendar = $('#calendar'); 
+myCalendar.fullCalendar();
+// var myEvent = {
+//   title:"License Expiry for drivername",
+//   allDay: true,
+//   start: '2022-03-23'
+// };
+// myCalendar.fullCalendar( 'renderEvent', myEvent );
+
+
+})
+</script>
+</body>
+
+</html>

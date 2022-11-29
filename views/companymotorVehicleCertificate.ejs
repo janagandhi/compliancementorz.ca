@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <style type="text/css">
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebar.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+
+
+
+
+
+
+                   
+
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        Select Company
+                                        <select class="form-select selectboxcss" name="exptype" id="exptype">
+                                            <option value="">Select Company</option>
+                                            <% getCompanydata.forEach(function(row){ %>
+                                                <option value="<%= row.id %>">
+                                                    <%= row.name %>
+                                                </option>
+                                                <% }) %>
+
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <!-- <button class="btn btn-success" id="create_trailer_button"> Add Trailer <span class="glyphicon glyphicon-edit"></span>   <i style="font-size: 15px;" class="fas fa-plus"></i></button> -->
+                                <h5 align="center" class="card-title">
+                                    <%- title %>
+                                </h5>
+                                <div class="table-responsive">
+                                    <table id="updateDrivingHistory" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Driver Name</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- view modal -->
+                        <!-- Motor Vehicle Driver’s CERTIFICATION OF COMPLIANCE  -->
+                        <div id="viewmodalMotor" class="modal fade" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                        data-keyboard="false">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <!-- <h4 class="modal-title">Delete List</h4> -->
+                                </div>
+                                <div class="modal-body">
+                                    <h3 align="center" class="card-title"> View Motor Vehicle Driver’s CERTIFICATION</h3>
+                                    <h4 align="center" class="card-title">
+                                        <?php  ?>
+                                    </h4>
+                                    <div class="card-body">
+
+                                        <div class="row p-b-30">
+                                            <div class="col-12">
+
+                                                <div class="form-horizontal" id="Motor"
+                                                    style="background: #27a9e324;border-radius: 35px;">
+                                                    <div class="card-body" id="Motor_details">
+                                                        <div class="col-md-6">
+                                                        </div>
+                                                        <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                                        <div style="text-align: center;">
+                                                            <span>
+                                                                <h4>
+
+                                                                </h4>
+                                                            </span>
+                                                            <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <!-- <h3>Motor Vehicle Driver’s CERTIFICATION OF COMPLIANCE </h3> -->
+                                                                <h4>WITH DRIVER LICENSE REQUIREMENTS </h4>
+                                                                <p align="justify">MOTOR CARRIER INSTRUCTIONS: The requirements in Part383 apply to every driver who operates in intrastate, interstate, or foreign commerce and operates a vehicle weighing 26,001 pounds or more, can transport more than 15 people, or transports hazardous materials that require placarding.</p>
+                                                                   <p> The requirements in Part 391 apply to every driver who operates in interstate commerce and operates a vehicle weighing 10,001 pounds or more, can transport more than 15 people, or transports hazardous materials that require placarding. </p>
+                
+                                                                  <h4> DRIVER REQUIREMENTS:</h4>
+                                                                  <p>Parts 383 and 391 of the Federal Motor Carrier Safety Regulations contain some requirements that you as a driver must comply with. These requirements are in effect as of July 1, 1987. They are as follows: </p> 
+                                                                <h4>1. POSSESS ONLY ONE LICENSE:</h4>
+                                                                <p align="justify"> You, as a commercial vehicle driver, may not possess more than one license.
+                                                                    If you currently have more than one license, you should keep the license from your state of residence and return the additional licenses to the states that issued them. DESTROYING a license does not close the record in the state that issued it; you must notify the state. If a multiple license has been lost, stolen, or destroyed, you should close your record by notifying the state of issuance that you no longer want to be licensed by that state. </h4>
+                                                          
+                                                                   <h4> 2. NOTIFICATION OF LICENSE SUSPENSION, REVOCATION OR CANCELLATION:</h4>
+                                                                   <p align="justify"> Sections 392.42 and 383.33 of the Federal Motor Carrier Safety Regulations require that you notify your employer the NEXT BUSINESS DAY of any revocation or suspension of your driver’s license. In addition, section 383.31 requires that any time you violate a state or local traffic law (other than parking), you mustreportitwithin30daysto: 1) your employing motor carrier and 2) the state that issued your license (if the violation occurs in a state other than the one which issued your license).The notification to both the employer and state must be in Writing. </p>
+                
+                                                                   <h4> The following license is the only one I will possess:</h4> 
+                <b>Driver’s Name (Printed)</b>: <p id="driverName"></p><br>
+                <b>Driver’s License No:</b> <p id="driver_license"></p> <br>
+                <b>Exp Date:</b> <p id="license_expiry"></p> <br>
+                <h4></h4>DRIVER CERTIFICATION: I certify that I have read and understood the above requirements. <br>
+                <!-- <b>Drivers Name:</b>  <p id="driverName"></p<br> -->
+                <b>Drivers Signature:</b>   <img src="" id="signature" alt="user"  width="150"></a>
+                <br>
+                <b>Date:</b> <p id="getupdatedDate"></p><br>
+                
+                                                                </div>
+
+
+
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                    <!-- Medical Declaration start  -->
+                        <div id="viewmodalMedical" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">View Medical Declaration</h3>
+                                        <h4 align="center" class="card-title">
+                                            <?php  ?>
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+
+                                                    <div class="form-horizontal" id="Medical"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="Medical_details">
+                                                            <div class="col-md-6">
+                                                            </div>
+                                                            <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                                            <div style="text-align: center;">
+                                                                <span>
+                                                                    <h4>
+
+                                                                    </h4>
+                                                                </span>
+                                                                <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                                            </div>
+                                                            <br>
+
+                                                        
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+
+
+
+
+                                                                    <!-- <h3>Motor Vehicle Driver’s CERTIFICATION OF COMPLIANCE </h3> -->
+                                                                    <h4>WITH DRIVER LICENSE REQUIREMENTS </h4>
+                                                                    <p align="justify">On March 3rd, 1999 Transport Canada and the US federal Highway
+                                                                        administration (FHWA) entered into a reciprocal agreement
+                                                                        regarding the physical requirements for a Canadian drivers of a
+                                                                        commercial vehicle in the US, as currently contained in the
+                                                                        federal Motor carriers safety regulation, part 391.41 et seq,
+                                                                        and vice-versa, the reciprocal agreement will remove the
+                                                                        requirements for a Canadian driver to carry a copy of a medical
+                                                                        examiners certificate indicating that the driver is physically
+                                                                        qualified to drive (In effect, the existence of a valid driver’s
+                                                                        license issued by the province of <b id="companyProvince">
+                                                                        </b> is deemed to be proof that a driver is physically qualified to
+                                                                        drive in US) however, FHWA will not recognize an <b id="companyProvince">
+                                                                        </b> license if the driver has certain medical conditions and those
+                                                                        conditions would prohibit them from driving in the US. </p>
+                
+                                                                    <p> I certify that I am qualified to operate a commercial vehicle in
+                                                                        the United States. I further certify that: </p>
+                                                                    <p>A) I have no clinical diagnosis of diabetes currently requiring
+                                                                        insulin for control </p>
+                                                                    <p>B) I have no established medical history or clinical diagnosis of
+                                                                        epilepsy </p>
+                                                                    <p align="justify">C) I don’t have impaired hearing (A driver must be able to first
+                                                                        perceive a forced whispered voice in the better ear at not less
+                                                                        than 5 feet with or without the use of a hearing aid, or does
+                                                                        not have an average hearing loss in the better ear greater than
+                                                                        40 decibels at 500 Hz, 100 Hz, or 200 Hz with or without a
+                                                                        hearing aid when tested by an audiometric device calibrated to
+                                                                        American National Standard Z24.5-1951) </p>
+                                                                    <p>D) I have not been issued a waiver by the province of <b id="companyProvince">
+                                                                        </b> allowing me to operate a commercial motor vehicle pursuant
+                                                                        to section 20 or 22 of the <b id="companyProvince">
+                                                                        </b> regulation 340/94.</p>
+                
+                                                                    <p>I further agree to inform Auto Fill Company Name from 1st Page
+                                                                        should my medical status change, or if I can no longer certify
+                                                                        conditions A to D, described above. </p>
+                
+                                                                        <table>
+                                                                            <tr>
+                                                                                <td><b>Driver’s Name (Printed)</b></td>: <td>
+                                                                                    <p id="driverName"></p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><b>Drivers Signature:</b> </td>
+                                                                                <td> 
+                                                                                    <img src="" id="signature" alt="user"  width="150">
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <b>Date:</b>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <p id="getupdatedDate"></p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+
+
+
+                                                                
+                                                                        
+                
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                        </div>
+
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                      
+
+                        <!-- create trailer -->
+
+
+ <!-- Driverack  start  -->
+ <div id="viewmodalDriverack" class="modal fade" tabindex="-1" role="dialog"
+ aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+ data-keyboard="false">
+ <div class="modal-dialog">
+     
+     <!-- Modal content-->
+     <div class="modal-content">
+         <div class="modal-header">
+             <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+             <!-- <h4 class="modal-title">Delete List</h4> -->
+         </div>
+         <div class="modal-body">
+             <h3 align="center" class="card-title"> View Driver Acknowledgement </h3>
+             <h4 align="center" class="card-title">
+           
+             </h4>
+             <div class="card-body">
+
+                 <div class="row p-b-30">
+                     <div id="Driverack" class="col-md-12" style="background: #27a9e324;border-radius: 35px;">
+                         <h4 id="CertificateauthDtls"></h4>
+                         <p>I <b id="driverName">
+                             </b> have been explained and I understand it is illegal to
+                             Falsify in logbooks
+                             and I have to log all time markers (e.g., Tolls, border
+                             crossing, fuel times etc.) Properly and exactly as per 
+                             
+                            <b id="eventsCalTimezone"></b>
+
+                         </p>
+                         <p>If any falsification in my logs is found while auditing by
+                             company, I agree that I will be subjected to fines and penalties
+                         </p>
+
+                         <p>Fines and penalties will be determined by safety and compliance
+                             officer looking into number of counts and difference of hours.
+                         </p>
+
+                         <table>
+                             <tr>
+                                 <td style="width: 59%;"><b>Driver’s Name (Printed)</b>:</td>
+                                 <td><p id="driverName"> </p></td>
+                             </tr>
+                             <tr>
+                                 <td><b>Drivers Signature:</b>:</td>
+                                 <td><img src="" id="signature" alt="user" width="150"></td>
+                             </tr>
+                             <tr>
+                                 <td><b>Date:</b>:</td>
+                                 <td><p id="getupdatedDate"></p></td>
+                             </tr>
+                         </table>
+                     </div>
+                 </div>
+             </div>
+
+
+         </div>
+     </div>
+
+ </div>
+</div>
+
+
+                        <!-- ============================================================== -->
+                        <!-- End Page wrapper  -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Wrapper -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <%- include('includes/footer.ejs') %>
+                        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+                        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+                        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+
+                        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                        <script>
+
+
+
+                            /****************************************
+                             *       Basic Table                   *
+                             ****************************************/
+                            // $('#zero_config').DataTable();
+
+                            $(document).ready(function () {
+
+                                $('.close1').click(function () {
+                                    location.reload();
+                                });
+
+
+                                $(document).on('click', '#viewmodalidMotor', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    let certificateID = $(this).attr('data-certificateID');
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                                        type: "GET",
+                                        data: { id: id,certificateID:certificateID },
+                                        success: function (data) {
+                                            console.log(data);
+                                            console.log(data.driverName);
+                                            if (data.status) {
+                                                // $("#signatureDiv").hide();
+                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                                $("body #Motor #signature").attr("src", signaturePath);
+                                                $('body #Motor #driverName').text(data.driverName);
+                                                $('body #Motor #driver_license').text(data.driver_license);
+                                                $('body #Motor #license_expiry').text(data.license_expiry);
+                                                $('body #Motor #getupdatedDate').text(data.getupdatedDate);
+                                                $('body #Motor #eventsCalTimezone').text(data.eventsCalTimezone);
+                                                if(data.CertificateauthDtls){
+                                                $('body #Motor #CertificateauthDtls').text("Driver Approved");
+                                                }else{
+                                                    $('body #Motor #CertificateauthDtls').text("Waiting for Driver Approval");
+                                                }
+                                                $('body #viewmodalMotor').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+                                $(document).on('click', '#viewmodalMedical', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    let certificateID = $(this).attr('data-certificateID');
+                                    // alert(id)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                                        type: "GET",
+                                        data: { id: id,certificateID:certificateID },
+                                        success: function (data) {
+                                            console.log(data);
+                                            console.log(data.driverName);
+                                            if (data.status) {
+                                                // $("#signatureDiv").hide();
+                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                                $("body #Medical #signature").attr("src", signaturePath);
+                                                $('body #Medical #driverName').text(data.driverName);
+                                                $('body #Medical #companyProvince').text(data.companyProvince);
+                                                $('body #Medical #getupdatedDate').text(data.getupdatedDate);
+                                                $('body #Medical #eventsCalTimezone').text(data.eventsCalTimezone);
+                                                if(data.CertificateauthDtls){
+                                                $('body #Medical #CertificateauthDtls').text("Driver Approved");
+                                                }else{
+                                                    $('body #Medical #CertificateauthDtls').text("Waiting for Driver Approval");
+                                                }
+                                                $('body #viewmodalMedical').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+                                $(document).on('click', '#viewmodalDriverack', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    let certificateID = $(this).attr('data-certificateID');
+                                    // alert(id)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                                        type: "GET",
+                                        data: { id: id,certificateID:certificateID },
+                                        success: function (data) {
+                                            console.log(data);
+                                            console.log(data.driverName);
+                                            if (data.status) {
+                                                // $("#signatureDiv").hide();
+                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                                $("body #Driverack #signature").attr("src", signaturePath);
+                                                $('body #Driverack #driverName').text(data.driverName);
+                                                $('body #Driverack #companyProvince').text(data.companyProvince);
+                                                $('body #Driverack #getupdatedDate').text(data.getupdatedDate);
+                                                $('body #Driverack #eventsCalTimezone').text(data.eventsCalTimezone);
+                                                if(data.CertificateauthDtls){
+                                                $('body #Driverack #CertificateauthDtls').text("Driver Approved");
+                                                }else{
+                                                    $('body #Driverack #CertificateauthDtls').text("Waiting for Driver Approval");
+                                                }
+                                                $('body #viewmodalDriverack').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+
+
+
+
+
+
+
+
+                                $('#exptype').on('change', function () {
+                                    let cmpid = this.value;
+                                    // alert(cmpid)
+                                    $('body #create_trailer #company_id').val(cmpid);
+                                    $("#create_trailer_button").show()
+
+                                    $("#updateDrivingHistory").dataTable().fnDestroy();
+
+                                    let customer = $('#updateDrivingHistory').DataTable({
+                                        processing: true,
+                                        serverSide: true,
+                                        order: [[0, 'ASC']],
+                                        lengthMenu: [[10, 50, 100, 250, 500, 1000], [10, 50, 100, 250, 500, 1000]],
+                                        pageLength: 10,
+                                        searching: true,
+                                        ajax: {
+                                            url: "/getupdatemotorVehicleCertificateSuperadminSuperadmin",
+                                            data: function (data) {
+                                                data.cmpid = cmpid
+                                                // data.search_key = $("#searchKey").val(),
+                                                // data.search_val = $("#searchVal").val()
+                                            },
+                                            type: "GET",
+                                        },
+                                        columns: [
+                                            { "data": "slno" },
+                                            { "data": "firstName" },
+                                            { "data": "action" }
+                                        ],
+                                        select: true
+                                    });
+
+
+                                });
+                            });
+                        
+
+
+
+                        </script>
+                        <script src="sweetAlert/sweetalert2.min.js"></script>
+</body>
+
+</html>

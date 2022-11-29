@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <style type="text/css">
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('../includes/header.ejs') %>
+            <%- include('../includes/sidebar.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+
+
+
+                        <div id="editmodalhos" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <!-- <h3 align="center" class="card-title">Edit Hos</h3> -->
+                                                <div class="card-body">
+                                                    <form class="form-horizontal" id="updateHosdata"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="updateHosdata_details">
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input type="hidden" name="id" id="id">
+                                                                    <input type="hidden" name="driverId" id="driverId">
+
+
+                                                                    <div class="form-group row">
+                                                                        <label for="duration"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            duration</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="duration" value="" id="duration">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="actualDate"
+                                                                            class="col-sm-3 control-label col-form-label">actualDate</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="date" class="form-control"
+                                                                                name="actualDate" value=""
+                                                                                id="actualDate">
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button type="Submit" id="submitBtn"
+                                                                    class="btn btn-primary">Update</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div id="addmodaladdress" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h3 align="center" class="card-title">Add Employement history</h3>
+                                                <div class="card-body">
+                                                    <form class="form-horizontal" id="addAddress"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="addAddress_details">
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input type="hidden" id="id">
+                                                                    <input type="hidden" id="company_id"
+                                                                        name="company_id">
+                                                                    <input type="hidden" id="driverId" name="driverId">
+                                                                    <div class="form-group row">
+                                                                        <label for="driverAddress"
+                                                                            class="col-sm-3 control-label col-form-label">Driver
+                                                                            Address</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="driverAddress" value=""
+                                                                                id="driverAddress">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="driverCity"
+                                                                            class="col-sm-3 control-label col-form-label">City</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="driverCity" value=""
+                                                                                id="driverCity">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="driverState"
+                                                                            class="col-sm-3 control-label col-form-label">Driver
+                                                                            State</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="driverState" value=""
+                                                                                id="driverState">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="driverCountry"
+                                                                            class="col-sm-3 control-label col-form-label">Driver
+                                                                            Country</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="driverCountry" value=""
+                                                                                id="driverCountry">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="driverProvince"
+                                                                            class="col-sm-3 control-label col-form-label">Driver
+                                                                            Province</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="driverProvince" value=""
+                                                                                id="driverProvince">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="driverPostalCode"
+                                                                            class="col-sm-3 control-label col-form-label">Driver
+                                                                            PostalCode</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="driverPostalCode" value=""
+                                                                                id="driverPostalCode">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row">
+                                                                        <label for="DriverPostalCode"
+                                                                            class="col-sm-3 control-label col-form-label">From
+                                                                            Date</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="date" readonly
+                                                                                class="form-control" id="fromDate"
+                                                                                name="driverFromDate">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for=""
+                                                                            class="col-sm-3 control-label col-form-label">To
+                                                                            Date</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="date" readonly
+                                                                                class="form-control" name="driverToDate"
+                                                                                id="toDate">
+                                                                        </div>
+                                                                    </div>
+
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button type="Submit" id="submitBtn"
+                                                                    class="btn btn-primary">Add</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="viewmodaladdress" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">View Address</h3>
+                                        <div class="card-body">
+
+                                            <h5 align="center" class="card-title">
+                                                <i class="mdi mdi-alarm-check"></i> 
+                                                <!-- <%- title %> -->
+                                            </h5>
+                                            <div class="table-responsive">
+
+                                                <table id="table" class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <!-- <th>Id</th> -->
+                                                            <th class="thClass">Address</th>
+                                                            <th class="thClass">State</th>
+                                                            <th class="thClass">City</th>
+                                                            <th class="thClass">Country</th>
+                                                            <th class="thClass">Province</th>
+                                                            <th class="thClass">PostalCode</th>
+                                                            <th class="thClass">From</th>
+                                                            <th class="thClass">To</th>
+                                                            <th class="thClass">Add</th>
+                                                            <th class="thClass">Gap</th>
+                                                            <th class="thClass">Edit</th>
+                                                            <th class="thClass">Delete</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- <span id="tableDtls"></span> -->
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        Select Company
+                                        <select class="form-select selectboxcss" name="exptype" id="exptype">
+                                            <option value="">Select Company</option>
+                                            <% getCompanydata.forEach(function(row){ %>
+                                                <option value="<%= row.id %>">
+                                                    <%= row.name %>
+                                                </option>
+                                                <% }) %>
+
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <!-- <button class="btn btn-success" id="create_trailer_button"> Add Trailer <span class="glyphicon glyphicon-edit"></span>   <i style="font-size: 15px;" class="fas fa-plus"></i></button> -->
+                                <h5 align="center" class="card-title">
+                                    <i style="font-size: 40px;" class="mdi mdi-clock-fast"></i> 
+                                    <br>
+                                    <!-- <%- title %> -->
+                                </h5><hr>
+                                <div class="table-responsive">
+                                    <table id="updateDriverDetails" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>First Name</th>
+                                                <th>Company ID</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- view modal -->
+
+
+
+                        <div id="viewmodal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">View Driver Details</h3>
+                                        <h4 align="center" class="card-title">
+                                            <?php  ?>
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+
+                                                    <!-- <form class="form-horizontal" id="updateDriver" style="background: #27a9e324;border-radius: 35px;"> -->
+                                                    <div class="card-body" id="updateDriver_details_view">
+                                                        <span>Approvals Status: <h5 id="approveStatus"></h5></span>
+                                                        <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                                        <div style="text-align: center;">
+                                                            <span>
+                                                                <h4></h4>
+                                                            </span>
+                                                            <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                                        </div>
+                                                        <br>
+
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="driverId" value="" id="driverId">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="company_id" value="" id="company_id">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="approveStatus" value="1" id="approveStatus">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="actionData" value="" id="actionData">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label for="firstName"
+                                                                        class="col-sm-3 control-label col-form-label">Applicant
+                                                                        Name</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="firstName" value="" id="firstName">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="middleName"
+                                                                        class="col-sm-3 control-label col-form-label">Applicant
+                                                                        Middle
+                                                                        Name</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="middleName" value="" id="middleName">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="lastName"
+                                                                        class="col-sm-3 control-label col-form-label">Applicant
+                                                                        Last
+                                                                        Name</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="lastName" value="" id="lastName">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="DOA"
+                                                                        class="col-sm-3 control-label col-form-label">Date
+                                                                        Of
+                                                                        Application</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text"
+                                                                            class="form-control mydatepickerDOB"
+                                                                            readonly name="DOA" value="" id="DOA">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="companyAddress"
+                                                                        class="col-sm-3 control-label col-form-label">Company
+                                                                        Address</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="companyAddress" value=""
+                                                                            id="companyAddress">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label for="companyCity"
+                                                                        class="col-sm-3 control-label col-form-label">City</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="companyCity" value=""
+                                                                            id="companyCity">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="companyState"
+                                                                        class="col-sm-3 control-label col-form-label">Company
+                                                                        State</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="companyState" value=""
+                                                                            id="companyState">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="companyCountry"
+                                                                        class="col-sm-3 control-label col-form-label">Company
+                                                                        Country</label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-select" readonly
+                                                                            name="companyCountry" id="companyCountry">
+                                                                            <option value="">Select Country</option>
+                                                                            <option value="US">US</option>
+                                                                            <option value="Canada">Canada</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="TimeZone"
+                                                                        class="col-sm-3 control-label col-form-label">Company
+                                                                        Timezone</label>
+                                                                    <div class="col-md-9">
+                                                                        <div class="col-xs-3 col-xs-offset-4">
+                                                                            <div id="calContainer">
+
+
+                                                                                <!-- <label
+                                                                                    class=" control-label calendar-legend-section-header-text">Timezone
+                                                                                    Selector</label> -->
+                                                                                <input type="hidden"
+                                                                                    id="eventsCalTimezoneHidden">
+                                                                                <select
+                                                                                    class="form-control timezone-selector"
+                                                                                    name="eventsCalCountry"
+                                                                                    id="eventsCalCountry">
+                                                                                    <option value="CA">Canada</option>
+                                                                                    <option value="US">United States
+                                                                                    </option>
+                                                                                </select> <select
+                                                                                    class="form-control timezone-selector"
+                                                                                    name="eventsCalTimezone"
+                                                                                    id="eventsCalTimezone">
+                                                                                    <option value="America/New_York">
+                                                                                        (UTC-05:00)
+                                                                                        Eastern</option>
+                                                                                    <option value="America/Chicago">
+                                                                                        (UTC-06:00)
+                                                                                        Central</option>
+                                                                                    <option value="America/Denver">
+                                                                                        (UTC-07:00)
+                                                                                        Mountain</option>
+                                                                                    <option value="America/Phoenix">
+                                                                                        (UTC-07:00)
+                                                                                        Mountain - AZ</option>
+                                                                                    <option value="America/Los_Angeles">
+                                                                                        (UTC-08:00)
+                                                                                        Pacific</option>
+                                                                                    <option value="America/Anchorage">
+                                                                                        (UTC-09:00)
+                                                                                        Alaskan</option>
+                                                                                    <option value="Pacific/Honolulu">
+                                                                                        (UTC-10:00)
+                                                                                        Hawaiian</option>
+
+
+                                                                                    <option value="America/St_Johns">
+                                                                                        (UTC-02:30) Newfoundland
+                                                                                    </option>
+                                                                                    <option value="America/Halifax">
+                                                                                        (UTC-03:00) Atlantic - Halifax
+                                                                                    </option>
+                                                                                    <option value="America/Toronto">
+                                                                                        (UTC-04:00) Eastern - Toronto
+                                                                                    </option>
+                                                                                    <option value="America/Iqaluit">
+                                                                                        (UTC-04:00) Eastern - Iqaluit
+                                                                                    </option>
+                                                                                    <option value="America/Winnipeg">
+                                                                                        (UTC-05:00) Central - Winnipeg
+                                                                                    </option>
+                                                                                    <option value="America/Regina">
+                                                                                        (UTC-06:00) Central - Regina
+                                                                                    </option>
+                                                                                    <option value="America/Edmonton">
+                                                                                        (UTC-06:00) Mountain - Edmonton
+                                                                                    </option>
+                                                                                    <option value="America/Yellowknife">
+                                                                                        (UTC-06:00) Mountain -
+                                                                                        Yellowknife</option>
+                                                                                    <option
+                                                                                        value="America/Dawson_Creek">
+                                                                                        (UTC-07:00) Dawson Creek
+                                                                                    </option>
+                                                                                    <option value="America/Vancouver">
+                                                                                        (UTC-07:00) Pacific - Vancouver
+                                                                                    </option>
+                                                                                    <option value="America/Whitehorse">
+                                                                                        (UTC-07:00) Pacific - Whitehorse
+                                                                                    </option>
+                                                                                    < </select>
+                                                                            </div>
+
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="companyProvince"
+                                                                        class="col-sm-3 control-label col-form-label">Company
+                                                                        Province</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="companyProvince" value=""
+                                                                            id="companyProvince">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="TimeZone"
+                                                                        class="col-sm-3 control-label col-form-label">Company
+                                                                        Timezone</label>
+                                                                    <div class="col-md-9">
+                                                                        <div class="col-xs-3 col-xs-offset-4">
+                                                                            <div id="calContainer">
+
+
+                                                                                <!-- <label
+                                                                                    class=" control-label calendar-legend-section-header-text">Timezone
+                                                                                    Selector</label> -->
+                                                                                <input type="hidden"
+                                                                                    id="eventsCalTimezoneHidden">
+                                                                                <select
+                                                                                    class="form-control timezone-selector"
+                                                                                    name="eventsCalCountry"
+                                                                                    id="eventsCalCountry">
+                                                                                    <option value="CA">Canada</option>
+                                                                                    <option value="US">United States
+                                                                                    </option>
+                                                                                </select> <select
+                                                                                    class="form-control timezone-selector"
+                                                                                    name="eventsCalTimezone"
+                                                                                    id="eventsCalTimezone">
+                                                                                    <option value="America/New_York">
+                                                                                        (UTC-05:00)
+                                                                                        Eastern</option>
+                                                                                    <option value="America/Chicago">
+                                                                                        (UTC-06:00)
+                                                                                        Central</option>
+                                                                                    <option value="America/Denver">
+                                                                                        (UTC-07:00)
+                                                                                        Mountain</option>
+                                                                                    <option value="America/Phoenix">
+                                                                                        (UTC-07:00)
+                                                                                        Mountain - AZ</option>
+                                                                                    <option value="America/Los_Angeles">
+                                                                                        (UTC-08:00)
+                                                                                        Pacific</option>
+                                                                                    <option value="America/Anchorage">
+                                                                                        (UTC-09:00)
+                                                                                        Alaskan</option>
+                                                                                    <option value="Pacific/Honolulu">
+                                                                                        (UTC-10:00)
+                                                                                        Hawaiian</option>
+
+
+                                                                                    <option value="America/St_Johns">
+                                                                                        (UTC-02:30) Newfoundland
+                                                                                    </option>
+                                                                                    <option value="America/Halifax">
+                                                                                        (UTC-03:00) Atlantic - Halifax
+                                                                                    </option>
+                                                                                    <option value="America/Toronto">
+                                                                                        (UTC-04:00) Eastern - Toronto
+                                                                                    </option>
+                                                                                    <option value="America/Iqaluit">
+                                                                                        (UTC-04:00) Eastern - Iqaluit
+                                                                                    </option>
+                                                                                    <option value="America/Winnipeg">
+                                                                                        (UTC-05:00) Central - Winnipeg
+                                                                                    </option>
+                                                                                    <option value="America/Regina">
+                                                                                        (UTC-06:00) Central - Regina
+                                                                                    </option>
+                                                                                    <option value="America/Edmonton">
+                                                                                        (UTC-06:00) Mountain - Edmonton
+                                                                                    </option>
+                                                                                    <option value="America/Yellowknife">
+                                                                                        (UTC-06:00) Mountain -
+                                                                                        Yellowknife</option>
+                                                                                    <option
+                                                                                        value="America/Dawson_Creek">
+                                                                                        (UTC-07:00) Dawson Creek
+                                                                                    </option>
+                                                                                    <option value="America/Vancouver">
+                                                                                        (UTC-07:00) Pacific - Vancouver
+                                                                                    </option>
+                                                                                    <option value="America/Whitehorse">
+                                                                                        (UTC-07:00) Pacific - Whitehorse
+                                                                                    </option>
+                                                                                    < </select>
+                                                                            </div>
+
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="companyPostalCode"
+                                                                        class="col-sm-3 control-label col-form-label">Company
+                                                                        PostalCode</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="companyPostalCode" value=""
+                                                                            id="companyPostalCode">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="position"
+                                                                        class="col-sm-3 control-label col-form-label">Position</label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-select" readonly
+                                                                            name="position" id="position">
+                                                                            <option value="">Select Company</option>
+                                                                            <option value="Company Driver">Company
+                                                                                Driver</option>
+                                                                            <option value="Owner Operator">Owner
+                                                                                Operator</option>
+                                                                            <option value="Owner Operator Driver">Owner
+                                                                                Operator
+                                                                                Driver</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="sin"
+                                                                        class="col-sm-3 control-label col-form-label">Sin</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="sin" value="" id="sin">
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label for="phoneCanada"
+                                                                        class="col-sm-3 control-label col-form-label">Work
+                                                                        Phone
+                                                                        Canada</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="phoneCanada" value=""
+                                                                            id="phoneCanada">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label for="phoneUSA"
+                                                                        class="col-sm-3 control-label col-form-label">Work
+                                                                        Phone
+                                                                        USA</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="phoneUSA" value="" id="phoneUSA">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="emegencyName"
+                                                                        class="col-sm-3 control-label col-form-label">Emegency
+                                                                        Contact
+                                                                        Name</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="emegencyName" value=""
+                                                                            id="emegencyName">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="emegencyContact"
+                                                                        class="col-sm-3 control-label col-form-label">Emegency
+                                                                        Contact #</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="emegencyContact" value=""
+                                                                            id="emegencyContact">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="email"
+                                                                        class="col-sm-3 control-label col-form-label">Email
+                                                                        address</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="email" value="" id="email">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="DOB"
+                                                                        class="col-sm-3 control-label col-form-label">Date
+                                                                        of
+                                                                        Birth</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text"
+                                                                            class="form-control mydatepickerDOB"
+                                                                            readonly name="DOB" value="" id="DOB">
+                                                                        <input type="text" id="age" readonly name="age">
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="legalRightyesno"
+                                                                        class="col-sm-3 control-label col-form-label">Do
+                                                                        you have
+                                                                        the legal right to work in Canada?
+                                                                    </label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-select" readonly
+                                                                            name="legalRightyesno" id="legalRightyesno">
+                                                                            <option value="">Select option</option>
+                                                                            <option value="Yes">Yes</option>
+                                                                            <option value="No">No</option>
+                                                                        </select>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div id="legalRightyesnoData">
+                                                                    <div class="form-group row">
+                                                                        <label for="legalRight"
+                                                                            class="col-sm-3 control-label col-form-label">Select
+                                                                            Any
+                                                                            option </label>
+                                                                        <div class="col-md-9">
+                                                                            <select class="form-select" readonly
+                                                                                name="legalRight" id="legalRight">
+                                                                                <option value="">Select legalRight
+                                                                                </option>
+                                                                                <option value="PR">PR</option>
+                                                                                <option value="Citizen">Citizen</option>
+                                                                                <option value="Work Permit">Work Permit
+                                                                                </option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="legalRighttachmentdiv"
+                                                                        class="form-group row">
+                                                                        <label for="legalRightAtachment"
+                                                                            class="col-sm-3 control-label col-form-label"
+                                                                            id="legalRightAtachmentText"> </label>
+                                                                        <div class="col-md-9">
+
+
+                                                                            <a class="btn btn-primary" target="_blank"
+                                                                                id="legalRightAtachment_file_link"
+                                                                                href="">View
+                                                                                <span
+                                                                                    class="glyphicon glyphicon-edit"></span><i
+                                                                                    style="font-size: 15px;"
+                                                                                    class="fas fa-search"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="legalRightUSA"
+                                                                        class="col-sm-3 control-label col-form-label">legal
+                                                                        Right USA</label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-select" readonly
+                                                                            name="legalRightUSA" id="legalRightUSA">
+                                                                            <option value="">Select legalRightUSA
+                                                                            </option>
+                                                                            <option value="Yes">Yes</option>
+                                                                            <option value="No">No</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="legalRightUSAAtachmentdiv"
+                                                                    class="form-group row">
+                                                                    <label for="legalRightUSAAtachment"
+                                                                        class="col-sm-3 control-label col-form-label"
+                                                                        id="">legalRight USA Attachment</label>
+                                                                    <div class="col-md-9">
+
+
+                                                                        <a class="btn btn-primary" target="_blank"
+                                                                            id="legalRightUSAAtachment_file_link"
+                                                                            href="">View
+                                                                            <span
+                                                                                class="glyphicon glyphicon-edit"></span><i
+                                                                                style="font-size: 15px;"
+                                                                                class="fas fa-search"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="FMCSA"
+                                                                        class="col-sm-3 control-label col-form-label">Have
+                                                                        you
+                                                                        registered with the FMCSA Drug & Alcohol
+                                                                        Clearinghouse?
+                                                                    </label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-select" readonly
+                                                                            name="FMCSA" id="FMCSA">
+                                                                            <option value="">Select FMCSA</option>
+                                                                            <option value="Yes">Yes</option>
+                                                                            <option value="No">No</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="referred"
+                                                                        class="col-sm-3 control-label col-form-label">Where
+                                                                        you
+                                                                        referred</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="referred" value="" id="referred">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="referredBy"
+                                                                        class="col-sm-3 control-label col-form-label">Referred
+                                                                        By
+                                                                    </label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" readonly
+                                                                            name="referredBy" value="" id="referredBy">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="bonded"
+                                                                        class="col-sm-3 control-label col-form-label">Have
+                                                                        you ever
+                                                                        been bonded?</label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-select" readonly
+                                                                            name="bonded" id="bonded">
+                                                                            <option value="">Select bonded</option>
+                                                                            <option value="Yes">Yes</option>
+                                                                            <option value="No">No</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="convicted"
+                                                                        class="col-sm-3 control-label col-form-label">Have
+                                                                        you ever
+                                                                        been convicted of a felony? </label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-select" readonly
+                                                                            name="convicted" id="convicted">
+                                                                            <option value="">Select Convicted</option>
+                                                                            <option value="Yes">Yes</option>
+                                                                            <option value="No">No</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label for="fastCardyesno"
+                                                                        class="col-sm-3 control-label col-form-label">Are
+                                                                        you a FAST
+                                                                        approved driver? </label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-select" readonly
+                                                                            name="fastCardyesno" id="fastCardyesno">
+                                                                            <option value="">Select fastCard</option>
+                                                                            <option value="Yes">Yes</option>
+                                                                            <option value="No">No</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="fastCardyesnoData">
+
+                                                                    <div class="form-group row">
+                                                                        <label for="fastCard"
+                                                                            class="col-sm-3 control-label col-form-label">Fast
+                                                                            Card</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                readonly name="fastCard" value=""
+                                                                                id="fastCard">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="fastCardExpiry"
+                                                                            class="col-sm-3 control-label col-form-label">Fast
+                                                                            Card
+                                                                            Expiry</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text"
+                                                                                class="form-control mydatepicker"
+                                                                                readonly name="fastCardExpiry" value=""
+                                                                                id="fastCardExpiry">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="fastCardAttachment"
+                                                                            class="col-sm-3 control-label col-form-label">Fast
+                                                                            Card
+                                                                            Attachment</label>
+                                                                        <div class="col-md-9">
+
+                                                                            <a class="btn btn-primary" target="_blank"
+                                                                                id="fastCardAttachment_file_link"
+                                                                                href="">View
+                                                                                <span
+                                                                                    class="glyphicon glyphicon-edit"></span><i
+                                                                                    style="font-size: 15px;"
+                                                                                    class="fas fa-search"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="nofastcarddiv" class="form-group row">
+                                                                    <label for="fastCardneed"
+                                                                        class="col-sm-3 control-label col-form-label">Are
+                                                                        you
+                                                                        interested to apply for one </label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-select" readonly
+                                                                            name="fastCardneed" id="fastCardneed">
+                                                                            <option value="">Select fastCard</option>
+                                                                            <option value="Yes">Yes</option>
+                                                                            <option value="No">No</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+
+
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- </form> -->
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- edit modal -->
+
+                        <!-- edit modal -->
+
+
+
+                        <div id="editmodal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- <h3 align="center" class="card-title">Edit Hos</h3> -->
+                                        <h4 align="center" class="card-title">
+                                            <?php  ?>
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+
+
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+
+
+                                                        <center>
+                                                            <i style="font-size: 75px;" class="mdi mdi-clock-fast"></i> <br>
+                                                            <h3>Statement of Hours of Service
+                                                            </h3>
+                                                        </center>
+
+                                                        <p align="justify">New Hires, Contractors, Casual & Temporary
+                                                            Employees</p>
+                                                        <hr>
+                                                        <b> Name:</b> <span id="driverName"> </span>
+                                                        <hr>
+
+                                                        <div class="row">
+                                                            <div class="col-md-4"><b>Drivers Licence Number: </b>
+                                                                <span id="driver_license"></span>
+                                                            </div>
+                                                            <div class="col-md-4"><b>Class of License:</b>
+                                                                <span id="getDrivinghistoryprovince"> </span>
+                                                            </div>
+                                                            <div class="col-md-4"><b> Issuing Province:</b>
+                                                                <span id="getDrivinghistorylicense"> </span>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+
+                                                        <p align="justify">
+                                                            Section 81. (2)(c) The motor carrier maintains
+                                                            accurate and
+                                                            legible records showing, for each day, the
+                                                            driver's duty status
+                                                            and elected cycle, the hour at which each duty
+                                                            status
+                                                            begins and ends and the total number of hours
+                                                            spent in each
+                                                            status and keeps those records for a minimum
+                                                            period of 6 months
+                                                            after the day on which they were recorded.
+
+                                                            Section 84. No driver who is required to fill
+                                                            out a daily log
+                                                            shall drive and no motor carrier shall request,
+                                                            require or allow
+                                                            the driver to drive unless the driver has in
+                                                            their possession
+                                                            (a) a copy of the daily logs for the preceding
+                                                            14 days and, in
+                                                            the case of a driver driving under an oil well
+                                                            service permit,
+                                                            for each of the required 3 periods of 24
+                                                            consecutive hours of
+                                                            off-duty time in any period of 24 days; (b) the
+                                                            daily log for
+                                                            the current day, completed up to the time at
+                                                            which the last
+                                                            change in the driver’s duty status occurred;
+                                                            <br>
+
+
+                                                        </p>
+                                                        <div class="row">
+                                                            <div class="col-md-7"><b> 
+                                                                <input class="form-check-input" id="Iagree" name="Iagree"
+                                                            type="checkbox" value="1" id="flexCheckDefault Iagree">
+                                                            I hereby certify that the
+                                                                    information given
+                                                                    below is correct to
+                                                                    the best of my knowledge and belief,and that I was
+                                                                    last relieved from work at: </b></div>
+                                                            <div class="col-md-3">
+                                                                <span id="hosdurationData"></span>
+                                                                <br>
+                                                                on
+                                                                <br>
+                                                                <span id="hosdateData"></span>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        INSTRUCTIONS: Day 1 is the day before you first begin work for
+                                                        this motor carrier. The dates have been pre-filled based on
+                                                        today's date. If you need to change the DAY 1 date, Click here
+                                                        <br><br>
+                                                        <div class="row">
+                                                            <b>Selected Date : </b> <span id="hosselectedDate"></span>
+                                                        </div>
+
+                                                        <br>
+
+                                                        <div style="width: 100%" class="container1">
+                                                        </div>
+                                                        <br>
+
+                                                        <b>Employee Signature:</b>
+                                                        <img src="" id="signature" alt="user" width="150"></a>
+                                                        <br>
+
+                                                        <div><b> Name:</b> <span id="driverName"> </span></div> <br>
+                                                        <div><b>Drivers Licence Number: </b> <span
+                                                                id="driver_license"></span><br></div> <br>
+                                                        <div><b>Date: </b> <span id="hoscreatedAt"></span><br></div>
+                                                        <div><b>Total Duration: </b> <span id="totalDurationData"></span><br></div>
+                                                        <br>
+
+                                                        <a class="btn btn-primary" target="_blank"
+                                                            id="hosAttachment"
+                                                            href="">View <span
+                                                                class="glyphicon glyphicon-edit"></span><i
+                                                                style="font-size: 15px;" class="fas fa-search"></i></a>
+                                                    </div>
+
+
+                                                    <br>
+                                                   
+                                                </div>
+                                            </div>
+
+                                            <div class="row1">
+                                                <br>
+                                                <center>
+                                                    <h4>Driver Duration for last 14 days </h4>
+                                                    <br>
+                                                    <h5 style="color:crimson">Note: If you would like to
+                                                        edit these
+                                                        datas please make sure date should be in order</h5>
+                                                </center>
+                                            </div>
+
+                                            <table id="table" class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <!-- <th>Id</th> -->
+                                                        <th class="thClass">Sl</th>
+                                                        <th class="thClass">Date</th>
+                                                        <th class="thClass">Duration</th>
+                                                        <!-- <th class="thClass">Delete</th> -->
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- <span id="tableDtls"></span> -->
+
+
+                                                </tbody>
+                                            </table>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- edit modal -->
+
+
+
+
+
+
+
+
+
+
+                    <!-- create trailer -->
+
+
+
+
+
+                    <!-- ============================================================== -->
+                    <!-- End Page wrapper  -->
+                    <!-- ============================================================== -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Wrapper -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <%- include('../includes/footer.ejs') %>
+                    <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+                    <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+                    <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+
+                    <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                    <script>
+
+
+
+                        /****************************************
+                         *       Basic Table                   *
+                         ****************************************/
+                        // $('#zero_config').DataTable();
+
+                        $(document).ready(function () {
+
+                            jQuery('.nextyearDate').datepicker({
+                                format: 'dd/mm/yyyy',
+                            });
+                            jQuery('.mydatepickerDOB').datepicker({
+                                format: 'dd/mm/yyyy',
+                                maxDate: new Date(),
+                                closeOnSelected: true,
+                                autoclose: true,
+                                endDate: "today"
+                            });
+
+                            jQuery('.mydatepicker').datepicker({
+                                format: 'dd/mm/yyyy',
+                                closeOnSelected: true,
+                                autoclose: true,
+                            });
+                            jQuery('#datepicker-autoclose').datepicker({
+                                autoclose: true,
+                                todayHighlight: true,
+                                maxDate: new Date()
+                            });
+
+
+                            let date = new Date();
+                            var currentdate =
+                                ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+                                ("00" + date.getDate()).slice(-2) + "/" +
+                                date.getFullYear();
+                            function calculateAge(birthDate, otherDate) {
+                                birthDate = new Date(birthDate);
+                                otherDate = new Date(otherDate);
+
+                                var years = (otherDate.getFullYear() - birthDate.getFullYear());
+
+                                if (otherDate.getMonth() < birthDate.getMonth() ||
+                                    otherDate.getMonth() == birthDate.getMonth() && otherDate.getDate() < birthDate.getDate()) {
+                                    years--;
+                                }
+
+                                return years;
+                            }
+
+
+                            // var age = calculateAge("02/24/1991", "02/24/2010");
+
+
+
+
+
+                            $(document).on('click', '#editmodalid', function () {
+                                let driverId = $(this).attr('data-driverId');
+                                $.ajax({
+                                    url: "/getHosDtlsSuperadmin",
+                                    type: "GET",
+                                    data: { driverId: driverId },
+                                    success: function (data) {
+                                        // console.log(data.data);
+                                        // if(typeof(data.hosAttachment_attachment == 'undefined') || (data.hosAttachment_attachment == "")){
+                                        //     Swal.fire({
+                                        //             title: 'Error!',
+                                        //             text: 'Driver not initiated HOS',
+                                        //             icon: 'error',
+                                        //             confirmButtonText: 'Okay'
+                                        //         })
+                                        // }
+                                        if (data.status) {
+                                            $("body #driverName").html(data.driverName);
+                                            $("body #driver_license").html(data.driver_license);
+                                            // $("body #getDrivinghistorySignature").html(data.getDrivinghistorySignature);
+                                            if(data.getDrivinghistorySignature){
+                                            let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.getDrivinghistorySignature;
+                                            $("body  #signature").attr("src", signaturePath);
+                                            }else{
+                                                $("body #signature").hide(); 
+                                            }
+                                            $("body #companyName").html(data.companyName);
+                                            $("body #hosdateData").html(data.hosdateData);
+                                            $("body #hosdurationData").html(data.hosdurationData);
+                                            $("body #hosselectedDate").html(data.hosselectedDate);
+                                            $("body #hoscreatedAt").html(data.hoscreatedAt);
+                                            $("body #totalDurationData").html(data.totalDuration);
+                                            $('body #Iagree').attr('checked', 'checked');
+                                                $('body #Iagree').attr('disabled', true);
+                                            $("body #getDrivinghistoryprovince").html(data.getDrivinghistoryaddressprovince);
+                                            $("body #getDrivinghistorylicense").html(data.getDrivinghistoryaddresslicense);
+                                            console.log(data.hosAttachment_attachment);
+                                            if (data.hosAttachment_attachment != "" && data.hosAttachment_attachment != "undefined") {
+                                                let currentAttachment = 'uploads/attachment/hosAttachment/' + data.hosAttachment_attachment;
+                                                // alert(currentAttachment)
+                                                $("body #editmodal #hosAttachment").attr("href", currentAttachment);
+                                            } else {
+                                                $("body #editmodal #hosAttachment").hide();
+                                            }
+                                            if(data.data == undefined){
+                                                $("body #table tbody").hide();
+                                                // alert('table empty')
+                                                               Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Driver not initiated HOS So HOS logs created',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Okay'
+                                                })
+
+                                            }else{
+                                                $("body #editmodal #table tbody").html(data.data);
+                                                // alert('table')
+                                            }
+
+                                           
+                                            $('body #editmodal').modal('show');
+                                            // $('body #viewmodal >table > tbody').html(data.data);
+
+                                        } else {
+                                            $("body #table tbody").hide();
+                                        }
+
+                                    }
+                                });
+
+
+
+
+                                $(document).on('click', '.editmodalclassaddress', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    // let id = $('body #updateDriver #id').val();
+                                    // alert(id)
+                                    console.log(id);
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/getHosByID",
+                                        type: "GET",
+                                        data: { id: id },
+                                        success: function (data) {
+                                            console.log('test');
+                                            console.log(data);
+                                            if (data.status) {
+                                                $('body #updateHosdata #id').val(data.data.id);
+                                                $('body #updateHosdata #duration').val(data.data.duration);
+                                                $('body #updateHosdata #actualDate').val(data.data.actualDate);
+                                                $('body #updateHosdata #driverId').val(data.data.driverId);
+
+                                                $('body #editmodal').modal('hide');
+                                                $('body #editmodalhos').modal('show');
+                                            } else {
+                                                // Swal.fire('Any fool can use a computer')
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+
+
+
+                            });
+
+
+
+                            $("#create_trailer_button").hide()
+
+                            $("#create_trailer_button").click(function () {
+                                $('body #module_content_modal').modal('show');
+                            });
+
+                            $('#exptype').on('change', function () {
+                                let cmpid = this.value;
+                                // alert(cmpid)
+                                $('body #create_trailer #company_id').val(cmpid);
+                                $("#create_trailer_button").show()
+
+                                $("#updateDriverDetails").dataTable().fnDestroy();
+
+                                let customer = $('#updateDriverDetails').DataTable({
+                                    processing: true,
+                                    serverSide: true,
+                                    order: [[0, 'ASC']],
+                                    lengthMenu: [[10, 50, 100, 250, 500, 1000], [10, 50, 100, 250, 500, 1000]],
+                                    pageLength: 10,
+                                    searching: true,
+                                    ajax: {
+                                        url: "/gethosSuperadmin",
+                                        data: function (data) {
+                                            data.cmpid = cmpid
+                                            // data.search_key = $("#searchKey").val(),
+                                            // data.search_val = $("#searchVal").val()
+                                        },
+                                        type: "GET",
+                                    },
+                                    columns: [
+                                        { "data": "slno" },
+                                        { "data": "firstName" },
+                                        { "data": "company_id" },
+                                        { "data": "action" }
+                                    ],
+                                    select: true
+                                });
+
+
+                            });
+                        });
+
+
+
+                        $(document).on('click', '#deletedriverDtls', function () {
+                            let id = $(this).attr('data-id');
+
+                            // alert(id)
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You won't be able to revert this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, delete it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+
+                                    $.ajax({
+                                        url: "/superadmindeleteDriverDetails",
+                                        type: "POST",
+                                        data: { id: id },
+                                        success: function (data) {
+                                            if (data.status) {
+                                                const Toast = Swal.mixin({
+                                                    toast: true,
+                                                    position: 'top-end',
+                                                    showConfirmButton: false,
+                                                    timer: 2000,
+                                                    timerProgressBar: true,
+                                                    didOpen: (toast) => {
+                                                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                    }
+                                                })
+                                                Toast.fire({
+                                                    icon: 'success',
+                                                    title: data.message
+                                                }); setTimeout(function () {
+                                                    window.location.reload();
+                                                }, 2000);
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                            }
+
+                                        }
+                                    });
+
+
+                                }
+                            })
+                        });
+
+
+                        function convertToBase64(inputfile, parms) {
+                            //Read File
+                            // alert(inputfile)
+                            // alert(parms)
+
+                            var selectedFile = document.getElementById(inputfile).files;
+                            console.log(selectedFile);
+                            //Check File is not Empty
+                            if (selectedFile.length > 0) {
+                                // Select the very first file from list
+                                var fileToLoad = selectedFile[0];
+                                var filesize = selectedFile[0].size;
+                                if (filesize <= '2069405') {
+                                    console.log(filesize);
+                                    // FileReader function for read the file.
+                                    var fileReader = new FileReader();
+                                    var base64;
+                                    // Onload of file read the file content
+                                    fileReader.onload = function (fileLoadedEvent) {
+                                        base64 = fileLoadedEvent.target.result;
+                                        // Print data in console
+                                        console.log(parms);
+                                        $("#" + parms).val(base64);
+                                        var div = document.getElementById(parms);
+                                        div.innerHTML += base64;
+
+                                    };
+                                    // Convert data to base64
+                                    fileReader.readAsDataURL(fileToLoad);
+                                } else {
+                                    Swal.fire(
+                                        'Too Big!',
+                                        'Upload image size within 2 MB.',
+                                        'danger'
+                                    )
+                                    return false;
+                                }
+                            }
+                        }
+
+                        $(document).on('click', '#approve_button', function () {
+
+                            let id = $('body #updateDriver_details #driverId').val();
+
+                            // alert(id)
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You want to approve this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, approve it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+
+                                    $.ajax({
+                                        url: "/superadminapproveDriver",
+                                        type: "POST",
+                                        data: { id: id },
+                                        success: function (data) {
+                                            if (data.status) {
+                                                const Toast = Swal.mixin({
+                                                    toast: true,
+                                                    position: 'top-end',
+                                                    showConfirmButton: false,
+                                                    timer: 2000,
+                                                    timerProgressBar: true,
+                                                    didOpen: (toast) => {
+                                                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                    }
+                                                })
+                                                Toast.fire({
+                                                    icon: 'success',
+                                                    title: data.message
+                                                });
+                                                setTimeout(function () {
+                                                    window.location.reload();
+                                                }, 2000);
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                            }
+
+                                        }
+                                    });
+
+
+                                }
+                            })
+                        });
+
+                        $("#updateDriver").submit(function (event) {
+                            event.preventDefault();
+
+                            var values = {};
+                            $.each($('#updateDriver').serializeArray(), function (i, field) {
+                                values[field.name] = field.value;
+                                // console.log(values[field.name]);
+                            });
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You want to update this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, update it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    $("#submitBtn").text('Please wait');
+                                    $("#submitBtn").attr('disabled', true);
+                                    $.ajax({
+                                        url: "/updateDriverDetails",
+                                        type: "POST",
+                                        data: values,
+                                        // data: {id: getValue("id"),name:getValue("name")},
+                                        // data: {id: getValue("id"),name:getValue("name")},
+                                        // data:{id : values.id,name : values.name,username : values.username,password : values.password,management_name : values.management_name,phone : values.phone,email : values.email,safety_coordinator : values.safety_coordinator,safety_coordinator_phone : values.safety_coordinator_phone,cvor : values.cvor,cvor_expiry : values.cvor_expiry,mc_number : values.mc_number,mc_pin : values.mc_pin,usdot : values.usdot,fmcsa : values.fmcsa,ky : values.ky,nm : values.nm,ny : values.ny,fein : values.fein,ezee : values.ezee,ifta : values.ifta,business_identificaton : values.business_identificaton,mvid : values.mvid,sunpass : values.sunpass,pre_pass : values.pre_pass,best_pass : values.best_pass,scac : values.scac,carrier_code : values.carrier_code,irp_accountno : values.irp_accountno,irp_renewal : values.irp_renewal,svi_number : values.svi_number,insurance_company : values.insurance_company,broker_detail : values.broker_detail,policy_number : values.policy_number,exp_date : values.exp_date,drug_alcohol : values.drug_alcohol,psp_account : values.psp_account,ctpat : values.ctpat,ctpat_password : values.ctpat_password,smartway : values.smartway,pip : values.pip,us_canadian_bond : values.us_canadian_bond,wsib_account : values.wsib_account,eld_username : values.eld_username,eld_password : values.eld_password,fuel_company_name : values.fuel_company_name,fuel_company_username : values.fuel_company_username,fuel_company_password :fvalues.uel_company_password,ace_username : values.ace_username,ace_password : values.ace_password,hazmat : values.hazmat,hazmat_exp : values.hazmat_exp,dashcam_username : values.dashcam_username,dashcam_password : values.dashcam_password,trailer_trackers : values.trailer_trackers,trailer_password : values.trailer_password},
+                                        // data:{id : values.id,name : values.name,username : values.username,password : values.password,
+                                        //     management_name : values.management_name,phone : values.phone,email : values.email,safety_coordinator : values.safety_coordinator,safety_coordinator_phone : values.safety_coordinator_phone,cvor : values.cvor,cvor_expiry : values.cvor_expiry,mc_number : values.mc_number,
+                                        //     mc_pin : values.mc_pin,usdot : values.usdot,fmcsa : values.fmcsa,ky : values.ky,
+                                        //     nm : values.nm,ny : values.ny,fein : values.fein,ezee : values.ezee,ifta : values.ifta,business_identificaton : values.business_identificaton,mvid : values.mvid,sunpass : values.sunpass,pre_pass : values.pre_pass,best_pass : values.best_pass,scac : values.scac,carrier_code : values.carrier_code,irp_accountno : values.irp_accountno,irp_renewal : values.irp_renewal,svi_number : values.svi_number,insurance_company : values.insurance_company,broker_detail : values.broker_detail,policy_number : values.policy_number,exp_date : values.exp_date,drug_alcohol : values.drug_alcohol,psp_account : values.psp_account,ctpat : values.ctpat,ctpat_password : values.ctpat_password,smartway : values.smartway,pip : values.pip,us_canadian_bond : values.us_canadian_bond,wsib_account : values.wsib_account,eld_username : values.eld_username,eld_password : values.eld_password,fuel_company_name : values.fuel_company_name,fuel_company_username : values.fuel_company_username,fuel_company_password :values.fuel_company_password,ace_username : values.ace_username,ace_password : values.ace_password,hazmat : values.hazmat,hazmat_exp : values.hazmat_exp,dashcam_username : values.dashcam_username,dashcam_password : values.dashcam_password,trailer_trackers : values.trailer_trackers,trailer_password : values.trailer_password},
+                                        success: function (data) {
+                                            if (data.status) {
+                                                const Toast = Swal.mixin({
+                                                    toast: true,
+                                                    position: 'top-end',
+                                                    showConfirmButton: false,
+                                                    timer: 2000,
+                                                    timerProgressBar: true,
+                                                    didOpen: (toast) => {
+                                                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                    }
+                                                })
+                                                Toast.fire({
+                                                    icon: 'success',
+                                                    title: data.message
+                                                });
+                                                setTimeout(function () {
+                                                    window.location.reload();
+                                                }, 2000);
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                            }
+
+                                        }
+                                    });
+
+
+                                }
+                            })
+                        });
+
+                        $("#updateHosdata").submit(function (event) {
+                            event.preventDefault();
+                            var values = {};
+                            $.each($('#updateHosdata').serializeArray(), function (i, field) {
+                                values[field.name] = field.value;
+                                // console.log(values[field.name]);
+                            });
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You want to update this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, update it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    $("#submitBtn").text('Please wait');
+                                    $("#submitBtn").attr('disabled', true);
+                                    $.ajax({
+                                        url: "/updatehosByID",
+                                        type: "POST",
+                                        data: values,
+                                        success: function (data) {
+                                            if (data.status) {
+                                                const Toast = Swal.mixin({
+                                                    toast: true,
+                                                    position: 'top-end',
+                                                    showConfirmButton: false,
+                                                    timer: 2000,
+                                                    timerProgressBar: true,
+                                                    didOpen: (toast) => {
+                                                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                    }
+                                                })
+                                                Toast.fire({
+                                                    icon: 'success',
+                                                    title: data.message
+                                                });
+                                                setTimeout(function () {
+                                                    window.location.reload();
+                                                }, 2000);
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                            }
+
+                                        }
+                                    });
+
+
+                                }
+                            })
+                        });
+
+
+
+                    </script>
+                    <script src="sweetAlert/sweetalert2.min.js"></script>
+                    <script src="dist/js/timeZonescript.js"></script>
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js'></script>
+                    <script
+                        src='https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.3/moment-timezone-with-data.min.js'></script>
+                    <!-- <script src="./script.js"></script> -->
+                    <script>
+
+                        function onCountryChange() {
+                            var countryCode = $("body #updateDriver_details #eventsCalCountry").val();
+                            var eventsCalTimezoneHidden = $("body #updateDriver_details #eventsCalTimezoneHidden").val();
+                            if (eventsCalTimezoneHidden != "") {
+                                var eventsCalTimezoneData = $("body #updateDriver_details #eventsCalTimezone").val();
+                                for (var i in timezone_json[countryCode]) {
+                                    var timezoneObj = timezone_json[countryCode][i];
+                                    var now = moment(new Date())
+                                    $("body #updateDriver_details #eventsCalTimezone").append("<option value='" + timezoneObj.tzid + "'>" + "(UTC" + moment.tz(now, timezoneObj.tzid).format('Z') + ") " + timezoneObj.name)
+                                }
+                            }
+                            else {
+                                $("body #updateDriver_details #eventsCalTimezone").empty();
+                                var eventsCalTimezoneData = $("body #updateDriver_details #eventsCalTimezone").val();
+                                for (var i in timezone_json[countryCode]) {
+                                    var timezoneObj = timezone_json[countryCode][i];
+                                    var now = moment(new Date())
+                                    $("body #updateDriver_details #eventsCalTimezone").append("<option value='" + timezoneObj.tzid + "'>" + "(UTC" + moment.tz(now, timezoneObj.tzid).format('Z') + ") " + timezoneObj.name)
+                                }
+
+                            }
+                        }
+
+                        $(document).ready(function () {
+                            $("body #updateDriver_details #eventsCalCountry").change(onCountryChange);
+                            //   $("#eventsCalCountry").val("US");
+                            onCountryChange();
+
+                        })
+                    </script>
+</body>
+
+</html>
