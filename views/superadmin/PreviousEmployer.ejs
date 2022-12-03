@@ -27,7 +27,7 @@
     <link href="/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="/dist/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/sweetAlert/sweetalert2.min.css">
-    <link rel="stylesheet" href="https://ashaviglobal.com/agreement/template/dist/css/jquery.signature.css">">
+    <link rel="stylesheet" href="https://ashaviglobal.com/agreement/template/dist/css/jquery.signature.css">
     <link rel="stylesheet" type="text/css"
         href="https://compliancementorz.com/company_info/template/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
@@ -253,7 +253,7 @@
                                 misstatement or omission of information in this application
                                 may result in my dismissal. This document applies to the
                                 following previous employer </p><input type="text" readonly class="form-control"
-                                name="prospectiveEmployerName" placeholder="Employer Name" id="prospectiveEmployerName"
+                                name="previousEmployerName" placeholder="Employer Name" id="previousEmployerName"
                                 required="">
 
                             <label for="name" class="col-md-4 control-label col-form-label">Employee
@@ -261,7 +261,8 @@
                             <br>
                             <img id="signature" alt="user" width="150">
                             <br>
-                            <input type="text" readonly class="form-control" id="employeeName" placeholder="Employee Name">
+                            <input type="text" readonly class="form-control" id="employeeName"
+                                placeholder="Employee Name">
                             <br>
                             <span></span>
                             <hr>
@@ -270,26 +271,27 @@
                             <h4 style="text-align:center;">SAFETY PERFORMANCE HISTORY
                                 RECORDS REQUEST</h4>
                             <h5 style="text-align:center;">PART 1: TO BE COMPLETED BY
-                                PROSPECTIVE EMPLOYE</h5>
+                                PROSPECTIVE EMPLOYEE</h5>
                             <div class="form-group row">
                                 <label for="prospectiveEmployerName"
                                     class="col-md-2 control-label col-form-label">I</label>
                                 <div class="col-md-4">
-                                    <input type="text" readonly class="form-control" placeholder="Prospective employee name"
-                                        name="prospectiveEmployerName" id="prospectiveEmployerName">
+                                    <input type="text" readonly class="form-control"
+                                        placeholder="Prospective employee name" name="prospectiveEmployerName"
+                                        id="prospectiveEmployerName">
                                 </div>
                                 <label for="employeeSin" class="col-md-3 control-label col-form-label">Social
                                     Security Number:</label>
                                 <div class="col-md-3">
-                                    <input type="text" readonly class="form-control" placeholder="Social Security Number"
-                                        name="employeeSin" id="employeeSin">
+                                    <input type="text" readonly class="form-control"
+                                        placeholder="Social Security Number" name="employeeSin" id="employeeSin">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="employeeDOB" class="col-md-2 control-label col-form-label">DOB</label>
                                 <div class="col-md-4">
-                                    <input type="date" readonly class="form-control" placeholder="employeeDOB" name="employeeDOB"
-                                        id="employeeDOB">
+                                    <input type="text" readonly class="form-control" placeholder="employeeDOB"
+                                        name="employeeDOB" id="employeeDOB">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -305,8 +307,8 @@
                                 <div class="col-md-3">
                                     <div class="example example_markup">
                                         <div class="bs-example">
-                                            <input type="text" readonly class="form-control" name="previousEmployerEmail"
-                                                id="previousEmployerEmail" />
+                                            <input type="text" readonly class="form-control"
+                                                name="previousEmployerEmail" id="previousEmployerEmail" />
                                         </div>
                                     </div>
 
@@ -324,7 +326,7 @@
                                 <label for="previousEmployerPhone"
                                     class="col-md-3 control-label col-form-label">Telephone:</label>
                                 <div class="col-md-3">
-                                    <input type="text" readonly class="form-control" placeholder="Telephone"
+                                    <input type="text" required readonly class="form-control" placeholder="Telephone"
                                         name="previousEmployerPhone" value="" id="previousEmployerPhone">
                                 </div>
                             </div>
@@ -332,14 +334,15 @@
                                 <label for="previousEmployerStreet"
                                     class="col-md-2 control-label col-form-label">Street:</label>
                                 <div class="col-md-4">
-                                    <input type="text" readonly class="form-control" placeholder="Previous Employer Street"
-                                        name="previousEmployerStreet" value="" id="previousEmployerStreet">
+                                    <input type="text" readonly class="form-control"
+                                        placeholder="Previous Employer Street" name="previousEmployerStreet" value=""
+                                        id="previousEmployerStreet">
                                 </div>
                                 <label for="previousEmployerFax" class="col-md-3 control-label col-form-label">Fax
                                     NO:</label>
                                 <div class="col-md-3">
-                                    <input type="text" readonly class="form-control" placeholder="Fax" name="previousEmployerFax"
-                                        value="" id="previousEmployerFax">
+                                    <input type="text" readonly class="form-control" placeholder="Fax"
+                                        name="previousEmployerFax" value="" id="previousEmployerFax">
                                 </div>
                             </div>
                             <h4>TO:</h4>
@@ -388,15 +391,17 @@
                                     class="col-md-2 control-label col-form-label">Prospective
                                     employer’s fax number::</label>
                                 <div class="col-md-4">
-                                    <input type="text" readonly class="form-control" placeholder="prospectiveEmployerFax"
-                                        name="prospectiveEmployerFax" id="prospectiveEmployerFax">
+                                    <input type="text" readonly class="form-control"
+                                        placeholder="prospectiveEmployerFax" name="prospectiveEmployerFax"
+                                        id="prospectiveEmployerFax">
                                 </div>
                                 <label for="prospectiveEmployerEmail"
                                     class="col-md-3 control-label col-form-label">Prospective
                                     employer’s email address:</label>
                                 <div class="col-md-3">
-                                    <input type="text" readonly class="form-control" placeholder="prospectiveEmployerEmail"
-                                        name="prospectiveEmployerEmail" id="prospectiveEmployerEmail">
+                                    <input type="text" readonly class="form-control"
+                                        placeholder="prospectiveEmployerEmail" name="prospectiveEmployerEmail"
+                                        id="prospectiveEmployerEmail">
                                 </div>
                             </div>
 
@@ -411,8 +416,8 @@
                                 <label for="name" class="col-md-3 control-label col-form-label">
                                     Date:</label>
                                 <div class="col-md-3">
-                                    <input type="date" class="form-control" placeholder="applicantDate" name="applicantDate"
-                                        value="" id="applicantDate">
+                                    <input type="date" class="form-control" placeholder="applicantDate"
+                                        name="applicantDate" value="" id="applicantDate">
                                 </div>
                             </div>
                             <br>
@@ -424,8 +429,8 @@
                                 <label for="employedBy" class="col-md-9 control-label col-form-label">The
                                     applicant named above was employed by us:</label>
                                 <div class="col-md-3">
-                                    <select class="select2 form-control custom-select" disabled id="employedBy" name="employedBy"
-                                        style="width: 100%; height:36px;">
+                                    <select required class="select2 form-control custom-select" id="employedBy"
+                                        name="employedBy" style="width: 100%; height:36px;">
                                         <option value="">Select Here</option>
                                         <option value="YES">YES</option>
                                         <option value="NO">NO</option>
@@ -436,8 +441,8 @@
                                 <label for="jobDesignation" class="col-md-2 control-label col-form-label">Employed
                                     as:</label>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" placeholder="Employed as"
-                                        name="jobDesignation" readonly value="" id="jobDesignation">
+                                    <input required type="text" class="form-control" placeholder="Employed as"
+                                        name="jobDesignation" value="" id="jobDesignation">
                                 </div>
                                 <label for="previousfrom" class="col-md-2 control-label col-form-label">From:</label>
                                 <div class="col-md-2">
@@ -454,8 +459,8 @@
                                 <label for="motorVehicleForYou" class="col-md-9 control-label col-form-label">1. Did
                                     he/she drive motor vehicle for you? :</label>
                                 <div class="col-md-3">
-                                    <select disabled class="select2 form-control custom-select" id="motorVehicleForYou" name="motorVehicleForYou"
-                                        style="width: 100%; height:36px;">
+                                    <select class="select2 form-control custom-select" id="motorVehicleForYou"
+                                        name="motorVehicleForYou" style="width: 100%; height:36px;">
                                         <option value="">Select Here</option>
                                         <option value="YES">YES</option>
                                         <option value="NO">NO</option>
@@ -466,8 +471,8 @@
                                 <label for="whatType" class="col-md-9 control-label col-form-label">If
                                     yes, what type?</label>
                                 <div class="col-md-3">
-                                    <select disabled class="select2 form-control custom-select" id="whatType" name="whatType"
-                                        style="width: 100%; height:36px;">
+                                    <select class="select2 form-control custom-select" id="whatType"
+                                        name="whatType" required style="width: 100%; height:36px;">
                                         <option value="">Select Here</option>
                                         <option value="Straight Truck">Straight Truck
                                         </option>
@@ -479,9 +484,9 @@
                                         </option>
                                         <option value="Other">Other</option>
                                     </select>
-                                    <input type="text" class="form-control" placeholder="Other" name="whatTypeOther"
+                                    <input type="text" required class="form-control" placeholder="Other" name="whatTypeOther"
                                         value="" id="whatTypeOther">
-                                    <input type="text" class="form-control" placeholder="Comment" name="whatTypeComment"
+                                    <input type="text" required class="form-control" placeholder="Comment" name="whatTypeComment"
                                         value="" id="whatTypeComment">
                                 </div>
                             </div>
@@ -489,7 +494,7 @@
                                 <label for="reasonForLeaving" class="col-md-9 control-label col-form-label">2.
                                     Reason for leaving your employment: </label>
                                 <div class="col-md-3">
-                                    <select class="select2 form-control custom-select" name="reasonForLeaving"
+                                    <select required class="select2 form-control custom-select" name="reasonForLeaving"
                                         style="width: 100%; height:36px;">
                                         <option value="">Select Here</option>
                                         <option value="Discharged">Discharged</option>
@@ -504,13 +509,13 @@
                                 <label for="completeByCompany" class="col-md-2 control-label col-form-label">Complete
                                     by company</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" placeholder="Complete by company"
+                                    <input type="text" required class="form-control" placeholder="Complete by company"
                                         name="completeByCompany" id="completeByCompany">
                                 </div>
                                 <label for="previousEmployerAddress"
                                     class="col-md-1 control-label col-form-label">Address:</label>
                                 <div class="col-md-5">
-                                    <input type="text" class="form-control" placeholder="Address"
+                                    <input type="text" required class="form-control" placeholder="Address"
                                         name="previousEmployerAddress" id="previousEmployerAddress">
                                 </div>
                             </div>
@@ -519,13 +524,13 @@
                                 <label for="previousEmployerCSZ" class="col-md-2 control-label col-form-label">City,
                                     State, Postal Code</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" placeholder="City, State, Postal Code"
+                                    <input type="text" required class="form-control" placeholder="City, State, Postal Code"
                                         name="previousEmployerCSZ" value="" id="previousEmployerCSZ">
                                 </div>
                                 <label for="previousEmployerPhone"
                                     class="col-md-1 control-label col-form-label">Telephone:</label>
                                 <div class="col-md-5">
-                                    <input type="text" class="form-control" placeholder="Telephone"
+                                    <input type="text" required class="form-control" placeholder="Telephone"
                                         name="previousEmployerPhone" value="" id="previousEmployerPhone">
                                 </div>
                             </div>
@@ -580,8 +585,8 @@
                                     class="col-md-9 control-label col-form-label">Please
                                     select YES if you have any injuries</label>
                                 <div class="col-md-3">
-                                    <select class="select2 form-control custom-select table_selectbox"
-                                        name="previousEmployerAnyInuries" style="width: 100%; height:36px;">
+                                    <select required class="select2 form-control custom-select table_selectbox"
+                                        name="previousEmployerAnyInuries" id="previousEmployerAnyInuries" style="width: 100%; height:36px;">
                                         <option value="">Select Here</option>
                                         <option value="YES">YES</option>
                                         <option value="NO">NO</option>
@@ -668,7 +673,7 @@
                                     government agencies or insurers or retained under
                                     internal company policies:</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Policy" name="companyPolicies"
+                                    <input required type="text" class="form-control" placeholder="Policy" name="companyPolicies"
                                         id="companyPolicies">
                                 </div>
                             </div>
@@ -677,7 +682,7 @@
                                 <label for="name" class="col-md-6 control-label col-form-label">Any
                                     other remarks:</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Remarks" name="remarks"
+                                    <input type="text" required class="form-control" placeholder="Remarks" name="remarks"
                                         value="" id="remarks">
                                 </div>
                             </div>
@@ -744,9 +749,17 @@
 
                             $('body #module_content_modal').modal('show');
                         });
-
-
+                        $("body .part3table").hide();
+                        $('body #previousEmployerAnyInuries').on('change', function () {
+                            // alert($("body #previousEmployerAnyInuries").val())
+                            if ($("body #previousEmployerAnyInuries").val() == "YES") {
+                                $("body .part3table").show();
+                            } else {
+                                $("body .part3table").hide();
+                            }
+                        })
                     });
+
 
 
                     // alert('test')
@@ -801,6 +814,13 @@
                                 $("body #previousEmployerPhone").val(data.data.previousEmployerPhone);
                                 $("body #previousEmployerDate").val(data.data.previousEmployerDate);
                                 $("body #previousEmployerAnyInuries [value=" + '"' + data.data.previousEmployerAnyInuries + '"' + "]").attr("selected", true);
+
+                                if (data.data.previousEmployerAnyInuries == "YES") {
+                                    $("body .part3table").show();
+                                } else {
+                                    $("body .part3table").hide();
+                                }
+
                                 $("body #previousEmployertableoneDate").val(data.data.previousEmployertableoneDate);
                                 $("body #previousEmployertableoneLocation").val(data.data.previousEmployertableoneLocation);
                                 $("body #previousEmployertableoneInjuries").val(data.data.previousEmployertableoneInjuries);
@@ -886,6 +906,18 @@
 
                     $("#updateRef").submit(function (event) {
 
+
+                        if ($("body #previousEmployerAnyInuries").val() == "YES") {
+                                $("body .previousEmployertableoneLocation").show();
+                            } else {
+                                $("body .part3table").hide();
+                            }
+
+                            if ($("body #previousEmployerAnyInuries").val() ==  "YES" && $("body #previousEmployertableoneLocation").val() ==  "" ) {
+                                        Swal.fire({ title: 'Error!',text: 'Fill Atleast one injuries',icon: 'error', confirmButtonText: 'Cool'})
+                                        return false; }
+
+
                         event.preventDefault();
                         var values = {};
                         $.each($('#updateRef').serializeArray(), function (i, field) {
@@ -961,9 +993,6 @@
 
                     // $(".sendMailToPrev").click(function (event) { 
                     $(document).on('click', '.sendMailToPrev', function (event) {
-                        //  $(this).closest('form').submit();
-                        // $(this).closest('form').submit(function (event) {
-                        // $("#sendMailToPrev").submit(function (event) {
                         event.preventDefault();
                         // $("#EditDriverbtn").text('Please wait');
                         // $("#EditDriverbtn").attr('disabled', true);
@@ -1003,9 +1032,9 @@
                                                 icon: 'success',
                                                 title: data.message
                                             });
-                                            // setTimeout(function () {
-                                            //     window.location.reload();
-                                            // }, 2000);
+                                            setTimeout(function () {
+                                                window.location.reload();
+                                            }, 2000);
                                         } else {
                                             Swal.fire({
                                                 title: 'Error!',

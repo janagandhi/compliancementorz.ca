@@ -80,6 +80,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: true
     },
+    applicantDate: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
     employedBy: {
       type: DataTypes.TEXT,
       allowNull: true
@@ -133,6 +137,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     previousEmployerCSZ: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    previousEmployerStreet: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    previousEmployerFax: {
       type: DataTypes.TEXT,
       allowNull: true
     },
