@@ -847,7 +847,14 @@ router.get('/companydrivermanual', auth.Common,async (req, res) => {
 });
 //end
 
-
+// Email url to prev email
+router.get('/PreviousEmployer/:id',async (req, res) => {
+    superadminController.PreviousEmployer(req, res);
+});
+router.post('/PreviousEmployerDatas/',async (req, res) => {
+    superadminController.PreviousEmployerDatas(req, res);
+});
+// ReferenceManagement CURL
 
 // LOGOUT SESSION
 router.get('/logout', async (req, res) => {
