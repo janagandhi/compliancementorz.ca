@@ -942,7 +942,7 @@ router.createDriver = ('/createDriver/', async (req, res) => {
     const fData = JSON.parse(JSON.stringify(req.body))
     let to = req.body.email
     let userName = req.body.driver_license
-    let cc = 'mike@ashaviglobal.com'
+    let cc = 'compliancementorzportal@gmail.com'
     let subject = 'Welcome to new portal'
      let message = '<!DOCTYPE html><html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1"> <meta name="x-apple-disable-message-reformatting"> <title></title> <style>table, td, div, h1, p{font-family: Arial, sans-serif;}@media screen and (max-width: 530px){.unsub{display: block; padding: 8px; margin-top: 14px; border-radius: 6px; background-color: #555555; text-decoration: none !important; font-weight: bold;}.col-lge{max-width: 100% !important;}}@media screen and (min-width: 531px){.col-sml{max-width: 27% !important;}.col-lge{max-width: 73% !important;}}</style></head><body style="margin:0;padding:0;word-spacing:normal;background-color:#939297;"> <div role="article" aria-roledescription="email" lang="en" style="text-size-adjust:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#939297;"> <table role="presentation" style="width:100%;border:none;border-spacing:0;"> <tr> <td align="center" style="padding:0;"> <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;"> <tr> <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;"> <a href="https://compliancementorz.com" style="text-decoration:none;"><img src="https://compliancementorz.com/img/logo.png" width="165" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a> </td></tr><tr> <td style="padding:30px;background-color:#ffffff;"> <p style="margin:0;">Hi ' + userName + ',</p> <br><p style="margin:0;">Welcome to the new portal <a href="compliancementorz.ca/driverLogin"> Click here to Login new portal </a> <br>  Your  Username: ' + userName + 'And  password :' + req.body.password + '</td></tr><tr> <td style="padding:30px;background-color:#ffffff;"> <p style="margin:0;">Thank you,</p><p style="margin:0;">Safety Department  </p><br><a href="https://compliancementorz.com" style="text-decoration:none;"><img src="https://compliancementorz.com/img/logo.png" width="90" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a> <p style="margin:0;">Tel: 905-486-1666</p><p style="margin:0;">Web: www.compliancementorz.com</p></td></tr><tr> <td style="padding:30px;text-align:center;font-size:12px;background-color:#404040;color:#cccccc;"> <p style="margin:0;font-size:14px;line-height:20px;">&reg; compliancementorz 2022</p></td></tr></table> </td></tr></table> </div></body></html>' 
     let newDriverEmail = sendMail(to, cc, subject, message, req, res)
@@ -1518,7 +1518,7 @@ router.updateDriverDetails = ('/updateDriverDetails/', async (req, res) => {
         });
     }
     if (req.body.fastCardneed == 'Yes') {
-        let to = 'mike@ashaviglobal.com'
+        let to = 'compliancementorzportal@gmail.com'
         let cc = ''
         let subject = 'FAST approved driver'
         let message = 'Hi Admin New requst for FAST approved driver from Name: ' + req.body.firstName + ' Email: ' + req.body.email;
@@ -3626,7 +3626,7 @@ router.insertfeedback = ('/insertfeedback/', async (req, res) => {
     let create_feedback = await Feedback.create(fData);
 
 
-    let to = 'mike@ashaviglobal.com'
+    let to = 'compliancementorzportal@gmail.com'
     let cc = ''
     let subject = 'New Feedback From compliancementorz portal'
     // let message = 'test mail';
@@ -4504,7 +4504,7 @@ router.updatedrivermanual = ('/updatedrivermanual/', async (req, res) => {
 
 router.gtest = async (req, res) => {
     console.log('gtest start');
-    let to = 'mike@ashaviglobal.com'
+    let to = 'compliancementorzportal@gmail.com'
     let cc = ''
     let subject = 'Welcome to new portal'
     let message = 'test mail';
@@ -4520,7 +4520,7 @@ router.gtest = async (req, res) => {
 };
 router.checkEmail = async (req, res) => {
     console.log('checkEmail start');
-    let to = 'mike@ashaviglobal.com'
+    let to = 'compliancementorzportal@gmail.com'
     let cc = ''
     let subject = 'Welcome to new portal'
     let message = 'test mail';

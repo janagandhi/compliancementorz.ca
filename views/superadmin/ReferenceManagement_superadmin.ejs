@@ -425,9 +425,11 @@
                                             <input type="hidden" id="FormID">
 
 
+                                            <input class="btn btn-success" type="button" onclick="printDiv('printableArea')"
+                                                value="Print " /> 
 
                                             <form class="form-horizontal" id="updateRef">
-                                                <div class="card-body">
+                                                <div id="printableArea" class="card-body">
                                                     <h3 style="background-color: #0a0a0a;color: #fff;" align="center"
                                                         class="card-title">Form ID
                                                         #: <span id="formIDHeading"></span></h3>
@@ -708,7 +710,8 @@
                                                         of
                                                         this information must be made in a written form that
                                                         ensures confidentiality, such as fax, email, or
-                                                        letter
+                                                        letter</div>
+                                                    <div class="row">
                                                         <label for="prospectiveEmployerFax"
                                                             class="col-md-2 control-label col-form-label">Prospective
                                                             employer’s fax number::</label>
@@ -1106,7 +1109,7 @@
                                                             <span id="RefPreviousEmployerEmail"></span>
                                                         </div>
                                                     </div>
-                                                    <!-- <div id="refEmail"> -->
+                                                    <div id="refEmail">
 
 
                                                     <h4> Please Enter email </h4>
@@ -1137,7 +1140,7 @@
                                                                 Employer</button>
                                                         </div>
                                                     </div>
-                                                    <!-- </div> -->
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
@@ -1175,7 +1178,7 @@
                                         <!-- <h4 class="modal-title">Delete List</h4> -->
                                     </div>
                                     <div class="modal-body">
-                                        <h3 align="center" class="card-title">View Previous Employer Details </h3>
+                                        <h3 align="center" class="card-title">View Reference Details </h3>
                                         <div class="card-body">
 
                                             <div class="row p-b-30">
@@ -1654,7 +1657,7 @@
                                         confirmButtonText: 'Yes, update it!'
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            $("#EditDriverbtn").text('Please wait');
+                                            // $("#EditDriverbtn").text('Please wait');
                                             $("#EditDriverbtn").attr('disabled', true);
                                             $.ajax({
                                                 url: "/superadminupdateCompany",
@@ -1677,7 +1680,7 @@
                                                             icon: 'success',
                                                             title: data.message
                                                         }); setTimeout(function () {
-                                                            window.location.reload();
+                                                            // window.location.reload();
                                                         }, 2000);
                                                     } else {
                                                         Swal.fire({
@@ -1794,9 +1797,9 @@
                                                             icon: 'success',
                                                             title: data.message
                                                         });
-                                                        setTimeout(function () {
-                                                            window.location.reload();
-                                                        }, 2000);
+                                                        // setTimeout(function () {
+                                                        //     window.location.reload();
+                                                        // }, 2000);
                                                     } else {
                                                         Swal.fire({
                                                             title: 'Error!',
@@ -2063,6 +2066,20 @@
                                     })
                                 });
 
+
+                                function printDiv(divName) {
+                                    
+                                    $('body .light-logo').hide();
+                                    $('body #refEmail').hide();
+                                    var printContents = document.getElementById(divName).innerHTML;
+                                    var originalContents = document.body.innerHTML;
+
+                                    document.body.innerHTML = printContents;
+
+                                    window.print();
+
+                                    document.body.innerHTML = originalContents;
+                                }
 
                             </script>
 
