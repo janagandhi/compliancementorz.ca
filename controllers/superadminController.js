@@ -155,8 +155,8 @@ router.alertCron = ('/alertCron', async (req, res, parms) => {
                     // console.log(getcronOrigin[0][index]);
                     let to = getcronOrigin[0][index].driverEmail;
                     let cc = getcronOrigin[0][index].companyEmail;
-                    // let to = 'mike@ashaviglobal.com';
-                    // let cc = 'mike@ashaviglobal.com';
+                    // let to = 'compliancementorzportal@gmail.com';
+                    // let cc = 'compliancementorzportal@gmail.com';
                     let subject = columnName + ' Expiration Approaching';
                     let date = new Date();
                     var updated_on =
@@ -209,9 +209,9 @@ router.alertCron = ('/alertCron', async (req, res, parms) => {
                 //Check mail already sent to this company
                 let driverexp_historyData = sequelize.query('SELECT * FROM `driverexp_history` WHERE `company_id` = ' + getcronOrigin[0][index].companyID + ' AND `expiry_date` = STR_TO_DATE(' + getcronOrigin[0][index][columnName] + ', "%d-%m-%Y") AND `type` = ' + "'" + columnName + "'" + ' ORDER BY id DESC;');
                 if (driverexp_historyData != "") {
-                    // let to = 'mike@ashaviglobal.com';
+                    // let to = 'compliancementorzportal@gmail.com';
                     let to = getcronOrigin[0][index].companyEmail;
-                    let cc = 'mike@ashaviglobal.com';
+                    let cc = 'compliancementorzportal@gmail.com';
                     let subject = columnName + ' Expiration Approaching';
                     let date = new Date();
                     var updated_on =
@@ -260,9 +260,9 @@ router.alertCron = ('/alertCron', async (req, res, parms) => {
                 //Check mail already sent to this company
                 let driverexp_historyData = sequelize.query('SELECT * FROM `driverexp_history` WHERE `company_id` = ' + getcronOrigin[0][index].companyID + ' AND `expiry_date` = STR_TO_DATE(' + getcronOrigin[0][index][columnName] + ', "%d-%m-%Y") AND `type` = ' + "'" + columnName + "'" + ' ORDER BY id DESC;');
                 if (driverexp_historyData != "") {
-                    // let to = 'mike@ashaviglobal.com';
+                    // let to = 'compliancementorzportal@gmail.com';
                     let to = getcronOrigin[0][index].companyEmail;
-                    let cc = 'mike@ashaviglobal.com';
+                    let cc = 'compliancementorzportal@gmail.com';
                     let subject = columnName + ' Expiration Approaching';
                     let date = new Date();
                     var updated_on =
@@ -1157,7 +1157,7 @@ router.updateDriver = ('/updateDriver/', async (req, res) => {
        let password = req.body.driver_license + '-' + req.body.driver_name 
         let to = req.body.email
         let userName = req.body.driver_license
-        let cc = 'mike@ashaviglobal.com'
+        let cc = 'compliancementorzportal@gmail.com'
         let subject = 'Welcome to new portal'
         let message = '<!DOCTYPE html><html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1"> <meta name="x-apple-disable-message-reformatting"> <title></title> <style>table, td, div, h1, p{font-family: Arial, sans-serif;}@media screen and (max-width: 530px){.unsub{display: block; padding: 8px; margin-top: 14px; border-radius: 6px; background-color: #555555; text-decoration: none !important; font-weight: bold;}.col-lge{max-width: 100% !important;}}@media screen and (min-width: 531px){.col-sml{max-width: 27% !important;}.col-lge{max-width: 73% !important;}}</style></head><body style="margin:0;padding:0;word-spacing:normal;background-color:#939297;"> <div role="article" aria-roledescription="email" lang="en" style="text-size-adjust:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#939297;"> <table role="presentation" style="width:100%;border:none;border-spacing:0;"> <tr> <td align="center" style="padding:0;"> <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;"> <tr> <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;"> <a href="https://compliancementorz.com" style="text-decoration:none;"><img src="https://compliancementorz.com/img/logo.png" width="165" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a> </td></tr><tr> <td style="padding:30px;background-color:#ffffff;"> <p style="margin:0;">Hi ' + req.body.driver_name + ',</p> <br><p style="margin:0;">Welcome to new portal <a target="_blank" href="https://compliancementorz.ca/driverLogin"> Click here to Login new portal </a>  <br> Your  User Name: ' + userName + ' <br>  Password :' + password + '</td></tr><tr> <td style="padding:30px;background-color:#ffffff;"> <p style="margin:0;">Thank you,</p><p style="margin:0;">Safety Department  </p><br><a href="https://compliancementorz.com" style="text-decoration:none;"><img src="https://compliancementorz.com/img/logo.png" width="90" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a> <p style="margin:0;">Tel: 905-486-1666</p><p style="margin:0;">Web: www.compliancementorz.com</p></td></tr><tr> <td style="padding:30px;text-align:center;font-size:12px;background-color:#404040;color:#cccccc;"> <p style="margin:0;font-size:14px;line-height:20px;">&reg; compliancementorz 2022</p></td></tr></table> </td></tr></table> </div></body></html>'
         let newDriverEmail = sendMail(to, cc, subject, message, req, res)
@@ -1305,7 +1305,7 @@ router.createDriver = ('/createDriver/', async (req, res) => {
     // console.log(req.body.driver_license+'-'+req.body.driver_name);
     let to = req.body.email
     let userName = req.body.driver_license
-    let cc = 'mike@ashaviglobal.com'
+    let cc = 'compliancementorzportal@gmail.com'
     let subject = 'Welcome to new portal'
     let message = '<!DOCTYPE html><html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1"> <meta name="x-apple-disable-message-reformatting"> <title></title> <style>table, td, div, h1, p{font-family: Arial, sans-serif;}@media screen and (max-width: 530px){.unsub{display: block; padding: 8px; margin-top: 14px; border-radius: 6px; background-color: #555555; text-decoration: none !important; font-weight: bold;}.col-lge{max-width: 100% !important;}}@media screen and (min-width: 531px){.col-sml{max-width: 27% !important;}.col-lge{max-width: 73% !important;}}</style></head><body style="margin:0;padding:0;word-spacing:normal;background-color:#939297;"> <div role="article" aria-roledescription="email" lang="en" style="text-size-adjust:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#939297;"> <table role="presentation" style="width:100%;border:none;border-spacing:0;"> <tr> <td align="center" style="padding:0;"> <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;"> <tr> <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;"> <a href="https://compliancementorz.com" style="text-decoration:none;"><img src="https://compliancementorz.com/img/logo.png" width="165" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a> </td></tr><tr> <td style="padding:30px;background-color:#ffffff;"> <p style="margin:0;">Hi ' + req.body.driver_name + ',</p> <br><p style="margin:0;">Welcome to new portal <a target="_blank" href="https://compliancementorz.ca/driverLogin"> Click here to Login new portal </a>  <br> Your  User Name: ' + userName + ' <br>  Password :' + req.body.password + '</td></tr><tr> <td style="padding:30px;background-color:#ffffff;"> <p style="margin:0;">Thank you,</p><p style="margin:0;">Safety Department  </p><br><a href="https://compliancementorz.com" style="text-decoration:none;"><img src="https://compliancementorz.com/img/logo.png" width="90" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a> <p style="margin:0;">Tel: 905-486-1666</p><p style="margin:0;">Web: www.compliancementorz.com</p></td></tr><tr> <td style="padding:30px;text-align:center;font-size:12px;background-color:#404040;color:#cccccc;"> <p style="margin:0;font-size:14px;line-height:20px;">&reg; compliancementorz 2022</p></td></tr></table> </td></tr></table> </div></body></html>'
     let newDriverEmail = sendMail(to, cc, subject, message, req, res)
@@ -3789,10 +3789,10 @@ router.CreateReference = ('/CreateReference/', async (req, res) => {
             let to = getDetails
             let userName = req.body.employeeName
             let previousEmployerName = req.body.previousEmployerName
-            let cc = 'mike@ashaviglobal.com1'
+            let cc = 'compliancementorzportal@gmail.com1'
             let subject = 'Employer Verification request'
-            let URL = 'https://compliancementorz.ca/previousEmployer/' + formID
-            let message = '<!DOCTYPE html><html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="x-apple-disable-message-reformatting"><title></title><style>div,h1,p,table,td{font-family:Arial,sans-serif}@media screen and (max-width:530px){.unsub{display:block;padding:8px;margin-top:14px;border-radius:6px;background-color:#555;text-decoration:none!important;font-weight:700}.col-lge{max-width:100%!important}}@media screen and (min-width:531px){.col-sml{max-width:27%!important}.col-lge{max-width:73%!important}}</style></head><body style="margin:0;padding:0;word-spacing:normal;background-color:#939297"><div role="article" aria-roledescription="email" lang="en" style="text-size-adjust:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#939297"><table role="presentation" style="width:100%;border:none;border-spacing:0"><tr><td align="center" style="padding:0"><table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636"><tr><td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:700"><a href="https://compliancementorz.com" style="text-decoration:none"><img src="https://compliancementorz.com/img/logo.png" width="165" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#fff"></a></td></tr><tr><td style="padding:30px;background-color:#fff"><p style="margin:0">Hi Employer </p><br><p style="margin:0">You are receiving this email because a former employee ' + userName + ', has filled out an application for employment at Compliancementorz and it was indicated that Ashavi was a previous employer. ' + previousEmployerName + ' has signed a release which is available for viewing on our verification web form. If this is correct, please go to the  <a target="_blank" href="'+ URL +'">secure link</a>  and answer the employment verification questions on ' + userName + '.Please call Compliancementorz at 9054861666 or email Driverhiring@compliancementorz.com 9am - 5pm EST. M-FOn behalf of Compliancementorz, thank you in advance for your prompt attention and taking the time to provide employment verification on ' + userName + '.<br>Regards,<br>Compliancementorz<br>p. 9054861666<br>Driverhiring@compliancementorz.com<br>https://compliancementorz.com/</td></tr><tr><td style="padding:30px;background-color:#fff"><p style="margin:0">Thank you,</p><p style="margin:0">Safety Department</p><br><a href="https://compliancementorz.com" style="text-decoration:none"><img src="https://compliancementorz.com/img/logo.png" width="90" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#fff"></a><p style="margin:0">Tel: 905-486-1666</p><p style="margin:0">Web: www.compliancementorz.com</p></td></tr><tr><td style="padding:30px;text-align:center;font-size:12px;background-color:#404040;color:#ccc"><p style="margin:0;font-size:14px;line-height:20px">&reg; compliancementorz 2022</p></td></tr></table></td></tr></table></div></body></html>'
+            let URL = 'https://compliancementorz.ca/previousEmployer/' + formID 
+            let message = '<!DOCTYPE html><html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="x-apple-disable-message-reformatting"><title></title><style>div,h1,p,table,td{font-family:Arial,sans-serif}@media screen and (max-width:530px){.unsub{display:block;padding:8px;margin-top:14px;border-radius:6px;background-color:#555;text-decoration:none!important;font-weight:700}.col-lge{max-width:100%!important}}@media screen and (min-width:531px){.col-sml{max-width:27%!important}.col-lge{max-width:73%!important}}</style></head><body style="margin:0;padding:0;word-spacing:normal;background-color:#939297"><div role="article" aria-roledescription="email" lang="en" style="text-size-adjust:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#939297"><table role="presentation" style="width:100%;border:none;border-spacing:0"><tr><td align="center" style="padding:0"><table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636"><tr><td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:700"><a href="https://compliancementorz.com" style="text-decoration:none"><img src="https://compliancementorz.com/img/logo.png" width="165" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#fff"></a></td></tr><tr><td style="padding:30px;background-color:#fff"><p style="margin:0">Hello Employer </p><br><p style="margin:0">You are receiving this email because a former employee ' + userName + ', has filled out an application for employment at Compliancementorz and it was indicated that ' + previousEmployerName + ' was a previous employer. ' + userName + ' has signed a release which is available for viewing on our verification web form. If this is correct, please go to the  <a target="_blank" href="'+ URL +'">secure link</a>  and answer the employment verification questions on ' + userName + '.Please call Compliancementorz at 9054861666 or email Driverhiring@compliancementorz.com 9am - 5pm EST. M-FOn behalf of Compliancementorz, thank you in advance for your prompt attention and taking the time to provide employment verification on ' + userName + '.<br>Regards,<br>Compliancementorz<br>p. 9054861666<br>Driverhiring@compliancementorz.com<br>https://compliancementorz.com/</td></tr><tr><td style="padding:30px;background-color:#fff"><p style="margin:0">Thank you,</p><p style="margin:0">Safety Department</p><br><a href="https://compliancementorz.com" style="text-decoration:none"><img src="https://compliancementorz.com/img/logo.png" width="90" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#fff"></a><p style="margin:0">Tel: 905-486-1666</p><p style="margin:0">Web: www.compliancementorz.com</p></td></tr><tr><td style="padding:30px;text-align:center;font-size:12px;background-color:#404040;color:#ccc"><p style="margin:0;font-size:14px;line-height:20px">&reg; compliancementorz 2022</p></td></tr></table></td></tr></table></div></body></html>'
             sendMail(to, cc, subject, message, req, res)
 
             //Email
@@ -3871,7 +3871,7 @@ router.superadminGetPrevEmpdetails = ('/superadminGetPrevEmpdetails/', async (re
         ImagesAttachment = '';
     } 
     if (getDtls == null || DriverDtls == null || getDriverMoredetails == null || CompanyDtls == null || getDrivinghistoryData == null) {
-        res.json({ status: false,data:"Before creating reference all other driver forms to be filled (Drivinghistory,Driver details,company deatils and drivingHistory" });
+        res.json({ status: false,data:"Before creating reference all other driver forms to be filled (Manage Company, Driver Portal - Personal Details, Employment History and Driving History)" });
     }   
     //Sort array by date
     getDtls.sort(function (a, b) {
@@ -3940,7 +3940,65 @@ router.PreviousEmployerDatas = ('/PreviousEmployerDatas/', async (req, res) => {
         res.json({ status: false });
     }
 });
+
+
+router.referenceCron = ('/referenceCron', async (req, res, parms) => {
+        //Check actual data matching exprange and columname
+       let getcronOrigin = await sequelize.query('SELECT * FROM reference WHERE status = 0 AND STR_TO_DATE(created_date, "%d/%m/%Y") >= DATE(NOW()) AND STR_TO_DATE(created_date, "%d/%m/%Y") <= DATE(NOW()) + INTERVAL 1 DAY;', {
+            raw: false, // pass true here if you have any mapped fields
+        });
+    
+        for (let index = 0; index < getcronOrigin[0].length; index++) {
+            // console.log(getcronOrigin[0][index].companyname);
+            if (getcronOrigin[0][index].driverEmail != "" && getcronOrigin[0][index].driverEmail.length != 2 && getcronOrigin[0][index].companyEmail != "" && getcronOrigin[0][index].companyEmail != "NO") {
+         
+                console.log('gtest');
+                console.log(getcronOrigin[0][index].driverEmail);
+                console.log(getcronOrigin[0][index].driverEmail.length);
+                //Check company id freq
+                // 0 - week 1 -month	
+                //Check mail already sent to this company
+                let driverexp_historyData = sequelize.query('SELECT * FROM `driverexp_history` WHERE `exprange` != ' + exprange + ' AND `company_id` = ' + getcronOrigin[0][index].companyID + ' AND `expiry_date` = STR_TO_DATE(' + getcronOrigin[0][index][columnName] + ', "%d-%m-%Y") AND `type` = ' + "'" + columnName + "'" + ' ORDER BY id DESC;');
+                console.log('SELECT * FROM `driverexp_history` WHERE `exprange` != ' + exprange + ' AND `company_id` = ' + getcronOrigin[0][index].companyID + ' AND `expiry_date` = STR_TO_DATE(' + getcronOrigin[0][index][columnName] + ', "%d-%m-%Y") AND `type` = ' + "'" + columnName + "'" + ' ORDER BY id DESC;');
+                if (driverexp_historyData != "") {
+                    // console.log(getcronOrigin[0][index]);
+                    let to = getcronOrigin[0][index].driverEmail;
+                    let cc = getcronOrigin[0][index].companyEmail;
+                    // let to = 'compliancementorzportal@gmail.com';
+                    // let cc = 'compliancementorzportal@gmail.com';
+                    let subject = columnName + ' Expiration Approaching';
+                    let date = new Date();
+                    var updated_on =
+                        ("00" + (date.getMonth() + 1)).slice(-2) + "-" +
+                        ("00" + date.getDate()).slice(-2) + "-" +
+                        date.getFullYear() + " " +
+                        ("00" + date.getHours()).slice(-2) + ":" +
+                        ("00" + date.getMinutes()).slice(-2) + ":" +
+                        ("00" + date.getSeconds()).slice(-2);
+                    let message = '<!DOCTYPE html><html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1"> <meta name="x-apple-disable-message-reformatting"> <title></title> <style>table, td, div, h1, p{font-family: Arial, sans-serif;}@media screen and (max-width: 530px){.unsub{display: block; padding: 8px; margin-top: 14px; border-radius: 6px; background-color: #555555; text-decoration: none !important; font-weight: bold;}.col-lge{max-width: 100% !important;}}@media screen and (min-width: 531px){.col-sml{max-width: 27% !important;}.col-lge{max-width: 73% !important;}}</style></head><body style="margin:0;padding:0;word-spacing:normal;background-color:#939297;"> <div role="article" aria-roledescription="email" lang="en" style="text-size-adjust:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#939297;"> <table role="presentation" style="width:100%;border:none;border-spacing:0;"> <tr> <td align="center" style="padding:0;"> <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;"> <tr> <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;"> <a href="https://compliancementorz.com" style="text-decoration:none;"><img src="https://compliancementorz.com/img/logo.png" width="165" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a> </td></tr><tr> <td style="padding:30px;background-color:#ffffff;"> <p style="margin:0;">Hi  ' + getcronOrigin[0][index].driver_name + ',</p> <br><p style="margin:0;"> This is the Reminder e-mail that your ' + columnName + ' Expiry on (' + getcronOrigin[0][index][columnName] + '). Please provide us the renewed ' + columnName + ' before the expiration date.</p></td></tr><tr> <td style="padding:30px;background-color:#ffffff;"> <p style="margin:0;">Thank you,</p><p style="margin:0;">Safety Department  </p><br><a href="https://compliancementorz.com" style="text-decoration:none;"><img src="https://compliancementorz.com/img/logo.png" width="90" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a> <p style="margin:0;">Tel: 905-486-1666</p><p style="margin:0;">Web: www.compliancementorz.com</p></td></tr><tr> <td style="padding:30px;text-align:center;font-size:12px;background-color:#404040;color:#cccccc;"> <p style="margin:0;font-size:14px;line-height:20px;">&reg; compliancementorz 2022</p></td></tr></table> </td></tr></table> </div></body></html>';
+                    let licenseData = 'asda';
+                    // let licenseData = sendMail(to, cc, subject, message, req, res)
+                    if (licenseData) {
+                        //   res.json({status:true,message:'Mail sent'+to});
+                        console.log('Mail sent' + to);
+                    } else {
+                        console.log('Something went wrong');
+                        //   res.json({status:false,message:'Something went wrong'});
+                    }
+                    let create_Company = driverexp_history.create({ company_id: getcronOrigin[0][index].companyID, driver_id: getcronOrigin[0][index].companyID, companyname: getcronOrigin[0][index].companyname, driver_name: getcronOrigin[0][index].driver_name, mail_content: message, to_mail: to, type: columnName, expiry_date: getcronOrigin[0][index][columnName], exprange: exprange, created_date: updated_on });
+                    return false
+                } else {
+                    console.log("mail failed");
+                }
+                // })
+            }
+        }
+})
+
+
+
 // Reference end
+
 // router.generateReportPageSuperadmin = async (req, res) => {
 //     let getCompanydata = await Company.findAll({ where: { active: 0 }, raw: true });
 //     res.render('superadmin/generateReportPageSuperadmin', {
