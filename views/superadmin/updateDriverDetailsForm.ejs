@@ -587,23 +587,15 @@
                                                                             id="companyCity">
                                                                     </div>
                                                                 </div>
-                                                                <div class="form-group row">
-                                                                    <label for="companyState"
-                                                                        class="col-sm-3 control-label col-form-label">Company
-                                                                        State</label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="text" class="form-control" readonly
-                                                                            name="companyState" value=""
-                                                                            id="companyState">
-                                                                    </div>
-                                                                </div>
+                                                               <!-- <div class="form-group row"> <label for="companyState"class="col-sm-3 control-label col-form-label">Company State</label><div class="col-md-9"><input type="text" class="form-control" readonly name="companyState" value="" id="companyState"></div> </div>-->
+															   <input type="hidden" name="companyState" value="" id="companyState">
                                                                 <div class="form-group row">
                                                                     <label for="companyCountry"
                                                                         class="col-sm-3 control-label col-form-label">Company
                                                                         Country</label>
                                                                     <div class="col-md-9">
                                                                         <select class="form-select" readonly
-                                                                            name="companyCountry" id="companyCountry">
+                                                                            name="companyCountry" id="companyCountry" onchange="get_province(this.value)">
                                                                             <option value="">Select Country</option>
                                                                             <option value="US">US</option>
                                                                             <option value="Canada">Canada</option>
@@ -627,72 +619,72 @@
                                                                                 <select
                                                                                     class="form-control timezone-selector"
                                                                                     name="eventsCalCountry"
-                                                                                    id="eventsCalCountry">
+                                                                                    id="eventsCalCountry" >
                                                                                     <option value="CA">Canada</option>
                                                                                     <option value="US">United States
                                                                                     </option>
-                                                                                </select> <select
-                                                                                    class="form-control timezone-selector"
-                                                                                    name="eventsCalTimezone"
-                                                                                    id="eventsCalTimezone">
-                                                                                    <option value="America/New_York">
-                                                                                        (UTC-05:00)
-                                                                                        Eastern</option>
-                                                                                    <option value="America/Chicago">
-                                                                                        (UTC-06:00)
-                                                                                        Central</option>
-                                                                                    <option value="America/Denver">
-                                                                                        (UTC-07:00)
-                                                                                        Mountain</option>
-                                                                                    <option value="America/Phoenix">
-                                                                                        (UTC-07:00)
-                                                                                        Mountain - AZ</option>
-                                                                                    <option value="America/Los_Angeles">
-                                                                                        (UTC-08:00)
-                                                                                        Pacific</option>
-                                                                                    <option value="America/Anchorage">
-                                                                                        (UTC-09:00)
-                                                                                        Alaskan</option>
-                                                                                    <option value="Pacific/Honolulu">
-                                                                                        (UTC-10:00)
-                                                                                        Hawaiian</option>
+                                                                                </select>  <select
+                                                                                class="form-control timezone-selector"
+                                                                                name="eventsCalTimezone"
+                                                                                id="eventsCalTimezone">
+                                                                                <option value="Eastern">
+                                                                                    (UTC-05:00)
+                                                                                    Eastern</option>
+                                                                                <option value="Central">
+                                                                                    (UTC-06:00)
+                                                                                    Central</option>
+                                                                                <option value="Mountain">
+                                                                                    (UTC-07:00)
+                                                                                    Mountain</option>
+                                                                                <option value="Mountain-AZ">
+                                                                                    (UTC-07:00)
+                                                                                    Mountain - AZ</option>
+                                                                                <option value="Pacific">
+                                                                                    (UTC-08:00)
+                                                                                    Pacific</option>
+                                                                                <option value="Alaskan">
+                                                                                    (UTC-09:00)
+                                                                                    Alaskan</option>
+                                                                                <option value="Hawaiian">
+                                                                                    (UTC-10:00)
+                                                                                    Hawaiian</option>
 
 
-                                                                                    <option value="America/St_Johns">
-                                                                                        (UTC-02:30) Newfoundland
-                                                                                    </option>
-                                                                                    <option value="America/Halifax">
-                                                                                        (UTC-03:00) Atlantic - Halifax
-                                                                                    </option>
-                                                                                    <option value="America/Toronto">
-                                                                                        (UTC-04:00) Eastern - Toronto
-                                                                                    </option>
-                                                                                    <option value="America/Iqaluit">
-                                                                                        (UTC-04:00) Eastern - Iqaluit
-                                                                                    </option>
-                                                                                    <option value="America/Winnipeg">
-                                                                                        (UTC-05:00) Central - Winnipeg
-                                                                                    </option>
-                                                                                    <option value="America/Regina">
-                                                                                        (UTC-06:00) Central - Regina
-                                                                                    </option>
-                                                                                    <option value="America/Edmonton">
-                                                                                        (UTC-06:00) Mountain - Edmonton
-                                                                                    </option>
-                                                                                    <option value="America/Yellowknife">
-                                                                                        (UTC-06:00) Mountain -
-                                                                                        Yellowknife</option>
-                                                                                    <option
-                                                                                        value="America/Dawson_Creek">
-                                                                                        (UTC-07:00) Dawson Creek
-                                                                                    </option>
-                                                                                    <option value="America/Vancouver">
-                                                                                        (UTC-07:00) Pacific - Vancouver
-                                                                                    </option>
-                                                                                    <option value="America/Whitehorse">
-                                                                                        (UTC-07:00) Pacific - Whitehorse
-                                                                                    </option>
-                                                                                    < </select>
+                                                                                <option value="Newfoundland">
+                                                                                    (UTC-02:30) Newfoundland
+                                                                                </option>
+                                                                                <option value="Atlantic-Halifax">
+                                                                                    (UTC-03:00) Atlantic - Halifax
+                                                                                </option>
+                                                                                <option value="Eastern-Toronto">
+                                                                                    (UTC-04:00) Eastern - Toronto
+                                                                                </option>
+                                                                                <option value="Eastern-Iqaluitt">
+                                                                                    (UTC-04:00) Eastern - Iqaluit
+                                                                                </option>
+                                                                                <option value="Central-Winnipeg">
+                                                                                    (UTC-05:00) Central - Winnipeg
+                                                                                </option>
+                                                                                <option value="Central-Regina">
+                                                                                    (UTC-06:00) Central - Regina
+                                                                                </option>
+                                                                                <option value="Mountain-Edmonton">
+                                                                                    (UTC-06:00) Mountain - Edmonton
+                                                                                </option>
+                                                                                <option value="Mountain-Yellowknife">
+                                                                                    (UTC-06:00) Mountain -
+                                                                                    Yellowknife</option>
+                                                                                <option
+                                                                                    value="Dawson-Creek">
+                                                                                    (UTC-07:00) Dawson Creek
+                                                                                </option>
+                                                                                <option value="Pacific-Vancouver">
+                                                                                    (UTC-07:00) Pacific - Vancouver
+                                                                                </option>
+                                                                                <option value="Pacific-Whitehorse">
+                                                                                    (UTC-07:00) Pacific - Whitehorse
+                                                                                </option>
+                                                                                 </select>
                                                                             </div>
 
                                                                         </div>
@@ -703,11 +695,12 @@
                                                                 <div class="form-group row">
                                                                     <label for="companyProvince"
                                                                         class="col-sm-3 control-label col-form-label">Company
-                                                                        Province</label>
+                                                                        Province/State</label>
+
                                                                     <div class="col-md-9">
-                                                                        <input type="text" class="form-control" readonly
-                                                                            name="companyProvince" value=""
-                                                                            id="companyProvince">
+                                                                       <input type="text" class="form-control"
+                                                                                name="companyProvince" value=""
+                                                                                id="vcompanyProvince">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -731,68 +724,68 @@
                                                                                     <option value="CA">Canada</option>
                                                                                     <option value="US">United States
                                                                                     </option>
-                                                                                </select> <select
-                                                                                    class="form-control timezone-selector"
-                                                                                    name="eventsCalTimezone"
-                                                                                    id="eventsCalTimezone">
-                                                                                    <option value="America/New_York">
-                                                                                        (UTC-05:00)
-                                                                                        Eastern</option>
-                                                                                    <option value="America/Chicago">
-                                                                                        (UTC-06:00)
-                                                                                        Central</option>
-                                                                                    <option value="America/Denver">
-                                                                                        (UTC-07:00)
-                                                                                        Mountain</option>
-                                                                                    <option value="America/Phoenix">
-                                                                                        (UTC-07:00)
-                                                                                        Mountain - AZ</option>
-                                                                                    <option value="America/Los_Angeles">
-                                                                                        (UTC-08:00)
-                                                                                        Pacific</option>
-                                                                                    <option value="America/Anchorage">
-                                                                                        (UTC-09:00)
-                                                                                        Alaskan</option>
-                                                                                    <option value="Pacific/Honolulu">
-                                                                                        (UTC-10:00)
-                                                                                        Hawaiian</option>
+                                                                                </select>  <select
+                                                                                class="form-control timezone-selector"
+                                                                                name="eventsCalTimezone"
+                                                                                id="eventsCalTimezone">
+                                                                                <option value="Eastern">
+                                                                                    (UTC-05:00)
+                                                                                    Eastern</option>
+                                                                                <option value="Central">
+                                                                                    (UTC-06:00)
+                                                                                    Central</option>
+                                                                                <option value="Mountain">
+                                                                                    (UTC-07:00)
+                                                                                    Mountain</option>
+                                                                                <option value="Mountain-AZ">
+                                                                                    (UTC-07:00)
+                                                                                    Mountain - AZ</option>
+                                                                                <option value="Pacific">
+                                                                                    (UTC-08:00)
+                                                                                    Pacific</option>
+                                                                                <option value="Alaskan">
+                                                                                    (UTC-09:00)
+                                                                                    Alaskan</option>
+                                                                                <option value="Hawaiian">
+                                                                                    (UTC-10:00)
+                                                                                    Hawaiian</option>
 
 
-                                                                                    <option value="America/St_Johns">
-                                                                                        (UTC-02:30) Newfoundland
-                                                                                    </option>
-                                                                                    <option value="America/Halifax">
-                                                                                        (UTC-03:00) Atlantic - Halifax
-                                                                                    </option>
-                                                                                    <option value="America/Toronto">
-                                                                                        (UTC-04:00) Eastern - Toronto
-                                                                                    </option>
-                                                                                    <option value="America/Iqaluit">
-                                                                                        (UTC-04:00) Eastern - Iqaluit
-                                                                                    </option>
-                                                                                    <option value="America/Winnipeg">
-                                                                                        (UTC-05:00) Central - Winnipeg
-                                                                                    </option>
-                                                                                    <option value="America/Regina">
-                                                                                        (UTC-06:00) Central - Regina
-                                                                                    </option>
-                                                                                    <option value="America/Edmonton">
-                                                                                        (UTC-06:00) Mountain - Edmonton
-                                                                                    </option>
-                                                                                    <option value="America/Yellowknife">
-                                                                                        (UTC-06:00) Mountain -
-                                                                                        Yellowknife</option>
-                                                                                    <option
-                                                                                        value="America/Dawson_Creek">
-                                                                                        (UTC-07:00) Dawson Creek
-                                                                                    </option>
-                                                                                    <option value="America/Vancouver">
-                                                                                        (UTC-07:00) Pacific - Vancouver
-                                                                                    </option>
-                                                                                    <option value="America/Whitehorse">
-                                                                                        (UTC-07:00) Pacific - Whitehorse
-                                                                                    </option>
-                                                                                    < </select>
+                                                                                <option value="Newfoundland">
+                                                                                    (UTC-02:30) Newfoundland
+                                                                                </option>
+                                                                                <option value="Atlantic-Halifax">
+                                                                                    (UTC-03:00) Atlantic - Halifax
+                                                                                </option>
+                                                                                <option value="Eastern-Toronto">
+                                                                                    (UTC-04:00) Eastern - Toronto
+                                                                                </option>
+                                                                                <option value="Eastern-Iqaluitt">
+                                                                                    (UTC-04:00) Eastern - Iqaluit
+                                                                                </option>
+                                                                                <option value="Central-Winnipeg">
+                                                                                    (UTC-05:00) Central - Winnipeg
+                                                                                </option>
+                                                                                <option value="Central-Regina">
+                                                                                    (UTC-06:00) Central - Regina
+                                                                                </option>
+                                                                                <option value="Mountain-Edmonton">
+                                                                                    (UTC-06:00) Mountain - Edmonton
+                                                                                </option>
+                                                                                <option value="Mountain-Yellowknife">
+                                                                                    (UTC-06:00) Mountain -
+                                                                                    Yellowknife</option>
+                                                                                <option
+                                                                                    value="Dawson-Creek">
+                                                                                    (UTC-07:00) Dawson Creek
+                                                                                </option>
+                                                                                <option value="Pacific-Vancouver">
+                                                                                    (UTC-07:00) Pacific - Vancouver
+                                                                                </option>
+                                                                                <option value="Pacific-Whitehorse">
+                                                                                    (UTC-07:00) Pacific - Whitehorse
+                                                                                </option>
+                                                                                 </select>
                                                                             </div>
 
                                                                         </div>
@@ -829,7 +822,7 @@
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="sin"
-                                                                        class="col-sm-3 control-label col-form-label">Sin</label>
+                                                                        class="col-sm-3 control-label col-form-label">Social Insurance Number</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" class="form-control" readonly
                                                                             name="sin" value="" id="sin">
@@ -1007,7 +1000,7 @@
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="referred"
-                                                                        class="col-sm-3 control-label col-form-label">Where
+                                                                        class="col-sm-3 control-label col-form-label">Were
                                                                         you
                                                                         referred</label>
                                                                     <div class="col-md-9">
@@ -1269,16 +1262,7 @@
                                                                                 id="companyCity">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group row">
-                                                                        <label for="companyState"
-                                                                            class="col-sm-3 control-label col-form-label">Company
-                                                                            State</label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control"
-                                                                                name="companyState" value=""
-                                                                                id="companyState">
-                                                                        </div>
-                                                                    </div>
+                                                                   
                                                                     <div class="form-group row">
                                                                         <label for="companyCountry"
                                                                             class="col-sm-3 control-label col-form-label">Company
@@ -1317,77 +1301,67 @@
                                                                                         <option value="US">United States
                                                                                         </option>
                                                                                     </select> <select
-                                                                                        class="form-control timezone-selector"
-                                                                                        name="eventsCalTimezone"
-                                                                                        id="eventsCalTimezone">
-                                                                                        <option
-                                                                                            value="America/New_York">
-                                                                                            (UTC-05:00)
-                                                                                            Eastern</option>
-                                                                                        <option value="America/Chicago">
-                                                                                            (UTC-06:00)
-                                                                                            Central</option>
-                                                                                        <option value="America/Denver">
-                                                                                            (UTC-07:00)
-                                                                                            Mountain</option>
-                                                                                        <option value="America/Phoenix">
-                                                                                            (UTC-07:00)
-                                                                                            Mountain - AZ</option>
-                                                                                        <option
-                                                                                            value="America/Los_Angeles">
-                                                                                            (UTC-08:00)
-                                                                                            Pacific</option>
-                                                                                        <option
-                                                                                            value="America/Anchorage">
-                                                                                            (UTC-09:00)
-                                                                                            Alaskan</option>
-                                                                                        <option
-                                                                                            value="Pacific/Honolulu">
-                                                                                            (UTC-10:00)
-                                                                                            Hawaiian</option>
-
-
-                                                                                        <option
-                                                                                            value="America/St_Johns">
-                                                                                            (UTC-02:30) Newfoundland
-                                                                                        </option>
-                                                                                        <option value="America/Halifax">
-                                                                                            (UTC-03:00) Atlantic -
-                                                                                            Halifax</option>
-                                                                                        <option value="America/Toronto">
-                                                                                            (UTC-04:00) Eastern -
-                                                                                            Toronto</option>
-                                                                                        <option value="America/Iqaluit">
-                                                                                            (UTC-04:00) Eastern -
-                                                                                            Iqaluit</option>
-                                                                                        <option
-                                                                                            value="America/Winnipeg">
-                                                                                            (UTC-05:00) Central -
-                                                                                            Winnipeg</option>
-                                                                                        <option value="America/Regina">
-                                                                                            (UTC-06:00) Central - Regina
-                                                                                        </option>
-                                                                                        <option
-                                                                                            value="America/Edmonton">
-                                                                                            (UTC-06:00) Mountain -
-                                                                                            Edmonton</option>
-                                                                                        <option
-                                                                                            value="America/Yellowknife">
-                                                                                            (UTC-06:00) Mountain -
-                                                                                            Yellowknife</option>
-                                                                                        <option
-                                                                                            value="America/Dawson_Creek">
-                                                                                            (UTC-07:00) Dawson Creek
-                                                                                        </option>
-                                                                                        <option
-                                                                                            value="America/Vancouver">
-                                                                                            (UTC-07:00) Pacific -
-                                                                                            Vancouver</option>
-                                                                                        <option
-                                                                                            value="America/Whitehorse">
-                                                                                            (UTC-07:00) Pacific -
-                                                                                            Whitehorse</option>
-                                                                                        < </select>
+                                                                                    class="form-control timezone-selector"
+                                                                                    name="eventsCalTimezone"
+                                                                                    id="eventsCalTimezone">
+                                                                                    <option value="Eastern">
+                                                                                        (UTC-05:00)
+                                                                                        Eastern</option>
+                                                                                    <option value="Central">
+                                                                                        (UTC-06:00)
+                                                                                        Central</option>
+                                                                                    <option value="Mountain">
+                                                                                        (UTC-07:00)
+                                                                                        Mountain</option>
+                                                                                    <option value="Mountain-AZ">
+                                                                                        (UTC-07:00)
+                                                                                        Mountain - AZ</option>
+                                                                                    <option value="Pacific">
+                                                                                        (UTC-08:00)
+                                                                                        Pacific</option>
+                                                                                    <option value="Alaskan">
+                                                                                        (UTC-09:00)
+                                                                                        Alaskan</option>
+                                                                                    <option value="Hawaiian">
+                                                                                        (UTC-10:00)
+                                                                                        Hawaiian</option>
+    
+    
+                                                                                    <option value="Newfoundland">
+                                                                                        (UTC-02:30) Newfoundland
+                                                                                    </option>
+                                                                                    <option value="Atlantic-Halifax">
+                                                                                        (UTC-03:00) Atlantic - Halifax
+                                                                                    </option>
+                                                                                    <option value="Eastern-Toronto">
+                                                                                        (UTC-04:00) Eastern - Toronto
+                                                                                    </option>
+                                                                                    <option value="Eastern-Iqaluitt">
+                                                                                        (UTC-04:00) Eastern - Iqaluit
+                                                                                    </option>
+                                                                                    <option value="Central-Winnipeg">
+                                                                                        (UTC-05:00) Central - Winnipeg
+                                                                                    </option>
+                                                                                    <option value="Central-Regina">
+                                                                                        (UTC-06:00) Central - Regina
+                                                                                    </option>
+                                                                                    <option value="Mountain-Edmonton">
+                                                                                        (UTC-06:00) Mountain - Edmonton
+                                                                                    </option>
+                                                                                    <option value="Mountain-Yellowknife">
+                                                                                        (UTC-06:00) Mountain -
+                                                                                        Yellowknife</option>
+                                                                                    <option
+                                                                                        value="Dawson-Creek">
+                                                                                        (UTC-07:00) Dawson Creek
+                                                                                    </option>
+                                                                                    <option value="Pacific-Vancouver">
+                                                                                        (UTC-07:00) Pacific - Vancouver
+                                                                                    </option>
+                                                                                    <option value="Pacific-Whitehorse">
+                                                                                        (UTC-07:00) Pacific - Whitehorse
+                                                                                    </option>
+                                                                                     </select>
                                                                                 </div>
 
                                                                             </div>
@@ -1400,11 +1374,13 @@
                                                                     <div class="form-group row">
                                                                         <label for="companyProvince"
                                                                             class="col-sm-3 control-label col-form-label">Company
-                                                                            Province</label>
+                                                                            Province/State</label>
                                                                         <div class="col-md-9">
-                                                                            <input type="text" class="form-control"
-                                                                                name="companyProvince" value=""
-                                                                                id="companyProvince">
+																			 <select class="form-select form-control" name="companyProvince"
+																			id="companyProvince" >
+																			<option value="" selected>Select Province/State</option>
+																		</select>
+                                                                            
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -1436,7 +1412,7 @@
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label for="sin"
-                                                                            class="col-sm-3 control-label col-form-label">Sin</label>
+                                                                            class="col-sm-3 control-label col-form-label">Social Insurance Number</label>
                                                                         <div class="col-md-9">
                                                                             <input type="text" class="form-control"
                                                                                 name="sin" value="" id="sin">
@@ -1630,7 +1606,7 @@
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label for="referred"
-                                                                            class="col-sm-3 control-label col-form-label">Where
+                                                                            class="col-sm-3 control-label col-form-label">Were
                                                                             you
                                                                             referred</label>
                                                                         <div class="col-md-9">
@@ -1963,7 +1939,7 @@
                                                 $('body #updateDriver_details_view #companyCity').val(data.data.companyCity);
                                                 $('body #updateDriver_details_view #companyState').val(data.data.companyState);
                                                 $("body #updateDriver_details_view #companyCountry [value=" + '"' + data.data.companyCountry + '"' + "]").attr("selected", true);
-                                                $('body #updateDriver_details_view #companyProvince').val(data.data.companyProvince);
+                                                $('body #updateDriver_details_view #vcompanyProvince').val(data.data.companyProvince);
                                                 $('body #updateDriver_details_view #companyPostalCode').val(data.data.companyPostalCode);
                                                 $("body #updateDriver_details_view #position [value=" + '"' + data.data.position + '"' + "]").attr("selected", true);
                                                 $("body #updateDriver_details_view #eventsCalCountry [value=" + '"' + data.data.eventsCalCountry + '"' + "]").attr("selected", true);
@@ -2131,6 +2107,7 @@
                                                 $('body #updateDriver_details #companyCity').val(data.data.companyCity);
                                                 $('body #updateDriver_details #companyState').val(data.data.companyState);
                                                 $("body #updateDriver_details #companyCountry [value=" + '"' + data.data.companyCountry + '"' + "]").attr("selected", true);
+												get_province(data.data.companyCountry);
                                                 $('body #updateDriver_details #companyProvince').val(data.data.companyProvince);
                                                 $('body #updateDriver_details #companyPostalCode').val(data.data.companyPostalCode);
                                                 $("body #updateDriver_details #position [value=" + '"' + data.data.position + '"' + "]").attr("selected", true);
@@ -2895,7 +2872,7 @@
                         <!-- <script src="./script.js"></script> -->
                         <script>
 
-                            function onCountryChange() {
+                            function onCountryChange1() {
                                 var countryCode = $("body #updateDriver_details #eventsCalCountry").val();
                                 var eventsCalTimezoneHidden = $("body #updateDriver_details #eventsCalTimezoneHidden").val();
                                 if (eventsCalTimezoneHidden != "") {
@@ -2917,6 +2894,34 @@
 
                                 }
                             }
+							function get_province(country)
+							{
+								$('#companyProvince').children('option:not(:first)').remove();
+								if(country=='Canada' )
+								{
+									$("#companyProvince").append('<option value="AB">AB</option>');
+									$("#companyProvince").append('<option value="BC">BC</option>');
+									$("#companyProvince").append('<option value="MB">MB</option>');
+									$("#companyProvince").append('<option value="NB">NB</option>');
+									$("#companyProvince").append('<option value="NF">NF</option>');
+									$("#companyProvince").append('<option value="NT">NT</option>');
+									$("#companyProvince").append('<option value="NU">NU</option>');
+									$("#companyProvince").append('<option value="ON">ON</option>');
+									$("#companyProvince").append('<option value="PE">PE</option>');
+									$("#companyProvince").append('<option value="PQ">PQ</option>');
+									$("#companyProvince").append('<option value="SK">SK</option>');
+									$("#companyProvince").append('<option value="YT">YT</option>');
+								}
+								else if(country=='US' )
+								{
+									$("#companyProvince").append('<option value="AS">AS</option>');
+									$("#companyProvince").append('<option value="GU">GU</option>');
+									$("#companyProvince").append('<option value="MP">MP</option>');
+									$("#companyProvince").append('<option value="PR">PR</option>');
+									$("#companyProvince").append('<option value="VI">VI</option>');
+								}
+								return true;
+							}
 
                             $(document).ready(function () {
                                 $("body #updateDriver_details #eventsCalCountry").change(onCountryChange);

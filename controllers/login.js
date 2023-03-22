@@ -60,8 +60,11 @@ router.passwordCheckDriver = ('/passwordCheckDriver/', async (req, res) => {
         let license = req.body.license;
         let password = req.body.password;
         let loginCheck = await Driver.findOne({ where: { driver_license: license, password: password,active:0 }, raw: true });
-        console.log(loginCheck);
-        if (loginCheck) {
+        
+        let checkcompany = await Company.findOne({ where: { id: loginCheck.company_id, status: 1,active:0 }, raw: true });
+        
+        console.log(checkcompany.id);
+        if (loginCheck && checkcompany) {
             let sess = req.session;
             req.session.license = loginCheck.license;
             // res.session.name = loginCheck.driver_name;
@@ -115,7 +118,7 @@ router.passwordCheckAdmin = ('/passwordCheckAdmin/', async (req, res) => {
 router.passwordCheck = ('/passwordCheck/', async (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
-    let loginCheck = await Company.findOne({ where: { username: email, password: password, active: 0 }, raw: true });
+    let loginCheck = await Company.findOne({ where: { username: email, password: password, active: 0,status:1 }, raw: true });
     console.log(loginCheck);
     if (loginCheck) {
         // console.log(loginCheck.username);

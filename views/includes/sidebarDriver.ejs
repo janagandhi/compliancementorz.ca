@@ -8,10 +8,12 @@
   .sidebar-nav ul .sidebar-item .first-level .sidebar-item .sidebar-link i {
     font-size: 25px;
   }
-  #myprofile{
+
+  #myprofile {
     display: none;
   }
-  #sessionEmail{
+
+  #sessionEmail {
     display: none;
   }
 </style>
@@ -20,7 +22,7 @@
   <div class="scroll-sidebar">
 
     <!-- Sidebar navigation-->
-    <nav class="sidebar-nav">
+    <nav class="sidebar-nav" style="display:none">
       <ul id="sidebarnav" class="p-t-30">
         <h4 style="border-radius: 35px;background-color: #27a9e369;text-align: center;color: #fff;">
           <%= sessName %>
@@ -29,82 +31,152 @@
         <!-- <li class="sidebar-item">
           <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
               class="mdi mdi-file-document"></i><span class="hide-menu">Application Form </span></a> -->
-          <!-- <ul aria-expanded="false" class="collapse first-level"> -->
+        <!-- <ul aria-expanded="false" class="collapse first-level"> -->
         <li class="sidebar-item">
           <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/updateDriverDetailsForm"
             aria-expanded="false"><i class="mdi mdi-account-card-details"></i><span class="hide-menu">Personal
               Information</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/updateemploymenthistoryForm"
-            aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Employment
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0);"
+            aria-expanded="false" onclick="driverfn('/updateemploymenthistoryForm')"><i class="mdi mdi-account-check"></i><span class="hide-menu">Employment
               History</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/updatedrivingHistoryForm"
-            aria-expanded="false"><i class="mdi mdi-account-location"></i><span class="hide-menu">Driving
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0);"
+            aria-expanded="false" onclick="driverfn('/updatedrivingHistoryForm')"><i class="mdi mdi-account-location"></i><span class="hide-menu">Driving
               History</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/motorVehicleCertificate"
-            aria-expanded="false"><i class="mdi mdi-truck-delivery"></i><span class="hide-menu">Motor Vehicle
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0);"
+            aria-expanded="false"  onclick="driverfn('/motorVehicleCertificate')"><i class="mdi mdi-truck-delivery"></i><span class="hide-menu">Motor Vehicle
               Certificate</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/medicalDecleration"
-            aria-expanded="false"><i class="mdi mdi-medical-bag"></i><span class="hide-menu">Medical
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0);"
+            aria-expanded="false" onclick="driverfn('/medicalDecleration')"><i class="mdi mdi-medical-bag"></i><span class="hide-menu">Medical
               Decleration</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/driverAck" aria-expanded="false"><i
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0);" aria-expanded="false"  onclick="driverfn('/driverAck')"><i
               class="mdi mdi-steering"></i><span class="hide-menu">Driver Acknowledgement</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/pspDisclosure" aria-expanded="false"><i
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0);" aria-expanded="false"  onclick="driverfn('/pspDisclosure')"><i
               class="mdi mdi-star-circle"></i><span class="hide-menu">PSP
               Disclosure</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/clearingHouseConsent"
-            aria-expanded="false"><i class="mdi mdi-notification-clear-all"></i><span class="hide-menu">Clearing
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0)"
+            aria-expanded="false" onclick="driverfn('/clearingHouseConsent')"><i class="mdi mdi-notification-clear-all"></i><span class="hide-menu">Clearing
               House Consent</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/compensatedWork" aria-expanded="false"><i
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0)" aria-expanded="false" onclick="driverfn('/compensatedWork')"><i
               class="mdi mdi-wunderlist"></i><span class="hide-menu">Compensated
               Work</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/drugAndAlcohol" aria-expanded="false"><i
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0);" onclick="driverfn('/drugAndAlcohol')" aria-expanded="false" ><i
               class="mdi mdi-wunderlist"></i><span class="hide-menu">Drug & Alcohol <br>
               History Verification</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Reference" aria-expanded="false"><i
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0);" onclick="driverfn('/Reference')" aria-expanded="false"><i
               class="mdi mdi-wunderlist"></i><span class="hide-menu">Reference Certificate</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/hoursOfService" aria-expanded="false"><i
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" onclick="driverfn('/hoursOfService')" href="javascript:void(0);" aria-expanded="false"><i
               class="mdi mdi-worker"></i><span class="hide-menu">Hours of Service</span></a>
         </li>
+        <li class="sidebar-item disclaimer">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" onclick="driverfn('/Disclaimer')" href="javascript:void(0);" aria-expanded="false"><i
+              class="mdi mdi-email"></i><span class="hide-menu">Disclaimer</span></a>
+        </li>
+
+        <li class="sidebar-item annualreview">
+          <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Annual Review </span></a>
+           <ul aria-expanded="false" class="collapse first-level">
+        <li class="sidebar-item annualreview">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/annualReview" aria-expanded="false"><i
+              class="mdi mdi-book-open"></i><span class="hide-menu">ANNUAL REVIEW OF DRIVING RECORD</span></a>
+        </li>
+        <li class="sidebar-item annualreview">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/motorvehicledrivercerificate" aria-expanded="false"><i
+              class="mdi mdi-worker"></i><span class="hide-menu">MOTOR VEHICLE DRIVER’S CERTIFICATION OF Violations</span></a>
+        </li>
+      </ul>
+    </li>
+        
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/documentUpload" aria-expanded="false"><i
+          <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+              class="mdi mdi-library"></i><span class="hide-menu">Questionnaire </span></a>
+          <ul aria-expanded="false" class="collapse first-level">
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" onclick="driverfn('/questions')" href="javascript:void(0);" aria-expanded="false"><i
+                  class="mdi mdi-book-open"></i><span class="hide-menu">Invterview Questions</span></a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" onclick="driverfn('/drivermanual')" href="javascript:void(0);" aria-expanded="false"><i
+                  class="mdi mdi-worker"></i><span class="hide-menu">Driver Manual</span></a>
+            </li>
+            
+          </ul>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+              class="mdi mdi-calendar-question"></i><span class="hide-menu">Quiz </span></a>
+          <ul aria-expanded="false" class="collapse first-level">
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" onclick="driverfn('/canadahosmanual')" href="javascript:void(0);"
+                aria-expanded="false"><i class="mdi mdi-comment-question-outline"></i><span class="hide-menu">HOS
+                  Questionnaire for Canada</span></a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" onclick="driverfn('/usquestionmanual')" href="javascript:void(0);"
+                aria-expanded="false"><i class="mdi mdi-comment-question-outline"></i><span class="hide-menu">HOS
+                  Questionnaire for US</span></a>
+            </li>
+            <li class="sidebar-item weightdimensions">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" onclick="driverfn('/weightDimensions')" href="javascript:void(0);" aria-expanded="false"><i
+                  class="mdi mdi-weight"></i><span class="hide-menu">Weight & Dimensions</span></a>
+            </li>
+            <li class="sidebar-item safetylawsquiz">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link"  onclick="driverfn('/safetylaws')" href="javascript:void(0);" aria-expanded="false"><i
+                  class="mdi mdi-lock"></i><span class="hide-menu">Safety Laws Quiz </span></a>
+            </li>
+          </ul>
+        </li>
+        
+        <li class="sidebar-item all_checklist" id="checklist_item1">
+          <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+              class="mdi mdi-mouse"></i><span class="hide-menu">Checklists </span></a>
+          <ul aria-expanded="false" class="collapse first-level ">
+            <li class="sidebar-item flatbed_checklists_item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" onclick="driverfn('/flatbed_checklists')" href="javascript:void(0);"
+                aria-expanded="false"><i class="mdi  mdi-checkbox-marked"></i><span class="hide-menu">Flatbed
+                  Checklists</span></a>
+            </li>
+            <li class="sidebar-item orientation_Checklists_item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" onclick="driverfn('/orientation_Checklists')" href="javascript:void(0);"
+                aria-expanded="false"><i class="mdi mdi-checkbox-marked-outline"></i><span class="hide-menu">Dry Van
+                  Checklists</span></a>
+            </li>
+            <li class="sidebar-item dry_van_checklists_item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" onclick="driverfn('/dry_van_checklists')"  href="javascript:void(0);"
+                aria-expanded="false"><i class="mdi mdi-check"></i><span class="hide-menu">Dump Truck Checklists</span></a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" onclick="driverfn('/documentUpload')" href="javascript:void(0);" aria-expanded="false"><i
               class="mdi mdi-briefcase-upload"></i><span class="hide-menu">Document Upload</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/questions" aria-expanded="false"><i
-              class="mdi mdi-comment-question-outline"></i><span class="hide-menu">Invterview Questions</span></a>
-        </li>
-		<li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/drivermanual" aria-expanded="false"><i
-              class="mdi mdi-comment-question-outline"></i><span class="hide-menu">Driver Manual</span></a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/feedback" aria-expanded="false"><i
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" onclick="driverfn('/feedback')" href="javascript:void(0)" aria-expanded="false"><i
               class="mdi mdi-email"></i><span class="hide-menu">Feedback Form</span></a>
         </li>
-        
-
 
         <!-- </ul> -->
         </li>
@@ -124,3 +196,87 @@
 <!-- ============================================================== -->
 <!-- Page wrapper  -->
 <!-- ============================================================== -->
+<script>
+  function checklist() {
+    $('#flatbed_checklists_item').hide();
+    $('#orientation_Checklists_item').hide();
+    $('#dry_van_checklists_item').hide();
+    $('.all_checklist').hide();
+    $.ajax({
+      url: "/getchecklists",
+      type: "GET",
+      data: {},
+      success: function (data) {
+        $('.flatbed_checklists_item').hide();
+        $('.orientation_Checklists_item').hide();
+        $('.dry_van_checklists_item').hide();
+        if (data.status) {
+          if (data.data.flatbed_checklists == 1) {
+            $('.flatbed_checklists_item').show();
+            $('.all_checklist').show();
+          }
+          if (data.data.orientation_Checklists == 1) {
+            $('.orientation_Checklists_item').show();
+            $('.all_checklist').show();
+          }
+          if (data.data.dry_van_checklists == 1) {
+            $('.dry_van_checklists_item').show();
+            $('.all_checklist').show();
+          }
+        }
+      }
+    });
+  }
+  function quiz(){
+  $('.weightdimensions').hide();
+  $('.safetylawsquiz').hide();
+	$.ajax({
+		url: "/getquiz",
+		type: "GET",
+		data: {},
+		success: function (data) {
+      $('.weightdimensions').hide();
+      $('.safetylawsquiz').hide();
+			if (data.status) {
+        if(data.data.weightdimensions==1){
+          $('.weightdimensions').show();
+        }
+        if(data.data.safetylawsquiz==1){
+          $('.safetylawsquiz').show();
+        }
+			}
+      
+		}
+	});
+}
+  function cheklogo() {
+    $.ajax({
+      url: "/getlogo",
+      type: "GET",
+      data: { company_id: '' },
+      success: function (data) {
+        $(".light-logo").attr("src", data.data);
+      }
+    });
+  }
+  function disclaimer() {
+	
+    $.ajax({
+      url: "/checkDisclaimer",
+      type: "GET",
+      data: { company_id: '' },
+      success: function (data) {
+        if(data.Disclaimer_type=='Yes' && !data.disclaimer){
+          $('.sidebar-item').hide();
+          $('.disclaimer').show();
+		    }
+        if(data.annualreview=='Yes' && !data.motor ){
+          $('.sidebar-item').hide();
+          $('.annualreview').show();
+		    }
+		$('.sidebar-nav').show();
+      }
+    });
+	
+  }
+</script>

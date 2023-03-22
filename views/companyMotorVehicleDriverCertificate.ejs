@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+        <link rel="stylesheet" type="text/css"
+        href="https://ashaviglobal.com/agreement/template/dist/css/jquery.signature.css">
+    <style type="text/css">
+		.float_left {
+			float: left;
+		}
+		.padding_right{
+			padding-right:10px;
+		}
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+		.float_left{
+			float:left;
+		}
+		.form-group{
+			width:100%
+		}
+		.col-md-3{
+		  max-width:11%
+		}
+		.l_10 {
+			margin-left: 10px;
+		}
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+        .col-md-12 {
+			width: 100%;
+			float: left;
+		}
+		.col-md-6 {
+			width: 50%;
+			float: left;
+		}
+		.col-md-10 {
+			width: 80%;
+			float: left;
+		}
+		.col-md-2 {
+			width: 20%;
+			float: left;
+			margin-bottom:10px;
+		}
+		.col-md-9 {
+			width: 75%;
+			float: left;
+		}
+		.col-md-3 {
+			width: 25%;
+			float: left;
+		}
+          /* Signature */
+          .kbw-signature {
+            background-color: #fff;
+            /* width: 100%; */
+            /* height: 250px; */
+        }
+
+        /* .signature canvas {
+            width: 100% !important;
+            height: auto;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarCompany.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" va id="company_id" value="<%- company_id %>" name="company_id">
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+
+                                    <!-- <div class="col-md-6">
+                                        Select Company
+                                        <select class="form-select selectboxcss" name="exptype" id="exptype">
+                                            <option value="">Select Company</option>
+                                            <% getCompanydata.forEach(function(row){ %>
+                                                <option value="<%= row.id %>">
+                                                    <%= row.name %>
+                                                </option>
+                                                <% }) %>
+
+                                        </select>
+                                    </div> -->
+
+                                </div>
+                                <!-- <button class="btn btn-success" id="create_trailer_button"> Add Trailer <span class="glyphicon glyphicon-edit"></span>   <i style="font-size: 15px;" class="fas fa-plus"></i></button> -->
+                                <h5 align="center" class="card-title">
+                                    <!-- <%- title %> -->
+                                </h5>
+                                <div class="table-responsive">
+                                    <table id="updatedrivermanualDetails" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:10%">Id</th>
+                                                <th style="width:25%">First Name</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- view modal -->
+
+
+
+                        
+                        <div id="viewmodal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">VIEW MOTOR VEHICLE DRIVER’S CERTIFICATION OF VIOLATIONS</h3>
+                                        <h4 align="center" class="card-title">
+
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+
+                                                     <!-- <form class="form-horizontal" id="updateQuestions" style="background: #27a9e324;border-radius: 35px;"> -->
+														<div class="card-body" id="updateQuestions_details_view">
+                                                      
+															<br>
+	
+															<input type="hidden" class="form-control" readonly
+																name="driverId" value="" id="vdriverId">
+															<input type="hidden" class="form-control" readonly
+																name="company_id" value="" id="vcompany_id">
+															<input type="hidden" class="form-control" readonly
+																name="actionData" value="" id="vactionData">
+															<div class="row">
+																<div class="col-md-12">
+																	<form class="form-horizontal" id="updateQuestions"
+																		style="background: #27a9e324;border-radius: 35px;">
+																		<div class="card-body" id="updateQuestions_details">
+																			
+																			<br>
+
+																			<input type="hidden" class="form-control" name="driverId"
+																				value="" id="vdriverId">
+																			<input type="hidden" class="form-control" name="company_id"
+																				value="" id="vcompany_id">
+																			
+																			<input type="hidden" class="form-control" name="actionData"
+																				value="" id="actionData">
+																				<div class="row">
+																					<div class="col-md-12">
+																					
+																					
+																						<p align="justify"><input type="checkbox" id="ecertify" value="1" checked disabled>  I certify that the following is a true and complete list of traffic violations (other than parking violations) for which I have been convicted or forfeited bond or collateral during the past 12 months.</p>
+																						<table style="width: 100%;border-collapse: separate;border-spacing: 0 1em;">
+																							<thead>
+																								<tr>
+																									<th>Date</th>
+																									<th>Offence</th>
+																									<th>Location</th>
+																									<th>Type of Vehicle Operated</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								<tr>
+																									<td><input type="text" id="vdate1" class="mydatepicker" placeholder="mm/dd/yyyy" readonly></td>
+																									<td><input type="text"  id="voffence1"></td>
+																									<td><input type="text"  id="vlocation1"></td>
+																									<td><input type="text"  id="vvehicle1"></td>
+																								</tr>
+																								<tr>
+																									<td><input type="text"  id="vdate2" class="mydatepicker" placeholder="mm/dd/yyyy" readonly></td>
+																									<td><input type="text"  id="voffence2"></td>
+																									<td><input type="text"  id="vlocation2"></td>
+																									<td><input type="text"  id="vvehicle2"></td>
+																								</tr>
+																								<tr>
+																									<td><input type="text"  id="vdate3" class="mydatepicker" placeholder="mm/dd/yyyy" readonly></td>
+																									<td><input type="text" id="voffence3"></td>
+																									<td><input type="text" id="vlocation3"></td>
+																									<td><input type="text" id="vvehicle3"></td>
+																								</tr>
+																								<tr>
+																									<td><input type="text" id="vdate4" class="mydatepicker" placeholder="mm/dd/yyyy" readonly></td>
+																									<td><input type="text" id="voffence4"></td>
+																									<td><input type="text" id="vlocation3"></td>
+																									<td><input type="text" id="vvehicle4"></td>
+																								</tr>
+																							</tbody>
+																						</table>
+																						<p>If no violations are listed above, I certify that I have not been convicted or forfeited bond or collateral on account of any violation (other than those I have provided under Part 383) required to be listed during the past 12 months</p>
+																						<div class="col-md-12" style="padding-left: 0px;">
+																							<div class="col-md-4" style="padding-left: 0px;">
+																								<div class="col-md-6"  style="padding-left: 0px;">Driver’s License No:</div>
+																								<div class="col-md-6"><input type="text" value="" readonly  style="width: 100%;" id="vdriver_license"></div>
+																							</div>
+																							<div class="col-md-4">
+																								<div class="col-md-6">State:</div>
+																								<div class="col-md-6"><input type="text" value="" readonly style="width: 100%;" id="vdriver_state"></div>
+																							</div>
+																							<div class="col-md-4">
+																								<div class="col-md-6">Expiration Date:</div>
+																								<div class="col-md-6"><input type="text" value="" readonly  style="width: 100%;" id="vdriver_expiry"></div>
+																							</div>
+																						</div>
+																						<div class="col-md-12"  style="padding-left: 0px;">
+																							<div class="col-md-12"  style="padding-left: 0px;">
+																								<div class="col-md-6"  style="padding-left: 0px;"><input type="text" class="mydatepicker" placeholder="mm/dd/yyyy" id="vdate_certification" readonly></div>
+																								<div class="col-md-4"></div>
+																								<div class="col-md-4">
+																									<img src="" alt="user" width="150" style="height:45px;" id="vdriversign">
+																								</div>
+																							</div>
+																							<div class="col-md-12"  style="padding-left: 0px;">
+																								<div class="col-md-6"  style="padding-left: 0px;">Date of Certification</div>
+																								<div class="col-md-4"></div>
+																								<div class="col-md-4">Driver’s Signature</div>
+																							</div>
+																						</div>
+																						<div class="col-md-12" style="padding-left: 0px;">
+																							<div class="col-md-12"  style="padding-left: 0px;">
+																								<div class="col-md-6" style="padding-left: 0px;">Company Name</div>
+																								<div class="col-md-4"></div>
+																								<div class="col-md-4">Company Address</div>
+																							</div>
+																							<div class="col-md-12"  style="padding-left: 0px;">
+																								<div class="col-md-6" style="padding-left: 0px;"><input type="text" value="" readonly id="vcompanyname"></div>
+																								<div class="col-md-4"></div>
+																								<div class="col-md-4"><input type="text" id="vcompanyaddr"  value="" readonly></div>
+																							</div>
+																						</div>
+																						<div class="col-md-12" style="padding-left: 0px;">
+																							<div class="col-md-12"  style="padding-left: 0px;">
+																								<div class="col-md-6" style="padding-left: 0px;">
+																									<div id="" class="vsignature"></div>
+																								</div>
+																								<div class="col-md-4"></div>
+																								<div class="col-md-4"><input type="text" readonly id="vtitle"></div>
+																							</div>
+																							<div class="col-md-12"  style="padding-left: 0px;">
+																								<div class="col-md-6" style="padding-left: 0px;">Reviewed By: (Signature)</div>
+																								<div class="col-md-4"></div>
+																								<div class="col-md-4">Title</div>
+																							</div>
+																						</div>
+																						<div class="col-md-12 float_left">
+																							<hr><br>
+																							<input class="form-check-input" id="Iagree" name="Iagree" type="checkbox" value="1" checked disabled>
+
+																							I certify that I have read and
+																							understood the above requirements.
+																						</div>
+																					</div>
+																				</div>
+
+																		</div>
+																</div>
+
+																</form>
+																</div>
+	
+															</div>
+	
+														</div>
+	
+													</div>
+	
+													<!-- </form> -->
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    </div>
+                        <!-- edit modal -->
+
+                        <!-- edit modal -->
+
+                        <div id="editmodal" class="modal fade" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                        data-keyboard="false">
+                        <div class="modal-dialog">
+                       
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <!-- <h4 class="modal-title">Delete List</h4> -->
+                                </div>
+                                <div class="modal-body">
+                                    <h3 align="center" class="card-title">EDIT MOTOR VEHICLE DRIVER’S CERTIFICATION OF VIOLATIONS</h3>
+                                    <div class="card-body">
+                       
+                                        <div class="row p-b-30">
+                                            <div class="col-12">
+                       
+                                                <form class="form-horizontal" id="updateQuestions"
+                                                    style="background: #27a9e324;border-radius: 35px;">
+                                                    <div class="card-body" id="updateQuestions_details">
+                                                        
+                                                        <br>
+                       
+                                                        <input type="hidden" class="form-control" name="driverId"
+                                                            value="" id="edriverId">
+                                                        <input type="hidden" class="form-control" name="company_id"
+                                                            value="" id="ecompany_id">
+                                                       
+                                                        <input type="hidden" class="form-control" name="actionData"
+                                                            value="" id="actionData">
+                                                            <div class="row">
+                                                               <div class="col-md-12">
+                                                                  
+                                                                  
+                                                                   <p align="justify"><input type="checkbox" id="ecertify" value="1" checked disabled>  I certify that the following is a true and complete list of traffic violations (other than parking violations) for which I have been convicted or forfeited bond or collateral during the past 12 months.</p>
+                                                                   <table style="width: 100%;border-collapse: separate;border-spacing: 0 1em;">
+                                                                       <thead>
+                                                                           <tr>
+                                                                               <th>Date</th>
+                                                                               <th>Offence</th>
+                                                                               <th>Location</th>
+                                                                               <th>Type of Vehicle Operated</th>
+                                                                           </tr>
+                                                                       </thead>
+                                                                       <tbody>
+                                                                           <tr>
+                                                                               <td><input type="text" id="edate1" class="mydatepicker" placeholder="mm/dd/yyyy" readonly></td>
+                                                                               <td><input type="text"  id="eoffence1"></td>
+                                                                               <td><input type="text"  id="elocation1"></td>
+                                                                               <td><input type="text"  id="evehicle1"></td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                               <td><input type="text"  id="edate2" class="mydatepicker" placeholder="mm/dd/yyyy" readonly></td>
+                                                                               <td><input type="text"  id="eoffence2"></td>
+                                                                               <td><input type="text"  id="elocation2"></td>
+                                                                               <td><input type="text"  id="evehicle2"></td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                               <td><input type="text"  id="edate3" class="mydatepicker" placeholder="mm/dd/yyyy" readonly></td>
+                                                                               <td><input type="text" id="eoffence3"></td>
+                                                                               <td><input type="text" id="elocation3"></td>
+                                                                               <td><input type="text" id="evehicle3"></td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                               <td><input type="text" id="edate4" class="mydatepicker" placeholder="mm/dd/yyyy" readonly></td>
+                                                                               <td><input type="text" id="eoffence4"></td>
+                                                                               <td><input type="text" id="elocation3"></td>
+                                                                               <td><input type="text" id="evehicle4"></td>
+                                                                           </tr>
+                                                                       </tbody>
+                                                                   </table>
+                                                                   <p>If no violations are listed above, I certify that I have not been convicted or forfeited bond or collateral on account of any violation (other than those I have provided under Part 383) required to be listed during the past 12 months</p>
+                                                                   <div class="col-md-12" style="padding-left: 0px;">
+                                                                       <div class="col-md-4" style="padding-left: 0px;">
+                                                                           <div class="col-md-6"  style="padding-left: 0px;">Driver’s License No:</div>
+                                                                           <div class="col-md-6"><input type="text" value="" readonly  style="width: 100%;" id="edriver_license"></div>
+                                                                       </div>
+                                                                       <div class="col-md-4">
+                                                                           <div class="col-md-6">State:</div>
+                                                                           <div class="col-md-6"><input type="text" value="" readonly style="width: 100%;" id="edriver_state"></div>
+                                                                       </div>
+                                                                       <div class="col-md-4">
+                                                                           <div class="col-md-6">Expiration Date:</div>
+                                                                           <div class="col-md-6"><input type="text" value="" readonly  style="width: 100%;" id="edriver_expiry"></div>
+                                                                       </div>
+                                                                   </div>
+                                                                   <div class="col-md-12"  style="padding-left: 0px;">
+                                                                       <div class="col-md-12"  style="padding-left: 0px;">
+                                                                           <div class="col-md-6"  style="padding-left: 0px;"><input type="text" class="mydatepicker" placeholder="mm/dd/yyyy" id="edate_certification" readonly></div>
+                                                                           <div class="col-md-4"></div>
+                                                                           <div class="col-md-4">
+                                                                               <img src="" alt="user" width="150" style="height:45px;" id="edriversign">
+                                                                           </div>
+                                                                       </div>
+                                                                       <div class="col-md-12"  style="padding-left: 0px;">
+                                                                           <div class="col-md-6"  style="padding-left: 0px;">Date of Certification</div>
+                                                                           <div class="col-md-4"></div>
+                                                                           <div class="col-md-4">Driver’s Signature</div>
+                                                                       </div>
+                                                                   </div>
+                                                                   <div class="col-md-12" style="padding-left: 0px;">
+                                                                       <div class="col-md-12"  style="padding-left: 0px;">
+                                                                           <div class="col-md-6" style="padding-left: 0px;">Company Name</div>
+                                                                           <div class="col-md-4"></div>
+                                                                           <div class="col-md-4">Company Address</div>
+                                                                       </div>
+                                                                       <div class="col-md-12"  style="padding-left: 0px;">
+                                                                           <div class="col-md-6" style="padding-left: 0px;"><input type="text" value="" readonly id="ecompanyname"></div>
+                                                                           <div class="col-md-4"></div>
+                                                                           <div class="col-md-4"><input type="text" id="ecompanyaddr"  value="" readonly></div>
+                                                                       </div>
+                                                                   </div>
+                                                                   <div class="col-md-12" style="padding-left: 0px;">
+                                                                       <div class="col-md-12"  style="padding-left: 0px;">
+                                                                           <div class="col-md-6" style="padding-left: 0px;">
+                                                                               <div id="signatureDiv1" style="height:160px !important;"></div>
+                                                                               <div id="signatureDiv" style="height:160px !important;">
+                                                                                   <div id="" class="signature"></div>
+                                                                                   
+                                                                                   <button id="clear" class="clear">Clear Signature</button>
+                                                                               <textarea id="signpad" class="signpad" name="signature_image"
+                                                                               style="display: none"></textarea><br><br><br>
+                                                                               </div>
+                                                                           </div>
+                                                                           <div class="col-md-4"></div>
+                                                                           <div class="col-md-4"><input type="text" id="etitle"></div>
+                                                                       </div>
+                                                                       <div class="col-md-12"  style="padding-left: 0px;">
+                                                                           <div class="col-md-6" style="padding-left: 0px;">Reviewed By: (Signature)</div>
+                                                                           <div class="col-md-4"></div>
+                                                                           <div class="col-md-4" style="margin-top:-135px !important;">Title</div>
+                                                                       </div>
+                                                                   </div>
+                                                                   <div class="col-md-12 float_left">
+                                                                       <hr><br>
+                                                                       <input class="form-check-input" id="Iagree" name="Iagree" type="checkbox" value="1" checked disabled>
+                       
+                                                                       I certify that I have read and
+                                                                       understood the above requirements.
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                       
+                                                    </div>
+                                                    <div class="border-top">
+                                                        <div style="text-align: center;" class="card-body">
+                                                            <button type="button" id="submitBtn"
+                                                                class="btn btn-primary">Update</button>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                       
+                                            </form>
+                       
+                       
+                       
+                                        </div>
+                                    </div>
+                                </div>
+                       
+                       
+                            </div>
+                        </div>
+                       
+                       </div>
+                       
+                        <!-- edit modal -->
+
+                        <!-- create trailer -->
+
+
+
+
+
+                        <!-- ============================================================== -->
+                        <!-- End Page wrapper  -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Wrapper -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <%- include('includes/footer.ejs') %>
+					<style>
+					.checklist {
+						text-transform: uppercase;
+					}
+					</style>
+                    <link rel="stylesheet" type="text/css"
+                    href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+                        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+                        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+                        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+
+                        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                        <script type="text/javascript"
+                            src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+                        <script type="text/javascript"
+                            src="assets/extra-libs/signature/jquery.signature.min.js"></script>
+                            <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                        <script>
+
+                            var signature = $('.signature').signature({ syncField: '.signpad', syncFormat: 'PNG' });
+
+                            $('.signpad').draggable();
+                            $('.clear').click(function (e) {
+                                // alert('ddd');
+                                e.preventDefault();
+                                signature.signature('clear');
+                                $(".signpad").val('');
+                            });
+
+                            var signature1 = $('.signature1').signature({ syncField: '.signpad1', syncFormat: 'PNG' });
+
+                            $('.signpad1').draggable();
+                            $('.clear').click(function (e) {
+                                // alert('ddd');
+                                e.preventDefault();
+                                signature1.signature('clear');
+                                $(".signpad1").val('');
+                            });
+
+                            /****************************************
+                             *       Basic Table                   *
+                             ****************************************/
+                            // $('#zero_config').DataTable();
+
+                            $(document).ready(function () {
+
+
+                                let date = new Date();
+                                var currentdate =
+                                    ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+                                    ("00" + date.getDate()).slice(-2) + "/" +
+                                    date.getFullYear();
+
+                                    $(document).on('click', '#viewmodalid', function () {
+                                    let id = $(this).attr('data-id');
+									let cmpid = $('#company_id').val();
+                                    $.ajax({
+                                        url: "/edit_motorVehicleDriverCertificate",
+                                        type: "GET",
+                                        data: { id: id,cmpid:cmpid },
+                                        success: function (data) {
+                                            console.log(data);
+                                            if (data.status) {
+												$("body #updateQuestions_details #vdriverId").val(data.motor_vehicle_driver_certificate.driverId);
+                                                $("body #updateQuestions_details #vcompany_id").val(data.motor_vehicle_driver_certificate.company_id);
+                                              
+                                                $("body #updateQuestions_details #driverName").text(data.driverData.driver_name);
+
+												var d1 = new Date(data.motor_vehicle_driver_certificate.date1);
+												var date1 = (d1.getMonth() + 1) + '/'+ d1.getDate()+'/'+d1.getFullYear() ;
+
+												var d2 = new Date(data.motor_vehicle_driver_certificate.date2);
+												var date2 = (d2.getMonth() + 1) + '/'+ d2.getDate()+'/'+d2.getFullYear() ;
+
+												var d3 = new Date(data.motor_vehicle_driver_certificate.date3);
+												var date3 = (d3.getMonth() + 1) + '/'+ d3.getDate()+'/'+d3.getFullYear() ;
+
+												var d4 = new Date(data.motor_vehicle_driver_certificate.date4);
+												var date4 = (d4.getMonth() + 1) + '/'+ d4.getDate()+'/'+d4.getFullYear() ;
+												
+												$('#v_driver_name').html(data.driverData.driver_name);
+                                                $('#v_license').html(data.driverData.driver_license);
+                                                $('#v_company').html(data.company.name);
+
+												if(data.motor_vehicle_driver_certificate.date1 && data.motor_vehicle_driver_certificate.date1!='0000-00-00')
+                                                	$('#vdate1').val(date1);
+												if(data.motor_vehicle_driver_certificate.date2 && data.motor_vehicle_driver_certificate.date2!='0000-00-00')
+													$('#vdate2').val(date2);
+												if(data.motor_vehicle_driver_certificate.date3 && data.motor_vehicle_driver_certificate.date3!='0000-00-00')
+													$('#vdate3').val(date3);
+												if(data.motor_vehicle_driver_certificate.date4 && data.motor_vehicle_driver_certificate.date4!='0000-00-00')
+													$('#vdate4').val(date4);
+
+												$("#vdriver_license").val(data.driver_license);
+												$("#vdriver_state").val(data.driverstate);
+												$("#vdriver_expiry").val(data.license_expiry);
+                                                
+												var reqdata = data.motor_vehicle_driver_certificate;
+
+												var d5 = new Date(reqdata.date_certificate);
+		                        				var date_certificate = (d5.getMonth() + 1) + '/'+ d5.getDate()+'/'+d5.getFullYear() ;
+												$("#vdate_certification").val(date_certificate);
+
+												$("#voffence1").val(reqdata.offence1);
+												$("#vffence2").val(reqdata.offence2);
+												$("#voffence3").val(reqdata.offence3);
+												$("#voffence4").val(reqdata.offence4);
+
+												$("#vlocation1").val(reqdata.location1);
+												$("#vlocation2").val(reqdata.location2);
+												$("#vlocation3").val(reqdata.location3);
+												$("#vlocation4").val(reqdata.location4);
+
+												$("#vvehicle1").val(reqdata.vehicle1);
+												$("#vvehicle2").val(reqdata.vehicle2);
+												$("#vvehicle3").val(reqdata.vehicle3);
+												$("#vvehicle4").val(reqdata.vehicle4);
+
+												$('#vcompanyname').val(data.company_name);
+												$('#vcompanyaddr').val(data.companyAddress);
+
+												if(data.getDrivinghistorySignature!=null && data.getDrivinghistorySignature!=''){
+                                                    let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.getDrivinghistorySignature;
+                                                    $("#vdriversign").attr("src", signaturePath);
+
+                                                }
+                                                $('.vsignature').hide();
+                                                if(data.motor_vehicle_driver_certificate.signature!=null && data.motor_vehicle_driver_certificate.signature!=''){
+                                                    let signaturePath = 'uploads/attachment/motorVechile/' + data.motor_vehicle_driver_certificate.signature;
+                                                    $('.vsignature').show();
+                                                    $('.vsignature').html('<img src="'+signaturePath+'" alt="user" width="150" class="sign_img4" style="height:40px;">');
+                                                    
+                                                    $('#vtitle').val(data.motor_vehicle_driver_certificate.title);
+                                                }
+
+                                                $('body #viewmodal').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                 window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+
+                                $(document).on('click', '#editmodalid', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+									let cmpid = $('#company_id').val();
+                                    $.ajax({
+                                        url: "/edit_motorVehicleDriverCertificate",
+                                        type: "GET",
+                                        data: { id: id,cmpid:cmpid },
+                                        success: function (data) {
+                                            console.log(data);
+                                            if (data.status) {
+												$("body #updateQuestions_details #edriverId").val(data.motor_vehicle_driver_certificate.driverId);
+                                                $("body #updateQuestions_details #ecompany_id").val(data.motor_vehicle_driver_certificate.company_id);
+                                              
+                                                $("body #updateQuestions_details #driverName").text(data.driverData.driver_name);
+                                                $("body #updateQuestions_details #submitBtn").text('Update');
+                                                $('body #updateQuestions_details #actionData').val('Update');
+
+												var d1 = new Date(data.motor_vehicle_driver_certificate.date1);
+												var date1 = (d1.getMonth() + 1) + '/'+ d1.getDate()+'/'+d1.getFullYear() ;
+
+												var d2 = new Date(data.motor_vehicle_driver_certificate.date2);
+												var date2 = (d2.getMonth() + 1) + '/'+ d2.getDate()+'/'+d2.getFullYear() ;
+
+												var d3 = new Date(data.motor_vehicle_driver_certificate.date3);
+												var date3 = (d3.getMonth() + 1) + '/'+ d3.getDate()+'/'+d3.getFullYear() ;
+
+												var d4 = new Date(data.motor_vehicle_driver_certificate.date4);
+												var date4 = (d4.getMonth() + 1) + '/'+ d4.getDate()+'/'+d4.getFullYear() ;
+												
+												$('#e_driver_name').html(data.driverData.driver_name);
+                                                $('#e_license').html(data.driverData.driver_license);
+                                                $('#e_company').html(data.company.name);
+
+												if(data.motor_vehicle_driver_certificate.date1 && data.motor_vehicle_driver_certificate.date1!='0000-00-00')
+                                                	$('#edate1').val(date1);
+												if(data.motor_vehicle_driver_certificate.date2 && data.motor_vehicle_driver_certificate.date2!='0000-00-00')
+													$('#edate2').val(date2);
+												if(data.motor_vehicle_driver_certificate.date3 && data.motor_vehicle_driver_certificate.date3!='0000-00-00')
+													$('#edate3').val(date3);
+												if(data.motor_vehicle_driver_certificate.date4 && data.motor_vehicle_driver_certificate.date4!='0000-00-00')
+													$('#edate4').val(date4);
+
+												$("#edriver_license").val(data.driver_license);
+												$("#edriver_state").val(data.driverstate);
+												$("#edriver_expiry").val(data.license_expiry);
+                                                
+												var reqdata = data.motor_vehicle_driver_certificate;
+
+												var d5 = new Date(reqdata.date_certificate);
+		                        				var date_certificate = (d5.getMonth() + 1) + '/'+ d5.getDate()+'/'+d5.getFullYear() ;
+												$("#edate_certification").val(date_certificate);
+
+												$("#eoffence1").val(reqdata.offence1);
+												$("#eoffence2").val(reqdata.offence2);
+												$("#eoffence3").val(reqdata.offence3);
+												$("#eoffence4").val(reqdata.offence4);
+
+												$("#elocation1").val(reqdata.location1);
+												$("#elocation2").val(reqdata.location2);
+												$("#elocation3").val(reqdata.location3);
+												$("#elocation4").val(reqdata.location4);
+
+												$("#evehicle1").val(reqdata.vehicle1);
+												$("#evehicle2").val(reqdata.vehicle2);
+												$("#evehicle3").val(reqdata.vehicle3);
+												$("#evehicle4").val(reqdata.vehicle4);
+
+												$('#ecompanyname').val(data.company_name);
+												$('#ecompanyaddr').val(data.companyAddress);
+                                                $('#signatureDiv1').hide();
+                                                $('#signatureDiv').show();
+												if(data.getDrivinghistorySignature!=null && data.getDrivinghistorySignature!=''){
+                                                    let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.getDrivinghistorySignature;
+                                                    $("#edriversign").attr("src", signaturePath);
+
+                                                }
+
+                                                if(data.motor_vehicle_driver_certificate.signature!=null && data.motor_vehicle_driver_certificate.signature!=''){
+                                                    let signaturePath = 'uploads/attachment/motorVechile/' + data.motor_vehicle_driver_certificate.signature;
+                                                    $('#signatureDiv').hide();
+                                                    $('#signatureDiv1').html('<img src="'+signaturePath+'" alt="user" width="150" class="sign_img4" >');
+                                                    $('#signatureDiv1').show();
+                                                    $('#etitle').val(data.motor_vehicle_driver_certificate.title);
+                                                    $("#submitBtn").attr('disabled', true);
+                                                    $("#submitBtn").hide();
+
+                                                }
+                                               
+
+                                                
+                                                $('body #editmodal').modal('show');
+												
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                 window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+
+
+                            });
+
+							$(document).ready(function () {
+                                $('.mydatepicker').datepicker();
+								let cmpid = $('body #company_id').val();
+								$('body #create_trailer #company_id').val(cmpid);
+								$("#create_trailer_button").show()
+								$("#updatedrivermanualDetails").dataTable().fnDestroy();
+								let customer = $('#updatedrivermanualDetails').DataTable({
+									processing: true,
+									serverSide: true,
+									order: [[0, 'ASC']],
+									lengthMenu: [[10, 50, 100, 250, 500, 1000], [10, 50, 100, 250, 500, 1000]],
+									pageLength: 10,
+									searching: true,
+									ajax: {
+										url: "/company_get_motorVehicleDriverCertificate",
+										data: function (data) {
+											data.cmpid = cmpid
+											//data.search_key = $("#searchKey").val(),
+											//data.search_val = $("#searchVal").val()
+										},
+										type: "GET",
+									},
+									columns: [
+									{ "data": "slno" },
+									{ "data": "driver_name" },
+                                        { "data": "action" }
+									],
+									select: true
+								});
+							});
+
+
+                            $("#submitBtn").click(function (event) {
+                                event.preventDefault();
+
+                                var values = {};
+								var req_val = '';
+                                $.each($('#updateQuestions').serializeArray(), function (i, field) {
+									req_val = field.value;
+									values[field.name] = req_val.toUpperCase();
+                                });
+                                let date1 = $("#edate1").val();
+                                let date2 = $("#edate2").val();
+                                let date3 = $("#edate3").val();
+                                let date4 = $("#edate4").val();
+
+                                let offence1 = $("#eoffence1").val();
+                                let offence2 = $("#eoffence2").val();
+                                let offence3 = $("#eoffence3").val();
+                                let offence4 = $("#eoffence4").val();
+
+                                let location1 = $("#elocation1").val();
+                                let location2 = $("#elocation2").val();
+                                let location3 = $("#elocation3").val();
+                                let location4 = $("#elocation").val();
+
+                                let vehicle1 = $("#evehicle1").val();
+                                let vehicle2 = $("#evehicle2").val();
+                                let vehicle3 = $("#evehicle3").val();
+                                let vehicle4 = $("#evehicle4").val();
+
+
+                                let date_certificate = $("#edate_certification").val();
+                                values['driverId'] = $('#edriverId').val();
+                                values['company_id'] = $('#ecompany_id').val();
+                                values['date1'] = date1;
+                                values['date2'] = date2;
+                                values['date3'] = date3;
+                                values['date4'] = date4;
+
+                                values['offence1'] = offence1;
+                                values['offence2'] = offence2;
+                                values['offence3'] = offence3;
+                                values['offence4'] = offence4;
+
+                                values['location1'] = location1;
+                                values['location2'] = location2;
+                                values['location3'] = location3;
+                                values['location4'] = location4;
+
+                                values['vehicle1'] = vehicle1;
+                                values['vehicle2'] = vehicle2;
+                                values['vehicle3'] = vehicle3;
+                                values['vehicle4'] = vehicle4;
+
+                                values['date_certificate'] = date_certificate;
+
+                               
+								var signpad = $('#signpad').val();
+								var etitle = $('#etitle').val();
+                                values['signature_image'] = signpad;
+                                values['title'] = $('#etitle').val();
+
+								if(signpad==''){
+									Swal.fire({
+										title: 'Error!',
+										text: 'Please add signature',
+										icon: 'error',
+										confirmButtonText: 'Cool'
+									});
+									return false;
+								}
+								else if(etitle==''){
+									Swal.fire({
+										title: 'Error!',
+										text: 'Please enter title',
+										icon: 'error',
+										confirmButtonText: 'Cool'
+									});
+									return false;
+								}
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You want to update this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, update it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        $("#submitBtn").text('Please wait');
+                                        $("#submitBtn").attr('disabled', true);
+										 var form = $(this);
+                                        $.ajax({
+                                            url: "/updatemotorVehicleDriverCertificate",
+                                            type: "POST",
+											//data: form.serialize(),
+                                            data: values,
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    });
+                                                    setTimeout(function () {
+                                                       window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            })
+$(function () {
+	  $(".checklist").bind("keyup", function (e) {
+		$(".checklist").val(this.value);
+	  });
+	});
+
+
+                        </script>
+
+<style type="text/css">
+    .gap {
+        text-align: center;
+        background-color: #e2181870;
+    }
+    .thClass {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .disableClick {
+        pointer-events: none;
+    }
+    .modal {
+        padding: 0 !important;
+    }
+    .modal .modal-dialog {
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        margin: 0;
+    }
+    .modal .modal-content {
+        height: 100%;
+        border: 0;
+        border-radius: 0;
+    }
+    .modal .modal-body {
+        overflow-y: auto;
+    }
+    .col-md-6 {
+        width: 50%;
+        float: left;
+    }
+    .col-md-12 {
+        width: 100%;
+        float: left;
+        margin-bottom:15px;
+    }
+    .col-md-4{
+        float: left;
+        width: 25%;
+    }
+    .col-md-3{
+        float: left;
+        width: 33.33%;
+    }
+</style>
+                        <script src="sweetAlert/sweetalert2.min.js"></script>
+</body>
+
+</html>

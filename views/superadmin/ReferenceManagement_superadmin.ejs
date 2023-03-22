@@ -203,8 +203,9 @@
                                         <thead>
                                             <tr>
                                                 <th style="width:5%;">Id</th>
-                                                <th style="width:20%;">Driver ID</th>
-                                                <th style="width:20%;">Driver Name</th>
+                                                <th style="width:20%;">Form ID</th>
+                                                <th style="width:20%;">Employee Name</th>
+                                                <th style="width:20%;">Previous Employer Name</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -244,16 +245,8 @@
                                     <div class="modal-body">
                                         <h3 align="center" class="card-title">View Prospective Details </h3>
                                         <div class="card-body">
-
                                             <div class="row p-b-30">
                                                 <div class="col-12">
-
-
-
-
-
-
-
                                                     <p style="color:rgb(223, 19, 19)">These information will be send to
                                                         Previous Employers</p>
                                                     <form class="form-horizontal" id="updateCompany">
@@ -373,38 +366,6 @@
                             </div>
                         </div>
                         <!-- View driver -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <div id="viewmodalFormStatus" class="modal fade" tabindex="-1" role="dialog"
                             aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
                             data-keyboard="false">
@@ -419,14 +380,21 @@
                                     <div class="modal-body">
 
 
-                                        <div style="background-color: #01acc83d;" class="card">
+                                        <!-- <div style="background-color: #01acc83d;" class="card"> -->
+                                        <div class="card">
 
 
-                                            <input type="hidden" id="FormID">
+                                            <!-- <input type="hidden" id="FormID"> -->
 
+                                            <!-- <a id="generatePDF" class="btn btn-success" href="#"
+                                                onclick="generatePDF()"><i class="mdi mdi-file-pdf"></i> Download
+                                                pdf</a> -->
 
-                                            <input class="btn btn-success" type="button" onclick="printDiv('printableArea')"
-                                                value="Print " /> 
+                                                <a id="generatePDF" class="btn btn-success" href="javascript:void(0);"  onclick="generatePDF()">
+                                                    <i class="mdi mdi-file-pdf"></i> Download pdf
+                                                </a>
+													<input type="hidden" id="formID" >
+
 
                                             <form class="form-horizontal" id="updateRef">
                                                 <div id="printableArea" class="card-body">
@@ -448,27 +416,34 @@
                                                     <input type="hidden" id="company_id" name="company_id">
                                                     <input type="hidden" id="driverId" name="driverId">
                                                     <!-- <input type="hidden" value="1" id="status" name="status"> -->
+<div id="finalPdfOutput" style="background-color: #01acc83d;">
 
-
-                                                    <div class="row">
+                                                    <div class="row" style="display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="employeeName"
-                                                            class="col-md-1 control-label col-form-label">I,</label>
-                                                        <div class="col-md-3">
-                                                            <input type="text" placeholder="Employee Name"
+                                                            class="col-md-1 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 8.33333%;max-width: 2.33333%;">I,</label>
+                                                        <div class="col-md-3 cl-3-input" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: fit-content;">
+														<span class="employee_name_text" style="padding-right: 5px;"></span>
+                                                            <span class="employee_name_input">
+																<input type="text" placeholder="Employee Name"
                                                                 class="form-control" name="employeeName"
                                                                 id="employeeName">
+															</span>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: fit-content;">
                                                             am applying for employment at
                                                         </div>
-                                                        <div class="col-md-4"><input type="text" class="form-control"
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 33.33%;">
+														<span class="prospectiveEmployerName_text"></span>
+														<span class="prospectiveEmployerName_input">
+															<input type="text" class="form-control"
                                                                 placeholder="prospective Employer Name"
                                                                 name="prospectiveEmployerName"
                                                                 id="prospectiveEmployerName">
+														</span>
                                                         </div>
 
                                                     </div>
-                                                    <p align="justify">(my "Potential Employer") and want to provide my
+                                                    <p align="justify" style="margin-top: 0;margin-bottom: 1rem;">(my "Potential Employer") and want to provide my
                                                         consent
                                                         for
                                                         only this application I agree that my Potential Employer
@@ -546,19 +521,19 @@
                                                         misstatement or omission of information in this
                                                         application
                                                         may result in my dismissal. This document applies to the
-                                                        following previous employer </p> <input type="text"
+                                                        following previous employer </p> <span class="previousEmployerName_text"></span>
+														<span class="previousEmployerName_input"><input type="text"
                                                         class="form-control" name="previousEmployerName"
                                                         placeholder="Employer Name" id="previousEmployerName"
-                                                        required="">
+                                                        required=""></span><br>
 
                                                     <label for="name"
-                                                        class="col-md-4 control-label col-form-label">Employee
+                                                        class="col-md-4 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;">Employee
                                                         Signature</label>
                                                     <br>
                                                     <img id="signature" alt="user" width="150">
                                                     <br>
-                                                    <input type="text" class="form-control" id="employeeName"
-                                                        placeholder="Employee Name">
+													
                                                     <br>
                                                     <span></span>
                                                     <hr>
@@ -569,94 +544,117 @@
                                                         RECORDS REQUEST</h4>
                                                     <h5 style="text-align:center;">PART 1: TO BE COMPLETED
                                                         BY
-                                                        PROSPECTIVE EMPLOYEE</h5>
+                                                        PROSPECTIVE EMPLOYER</h5>
                                                     <div class="form-group row">
                                                         <label for="prospectiveEmployerName"
-                                                            class="col-md-2 control-label col-form-label">I</label>
-                                                        <div class="col-md-4">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Prospective employee name"
-                                                                name="prospectiveEmployerName"
-                                                                id="prospectiveEmployerName">
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 16.66%;max-width: 16.66%;width:16.66%;float:left;">I</label>
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 33.33%;float:left;width:33.33%">
+															<span class="prospectiveEmployerName_text"></span>
+															<span class="prospectiveEmployerName_input">
+																<input type="text" class="form-control" placeholder="Prospective employee name" name="prospectiveEmployerName" id="prospectiveEmployerName">
+															</span>
                                                         </div>
                                                         <label for="employeeSin"
-                                                            class="col-md-3 control-label col-form-label">Social
+                                                            class="col-md-3 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">Social
                                                             Security Number:</label>
-                                                        <div class="col-md-3">
-                                                            <input type="text" class="form-control"
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">
+                                                            <span class="employeeSin_text"></span>
+															<span class="employeeSin_input">
+																<input type="text" class="form-control"
                                                                 placeholder="Social Security Number" name="employeeSin"
                                                                 id="employeeSin">
+															</span>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="employeeDOB"
-                                                            class="col-md-2 control-label col-form-label">DOB</label>
-                                                        <div class="col-md-4">
-                                                            <input type="text" class="form-control"
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;float:left;width:15.67%">DOB</label>
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 33.33%;float:left;width: 33.33%;">
+															 <span class="employeeDOB_text"></span>
+															 <span class="employeeDOB_input">
+																<input type="text" class="form-control"
                                                                 placeholder="employeeDOB" name="employeeDOB"
                                                                 id="employeeDOB">
+															</span>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="previousEmployerName"
-                                                            class="col-md-2 control-label col-form-label">Previous
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;float:left;width:15.67%">Previous
                                                             Employer:</label>
-                                                        <div class="col-md-4">
-                                                            <input type="text" class="form-control"
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">
+															<span class="previousEmployerName_text"></span>
+															<span class="previousEmployerName_input">
+																<input type="text" class="form-control"
                                                                 placeholder="Previous Employer"
                                                                 name="previousEmployerName" id="previousEmployerName">
+															</span>
                                                         </div>
                                                         <label for="previousEmployerEmail"
-                                                            class="col-md-3 control-label col-form-label">Previous
+                                                            class="col-md-3 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;float:left;width:25%;">Previous
                                                             Employer Official
                                                             Email:</label>
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;float:left;">
                                                             <div class="example example_markup">
                                                                 <div class="bs-example">
-                                                                    <input type="text" class="form-control"
+																	<span class="previousEmployerEmail_text"></span>
+																	<span class="previousEmployerEmail_input">
+																		<input type="text" class="form-control"
                                                                         name="previousEmployerEmail"
                                                                         id="previousEmployerEmail" />
+																	</span>
                                                                 </div>
                                                             </div>
 
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="previousEmployerCSZ"
-                                                            class="col-md-2 control-label col-form-label">City,
+                                                            class="col-md-2 control-label col-form-label" style="width:16.66%;float:left;">City,
                                                             State, Zip:</label>
-                                                        <div class="col-md-4">
-                                                            <input type="text" class="form-control"
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 33.33%;width:33.33%;float:left;">
+															<span class="previousEmployerCSZ_text"></span>
+															<span class="previousEmployerCSZ_input">
+																<input type="text" class="form-control"
                                                                 placeholder="City, State, Zip"
                                                                 name="previousEmployerCSZ" value=""
                                                                 id="previousEmployerCSZ">
+															</span>
                                                         </div>
 
 
                                                         <label for="previousEmployerPhone"
-                                                            class="col-md-3 control-label col-form-label">Telephone:</label>
-                                                        <div class="col-md-3">
-                                                            <input type="text" class="form-control"
+                                                            class="col-md-3 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 16.66%;width:33.33%;float:left;">Telephone:</label>
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 33.33%;float:left;">
+                                                            <span class="previousEmployerPhone_text"></span><span class="previousEmployerPhone_input">
+															<input type="text" class="form-control"
                                                                 placeholder="Telephone" name="previousEmployerPhone"
                                                                 value="" id="previousEmployerPhone">
+															</span>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="previousEmployerStreet"
-                                                            class="col-md-2 control-label col-form-label">Street:</label>
-                                                        <div class="col-md-4">
-                                                            <input type="text" class="form-control"
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.67%;float:left;">Street:</label>
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 33.33%;width:33.33%;float:left;">
+                                                            <span class="previousEmployerStreet_text"></span>
+															<span class="previousEmployerStreet_input">
+																<input type="text" class="form-control"
                                                                 placeholder="Previous Employer Street"
                                                                 name="previousEmployerStreet" value=""
                                                                 id="previousEmployerStreet">
+															</span>
                                                         </div>
                                                         <label for="previousEmployerFax"
-                                                            class="col-md-3 control-label col-form-label">Fax
+                                                            class="col-md-3 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">Fax
                                                             NO:</label>
-                                                        <div class="col-md-3">
-                                                            <input type="text" class="form-control" placeholder="Fax"
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width: 25%;float:left;">
+															<span class="previousEmployerFax_text"></span>
+															<span class="previousEmployerFax_input">
+																<input type="text" class="form-control" placeholder="Fax"
                                                                 name="previousEmployerFax" value=""
                                                                 id="previousEmployerFax">
+															</span>
                                                         </div>
                                                     </div>
                                                     <h4>TO:</h4>
@@ -665,47 +663,62 @@
                                                             class="col-md-2 control-label col-form-label">Prospective
                                                             Employer:</label>
                                                         <div class="col-md-2">
-                                                            <input type="text"="" class="form-control"
+															<span class="prospectiveEmployerName_text"></span>
+															<span class="prospectiveEmployerName_input">
+																<input type="text"="" class="form-control"
                                                                 placeholder="Prospective Employer"
                                                                 name="prospectiveEmployerName"
                                                                 id="prospectiveEmployerName">
+															</span>
                                                         </div>
                                                         <label for="prospectiveEmployerAttention"
-                                                            class="col-md-2 control-label col-form-label">Attention:</label>
-                                                        <div class="col-md-2">
-                                                            <input type="text"="" class="form-control"
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;">Attention:</label>
+                                                        <div class="col-md-2" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;">
+															<span class="prospectiveEmployerAttention_text"></span>
+															<span class="prospectiveEmployerAttention_input">
+																<input type="text"="" class="form-control"
                                                                 placeholder="Attention"
                                                                 name="prospectiveEmployerAttention"
                                                                 id="prospectiveEmployerAttention">
+															</span>
                                                         </div>
                                                         <label for="prospectiveEmployerPhone"
-                                                            class="col-md-2 control-label col-form-label">Telephone:</label>
-                                                        <div class="col-md-2">
-                                                            <input type="text"="" class="form-control"
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.67%;float:left;">Telephone:</label>
+                                                        <div class="col-md-2" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.67%;float:left;">
+															<span class="prospectiveEmployerPhone_text"></span>
+															<span class="prospectiveEmployerPhone_input">
+																<input type="text"class="form-control"
                                                                 placeholder="Telephone" name="prospectiveEmployerPhone"
                                                                 id="prospectiveEmployerPhone">
+															</span>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="prospectiveEmployerStreet"
-                                                            class="col-md-2 control-label col-form-label">Street:</label>
-                                                        <div class="col-md-4">
-                                                            <input type="text"="" class="form-control"
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.67%;float:left;">Street:</label>
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 33.33%;width:33.33%;float:left;">
+															 <span class="prospectiveEmployerStreet_text"></span>
+															 <span class="prospectiveEmployerStreet_input">
+																<input type="text"="" class="form-control"
                                                                 placeholder="Street" name="prospectiveEmployerStreet"
                                                                 id="prospectiveEmployerStreet">
+															</span>
                                                         </div>
                                                         <label for="prospectiveEmployerCSZ"
-                                                            class="col-md-3 control-label col-form-label">City,
+                                                            class="col-md-3 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">City,
                                                             State, Zip:</label>
-                                                        <div class="col-md-3">
-                                                            <input type="text"="" class="form-control"
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">
+															<span class="prospectiveEmployerCSZ_text"></span>
+															<span class="prospectiveEmployerCSZ_input">
+																<input type="text"="" class="form-control"
                                                                 placeholder="City, State, Zip"
                                                                 name="prospectiveEmployerCSZ"
                                                                 id="prospectiveEmployerCSZ">
+															</span>
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         In compliance with §40.25(g) and 391.23(h), release
                                                         of
                                                         this information must be made in a written form that
@@ -713,40 +726,49 @@
                                                         letter</div>
                                                     <div class="row">
                                                         <label for="prospectiveEmployerFax"
-                                                            class="col-md-2 control-label col-form-label">Prospective
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.67%;float:left;">Prospective
                                                             employer’s fax number::</label>
-                                                        <div class="col-md-4">
-                                                            <input type="text" class="form-control"
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 33.33%;width:33.33%;float:left;">
+                                                            <span class="prospectiveEmployerFax_text"></span>
+															<span class="prospectiveEmployerFax_input">
+																<input type="text" class="form-control"
                                                                 placeholder="prospectiveEmployerFax"
                                                                 name="prospectiveEmployerFax"
                                                                 id="prospectiveEmployerFax">
+															</span>
                                                         </div>
                                                         <label for="prospectiveEmployerEmail"
-                                                            class="col-md-3 control-label col-form-label">Prospective
+                                                            class="col-md-3 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">Prospective
                                                             employer’s email address:</label>
-                                                        <div class="col-md-3">
-                                                            <input type="text" class="form-control"
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">
+															<span class="prospectiveEmployerEmail_text"></span>
+															<span class="prospectiveEmployerEmail_input">
+																<input type="text" class="form-control"
                                                                 placeholder="prospectiveEmployerEmail"
                                                                 name="prospectiveEmployerEmail"
                                                                 id="prospectiveEmployerEmail">
+															</span>
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="name"
-                                                            class="col-md-2 control-label col-form-label">Applicant’s
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.66%;float:left;">Applicant’s
                                                             Signature:</label>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 33.33%;width:33.33%;float:left;">
                                                             <img id="signature" alt="user" width="150">
                                                             <br>
 
                                                         </div>
-                                                        <label for="name" class="col-md-3 control-label col-form-label">
+                                                        <label for="name" class="col-md-3 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">
                                                             Date:</label>
-                                                        <div class="col-md-3">
-                                                            <input type="date" class="form-control"
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">
+                                                            <span class="applicant_sign_text"></span>
+															<span class="applicant_sign_input">
+																<input type="date" class="form-control"
                                                                 placeholder="applicantDate" name="applicantDate"
                                                                 value="" id="applicantDate">
+															</span>
                                                         </div>
                                                     </div>
                                                     <br>
@@ -756,179 +778,189 @@
                                                         PREVIOUS EMPLOYER</h4>
                                                     <h5 style="text-align:center;">EMPLOYMENT VERIFICATION
                                                     </h5>
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="employedBy"
-                                                            class="col-md-9 control-label col-form-label">The
+                                                            class="col-md-9 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 75%;max-width: 75%;width:75%;float:left;">The
                                                             applicant named above was employed by
                                                             us:</label>
-                                                        <div class="col-md-3">
-                                                            <select id="employedBy"
-                                                                class="select2 form-control custom-select"
-                                                                name="employedBy" style="width: 100%; height:36px;">
-                                                                <option value="">Select Here</option>
-                                                                <option value="YES">YES</option>
-                                                                <option value="NO">NO</option>
-                                                            </select>
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">
+															<span class="employedBy_text"></span>
+															<span class="employedBy_input">
+																<select id="employedBy"
+																	class="select2 form-control custom-select"
+																	name="employedBy" style="width: 100%; height:36px;">
+																	<option value="">Select Here</option>
+																	<option value="YES">YES</option>
+																	<option value="NO">NO</option>
+																</select>
+															</span>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="jobDesignation"
-                                                            class="col-md-2 control-label col-form-label">Employed
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.67%;float:left;">Employed
                                                             as:</label>
-                                                        <div class="col-md-2">
-                                                            <input type="text" class="form-control"
+                                                        <div class="col-md-2" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.66%;float:left;">
+                                                            <span class="jobDesignation_text"></span>
+															<span class="jobDesignation_input">
+																<input type="text" class="form-control"
                                                                 placeholder="Employed as" name="jobDesignation" value=""
                                                                 id="jobDesignation">
+															</span>
                                                         </div>
                                                         <label for="previousfrom"
-                                                            class="col-md-2 control-label col-form-label">From:</label>
-                                                        <div class="col-md-2">
-                                                            <input type="text" readonly class="form-control"
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.66%;float:left;">From:</label>
+                                                        <div class="col-md-2" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.66%;float:left;">
+                                                            <span class="previousfrom_text"></span>
+															<span class="previousfrom_input">
+																<input type="text" readonly class="form-control"
                                                                 placeholder="From" name="previousfrom"
                                                                 id="previousfrom">
+															</span>
                                                         </div>
                                                         <label for="previousto"
-                                                            class="col-md-2 control-label col-form-label">To:</label>
-                                                        <div class="col-md-2">
-                                                            <input type="text" readonly class="form-control"
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.66%;float:left;">To:</label>
+                                                        <div class="col-md-2" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.66%;float:left;">
+															<span class="previousto_text"></span>
+															<span class="previousto_input">
+																<input type="text" readonly class="form-control"
                                                                 placeholder="To" name="previousto" id="previousto">
+															</span>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="motorVehicleForYou"
-                                                            class="col-md-9 control-label col-form-label">1.
+                                                            class="col-md-9 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 75%;max-width: 75%;width:75%;float:left;">1.
                                                             Did
                                                             he/she drive motor vehicle for you? :</label>
-                                                        <div class="col-md-3">
-                                                            <select id="motorVehicleForYou"
-                                                                class="select2 form-control custom-select"
-                                                                name="motorVehicleForYou"
-                                                                style="width: 100%; height:36px;">
-                                                                <option value="">Select Here</option>
-                                                                <option value="YES">YES</option>
-                                                                <option value="NO">NO</option>
-                                                            </select>
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">
+															<span class="motorVehicleForYou_text"></span>
+															<span class="motorVehicleForYou_input">
+																<select id="motorVehicleForYou"
+																	class="select2 form-control custom-select"
+																	name="motorVehicleForYou"
+																	style="width: 100%; height:36px;">
+																	<option value="">Select Here</option>
+																	<option value="YES">YES</option>
+																	<option value="NO">NO</option>
+																</select>
+															</span>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
+                                                    <div id="whattypediv" class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="whatType"
-                                                            class="col-md-9 control-label col-form-label">If
+                                                            class="col-md-9 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 75%;max-width: 75%;width:75%;float:left;">If
                                                             yes, what type?</label>
-                                                        <div class="col-md-3">
-                                                            <select id="whatType"
-                                                                class="select2 form-control custom-select"
-                                                                name="whatType" style="width: 100%; height:36px;">
-                                                                <option value="">Select Here</option>
-                                                                <option value="Straight Truck">Straight
-                                                                    Truck
-                                                                </option>
-                                                                <option value="Tractor-Semi trailer">
-                                                                    Tractor-Semi trailer</option>
-                                                                <option value="Bus">Bus</option>
-                                                                <option value="Cargo Tank">Cargo Tank
-                                                                </option>
-                                                                <option value="Doubles/Triples">
-                                                                    Doubles/Triples
-                                                                </option>
-                                                                <option value="Other">Other</option>
-                                                            </select>
-                                                            <input type="text" class="form-control" placeholder="Other"
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">
+															<span class="whatType_text"></span>
+															<span class="whatType_input">
+																<select id="whatType"
+																	class="select2 form-control custom-select"
+																	name="whatType" style="width: 100%; height:36px;">
+																	<option value="">Select Here</option>
+																	<option value="Straight Truck">Straight
+																		Truck
+																	</option>
+																	<option value="Tractor-Semi trailer">
+																		Tractor-Semi trailer</option>
+																	<option value="Bus">Bus</option>
+																	<option value="Cargo Tank">Cargo Tank
+																	</option>
+																	<option value="Doubles/Triples">
+																		Doubles/Triples
+																	</option>
+																	<option value="Other">Other</option>
+																</select>
+															</span>
+															<span class="whatTypeOther_text"></span>
+															<span class="whatTypeOther_input">
+																<input type="text" class="form-control" placeholder="Other"
                                                                 name="whatTypeOther" value="" id="whatTypeOther">
-                                                            <input type="text" class="form-control"
+															</span>
+															<span class="whatTypeComment_text"></span>
+															<span class="whatTypeComment_input">
+																<input type="text" class="form-control"
                                                                 placeholder="Comment" name="whatTypeComment" value=""
                                                                 id="whatTypeComment">
+															</span>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="reasonForLeaving"
-                                                            class="col-md-9 control-label col-form-label">2.
+                                                            class="col-md-9 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 75%;max-width: 75%;width:75%;float:left;;">2.
                                                             Reason for leaving your employment: </label>
-                                                        <div class="col-md-3">
-                                                            <select class="select2 form-control custom-select"
-                                                                name="reasonForLeaving"
-                                                                style="width: 100%; height:36px;">
-                                                                <option value="">Select Here</option>
-                                                                <option value="Discharged">Discharged
-                                                                </option>
-                                                                <option value="Resignation">Resignation
-                                                                </option>
-                                                                <option value="LayOff">LayOff</option>
-                                                                <option value="MilitaryDuty">MilitaryDuty
-                                                                </option>
-                                                            </select>
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">
+                                                            <span class="reasonForLeaving_text"></span>
+															<span class="reasonForLeaving_input">
+																<select id="reasonForLeaving"
+																	class="select2 form-control custom-select"
+																	name="reasonForLeaving"
+																	style="width: 100%; height:36px;">
+																	<option value="">Select Here</option>
+																	<option value="Discharged">Discharged
+																	</option>
+																	<option value="Resignation">Resignation
+																	</option>
+																	<option value="LayOff">LayOff</option>
+																	<option value="MilitaryDuty">MilitaryDuty
+																	</option>
+																</select>
+															</span>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="completeByCompany"
-                                                            class="col-md-2 control-label col-form-label">Complete
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.66%;float:left;;">Complete
                                                             by company</label>
-                                                        <div class="col-md-4">
-                                                            <input type="text" class="form-control"
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 33.33%;width:33.33%;float:left;">
+															<span class="completeByCompany_text"></span>
+															<span class="completeByCompany_input">
+																<input type="text" class="form-control"
                                                                 placeholder="Complete by company"
                                                                 name="completeByCompany" id="completeByCompany">
+															</span>
                                                         </div>
                                                         <label for="previousEmployerAddress"
-                                                            class="col-md-1 control-label col-form-label">Address:</label>
-                                                        <div class="col-md-5">
-                                                            <input type="text" class="form-control"
+                                                            class="col-md-1 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 8.33%;max-width: 8.33%;width:8.33%;float:left;margin-left:16%">Address:</label>
+                                                        <div class="col-md-5" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 42%;max-width: 25.33%;width:25.33%;float:left;">
+                                                            <span class="previousEmployerAddress_text"></span><span class="previousEmployerAddress_input"><input type="text" class="form-control"
                                                                 placeholder="Address" name="previousEmployerAddress"
-                                                                id="previousEmployerAddress">
+                                                                id="previousEmployerAddress"></span>
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="previousEmployerCSZ"
-                                                            class="col-md-2 control-label col-form-label">City,
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.66%;float:left;">City,
                                                             State, Postal Code</label>
-                                                        <div class="col-md-4">
-                                                            <input type="text" class="form-control"
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 33.33%;width:33.33%;float:left;">
+                                                             <span class="previousEmployerCSZ_text"></span><span class="previousEmployerCSZ_input"><input type="text" class="form-control"
                                                                 placeholder="City, State, Postal Code"
                                                                 name="previousEmployerCSZ" value=""
-                                                                id="previousEmployerCSZ">
+                                                                id="previousEmployerCSZ"></span>
                                                         </div>
+
                                                         <label for="previousEmployerPhone"
-                                                            class="col-md-1 control-label col-form-label">Telephone:</label>
-                                                        <div class="col-md-5">
-                                                            <input type="text" class="form-control"
+                                                            class="col-md-1 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 8.33%;max-width: 15.66%;width:15.66%;float:left;margin-left:16%">Telephone:</label>
+                                                        <div class="col-md-5" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 42%;max-width: 25%;width:25%;float:left;margin-left:5px;">
+                                                             <span class="previousEmployerPhone_text"></span><span class="previousEmployerPhone_input"><input type="text" class="form-control"
                                                                 placeholder="Telephone" name="previousEmployerPhone"
-                                                                value="" id="previousEmployerPhone">
+                                                                value="" id="previousEmployerPhone"></span>
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="name"
-                                                            class="col-md-2 control-label col-form-label">Signature</label>
-                                                        <div class="col-md-4">
-                                                            <!-- <div id="signatureDiv">
-                                                                <div class="row1">
-                                                                    <div class="col-md-3 col-xs-hidden">
-                                                                    </div>
-                                                                    <div style="text-align: center"
-                                                                        class="col-md-6 col-xs-12">
-                                                                        <section class="signature-component">
-                                                                            <canvas
-                                                                                style="background-color: #fff;border: 2px solid #131212;"
-                                                                                id="signature-pad" width="350"
-                                                                                height="200"></canvas>
-                                                                            <div>
-                                                                                <button id="clear" class="clear">Clear
-                                                                                    Signature</button>
-                                                                            </div>
-                                                                        </section>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-xs-hidden">
-                                                                    </div>
-                                                                </div>
-                                                                <br />
-
-                                                            </div> -->
-
-
+                                                            class="col-md-2 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 15.67%;max-width: 15.67%;width:15.66%;float:left;">Signature</label>
+                                                        <div class="col-md-4" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 33.33%;max-width: 33.33%;width:33.33%;float:left;">
+                                                            <img id="prevEmpoyerSignature" alt="Previous Employer sign pending" width="150">
                                                             <br>
+
                                                         </div>
                                                         <label for="name"
-                                                            class="col-md-3 control-label col-form-label">Date:</label>
-                                                        <div class="col-md-3">
+                                                            class="col-md-3 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 10.33%;margin-left:16%;width:10.33%;float:left;">Date:</label>
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 20%;width:20%;float:left;">
+                                                            <span id="created_date"></span>
                                                             <!-- <input type="date" class="form-control"
                         placeholder="Date" name="previousEmployerDate" value="" 
                         id="previousEmployerDate"> -->
@@ -949,12 +981,12 @@
                                                     is
                                                     no accident register data for this driver
 
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="previousEmployerAnyInuries"
-                                                            class="col-md-9 control-label col-form-label">Please
+                                                            class="col-md-9 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 75%;max-width: 75%;width:75%;float:left;">Please
                                                             select YES if you have any injuries</label>
-                                                        <div class="col-md-3">
-                                                            <select
+                                                        <div class="col-md-3" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 25%;max-width: 25%;width:25%;float:left;">
+                                                            <span class="previousEmployerAnyInuries_text"></span><span class="previousEmployerAnyInuries_input"><select
                                                                 class="select2 form-control custom-select table_selectbox"
                                                                 name="previousEmployerAnyInuries"
                                                                 id="previousEmployerAnyInuries"
@@ -962,184 +994,192 @@
                                                                 <option value="">Select Here</option>
                                                                 <option value="YES">YES</option>
                                                                 <option value="NO">NO</option>
-                                                            </select>
+                                                            </select></span>
                                                         </div>
                                                     </div>
 
 
 
-                                                    <table style="background-color: #0a0a0ac2;color: #fff;"
+                                                    <table style="background-color: #0a0a0ac2;color: #fff; width:100%"
                                                         class="table table-bordered part3table">
                                                         <thead>
                                                             <tr>
-                                                                <th scope="col">#</th>
-                                                                <th scope="col">Date</th>
-                                                                <th scope="col">Location</th>
-                                                                <th scope="col">Injuries</th>
-                                                                <th scope="col">Fatalities</th>
-                                                                <th scope="col">Hazmat Spill</th>
+                                                                <th scope="col" style="width:5%">#</th>
+                                                                <th scope="col" style="width:15%">Date</th>
+                                                                <th scope="col" style="width:20%">Location</th>
+                                                                <th scope="col" style="width:20%">Injuries</th>
+                                                                <th scope="col" style="width:20%">Fatalities</th>
+                                                                <th scope="col" style="width:20%">Hazmat Spill</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <th scope="row">1</th>
-                                                                <td><input type="date" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableoneDate_text"></span><span class="previousEmployertableoneDate_input"><input type="date" class="form-control"
                                                                         placeholder="Date"
                                                                         name="previousEmployertableoneDate" value=""
-                                                                        id="previousEmployertableoneDate">
+                                                                        id="previousEmployertableoneDate"></span>
                                                                 </td>
-                                                                <td><input type="text" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableoneLocation_text"></span><span class="previousEmployertableoneLocation_input"><input type="text" class="form-control"
                                                                         placeholder="Location"
                                                                         name="previousEmployertableoneLocation" value=""
-                                                                        id="previousEmployertableoneLocation">
+                                                                        id="previousEmployertableoneLocation"></span>
                                                                 </td>
-                                                                <td><input type="text" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableoneLocation_text"></span><span class="previousEmployertableoneLocation_input"><input type="text" class="form-control"
                                                                         placeholder="Injuries"
                                                                         name="previousEmployertableoneInjuries" value=""
-                                                                        id="previousEmployertableoneInjuries">
+                                                                        id="previousEmployertableoneInjuries"></span>
                                                                 </td>
-                                                                <td><input type="text" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableoneFatalities_text"></span><span class="previousEmployertableoneFatalities_input"><input type="text" class="form-control"
                                                                         placeholder="Fatalities"
                                                                         name="previousEmployertableoneFatalities"
                                                                         value=""
                                                                         id="previousEmployertableoneFatalities">
+																		</span>
                                                                 </td>
-                                                                <td><input type="text" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableoneHazmatSpill_text"></span><span class="previousEmployertableoneHazmatSpill_input"><input type="text" class="form-control"
                                                                         placeholder="Hazmatspill"
                                                                         name="previousEmployertableoneHazmatSpill"
                                                                         value=""
                                                                         id="previousEmployertableoneHazmatSpill">
+																</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">2</th>
-                                                                <td><input type="date" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableTwoDate_text"></span><span class="previousEmployertableTwoDate_input"><input type="date" class="form-control"
                                                                         placeholder="Date"
                                                                         name="previousEmployertableTwoDate" value=""
                                                                         id="previousEmployertableTwoDate">
+																		</span>
                                                                 </td>
-                                                                <td><input type="text" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableTwoLocation_text"></span><span class="previousEmployertableTwoLocation_input"><input type="text" class="form-control"
                                                                         placeholder="Location"
                                                                         name="previousEmployertableTwoLocation" value=""
-                                                                        id="previousEmployertableTwoLocation">
+                                                                        id="previousEmployertableTwoLocation"></span>
                                                                 </td>
-                                                                <td><input type="text" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableTwoInjuries_text"></span><span class="previousEmployertableTwoInjuries_input"><input type="text" class="form-control"
                                                                         placeholder="Injuries"
                                                                         name="previousEmployertableTwoInjuries" value=""
                                                                         id="previousEmployertableTwoInjuries">
+																		</span>
                                                                 </td>
-                                                                <td><input type="text" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableTwoFatalities_text"></span><span class="previousEmployertableTwoFatalities_input"><input type="text" class="form-control"
                                                                         placeholder="Fatalities"
                                                                         name="previousEmployertableTwoFatalities"
                                                                         value=""
                                                                         id="previousEmployertableTwoFatalities">
+																		</span>
                                                                 </td>
-                                                                <td><input type="text" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableTwoHazmatSpill_text"></span><span class="previousEmployertableTwoHazmatSpill_input"><input type="text" class="form-control"
                                                                         placeholder="Hazmatspill"
                                                                         name="previousEmployertableTwoHazmatSpill"
                                                                         value=""
-                                                                        id="previousEmployertableTwoHazmatSpill">
+                                                                        id="previousEmployertableTwoHazmatSpill"></span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">3</th>
-                                                                <td><input type="date" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableThreeDate_text"></span><span class="previousEmployertableThreeDate_input"><input type="date" class="form-control"
                                                                         placeholder="Date"
                                                                         name="previousEmployertableThreeDate" value=""
-                                                                        id="previousEmployertableThreeDate">
+                                                                        id="previousEmployertableThreeDate"></span>
                                                                 </td>
-                                                                <td><input type="text" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableThreeLocation_text"></span><span class="previousEmployertableThreeLocation_input"><input type="text" class="form-control"
                                                                         placeholder="Location"
                                                                         name="previousEmployertableThreeLocation"
                                                                         value=""
-                                                                        id="previousEmployertableThreeLocation">
+                                                                        id="previousEmployertableThreeLocation"></span>
                                                                 </td>
-                                                                <td><input type="text" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableThreeInjuries_text"></span><span class="previousEmployertableThreeInjuries_input"><input type="text" class="form-control"
                                                                         placeholder="Injuries"
                                                                         name="previousEmployertableThreeInjuries"
                                                                         value=""
-                                                                        id="previousEmployertableThreeInjuries">
+                                                                        id="previousEmployertableThreeInjuries"></span>
                                                                 </td>
-                                                                <td><input type="text" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableThreeFatalities_text"></span><span class="previousEmployertableThreeFatalities_input"><input type="text" class="form-control"
                                                                         placeholder="Fatalities"
                                                                         name="previousEmployertableThreeFatalities"
                                                                         value=""
                                                                         id="previousEmployertableThreeFatalities">
+																		</span>
                                                                 </td>
-                                                                <td><input type="text" class="form-control"
+                                                                <td style="text-align:center;"><span class="previousEmployertableThreeHazmatSpill_text"></span><span class="previousEmployertableThreeHazmatSpill_input"><input type="text" class="form-control"
                                                                         placeholder="Hazmatspill"
                                                                         name="previousEmployertableThreeHazmatSpill"
                                                                         value=""
-                                                                        id="previousEmployertableThreeHazmatSpill">
+                                                                        id="previousEmployertableThreeHazmatSpill"></div>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
 
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="companyPolicies"
-                                                            class="col-md-6 control-label col-form-label">Please
+                                                            class="col-md-6 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 50%;max-width: 50%;width:50%;float:left;">Please
                                                             provide information concerning any other
                                                             accidents
                                                             involving the applicant that were reported to
                                                             government agencies or insurers or retained
                                                             under
                                                             internal company policies:</label>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 50%;max-width: 50%;width:50%;float:left;">
+															<span class="companyPolicies_text"></span><span class="companyPolicies_input"> 
                                                             <input type="text" class="form-control" placeholder="Policy"
-                                                                name="companyPolicies" id="companyPolicies">
+                                                                name="companyPolicies" id="companyPolicies"></span>
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="name"
-                                                            class="col-md-6 control-label col-form-label">Any
+                                                            class="col-md-6 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 50%;max-width: 50%;width:50%;float:left;">Any
                                                             other remarks:</label>
-                                                        <div class="col-md-6">
-                                                            <input type="text" class="form-control"
+                                                        <div class="col-md-6" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 50%;max-width: 50%;width:50%;float:left;">
+                                                           <span class="remarks_text"></span><span class="remarks_input"> <input type="text" class="form-control"
                                                                 placeholder="Remarks" name="remarks" value=""
-                                                                id="remarks">
+                                                                id="remarks"></span>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-bottom: 1rem;display: flex;flex-wrap: wrap;margin-right: -10px;margin-left: -10px;">
                                                         <label for="name"
-                                                            class="col-md-6 control-label col-form-label">Mail sent
+                                                            class="col-md-6 control-label col-form-label" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 50%;max-width: 50%;width:50%;float:left;">Mail sent
                                                             to</label>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6" style="padding-top: calc(0.375rem + 1px);padding-bottom: calc(0.375rem + 1px);margin-bottom: 0;font-size: inherit;line-height: 1.5;-webkit-box-flex: 0;flex: 0 0 50%;max-width: 50%;width:50%;float:left;">
                                                             <span id="RefPreviousEmployerEmail"></span>
                                                         </div>
                                                     </div>
                                                     <div id="refEmail">
 
 
-                                                    <h4> Please Enter email </h4>
-                                                    <input type="text" class="form-control"
-                                                        placeholder="Reference Email this will be multiple"
-                                                        name="RefPreviousEmployerEmail" id="RefPreviousEmployerEmail">
+                                                        <h4> Please Enter email </h4>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Reference Email this will be multiple"
+                                                            name="RefPreviousEmployerEmail"
+                                                            id="RefPreviousEmployerEmail">
 
 
 
 
-                                                    <div class="form-group row">
-                                                        <label for="name"
-                                                            class="col-md-6 control-label col-form-label">Please
-                                                            Enter your email
-                                                            for Reference</label>
-                                                        <div class="col-md-6">
-                                                            <input required type="text" class="form-control"
-                                                                placeholder="Please Enter your email for Reference"
-                                                                name="ApprovedFromEmail" value="superadmin"
-                                                                id="ApprovedFromEmail">
+                                                        <div class="form-group row">
+                                                            <label for="name"
+                                                                class="col-md-6 control-label col-form-label" style="width:50%;float:left;">Please
+                                                                Enter your email
+                                                                for Reference</label>
+                                                            <div class="col-md-6" style="width:50%;float:left;">
+                                                                <input required type="text" class="form-control"
+                                                                    placeholder="Please Enter your email for Reference"
+                                                                    name="ApprovedFromEmail" value="superadmin"
+                                                                    id="ApprovedFromEmail">
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="border-top">
-                                                        <div style="text-align: center;" class="card-body">
-                                                            <button id="updateRefBtn" type="Submit"
-                                                                class="btn btn-primary">Send Form To Previous
-                                                                Employer</button>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button id="updateRefBtn" type="Submit"
+                                                                    class="btn btn-primary">Send Form To Previous
+                                                                    Employer</button>
+                                                            </div>
                                                         </div>
-                                                    </div>
                                                     </div>
                                                 </div>
                                             </form>
@@ -1148,7 +1188,7 @@
                                 </div>
                             </div>
                         </div>
-
+</div>
 
 
 
@@ -1174,7 +1214,8 @@
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <button type="button" id="deleteRef" class="close" data-dismiss="modal">&times;</button> -->
+                                        <button type="button" id="deleteRef"  class="close">&times;</button>
                                         <!-- <h4 class="modal-title">Delete List</h4> -->
                                     </div>
                                     <div class="modal-body">
@@ -1240,6 +1281,64 @@
                                 // $('#zero_config').DataTable();
 
                                 $(document).ready(function () {
+
+                                    $(document).on('click', '#deleteRef', function () {
+                                    // $('body #viewmodal').modal('hide');
+                                    // let id = $(this).attr('data-id');
+                                    let driverId = $('body #viewmodalprevemp #driverId').val();
+                                   
+                                    Swal.fire({
+                                        title: 'Are you sure?',
+                                        text: "This form will revert back so you suppose to fill from begining !",
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'Yes, clear it!'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+
+                                            $.ajax({
+                                                url: "/deleteReference",
+                                                type: "POST",
+                                                data: { driverId: driverId },
+                                                success: function (data) {
+                                                    if (data.status) {
+                                                        const Toast = Swal.mixin({
+                                                            toast: true,
+                                                            position: 'top-end',
+                                                            showConfirmButton: false,
+                                                            timer: 2000,
+                                                            timerProgressBar: true,
+                                                            didOpen: (toast) => {
+                                                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                            }
+                                                        })
+                                                        Toast.fire({
+                                                            icon: 'success',
+                                                            title: data.message
+                                                        });
+                                                        setTimeout(function () {
+                                                            window.location.reload();
+                                                        }, 2000);
+                                                    } else {
+                                                        Swal.fire({
+                                                            title: 'Error!',
+                                                            text: 'Something went wrong',
+                                                            icon: 'error',
+                                                            confirmButtonText: 'Cool'
+                                                        })
+                                                    }
+
+                                                }
+                                            });
+                                        }
+                                    })
+                                });
+
+
+
                                     $("#create_driver_button").hide()
                                     $("#create_driver_button").click(function () {
 
@@ -1271,8 +1370,9 @@
                                             },
                                             columns: [
                                                 { "data": "slno" },
-                                                { "data": "driver_id" },
+                                                { "data": "formID" },
                                                 { "data": "driver_name" },
+                                                { "data": "previousEmployerName" },
                                                 { "data": "action" }
                                             ],
                                             select: true
@@ -1378,11 +1478,12 @@
 
                                 $(document).on('click', '.viewmodalprevempStatus', function () {
                                     $('body #viewmodal').modal('hide');
-                                    let id = $(this).attr('data-id');
+                                    // let id = $(this).attr('data-id');
+                                    let formID = $(this).attr('data-formID');
                                     $.ajax({
                                         url: "/getFormStatus",
                                         type: "GET",
-                                        data: { id: id },
+                                        data: { formID: formID },
                                         success: function (data) {
                                             console.log(data.groupEmail);
                                             if (data.status) {
@@ -1429,6 +1530,13 @@
                                                 $("body #viewmodalFormStatusDetails #previousfrom").val(data.data.previousfrom);
                                                 $("body #viewmodalFormStatusDetails #previousto").val(data.data.previousto);
                                                 $("body #viewmodalFormStatusDetails #motorVehicleForYou [value=" + '"' + data.data.motorVehicleForYou + '"' + "]").attr("selected", true);
+
+                                                if (data.data.motorVehicleForYou == "YES") {
+                                                    $("body #whattypediv").show();
+                                                } else {
+                                                    $("body #whattypediv").hide();
+                                                }
+
                                                 $("body #viewmodalFormStatusDetails #whatType [value=" + '"' + data.data.whatType + '"' + "]").attr("selected", true);
                                                 $("body #viewmodalFormStatusDetails #whatTypeOther").val(data.data.whatTypeOther);
                                                 $("body #viewmodalFormStatusDetails #whatTypeComment").val(data.data.whatTypeComment);
@@ -1441,6 +1549,7 @@
                                                 $("body #viewmodalFormStatusDetails #previousEmployerStreet").val(data.data.previousEmployerStreet);
                                                 $("body #viewmodalFormStatusDetails #previousEmployerFax").val(data.data.previousEmployerFax);
                                                 $("body #viewmodalFormStatusDetails #previousEmployerPhone").val(data.data.previousEmployerPhone);
+                                                $("body #viewmodalFormStatusDetails #created_date").html(data.data.created_date);
                                                 $("body #viewmodalFormStatusDetails #previousEmployerDate").val(data.data.previousEmployerDate);
                                                 $("body #viewmodalFormStatusDetails #previousEmployerAnyInuries [value=" + '"' + data.data.previousEmployerAnyInuries + '"' + "]").attr("selected", true);
 
@@ -1471,6 +1580,7 @@
                                                 // let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
                                                 // alert(data.data.driverSign)
                                                 $("body #viewmodalFormStatusDetails #signature").attr("src", data.data.driverSign);
+                                                $("body #viewmodalFormStatusDetails #prevEmpoyerSignature").attr("src", data.data.companySign);
                                                 $("body #viewmodalFormStatusDetails #RefPreviousEmployerEmail").html(data.groupEmail);
 
 
@@ -1698,7 +1808,9 @@
                                         }
                                     })
                                 });
-
+								$(document).on('click', '.sendMailToPrev12', function (event) {
+									window.location.reload();
+								});
                                 // $(".sendMailToPrev").click(function (event) { 
                                 $(document).on('click', '.sendMailToPrev', function (event) {
                                     //  $(this).closest('form').submit();
@@ -1708,7 +1820,6 @@
                                     // $("#EditDriverbtn").text('Please wait');
                                     // $("#EditDriverbtn").attr('disabled', true);
                                     var values = {};
-
                                     if ($("body #viewmodalprevemp #employeeName").val() == '') {
                                         Swal.fire({ title: 'Error!', text: 'Employee Name required', icon: 'error', confirmButtonText: 'Cool' })
                                         return false;
@@ -1729,14 +1840,14 @@
                                         Swal.fire({ title: 'Error!', text: 'Employee DOB required', icon: 'error', confirmButtonText: 'Cool' })
                                         return false;
                                     }
-                                    if ($("body #viewmodalprevemp #previousEmployerCSZ").val() == '') {
-                                        Swal.fire({ title: 'Error!', text: 'PreviousEmployerCSZ required', icon: 'error', confirmButtonText: 'Cool' })
-                                        return false;
-                                    }
-                                    if ($("body #viewmodalprevemp #previousEmployerPhone").val() == '') {
-                                        Swal.fire({ title: 'Error!', text: 'Previous EmployerPhone required', icon: 'error', confirmButtonText: 'Cool' })
-                                        return false;
-                                    }
+                                    // if ($("body #viewmodalprevemp #previousEmployerCSZ").val() == '') {
+                                    //     Swal.fire({ title: 'Error!', text: 'PreviousEmployerCSZ required', icon: 'error', confirmButtonText: 'Cool' })
+                                    //     return false;
+                                    // }
+                                    // if ($("body #viewmodalprevemp #previousEmployerPhone").val() == '') {
+                                    //     Swal.fire({ title: 'Error!', text: 'Previous EmployerPhone required', icon: 'error', confirmButtonText: 'Cool' })
+                                    //     return false;
+                                    // }
                                     if ($("body #viewmodalprevemp #previousEmployerStreet").val() == '') {
                                         Swal.fire({ title: 'Error!', text: 'Previous EmployerStreet required', icon: 'error', confirmButtonText: 'Cool' })
                                         return false;
@@ -1757,14 +1868,14 @@
                                         Swal.fire({ title: 'Error!', text: 'Applicant Date required', icon: 'error', confirmButtonText: 'Cool' })
                                         return false;
                                     }
-
-
-
-
                                     $.each($(this).closest('form').serializeArray(), function (i, field) {
                                         console.log(field);
                                         values[field.name] = field.value;
+                                        console.log(values);
                                     });
+                                    let curId = $(this).data("id");
+									values['RefPreviousEmployerEmailArr'] =  $('#sendMailToPrevForm'+curId+' #RefPreviousEmployerEmailArr').val();
+									console.info(values);
                                     Swal.fire({
                                         title: 'Are you sure?',
                                         text: "You won't be able to update this!",
@@ -1797,9 +1908,9 @@
                                                             icon: 'success',
                                                             title: data.message
                                                         });
-                                                        // setTimeout(function () {
-                                                        //     window.location.reload();
-                                                        // }, 2000);
+                                                         setTimeout(function () {
+                                                            //window.location.reload();
+                                                         }, 2000);
                                                     } else {
                                                         Swal.fire({
                                                             title: 'Error!',
@@ -1891,7 +2002,6 @@
                                                 $(this).removeClass('multiple_emails-error');
                                                 var input_length = $(this).val().length;
 
-                                                var keynum;
                                                 if (window.event) { // IE         
                                                     keynum = e.keyCode;
                                                 }
@@ -2067,19 +2177,463 @@
                                 });
 
 
-                                function printDiv(divName) {
-                                    
-                                    $('body .light-logo').hide();
-                                    $('body #refEmail').hide();
-                                    var printContents = document.getElementById(divName).innerHTML;
-                                    var originalContents = document.body.innerHTML;
+                                // function printDiv(divName) {
 
-                                    document.body.innerHTML = printContents;
+                                //     $('body .light-logo').hide();
+                                //     $('body #refEmail').hide();
+                                //     var printContents = document.getElementById(divName).innerHTML;
+                                //     var originalContents = document.body.innerHTML;
 
-                                    window.print();
+                                //     document.body.innerHTML = printContents;
 
-                                    document.body.innerHTML = originalContents;
+                                //     window.print();
+
+                                //     document.body.innerHTML = originalContents;
+                                // }
+
+                                function generatePDF() {
+
+                                    // $('body .light-logo').hide();
+                                    // $('body #refEmail').hide();
+                                    // $('body #generatePDF').hide();
+                                    // $('body .modal-header').hide();
+
+                                    // var divContents = $("#printableArea").html();
+                                    // console.log(divContents)
+                                    // var printWindow = window.open('', '', 'height=400,width=800');
+                                    // printWindow.document.write(divContents);
+                                    // printWindow.document.close();
+                                    // printWindow.print();
+                                    // window.print()
+                                    let formID = $('#formID').val();
+									$('.employee_name_input').hide();
+									let employeeName = $('#employeeName').val();
+									$('.employee_name_text').html(employeeName);
+									$('.employee_name_text').show();
+									
+									$('.prospectiveEmployerName_input').hide();
+									let prospective = $('#prospectiveEmployerName').val();
+									$('.prospectiveEmployerName_text').html(prospective);
+									$('.prospectiveEmployerName_text').show();
+									
+									$('.employeeSin_input').hide();
+									let employeeSin = $('#employeeSin').val();
+									$('.employeeSin_text').html(employeeSin);
+									$('.employeeSin_text').show();
+									
+									$('.employeeDOB_input').hide();
+									let employeeDOB = $('#employeeDOB').val();
+									$('.employeeDOB_text').html(employeeDOB);
+									$('.employeeDOB_text').show();
+									
+									$('.employeein_input').hide();
+									let employeein = $('#employeein').val();
+									$('.employeein_text').html(employeein);
+									$('.employeein_text').show();
+									
+									$('.employeeCSZ_input').hide();
+									let employeeCSZ = $('#employeeCSZ').val();
+									$('.employeeCSZ_text').html(employeeCSZ);
+									$('.employeeCSZ_text').show();
+									
+									$('.employeePhone_input').hide();
+									let employeePhone = $('#employeePhone').val();
+									$('.employeePhone_text').html(employeePhone);
+									$('.employeePhone_text').show();
+									
+									$('.employeeStreet_input').hide();
+									let employeeStreet = $('#employeeStreet').val();
+									$('.employeeStreet_text').html(employeeStreet);
+									$('.employeeStreet_text').show();
+									
+									$('.employeeFax_input').hide();
+									let employeeFax = $('#employeeFax').val();
+									$('.employeeFax_text').html(employeeFax);
+									$('.employeeFax_text').show();
+									
+									$('.prospectiveEmployerAttention_input').hide();
+									let prospectiveEmployerAttention = $('#prospectiveEmployerAttention').val();
+									$('.prospectiveEmployerAttention_text').html(prospectiveEmployerAttention);
+									$('.prospectiveEmployerAttention_text').show();
+									
+									$('.prospectiveEmployerPhone_input').hide();
+									let prospectiveEmployerPhone = $('#prospectiveEmployerPhone').val();
+									$('.prospectiveEmployerPhone_text').html(prospectiveEmployerPhone);
+									$('.prospectiveEmployerPhone_text').show();
+									
+									$('.prospectiveEmployerStreet_input').hide();
+									let prospectiveEmployerStreet = $('#prospectiveEmployerStreet').val();
+									$('.prospectiveEmployerStreet_text').html(prospectiveEmployerStreet);
+									$('.prospectiveEmployerStreet_text').show();
+									
+									$('.prospectiveEmployerCSZ_input').hide();
+									let prospectiveEmployerCSZ = $('#prospectiveEmployerCSZ').val();
+									$('.prospectiveEmployerCSZ_text').html(prospectiveEmployerCSZ);
+									$('.prospectiveEmployerCSZ_text').show();
+									
+									$('.prospectiveEmployerFax_input').hide();
+									let prospectiveEmployerFax = $('#prospectiveEmployerFax').val();
+									$('.prospectiveEmployerFax_text').html(prospectiveEmployerFax);
+									$('.prospectiveEmployerFax_text').show();
+									
+									$('.prospectiveEmployerEmail_input').hide();
+									let prospectiveEmployerEmail = $('#prospectiveEmployerEmail').val();
+									$('.prospectiveEmployerEmail_text').html(prospectiveEmployerEmail);
+									$('.prospectiveEmployerEmail_text').show();
+									
+									$('.employedBy_input').hide();
+									let employedBy = $('#employedBy').val();
+									$('.employedBy_text').html(employedBy);
+									$('.employedBy_text').show();
+									
+									$('.jobDesignation_input').hide();
+									let jobDesignation = $('#jobDesignation').val();
+									$('.jobDesignation_text').html(jobDesignation);
+									$('.jobDesignation_text').show();
+									
+									$('.previousfrom_input').hide();
+									let previousfrom = $('#previousfrom').val();
+									$('.previousfrom_text').html(previousfrom);
+									$('.previousfrom_text').show();
+									
+									$('.previousto_input').hide();
+									let previousto = $('#previousto').val();
+									$('.previousto_text').html(previousto);
+									$('.previousto_text').show();
+									
+									$('.motorVehicleForYou_input').hide();
+									let motorVehicleForYou = $('#motorVehicleForYou').val();
+									$('.motorVehicleForYou_text').html(motorVehicleForYou);
+									$('.motorVehicleForYou_text').show();
+									
+									$('.whatType_input').hide();
+									let whatType = $('#whatType').val();
+									$('.whatType_text').html(whatType);
+									$('.whatType_text').show();
+									
+									$('.whatTypeOther_input').hide();
+									let whatTypeOther = $('#whatTypeOther').val();
+									$('.whatTypeOther_text').html(whatTypeOther);
+									$('.whatTypeOther_text').show();
+									
+									$('.whatTypeComment_input').hide();
+									let whatTypeComment = $('#whatTypeComment').val();
+									$('.whatTypeComment_text').html(whatTypeComment);
+									$('.whatTypeComment_text').show();
+									
+									$('.reasonForLeaving_input').hide();
+									let reasonForLeaving = $('#reasonForLeaving').val();
+									$('.reasonForLeaving_text').html(reasonForLeaving);
+									$('.reasonForLeaving_text').show();
+									
+									$('.completeByCompany_input').hide();
+									let completeByCompany = $('#completeByCompany').val();
+									$('.completeByCompany_text').html(completeByCompany);
+									$('.completeByCompany_text').show();
+									
+									$('.previousEmployerName_input').hide();
+									let previousEmployerName = $('#previousEmployerName').val();
+									$('.previousEmployerName_text').html(previousEmployerName);
+									$('.previousEmployerName_text').show();
+									
+									$('.previousEmployerEmail_input').hide();
+									let previousEmployerEmail = $('#previousEmployerEmail').val();
+									$('.previousEmployerEmail_text').html(previousEmployerEmail);
+									$('.previousEmployerEmail_text').show();
+									
+									$('.previousEmployerAddress_input').hide();
+									let previousEmployerAddress = $('#previousEmployerAddress').val();
+									$('.previousEmployerAddress_text').html(previousEmployerAddress);
+									$('.previousEmployerAddress_text').show();
+									
+									$('.previousEmployerCSZ_input').hide();
+									let previousEmployerCSZ = $('#previousEmployerCSZ').val();
+									$('.previousEmployerCSZ_text').html(previousEmployerCSZ);
+									$('.previousEmployerCSZ_text').show();
+									
+									$('.previousEmployerStreet_input').hide();
+									let previousEmployerStreet = $('#previousEmployerStreet').val();
+									$('.previousEmployerStreet_text').html(previousEmployerStreet);
+									$('.previousEmployerStreet_text').show();
+									
+									$('.previousEmployerFax_input').hide();
+									let previousEmployerFax = $('#previousEmployerFax').val();
+									$('.previousEmployerFax_text').html(previousEmployerFax);
+									$('.previousEmployerFax_text').show();
+									
+									$('.previousEmployerPhone_input').hide();
+									let previousEmployerPhone = $('#previousEmployerPhone').val();
+									$('.previousEmployerPhone_text').html(previousEmployerPhone);
+									$('.previousEmployerPhone_text').show();
+									
+									$('.previousEmployerDate_input').hide();
+									let previousEmployerDate = $('#previousEmployerDate').val();
+									$('.previousEmployerDate_text').html(previousEmployerDate);
+									$('.previousEmployerDate_text').show();
+									
+									$('.previousEmployerAnyInuries_input').hide();
+									let previousEmployerAnyInuries = $('#previousEmployerAnyInuries').val();
+									$('.previousEmployerAnyInuries_text').html(previousEmployerAnyInuries);
+									$('.previousEmployerAnyInuries_text').show();
+									
+									$('.previousEmployertableoneDate_input').hide();
+									let previousEmployertableoneDate = $('#previousEmployertableoneDate').val();
+									$('.previousEmployertableoneDate_text').html(previousEmployertableoneDate);
+									$('.previousEmployertableoneDate_text').show();
+									
+									$('.previousEmployertableoneLocation_input').hide();
+									let previousEmployertableoneLocation = $('#previousEmployertableoneLocation').val();
+									$('.previousEmployertableoneLocation_text').html(previousEmployertableoneLocation);
+									$('.previousEmployertableoneLocation_text').show();
+									
+									$('.previousEmployertableoneInjuries_input').hide();
+									let previousEmployertableoneInjuries = $('#previousEmployertableoneInjuries').val();
+									$('.previousEmployertableoneInjuries_text').html(previousEmployertableoneInjuries);
+									$('.previousEmployertableoneInjuries_text').show();
+									
+									$('.previousEmployertableoneFatalities_input').hide();
+									let previousEmployertableoneFatalities = $('#previousEmployertableoneFatalities').val();
+									$('.previousEmployertableoneFatalities_text').html(previousEmployertableoneFatalities);
+									$('.previousEmployertableoneFatalities_text').show();
+									
+									$('.previousEmployertableoneHazmatSpill_input').hide();
+									let previousEmployertableoneHazmatSpill = $('#previousEmployertableoneHazmatSpill').val();
+									$('.previousEmployertableoneHazmatSpill_text').html(previousEmployertableoneHazmatSpill);
+									$('.previousEmployertableoneHazmatSpill_text').show();
+									
+									$('.previousEmployertableTwoDate_input').hide();
+									let previousEmployertableTwoDate = $('#previousEmployertableTwoDate').val();
+									$('.previousEmployertableTwoDate_text').html(previousEmployertableTwoDate);
+									$('.previousEmployertableTwoDate_text').show();
+									
+									$('.previousEmployertableTwoLocation_input').hide();
+									let previousEmployertableTwoLocation = $('#previousEmployertableTwoLocation').val();
+									$('.previousEmployertableTwoLocation_text').html(previousEmployertableTwoLocation);
+									$('.previousEmployertableTwoLocation_text').show();
+									
+									$('.previousEmployertableTwoInjuries_input').hide();
+									let previousEmployertableTwoInjuries = $('#previousEmployertableTwoInjuries').val();
+									$('.previousEmployertableTwoInjuries_text').html(previousEmployertableTwoInjuries);
+									$('.previousEmployertableTwoInjuries_text').show();
+									
+									$('.previousEmployertableTwoFatalities_input').hide();
+									let previousEmployertableTwoFatalities = $('#previousEmployertableTwoFatalities').val();
+									$('.previousEmployertableTwoFatalities_text').html(previousEmployertableTwoFatalities);
+									$('.previousEmployertableTwoFatalities_text').show();
+									
+									$('.previousEmployertableTwoHazmatSpill_input').hide();
+									let previousEmployertableTwoHazmatSpill = $('#previousEmployertableTwoHazmatSpill').val();
+									$('.previousEmployertableTwoHazmatSpill_text').html(previousEmployertableTwoHazmatSpill);
+									$('.previousEmployertableTwoHazmatSpill_text').show();
+									
+									$('.previousEmployertableThreeDate_input').hide();
+									let previousEmployertableThreeDate = $('#previousEmployertableThreeDate').val();
+									$('.previousEmployertableThreeDate_text').html(previousEmployertableThreeDate);
+									$('.previousEmployertableThreeDate_text').show();
+									
+									$('.previousEmployertableThreeLocation_input').hide();
+									let previousEmployertableThreeLocation = $('#previousEmployertableThreeLocation').val();
+									$('.previousEmployertableThreeLocation_text').html(previousEmployertableThreeLocation);
+									$('.previousEmployertableThreeLocation_text').show();
+									
+									$('.previousEmployertableThreeInjuries_input').hide();
+									let previousEmployertableThreeInjuries = $('#previousEmployertableThreeInjuries').val();
+									$('.previousEmployertableThreeInjuries_text').html(previousEmployertableThreeInjuries);
+									$('.previousEmployertableThreeInjuries_text').show();
+									
+									$('.previousEmployertableThreeFatalities_input').hide();
+									let previousEmployertableThreeFatalities = $('#previousEmployertableThreeFatalities').val();
+									$('.previousEmployertableThreeFatalities_text').html(previousEmployertableThreeFatalities);
+									$('.previousEmployertableThreeFatalities_text').show();
+									
+									$('.previousEmployertableThreeHazmatSpill_input').hide();
+									let previousEmployertableThreeHazmatSpill = $('#previousEmployertableThreeHazmatSpill').val();
+									$('.previousEmployertableThreeHazmatSpill_text').html(previousEmployertableThreeHazmatSpill);
+									$('.previousEmployertableThreeHazmatSpill_text').show();
+									
+									$('.companyPolicies_input').hide();
+									let companyPolicies = $('#companyPolicies').val();
+									$('.companyPolicies_text').html(companyPolicies);
+									$('.companyPolicies_text').show();
+									
+									$('.remarks_input').hide();
+									let remarks = $('#remarks').val();
+									$('.remarks_text').html(remarks);
+									$('.remarks_text').show();
+									$('.applicant_sign_input').hide();
+									
+									//$("body #viewmodalFormStatusDetails #RefPreviousEmployerEmail").html(data.groupEmail);
+
+									var divContents = $("#finalPdfOutput").html();
+									var printWindow = window.open('', '', 'height=400,width=800');
+									printWindow.document.write(divContents);
+									printWindow.document.close();
+									printWindow.print();
+									$('#employee_name_text').hide();
+													$('#employee_name_text').html('');
+													$('#employee_name_input').show();
+													$('.prospectiveEmployerName_text').hide();
+													$('.prospectiveEmployerName_input').show();
+													$('.prospectiveEmployerName_text').html('');
+													$('.employeeSin_input').show();
+													$('.employeeSin_text').html('');
+													$('.employeeSin_text').hide();
+													
+													$('.employeeDOB_text').html('');
+													$('.employeeDOB_text').hide();
+													$('.employeeDOB_input').show();
+													
+													$('.employeein_text').html('');
+													$('.employeein_text').hide();
+													$('.employeein_input').show();
+													
+													$('.employeeCSZ_text').html('');
+													$('.employeeCSZ_text').hide();
+													$('.employeeCSZ_input').show();
+													
+													$('.employeePhone_text').html('');
+													$('.employeePhone_text').hide();
+													$('.employeePhone_input').show();
+													
+													$('.employeeStreet_input').show();
+													$('.employeeStreet_text').html('');
+													$('.employeeStreet_text').hide();
+													$('.employeeFax_input').show();
+													$('.employeeFax_text').html('');
+													$('.employeeFax_text').hide();
+													$('.prospectiveEmployerAttention_input').show();
+													$('.prospectiveEmployerAttention_text').html('');
+													$('.prospectiveEmployerAttention_text').hide();
+													$('.prospectiveEmployerPhone_input').show();
+													$('.prospectiveEmployerPhone_text').html('');
+													$('.prospectiveEmployerPhone_text').hide();
+													
+													$('.prospectiveEmployerStreet_input').show();
+													$('.prospectiveEmployerStreet_text').html('');
+													$('.prospectiveEmployerStreet_text').hide();
+													
+													$('.prospectiveEmployerCSZ_input').show();
+													$('.prospectiveEmployerCSZ_text').html('');
+													$('.prospectiveEmployerCSZ_text').hide();
+													$('.prospectiveEmployerFax_input').show();
+													$('.prospectiveEmployerFax_text').html('');
+													$('.prospectiveEmployerFax_text').hide();
+													$('.prospectiveEmployerEmail_input').show();
+													$('.prospectiveEmployerEmail_text').html('');
+													$('.prospectiveEmployerEmail_text').hide();
+													$('.employedBy_input').show();
+													$('.employedBy_text').html('');
+													$('.employedBy_text').hide();
+													$('.jobDesignation_input').show();
+													$('.jobDesignation_text').html('');
+													$('.jobDesignation_text').hide();
+													$('.previousfrom_input').show();
+													$('.previousfrom_text').html('');
+													$('.previousfrom_text').hide();
+													$('.previousto_input').show();
+													$('.previousto_text').html('');
+													$('.previousto_text').hide();
+													$('.motorVehicleForYou_input').show();
+													$('.motorVehicleForYou_text').html('');
+													$('.motorVehicleForYou_text').hide();
+													$('.whatType_input').show();
+													$('.whatType_text').html('');
+													$('.whatType_text').hide();
+													$('.whatTypeOther_input').show();
+													$('.whatTypeOther_text').html('');
+													$('.whatTypeOther_text').hide();
+													$('.whatTypeComment_input').show();
+													$('.whatTypeComment_text').html('');
+													$('.whatTypeComment_text').hide();
+													$('.reasonForLeaving_input').show();
+													$('.reasonForLeaving_text').html('');
+													$('.reasonForLeaving_text').hide();
+													$('.completeByCompany_input').show();
+													$('.completeByCompany_text').html('');
+													$('.completeByCompany_text').hide();
+													$('.previousEmployerName_input').show();
+													$('.previousEmployerName_text').html('');
+													$('.previousEmployerName_text').hide();
+													$('.previousEmployerEmail_input').show();
+													$('.previousEmployerEmail_text').html('');
+													$('.previousEmployerEmail_text').hide();
+													$('.previousEmployerAddress_input').show();
+													$('.previousEmployerAddress_text').html('');
+													$('.previousEmployerAddress_text').hide();
+													$('.previousEmployerCSZ_input').show();
+													$('.previousEmployerCSZ_text').html('');
+													$('.previousEmployerCSZ_text').hide();
+													$('.previousEmployerStreet_input').show();
+													$('.previousEmployerStreet_text').html('');
+													$('.previousEmployerStreet_text').hide();
+													$('.previousEmployerFax_input').show();
+													$('.previousEmployerFax_text').html('');
+													$('.previousEmployerFax_text').hide();
+													$('.previousEmployerPhone_input').show();
+													$('.previousEmployerPhone_text').html('');
+													$('.previousEmployerPhone_text').hide();
+													$('.previousEmployerDate_input').show();
+													$('.previousEmployerDate_text').html('');
+													$('.previousEmployerDate_text').hide();
+													$('.previousEmployerAnyInuries_input').show();
+													$('.previousEmployerAnyInuries_text').html('');
+													$('.previousEmployerAnyInuries_text').hide();
+													$('.previousEmployertableoneDate_input').show();
+													$('.previousEmployertableoneDate_text').html('');
+													$('.previousEmployertableoneDate_text').hide();
+													$('.previousEmployertableoneLocation_input').show();
+													$('.previousEmployertableoneLocation_text').html('');
+													$('.previousEmployertableoneLocation_text').hide();
+													$('.previousEmployertableoneInjuries_input').show();
+													$('.previousEmployertableoneInjuries_text').html('');
+													$('.previousEmployertableoneInjuries_text').hide();
+													$('.previousEmployertableoneFatalities_input').show();
+													$('.previousEmployertableoneFatalities_text').html('');
+													$('.previousEmployertableoneFatalities_text').hide();
+													$('.previousEmployertableoneHazmatSpill_input').show();
+													$('.previousEmployertableoneHazmatSpill_text').html('');
+													$('.previousEmployertableoneHazmatSpill_text').hide();
+													$('.previousEmployertableTwoDate_input').show();
+													$('.previousEmployertableTwoDate_text').html('');
+													$('.previousEmployertableTwoDate_text').hide();
+													$('.previousEmployertableTwoLocation_input').show();
+													$('.previousEmployertableTwoLocation_text').html('');
+													$('.previousEmployertableTwoLocation_text').hide();
+													$('.previousEmployertableTwoInjuries_input').show();
+													$('.previousEmployertableTwoInjuries_text').html('');
+													$('.previousEmployertableTwoInjuries_text').hide();
+													$('.previousEmployertableTwoFatalities_input').show();
+													$('.previousEmployertableTwoFatalities_text').html('');
+													$('.previousEmployertableTwoFatalities_text').hide();
+													$('.previousEmployertableTwoHazmatSpill_input').show();
+													$('.previousEmployertableTwoHazmatSpill_text').html('');
+													$('.previousEmployertableTwoHazmatSpill_text').hide();
+													$('.previousEmployertableThreeDate_input').show();
+													$('.previousEmployertableThreeDate_text').html('');
+													$('.previousEmployertableThreeDate_text').hide();
+													$('.previousEmployertableThreeLocation_input').show();
+													$('.previousEmployertableThreeLocation_text').html('');
+													$('.previousEmployertableThreeLocation_text').hide();
+													$('.previousEmployertableThreeInjuries_input').show();
+													$('.previousEmployertableThreeInjuries_text').html('');
+													$('.previousEmployertableThreeInjuries_text').hide();
+													$('.previousEmployertableThreeFatalities_input').show();
+													$('.previousEmployertableThreeFatalities_text').html('');
+													$('.previousEmployertableThreeFatalities_text').hide();
+													$('.previousEmployertableThreeHazmatSpill_input').show();
+													$('.previousEmployertableThreeHazmatSpill_text').html('');
+													$('.previousEmployertableThreeHazmatSpill_text').hide();
+													$('.companyPolicies_input').show();
+													$('.companyPolicies_text').html('');
+													$('.companyPolicies_text').hide();
+													$('.remarks_input').show();
+													$('.remarks_text').html('');
+													$('.remarks_text').hide();
+													$('.applicant_sign_input').show();
+
                                 }
+
+
 
                             </script>
 

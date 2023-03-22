@@ -23,3 +23,301 @@
     <script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
     <script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="dist/js/pages/chart/chart-page-init.js"></script>
+    	<script>
+$(document).ready(function () {
+	checklist();
+	quiz();
+	cheklogo();
+	$('.sidebar-nav').hide();
+	setTimeout(disclaimer, 100);
+});
+function driverfn(a){
+    $.ajax({
+        url: "/checkDriverdtails",
+        type: "GET",
+        data: {},
+        success: function (data) {
+           //location.href = a;
+           //with block personal information and employment history
+            if (data.driverdata && data.driverdata!='') {
+	            if(a == '/updateemploymenthistoryForm'){
+                    location.href = a;
+                }
+                else if(a=='/updatedrivingHistoryForm'){
+                    if (data.empdata && data.empdata!='') {
+                        location.href = a;
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Employment History',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+
+                }
+                else if(a=='/motorVehicleCertificate'){
+                    if (data.driverhis && data.driverhis!='') {
+                        location.href = a;
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Driving History',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+
+                }
+                else if(a=='/medicalDecleration'){
+                    if (data.motor && data.motor!='') {
+                        location.href = a;
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Motor Vehicle Driver Certification of Compliance',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+
+                }
+                else if(a=='/driverAck'){
+                    if (data.medical && data.medical!='') {
+                        location.href = a;
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Medical Declaration',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+
+                }
+                else if(a=='/pspDisclosure'){
+                    if (data.driverAck && data.driverAck!='') {
+                        location.href = a;
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Driver Acknowledgement',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+
+                }
+                else if(a=='/clearingHouseConsent'){
+                    if (data.psp && data.psp!='') {
+                        location.href = a;
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill PSP Disclosure',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+
+                }
+                else if(a=='/compensatedWork'){
+                    if (data.house && data.house!='') {
+                        location.href = a;
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Clearing House Consent',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+
+                }
+                else if(a=='/drugAndAlcohol'){
+                    if (data.compensatedw && data.compensatedw!='') {
+                        location.href = a;
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Compensated Work',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+
+                }
+                else if(a=='/Reference'){
+                    if (data.drugalcohol && data.drugalcohol!='') {
+                        location.href = a;
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Drug and Alcohol Work',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+
+                }
+                else if(a=='/hoursOfService'){
+                    if (data.reference && data.reference!='') {
+                        location.href = a;
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Reference Certificate',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+
+                }
+                else{
+                    if (data.empdata && data.driverhis && data.empdata!='' && data.driverhis!='' && data.motor && data.motor!='' && data.medical && data.medical!='' && data.driverAck && data.driverAck!='' && data.psp && data.psp!='' && data.house && data.house!=''  && data.compensatedw && data.compensatedw!='' && data.drugalcohol && data.drugalcohol!='' && data.reference && data.reference!='' && data.hos && data.hos!='') {
+                        location.href = a;
+                    }
+                    else if(!data.empdata || data.empdata==''){
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Employment History',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+                    else if(!data.driverhis || data.driverhis==''){
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Driving History',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+                    else if(!data.motor || data.motor==''){
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Motor Vehicle Driver Certification of Compliance',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                      
+                    }
+                    else if(!data.medical || data.medical==''){
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Medical Declaration',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+                    else if(!data.driverAck || data.driverAck==''){
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Driver Acknowledgement',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+                    else if(!data.psp || data.psp==''){
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill PSP Disclosure',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+                    else if(!data.house || data.house==''){
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Clearing House Consent',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+                    else if(!data.compensatedw || data.compensatedw==''){
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Compensated Work',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+                    else if(!data.drugalcohol || data.drugalcohol==''){
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Drug and Alcohol Work',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+                    else if(!data.reference || data.reference==''){
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Reference Certificate',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please Fill Hours of Service Work',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        });
+                    }
+
+                }
+            }
+            else{
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Please Fill Personal Information',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                });
+            }
+            //************************end********************************/
+            //without block personal information and employment history
+          /*  if (!data.driverdata || data.driverdata=='') {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Please Fill Personal Information',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                });
+            }
+            else if(!data.empdata || data.empdata==''){
+                if(a=='/updateemploymenthistoryForm'){
+                    location.href = a;
+                }
+                else{
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Please Fill Employment History',
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                    });
+                }
+
+            }
+            else{
+                location.href = a;
+            }
+              */
+            /*********************************************end************************/
+        }
+    });
+		
+}
+</script>

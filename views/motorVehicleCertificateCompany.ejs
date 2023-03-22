@@ -194,7 +194,8 @@
                                         <!-- <h4 class="modal-title">Delete List</h4> -->
                                     </div>
                                     <div class="modal-body">
-                                        <h3 align="center" class="card-title"> View Motor Vehicle Driver’s Certification
+                                        <h3 align="center" class="card-title"> View COMPLIANCE WITH DRIVER CERTIFICATION
+                                            OF LICENSE REQUIREMENT
                                         </h3>
                                         <h4 align="center" class="card-title">
                                             <?php  ?>
@@ -269,12 +270,13 @@
                                                                     <p align="justify"> Sections 392.42 and 383.33 of
                                                                         the Federal Motor
                                                                         Carrier Safety Regulations require that you
-                                                                        notify your employer the NEXT BUSINESS DAY of
+                                                                        notify your employer the next business day of
                                                                         any revocation or suspension of your driver’s
                                                                         license. In addition, section 383.31 requires
                                                                         that any time you violate a state or local
                                                                         traffic law (other than parking), you
-                                                                        mustreportitwithin30daysto: 1) your employing
+                                                                        must report it within 30 days to: 1) your
+                                                                        employing
                                                                         motor carrier and 2) the state that issued your
                                                                         license (if the violation occurs in a state
                                                                         other than the one which issued your
@@ -393,7 +395,7 @@
                                                                 <div class="col-md-12">
 
                                                                     <!-- <h3>Motor Vehicle Driver’s CERTIFICATION OF COMPLIANCE </h3> -->
-                                                                    <h4>WITH DRIVER LICENSE REQUIREMENTS </h4>
+                                                                    <!-- <h4>WITH DRIVER LICENSE REQUIREMENTS </h4> -->
                                                                     <p align="justify">On March 3rd, 1999 Transport
                                                                         Canada and the US
                                                                         federal Highway
@@ -430,13 +432,11 @@
                                                                         operate a
                                                                         commercial vehicle in
                                                                         the United States. I further certify that: </p>
-                                                                    <p>A) I have no clinical diagnosis of diabetes
-                                                                        currently requiring
-                                                                        insulin for control </p>
-                                                                    <p>B) I have no established medical history or
+
+                                                                    <p>A) I have no established medical history or
                                                                         clinical diagnosis of
                                                                         epilepsy </p>
-                                                                    <p align="justify">C) I don’t have impaired hearing
+                                                                    <p align="justify">B) I don’t have impaired hearing
                                                                         (A driver must
                                                                         be able to first
                                                                         perceive a forced whispered voice in the better
@@ -450,7 +450,7 @@
                                                                         hearing aid when tested by an audiometric device
                                                                         calibrated to
                                                                         American National Standard Z24.5-1951) </p>
-                                                                    <p>D) I have not been issued a waiver by the
+                                                                    <p>C) I have not been issued a waiver by the
                                                                         province of <b id="companyProvince">
                                                                         </b> allowing me to operate a commercial motor
                                                                         vehicle pursuant
@@ -458,11 +458,11 @@
                                                                             id="companyProvince">
                                                                         </b> regulation 340/94.</p>
 
-                                                                    <p>I further agree to inform Auto Fill Company Name
-                                                                        from 1st Page
+                                                                    <p>I further agree to inform <b id="companyName">
+                                                                        </b>
                                                                         should my medical status change, or if I can no
                                                                         longer certify
-                                                                        conditions A to D, described above. </p>
+                                                                        conditions A to C, described above. </p>
 
                                                                     <table>
                                                                         <tr>
@@ -545,7 +545,7 @@
                                                         and I have to log all time markers (e.g., Tolls, border
                                                         crossing, fuel times etc.) Properly and exactly as per
 
-                                                        <b id="eventsCalTimezone"></b>
+                                                        <b id="eventsCalTimezone"></b> Time Zone.
 
                                                     </p>
                                                     <p>If any falsification in my logs is found while auditing by
@@ -614,7 +614,7 @@
                                                         employment with <b id="companyName">
                                                         </b> its employees,
                                                         agents or contractors may obtain one or more reports regarding
-                                                        your driving, and safety inspection history from the Federal
+                                                        your driving, and safety inspection history, from the Federal
                                                         Motor Carrier Safety Administration (FMCSA).
 
                                                     </p>
@@ -639,7 +639,7 @@
                                                         Employer uses any information it obtains from FMCSA in a
                                                         decision to not hire you or to make any other adverse employment
                                                         decision regarding you, the Prospective Employer must provide
-                                                        you within three business days of taking adverse action oral,
+                                                        you, within three business days of taking adverse action, oral,
                                                         written or electronic notification: that adverse action has been
                                                         taken based in whole or in part on information obtained from
                                                         FMCSA; the name, address, and the toll free telephone number of
@@ -960,7 +960,7 @@
                                                     <p align="justify">
                                                         My signature below confirms that I agree to allow the Company or
                                                         their representative,
-                                                        Denning Health Group, to conduct an Annual Limited Query on my
+                                                        <input type="text" id="ccompany">, to conduct an Annual Limited Query on my
                                                         record with the Commercial
                                                         Driver’s License (CDL) Drug and Alcohol Clearinghouse.
                                                         I understand that a Limited Query will not reveal any of the
@@ -1111,7 +1111,7 @@
                                                         employers. The definition of on-duty time found in Section
                                                         395.2 paragraphs (8) and (9) of the Federal Motor Carrier Safety
                                                         Regulations includes time performing any other work in the
-                                                        capacity of, or in the employer or service of, acommon,
+                                                        capacity of, or in the employer or service of, a common,
                                                         contract or private motor carrier, also performing any
                                                         compensated work for any non-motor carrier entity.</p>
 
@@ -1226,7 +1226,8 @@
                                                         collection and assessment of information about my dates of
                                                         employment, employment status, job
                                                         duties and driving experience, reason for leaving, job
-                                                        performance and incident/accident record.</p>
+                                                        performance and incident/accident record.
+                                                    </p>
                                                     <p align="justify">I agree that my Potential Employer and its
                                                         Service Provider may contact all organizations who have issued
                                                         educational awards or credentials that I have
@@ -1292,24 +1293,29 @@
                                                     <br>
                                                     <p align="justify">
                                                         1.Alcohol tests with a result of 0.04 or higher:
+                                                        <span id="drugAlcoholPointone"></span>
                                                     </p>
                                                     <p align="justify">
-                                                        2.Verified positive drug tsts;
+                                                        2.Verified positive drug tests : <span
+                                                            id="drugAlcoholPointtwo"></span>
                                                     </p>
                                                     <p align="justify">
-                                                        3.Refusals to be tested;
+                                                        3.Refusals to be tested : <span
+                                                            id="drugAlcoholPointthree"></span>
                                                     </p>
                                                     <p align="justify">
                                                         4.Other violations of DOT agency drug and alcohol testing
-                                                        regulations;
+                                                        regulations:<span id="drugAlcoholPointfour"></span>
                                                     </p>
                                                     <p align="justify">
-                                                        Information obtained from previous employers of a drug and
-                                                        alcohol rule violation;
+                                                        5.Information obtained from previous employers of a drug and
+                                                        alcohol rule violation : <span id="drugAlcoholPointfive"></span>
                                                     </p>
                                                     <p align="justify">
-                                                        Documentation,if any,of completion of the return-to-duty process
-                                                        following a rule violation.
+                                                        6.Documentation,if any,of completion of the return-to-duty
+                                                        process
+                                                        following a rule violation : <span
+                                                            id="drugAlcoholPointsix"></span>
                                                     </p>
 
 
@@ -1345,640 +1351,812 @@
 
                             </div>
                         </div>
+                        <!-- viewmodalDisclaimer  start  -->
+                        <div id="viewmodalDisclaimer" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">Disclaimer</h3>
+
+                                        <div class="card-body">
+                                            <h4 id="CertificateauthDtls"></h4>
+                                            <div class="row p-b-30">
+                                                <div id="" class="col-md-12"
+                                                    style="background: #27a9e324;border-radius: 35px;">
+
+                                                    <input type="hidden" id="company_id">
+                                                    <input type="hidden" id="driver_id">
+
+                                                    <p align="justify">
+                                                        I certify that my answers are true and complete to the best of my
+                                                        knowledge. If this application leads
+                                                        to employment, I understand that false or misleading information
+                                                        in my application or interview may
+                                                        result in my release. I understand that if I am employed, any
+                                                        misrepresentation or material omission
+                                                        made by me on this application will be sufficient cause for
+                                                        cancellation of this application or
+                                                        immediate discharge from the employer’s service, whenever it is
+                                                        discovered. I give the employer the
+                                                        right to contact and obtain information from all references,
+                                                        employers, educational institutions and
+                                                        to otherwise verify the accuracy of the information contained in
+                                                        this application.
+                                                    </p>
+
+                                                    <p align="justify">
+                                                        I certify that carrier informed me about the benefits of joining
+                                                        company as Company Driver and not
+                                                        joining the company as an incorporated organization, however I
+                                                        preferred joining as:
+                                                    </p>
+
+                                                    <div class="form-group row">
+                                                        <label for="Disclaimer_type"
+                                                            class="col-sm-3 control-label col-form-label">Are you
+                                                            currently working for another employer </label>
+                                                        <div class="col-md-9">
+                                                            <select class="form-select" name="Disclaimer_type"
+                                                                id="Disclaimer_type">
+                                                                <option value="">Select an one of this</option>
+                                                                <option value="Company_Driver">Company Driver</option>
+                                                                <option value="Incorporated_Company">Incorporated
+                                                                    Company</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <p align="justify">I certify that it is my decision and company has no involvement in taking this decision. </p>
+                                                    <p align="justify">I hereby release from liability the employer and
+                                                        its representatives for seeking, gathering and using
+                                                        such information and all other persons, corporations or
+                                                        organizations for furnishing such
+                                                        information. The employer does not unlawfully discriminate in
+                                                        employment and no question on this
+                                                        application is used for the purpose of limiting or excusing any
+                                                        applicant from consideration for
+                                                        employment on a basis prohibited by local, state or federal law.
+                                                    </p>
+                                                    <p align="justify">If I am hired, I understand that I am free to
+                                                        resign at any time, with or without cause and without
+                                                        prior notice, and the employer reserves the same right to
+                                                        terminate my employment at any time,
+                                                        with or without cause and without prior notice, except as may be
+                                                        required by law. I understand that
+                                                        no representative of the employer, other than an authorized
+                                                        officer, has the authority to make any
+                                                        assurances to the contrary. I further understand that any such
+                                                        assurances must be in writing and
+                                                        signed by an authorized officer. I understand it is this
+                                                        company’s policy not to refuse to hire a
+                                                        qualified individual with a disability because of that’s
+                                                        person’s need for a reasonable
+                                                        accommodation as required by the ADA. I also understand that if
+                                                        I am hired, I will be required to
+                                                        provide proof of identity and legal work authorization. </p>
+
+                                                    <b>Driver’s Name (Printed)</b>:<p id="driverName"></p><br>
+                                                    <b>Drivers Signature:</b>
+                                                    <img src="" id="signature" alt="user" width="150"> <br>
+
+                                                    <input class="form-check-input" id="Iagree" name="Iagree"
+                                                        type="checkbox" value="1" id="flexCheckDefault Iagree">
+
+                                                    I certify that I have read and
+                                                    understood the above requirements.
+                                                </div>
+                                            </div>
 
 
+                                            </p>
+                                            <br>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
 
 
-                        <!-- ============================================================== -->
-                        <!-- End Page wrapper  -->
-                        <!-- ============================================================== -->
+                            </div>
+                        </div>
+
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- End Wrapper -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <%- include('includes/footer.ejs') %>
-                        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
-                        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
-                        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
-
-                        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-                        <script type="text/javascript"
-                            src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-                        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script> -->
-                        <script type="text/javascript"
-                            src="assets/extra-libs/signature/jquery.signature.min.js"></script>
-                        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script>  -->
-                        <script>
-                            var signature = $('.signature').signature({ syncField: '.signpad', syncFormat: 'PNG' });
-
-                            $('.signpad').draggable();
-                            $('.clear').click(function (e) {
-                                // alert('ddd');
-                                e.preventDefault();
-                                signature.signature('clear');
-                                $(".signpad").val('');
-                            });
+                </div>
 
 
 
 
-                            /****************************************
-                             *       Basic Table                   *
-                             ****************************************/
-                            // $('#zero_config').DataTable();
+                <!-- ============================================================== -->
+                <!-- End Page wrapper  -->
+                <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <%- include('includes/footer.ejs') %>
+        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
 
-                            $(document).ready(function () {
-                                $('.close1').click(function () {
-                                    location.reload();
-                                });
-                                $("#userRole").text('Admin')
+        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script> -->
+        <script type="text/javascript" src="assets/extra-libs/signature/jquery.signature.min.js"></script>
+        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script>  -->
+        <script>
+            var signature = $('.signature').signature({ syncField: '.signpad', syncFormat: 'PNG' });
 
-
-                                $(document).on('click', '#viewmodalidMotor', function () {
-                                    // alert('test')
-                                    let id = $(this).attr('data-id');
-                                    let certificateID = $(this).attr('data-certificateID');
-                                    // console.log($(this).attr("data-id"));
-                                    $.ajax({
-                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
-                                        type: "GET",
-                                        data: { id: id, certificateID: certificateID },
-                                        success: function (data) {
-                                            console.log(data);
-                                            console.log(data.driverName);
-                                            if (data.status) {
-                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
-                                                $("body #Motor #signature").attr("src", signaturePath);
-                                                $('body #Motor #driverName').text(data.driverName);
-                                                $('body #Motor #driver_license').text(data.driver_license);
-                                                $('body #Motor #license_expiry').text(data.license_expiry);
-                                                $('body #Motor #getupdatedDate').text(data.getupdatedDate);
-                                                $('body #Motor #eventsCalTimezone').text(data.eventsCalTimezone);
-                                                if (data.CertificateauthDtls) {
-                                                    $('body #Motor #CertificateauthDtls').text("Driver Approved");
-                                                } else {
-                                                    $('body #Motor #CertificateauthDtls').text("Waiting for Driver Approval");
-                                                }
-                                                $('body #viewmodalMotor').modal('show');
-
-                                            } else {
-                                                Swal.fire({
-                                                    title: 'Error!',
-                                                    text: 'Something went wrong',
-                                                    icon: 'error',
-                                                    confirmButtonText: 'Cool'
-                                                })
-                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
-                                                // $('body #updateDriver_details_view #actionData').val('Create');
-                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
-                                                // window.location = "/";
-                                            }
-
-                                        }
-                                    });
-                                });
-                                $(document).on('click', '#viewmodalMedical', function () {
-                                    // alert('test')
-                                    let id = $(this).attr('data-id');
-                                    let certificateID = $(this).attr('data-certificateID');
-                                    // alert(id)
-                                    // console.log($(this).attr("data-id"));
-                                    $.ajax({
-                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
-                                        type: "GET",
-                                        data: { id: id, certificateID: certificateID },
-                                        success: function (data) {
-                                            console.log(data);
-                                            console.log(data.driverName);
-                                            if (data.status) {
-                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
-                                                $("body #Medical #signature").attr("src", signaturePath);
-                                                $('body #Medical #driverName').text(data.driverName);
-                                                $('body #Medical #companyProvince').text(data.companyProvince);
-                                                $('body #Medical #getupdatedDate').text(data.getupdatedDate);
-                                                $('body #Medical #eventsCalTimezone').text(data.eventsCalTimezone);
-                                                if (data.CertificateauthDtls) {
-                                                    $('body #Medical #CertificateauthDtls').text("Driver Approved");
-                                                } else {
-                                                    $('body #Medical #CertificateauthDtls').text("Waiting for Driver Approval");
-                                                }
-                                                $('body #viewmodalMedicalModal').modal('show');
-
-                                            } else {
-                                                Swal.fire({
-                                                    title: 'Error!',
-                                                    text: 'Something went wrong',
-                                                    icon: 'error',
-                                                    confirmButtonText: 'Cool'
-                                                })
-                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
-                                                // $('body #updateDriver_details_view #actionData').val('Create');
-                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
-                                                // window.location = "/";
-                                            }
-
-                                        }
-                                    });
-                                });
-                                $(document).on('click', '#viewmodalDriverack', function () {
-                                    // alert('test')
-                                    let id = $(this).attr('data-id');
-                                    let certificateID = $(this).attr('data-certificateID');
-                                    // alert(id)
-                                    // console.log($(this).attr("data-id"));
-                                    $.ajax({
-                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
-                                        type: "GET",
-                                        data: { id: id, certificateID: certificateID },
-                                        success: function (data) {
-                                            console.log(data);
-                                            console.log(data.driverName);
-                                            if (data.status) {
-                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
-                                                $("body #Driverack #signature").attr("src", signaturePath);
-                                                $('body #Driverack #driverName').text(data.driverName);
-                                                $('body #Driverack #companyProvince').text(data.companyProvince);
-                                                $('body #Driverack #getupdatedDate').text(data.getupdatedDate);
-                                                $('body #Driverack #eventsCalTimezone').text(data.eventsCalTimezone);
-                                                if (data.CertificateauthDtls) {
-                                                    $('body #Driverack #CertificateauthDtls').text("Driver Approved");
-                                                } else {
-                                                    $('body #Driverack #CertificateauthDtls').text("Waiting for Driver Approval");
-                                                }
-                                                $('body #viewmodalDriverackModal').modal('show');
-
-                                            } else {
-                                                Swal.fire({
-                                                    title: 'Error!',
-                                                    text: 'Something went wrong',
-                                                    icon: 'error',
-                                                    confirmButtonText: 'Cool'
-                                                })
-                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
-                                                // $('body #updateDriver_details_view #actionData').val('Create');
-                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
-                                                // window.location = "/";
-                                            }
-
-                                        }
-                                    });
-                                });
-                                $(document).on('click', '#viewmodalpspDisclosure', function () {
-                                    // alert('test')
-                                    let id = $(this).attr('data-id');
-                                    let certificateID = $(this).attr('data-certificateID');
-                                    // alert(id)
-                                    // console.log($(this).attr("data-id"));
-                                    $.ajax({
-                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
-                                        type: "GET",
-                                        data: { id: id, certificateID: certificateID },
-                                        success: function (data) {
-                                            // console.log(data);
-                                            // console.log(data.driverName);
-                                            // let date1
-                                            // if (data.certificateDate) {
-                                            // var event = new Date(data.certificateDate);
-
-                                            //     date1 = JSON.stringify(event)
-                                            //     date1 = date1.slice(1, 11)
-                                            // }else{
-                                            //     date1 = '';
-                                            // }
-                                            if (data.status) {
-                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
-                                                $("body #pspDisclosure #signature").attr("src", signaturePath);
-                                                $('body #pspDisclosure #driverName').text(data.driverName);
-                                                $('body #pspDisclosure #companyProvince').text(data.companyProvince);
-                                                $('body #pspDisclosure #getupdatedDate').text(data.getupdatedDate);
-                                                $('body #pspDisclosure #eventsCalTimezone').text(data.eventsCalTimezone);
-                                                $('body #pspDisclosure #companyName').text(data.companyName);
-                                                $('body #pspDisclosure #certificateDate').text(data.certificateDate);
-                                                $('body #pspDisclosure #Iagree').attr('checked', 'checked');
-                                                $('body #pspDisclosure #Iagree').attr('disabled', true);
-
-                                                if (data.CertificateauthDtls) {
-                                                    $('body #pspDisclosure #CertificateauthDtls').text("Driver Approved");
-                                                } else {
-                                                    $('body #pspDisclosure #CertificateauthDtls').text("Waiting for Driver Approval");
-                                                }
-                                                $('body #viewmodalpspDisclosure').modal('show');
-
-                                            } else {
-                                                Swal.fire({
-                                                    title: 'Error!',
-                                                    text: 'Something went wrong',
-                                                    icon: 'error',
-                                                    confirmButtonText: 'Cool'
-                                                })
-                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
-                                                // $('body #updateDriver_details_view #actionData').val('Create');
-                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
-                                                // window.location = "/";
-                                            }
-
-                                        }
-                                    });
-                                });
-                                $('body #clearingHouseConsent #signatureDiv').hide();
-                                $(document).on('click', '#viewmodalclearingHouseConsent', function () {
-                                    // alert('test')  
-                                    let driverID = $(this).attr('data-id');
-                                    let company_id = $(this).attr('data-company_id');
-                                    let certificateID = $(this).attr('data-certificateID');
-                                    // alert(id)
-                                    // console.log($(this).attr("data-id"));
-                                    $.ajax({
-                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
-                                        type: "GET",
-                                        data: { id: driverID, company_id: company_id, certificateID: certificateID },
-                                        success: function (data) {
-                                            console.log(data);
-                                            console.log(data.driverName);
-                                            if (data.status) {
-                                                if (data.CertificateauthDtlsf) {
-                                                    // $('body #clearingHouseConsent #signatureDiv').hide();
-                                                    $('body #clearingHouseConsent #Iagree').attr('checked', 'checked');
-                                                    $('body #clearingHouseConsent #Iagree').attr('disabled', true);
-
-                                                } else {
-                                                    // $('body #clearingHouseConsent #signatureDiv').show();
-                                                    $('body #clearingHouseConsent').show();
-
-                                                }
-                                                console.log('-----------------');
-                                                if (data.adminSignature == "") {
-                                                    $('body #clearingHouseConsent #signatureDiv').show();
-                                                    $('body #clearingHouseConsent #adminSignature').hide();
-                                                }
-                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
-                                                // console.log(signaturePath);
-                                                // alert(data.signature)
-                                                // alert(signaturePath)
-                                                if (data.signature != "") {
-                                                    $('body #clearingHouseConsent #signature').attr("src", signaturePath);
-                                                } else {
-                                                    $('body #clearingHouseConsent #signature').hide();
-                                                }
-
-                                                let adminsignaturePath = 'uploads/attachment/clearHouseSupervisor/' + data.adminSignature;
-                                                console.log(adminsignaturePath);
-
-                                                if (data.adminSignature != "") {
-                                                    $('body #clearingHouseConsent #adminSignature').attr("src", adminsignaturePath);
-                                                } else {
-                                                    $('body #clearingHouseConsent #adminSignature').hide();
-                                                }
-
-
-                                                // $("body #clearingHouseConsent #signature").attr("src", signaturePath);
-                                                $('body #clearingHouseConsent #driverName').text(data.driverName);
-                                                $('body #clearingHouseConsent #companyProvince').text(data.companyProvince);
-                                                $('body #clearingHouseConsent #getupdatedDate').text(data.getupdatedDate);
-                                                $('body #clearingHouseConsent #eventsCalTimezone').text(data.eventsCalTimezone);
-                                                $('body #clearingHouseConsent #companyName').text(data.companyName);
-                                                $('body #clearingHouseConsent #certificateDate').text(data.certificateDate);
-                                                $('body #clearingHouseConsent #driver_license').text(data.driver_license);
-                                                $('body #clearingHouseConsent #province').text(data.province);
-                                                $('body #clearingHouseConsent #dob').text(data.dob);
-                                                $('body #clearingHouseConsent #driver_id').val(driverID);
-                                                $('body #clearingHouseConsent #company_id').val(company_id);
-                                                // $('body #clearingHouseConsent #adminSignature').attr("src", adminsignaturePath);
-
-                                                // if(adminsignaturePath == ""){
-                                                //     $('body #clearingHouseConsent #adminSignature').attr("src", adminsignaturePath);
-                                                // }else{
-                                                //     $('body #clearingHouseConsent #signatureDiv').hide();
-                                                // }
-
-                                                if (data.CertificateauthDtls) {
-                                                    $('body #viewmodalclearingHouseConsent #CertificateauthDtls').text("Driver Approved");
-                                                } else {
-                                                    $('body #viewmodalclearingHouseConsent #CertificateauthDtls').text("Waiting for Driver Approval");
-                                                }
-                                                $('body #viewmodalclearingHouseConsent').modal('show');
-
-                                            } else {
-                                                Swal.fire({
-                                                    title: 'Error!',
-                                                    text: 'Something went wrong',
-                                                    icon: 'error',
-                                                    confirmButtonText: 'Cool'
-                                                })
-                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
-                                                // $('body #updateDriver_details_view #actionData').val('Create');
-                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
-                                                // window.location = "/";
-                                            }
-
-                                        }
-                                    });
-                                });
-                                $('body #viewmodalcompensatedwork #signatureDiv').hide();
-                                $(document).on('click', '#viewmodalcompensatedwork', function () {
-                                    // alert('test')
-                                    let driverID = $(this).attr('data-id');
-                                    let company_id = $(this).attr('data-company_id');
-                                    let certificateID = $(this).attr('data-certificateID');
-                                    // alert(certificateID)
-                                    // console.log($(this).attr("data-id"));
-                                    $.ajax({
-                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
-                                        type: "GET",
-                                        data: { id: driverID, company_id: company_id, certificateID: certificateID },
-                                        success: function (data) {
-                                            console.log(data);
-                                            console.log(data.driverName);
-                                            if (data.status) {
-                                                //   alert(data.certificateIDSixFirtstPrams)
-                                                console.log('-----------------');
-                                                if (data.CertificateauthDtlsf) {
-                                                    // $('body #viewmodalcompensatedwork #signatureDiv').hide();
-                                                    $('body #viewmodalcompensatedwork #Iagree').attr('checked', 'checked');
-                                                    $('body #viewmodalcompensatedwork #Iagree').attr('disabled', true);
-
-                                                } else {
-                                                    // $('body #viewmodalcompensatedwork #signatureDiv').show();
-                                                    $('body #viewmodalcompensatedwork').show();
-                                                }
-
-                                                //     let date1
-                                                // if (data.certificateDate) {
-                                                // var event = new Date(data.certificateDate);
-
-                                                //     date1 = JSON.stringify(event)
-                                                //     date1 = date1.slice(1, 11)
-                                                // }else{
-                                                //     date1 = '';
-                                                // }
-
-                                                // alert(data.companyProvince)
-                                                if (data.adminSignature == "") {
-                                                    $('body #viewmodalcompensatedwork #signatureDiv').show();
-                                                    $('body #viewmodalcompensatedwork #adminSignature').hide();
-                                                }
-                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
-                                                $("body #viewmodalcompensatedwork #signature").attr("src", signaturePath);
-                                                $('body #viewmodalcompensatedwork #driverName').text(data.driverName);
-                                                $("body #viewmodalcompensatedwork #certificateIDSixFirtstPrams [value=" + '"' + data.certificateIDSixFirtstPrams + '"' + "]").attr("selected", true);
-                                                $("body #viewmodalcompensatedwork #certificateIDSixSecondPrams [value=" + '"' + data.certificateIDSixSecondPrams + '"' + "]").attr("selected", true);
-                                                $('#certificateIDSixSecondPrams #Iagree').attr('checked', 'checked');
-                                                $('#certificateIDSixSecondPrams #Iagree').attr('disabled', true);
-                                                $('body #viewmodalcompensatedwork #dob').text(data.dob);
-                                                $('body #viewmodalcompensatedwork #driver_id').val(driverID);
-                                                $('body #viewmodalcompensatedwork #company_id').val(company_id);
-                                                $('body #viewmodalcompensatedwork #certificateDate').text(data.certificateDate);
-                                                $('body #viewmodalcompensatedwork #companyProvince').text(data.companyProvince);
-                                                if (data.CertificateauthDtls) {
-                                                    $('body #viewmodalcompensatedwork #CertificateauthDtls').text("Driver Approved");
-                                                } else {
-                                                    $('body #viewmodalcompensatedwork #CertificateauthDtls').text("Waiting for Driver Approval");
-                                                }
-                                                $('body #viewmodalcompensatedwork').modal('show');
-
-                                            } else {
-                                                Swal.fire({
-                                                    title: 'Error!',
-                                                    text: 'Something went wrong',
-                                                    icon: 'error',
-                                                    confirmButtonText: 'Cool'
-                                                })
-                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
-                                                // $('body #updateDriver_details_view #actionData').val('Create');
-                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
-                                                // window.location = "/";
-                                            }
-
-                                        }
-                                    });
-                                });
-
-                                $('body #viewmodaldrugAndAlcohol #signatureDiv').hide();
-                                $(document).on('click', '#viewmodaldrugAndAlcohol', function () {
-                                    // alert('test')
-                                    let driverID = $(this).attr('data-id');
-                                    let company_id = $(this).attr('data-company_id');
-                                    let certificateID = $(this).attr('data-certificateID');
-                                    // alert(certificateID)
-                                    // console.log($(this).attr("data-id"));
-                                    $.ajax({
-                                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
-                                        type: "GET",
-                                        data: { id: driverID, company_id: company_id, certificateID: certificateID },
-                                        success: function (data) {
-                                            console.log(data);
-                                            console.log(data.driverName);
-                                            if (data.status) {
-                                                //   alert(data.certificateIDSixFirtstPrams)
-                                                console.log('-----------------');
-                                                if (data.CertificateauthDtlsf) {
-                                                    // $('body #viewmodaldrugAndAlcohol #signatureDiv').hide();
-                                                    $('body #viewmodaldrugAndAlcohol #Iagree').attr('checked', 'checked');
-                                                    $('body #viewmodaldrugAndAlcohol #Iagree').attr('disabled', true);
-
-                                                } else {
-                                                    // $('body #viewmodaldrugAndAlcohol #signatureDiv').show();
-                                                    $('body #viewmodaldrugAndAlcohol').show();
-                                                }
-
-                                                let date1
-                                                // if (data.certificateDate) {
-                                                //     var event = new Date(data.certificateDate);
-
-                                                //     date1 = JSON.stringify(event)
-                                                //     date1 = date1.slice(1, 11)
-                                                // } else {
-                                                //     date1 = '';
-                                                // }
-
-
-
-                                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
-                                                $("body #viewmodaldrugAndAlcohol #signature").attr("src", signaturePath);
-                                                $('body #viewmodaldrugAndAlcohol #driverName').text(data.driverName);
-                                                $('body #viewmodaldrugAndAlcohol #companyName').text(data.companyName);
-                                                $('#certificateIDSixSecondPrams #Iagree').attr('checked', 'checked');
-                                                $('#certificateIDSixSecondPrams #Iagree').attr('disabled', true);
-                                                $('body #viewmodaldrugAndAlcohol #dob').text(data.dob);
-                                                $('body #viewmodaldrugAndAlcohol #driver_id').val(driverID);
-                                                $('body #viewmodaldrugAndAlcohol #company_id').val(company_id);
-                                                $('body #viewmodaldrugAndAlcohol #certificateDate').text(data.certificateDate);
-                                                $('body #viewmodaldrugAndAlcohol #companyProvince').text(data.companyProvince);
-                                                if (data.CertificateauthDtls) {
-                                                    $('body #viewmodaldrugAndAlcohol #CertificateauthDtls').text("Driver Approved");
-                                                } else {
-                                                    $('body #viewmodaldrugAndAlcohol #CertificateauthDtls').text("Waiting for Driver Approval");
-                                                }
-                                                $('body #viewmodaldrugAndAlcohol').modal('show');
-
-                                            } else {
-                                                Swal.fire({
-                                                    title: 'Error!',
-                                                    text: 'Something went wrong',
-                                                    icon: 'error',
-                                                    confirmButtonText: 'Cool'
-                                                })
-                                                // $("body #updateDriver_details_view #submitBtn").text('Create');
-                                                // $('body #updateDriver_details_view #actionData').val('Create');
-                                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
-                                                // window.location = "/";
-                                            }
-
-                                        }
-                                    });
-                                });
+            $('.signpad').draggable();
+            $('.clear').click(function (e) {
+                // alert('ddd');
+                e.preventDefault();
+                signature.signature('clear');
+                $(".signpad").val('');
+            });
 
 
 
 
+            /****************************************
+             *       Basic Table                   *
+             ****************************************/
+            // $('#zero_config').DataTable();
+
+            $(document).ready(function () {
+                $('.close1').click(function () {
+                    location.reload();
+                });
+                $("#userRole").text('Admin')
 
 
-
-                                $('body #viewmodalclearingHouseConsent #Iagree').on('change', function () {
-                                    if (this.checked) {
-                                        // alert(this.checked)
-                                        let company_id = $("#clearingHouseConsent #company_id").val();
-                                        let driverId = $("#clearingHouseConsent #driver_id").val();
-                                        let certificateDate = $("clearingHouseConsent #certificateDate").val();
-
-                                        if ($('.signpad').length > 0) {
-                                            var signpad = $(".signpad").val();
-                                            if (signpad == "" || signpad == "undefined" || signpad == null || signpad == "0") {
-                                                flag = false;
-                                                Swal.fire({
-                                                    title: 'Error!',
-                                                    text: 'Signature requird to proceed further',
-                                                    icon: 'error',
-                                                    confirmButtonText: 'Ok'
-                                                })
-
-                                                $('body #clearingHouseConsent #Iagree').prop('checked', false);
-                                                return false
-                                            }
-                                            // values['signature'] = signpad;
-                                        }
-                                        // alert(driverId)
-                                        // console.log(signpad);
-                                        $.ajax({
-                                            url: "/certificateapprovalUpdate",
-                                            type: "POST",
-                                            data: { company_id: company_id, driverId: driverId, certificateID: 5, approve: this.checked, date: certificateDate, adminSignature: signpad },
-                                            success: function (data) {
-                                                console.log(data.data);
-                                                if (data.status) {
-                                                    const Toast = Swal.mixin({
-                                                        toast: true,
-                                                        position: 'top-end',
-                                                        showConfirmButton: false,
-                                                        timer: 2000,
-                                                        timerProgressBar: true,
-                                                        didOpen: (toast) => {
-                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                                        }
-                                                    })
-                                                    Toast.fire({
-                                                        icon: 'success',
-                                                        title: data.message
-                                                    });
-                                                    setTimeout(function () {
-                                                        window.location.reload();
-                                                    }, 2000);
-
-                                                } else {
-                                                    Swal.fire({
-                                                        title: 'Error!',
-                                                        text: 'Something went wrong',
-                                                        icon: 'error',
-                                                        confirmButtonText: 'Cool'
-                                                    })
-                                                    // window.location = "/";
-                                                }
-
-                                            }
-                                        });
-                                    } else {
-                                        // $("#ifbelowthreeYears").hide();
-                                        // alert('un checked')
-                                        // alert(this.checked)
-                                    }
-
-                                })
-                            });
-
-                            function convertToBase64(inputfile, parms) {
-                                //Read File
-                                // alert(inputfile)
-                                // alert(parms)
-
-                                var selectedFile = document.getElementById(inputfile).files;
-                                console.log(selectedFile);
-                                //Check File is not Empty
-                                if (selectedFile.length > 0) {
-                                    // Select the very first file from list
-                                    var fileToLoad = selectedFile[0];
-                                    var filesize = selectedFile[0].size;
-                                    if (filesize <= '2069405') {
-                                        console.log(filesize);
-                                        // FileReader function for read the file.
-                                        var fileReader = new FileReader();
-                                        var base64;
-                                        // Onload of file read the file content
-                                        fileReader.onload = function (fileLoadedEvent) {
-                                            base64 = fileLoadedEvent.target.result;
-                                            // Print data in console
-                                            console.log(parms);
-                                            $("#" + parms).val(base64);
-                                            var div = document.getElementById(parms);
-                                            div.innerHTML += base64;
-
-                                        };
-                                        // Convert data to base64
-                                        fileReader.readAsDataURL(fileToLoad);
-                                    } else {
-                                        Swal.fire(
-                                            'Too Big!',
-                                            'Upload image size within 2 MB.',
-                                            'danger'
-                                        )
-                                        return false;
-                                    }
+                $(document).on('click', '#viewmodalidMotor', function () {
+                    // alert('test')
+                    let id = $(this).attr('data-id');
+                    let certificateID = $(this).attr('data-certificateID');
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                        type: "GET",
+                        data: { id: id, certificateID: certificateID },
+                        success: function (data) {
+                            console.log(data);
+                            console.log(data.driverName);
+                            if (data.status) {
+                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                $("body #Motor #signature").attr("src", signaturePath);
+                                $('body #Motor #driverName').text(data.driverName);
+                                $('body #Motor #driver_license').text(data.driver_license);
+                                $('body #Motor #license_expiry').text(data.license_expiry);
+                                $('body #Motor #getupdatedDate').text(data.getupdatedDate);
+                                $('body #Motor #eventsCalTimezone').text(data.eventsCalTimezone);
+                                if (data.CertificateauthDtls) {
+                                    $('body #Motor #CertificateauthDtls').text("Driver Approved");
+                                } else {
+                                    $('body #Motor #CertificateauthDtls').text("Waiting for Driver Approval");
                                 }
+                                $('body #viewmodalMotor').modal('show');
+
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                // window.location = "/";
                             }
 
+                        }
+                    });
+                });
+                $(document).on('click', '#viewmodalMedical', function () {
+                    // alert('test')
+                    let id = $(this).attr('data-id');
+                    let certificateID = $(this).attr('data-certificateID');
+                    // alert(id)
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                        type: "GET",
+                        data: { id: id, certificateID: certificateID },
+                        success: function (data) {
+                            console.log(data);
+                            console.log(data.driverName);
+                            if (data.status) {
+                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                $("body #Medical #signature").attr("src", signaturePath);
+                                $('body #Medical #driverName').text(data.driverName);
+                                $('body #Medical #companyProvince').text(data.companyProvince);
+                                $('body #Medical #getupdatedDate').text(data.getupdatedDate);
+                                $('body #Medical #eventsCalTimezone').text(data.eventsCalTimezone);
+                                if (data.CertificateauthDtls) {
+                                    $('body #Medical #CertificateauthDtls').text("Driver Approved");
+                                } else {
+                                    $('body #Medical #CertificateauthDtls').text("Waiting for Driver Approval");
+                                }
+                                $('body #viewmodalMedicalModal').modal('show');
+
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+                $(document).on('click', '#viewmodalDriverack', function () {
+                    // alert('test')
+                    let id = $(this).attr('data-id');
+                    let certificateID = $(this).attr('data-certificateID');
+                    // alert(id)
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                        type: "GET",
+                        data: { id: id, certificateID: certificateID },
+                        success: function (data) {
+                            console.log(data);
+                            console.log(data.driverName);
+                            if (data.status) {
+                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                $("body #Driverack #signature").attr("src", signaturePath);
+                                $('body #Driverack #driverName').text(data.driverName);
+                                $('body #Driverack #companyProvince').text(data.companyProvince);
+                                $('body #Driverack #getupdatedDate').text(data.getupdatedDate);
+                                $('body #Driverack #eventsCalTimezone').text(data.eventsCalTimezone);
+                                if (data.CertificateauthDtls) {
+                                    $('body #Driverack #CertificateauthDtls').text("Driver Approved");
+                                } else {
+                                    $('body #Driverack #CertificateauthDtls').text("Waiting for Driver Approval");
+                                }
+                                $('body #viewmodalDriverackModal').modal('show');
+
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+                $(document).on('click', '#viewmodalpspDisclosure', function () {
+                    // alert('test')
+                    let id = $(this).attr('data-id');
+                    let certificateID = $(this).attr('data-certificateID');
+                    // alert(id)
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                        type: "GET",
+                        data: { id: id, certificateID: certificateID },
+                        success: function (data) {
+                            // console.log(data);
+                            // console.log(data.driverName);
+                            // let date1
+                            // if (data.certificateDate) {
+                            // var event = new Date(data.certificateDate);
+
+                            //     date1 = JSON.stringify(event)
+                            //     date1 = date1.slice(1, 11)
+                            // }else{
+                            //     date1 = '';
+                            // }
+                            if (data.status) {
+                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                $("body #pspDisclosure #signature").attr("src", signaturePath);
+                                $('body #pspDisclosure #driverName').text(data.driverName);
+                                $('body #pspDisclosure #companyProvince').text(data.companyProvince);
+                                $('body #pspDisclosure #getupdatedDate').text(data.getupdatedDate);
+                                $('body #pspDisclosure #eventsCalTimezone').text(data.eventsCalTimezone);
+                                $('body #pspDisclosure #companyName').text(data.companyName);
+                                $('body #pspDisclosure #certificateDate').text(data.certificateDate);
+                                $('body #pspDisclosure #Iagree').attr('checked', 'checked');
+                                $('body #pspDisclosure #Iagree').attr('disabled', true);
+
+                                if (data.CertificateauthDtls) {
+                                    $('body #pspDisclosure #CertificateauthDtls').text("Driver Approved");
+                                } else {
+                                    $('body #pspDisclosure #CertificateauthDtls').text("Waiting for Driver Approval");
+                                }
+                                $('body #viewmodalpspDisclosure').modal('show');
+
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+                $('body #clearingHouseConsent #signatureDiv').hide();
+                $(document).on('click', '#viewmodalclearingHouseConsent', function () {
+                    // alert('test')  
+                    let driverID = $(this).attr('data-id');
+                    let company_id = $(this).attr('data-company_id');
+                    let certificateID = $(this).attr('data-certificateID');
+                    // alert(id)
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                        type: "GET",
+                        data: { id: driverID, company_id: company_id, certificateID: certificateID },
+                        success: function (data) {
+                            console.log(data);
+                            console.log(data.driverName);
+                            if (data.status) {
+                                if (data.CertificateauthDtlsf) {
+                                    // $('body #clearingHouseConsent #signatureDiv').hide();
+                                    $('body #clearingHouseConsent #Iagree').attr('checked', 'checked');
+                                    $('body #clearingHouseConsent #Iagree').attr('disabled', true);
+
+                                } else {
+                                    // $('body #clearingHouseConsent #signatureDiv').show();
+                                    $('body #clearingHouseConsent').show();
+
+                                }
+                                console.log('-----------------');
+                                if (data.adminSignature == "") {
+                                    $('body #clearingHouseConsent #signatureDiv').show();
+                                    $('body #clearingHouseConsent #adminSignature').hide();
+                                }
+                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                // console.log(signaturePath);
+                                // alert(data.signature)
+                                // alert(signaturePath)
+                                if (data.signature != "") {
+                                    $('body #clearingHouseConsent #signature').attr("src", signaturePath);
+                                } else {
+                                    $('body #clearingHouseConsent #signature').hide();
+                                }
+
+                                let adminsignaturePath = 'uploads/attachment/clearHouseSupervisor/' + data.adminSignature;
+                                console.log(adminsignaturePath);
+
+                                if (data.adminSignature != "") {
+                                    $('body #clearingHouseConsent #adminSignature').attr("src", adminsignaturePath);
+                                } else {
+                                    $('body #clearingHouseConsent #adminSignature').hide();
+                                }
 
 
-                            // $('#exptype').on('change', function () {
-                            // let cmpid = this.value;
-                            // alert(cmpid)
-                            let cmpid = $('body #originData #company_id').val();
-                            // alert(cmpid)
-                            $("#updateDrivingHistory").dataTable().fnDestroy();
+                                // $("body #clearingHouseConsent #signature").attr("src", signaturePath);
+                                $('body #clearingHouseConsent #driverName').text(data.driverName);
+                                $('body #clearingHouseConsent #companyProvince').text(data.companyProvince);
+                                $('body #clearingHouseConsent #getupdatedDate').text(data.getupdatedDate);
+                                $('body #clearingHouseConsent #eventsCalTimezone').text(data.eventsCalTimezone);
+                                $('body #clearingHouseConsent #companyName').text(data.companyName);
+                                $('body #clearingHouseConsent #certificateDate').text(data.certificateDate);
+                                $('body #clearingHouseConsent #driver_license').text(data.driver_license);
+                                $('body #clearingHouseConsent #province').text(data.province);
+                                $('body #clearingHouseConsent #dob').text(data.dob);
+                                $('body #clearingHouseConsent #driver_id').val(driverID);
+                                $('body #clearingHouseConsent #company_id').val(company_id);
+								$('#ccompany').val(data.orgName);
+                                // $('body #clearingHouseConsent #adminSignature').attr("src", adminsignaturePath);
 
-                            let customer = $('#updateDrivingHistory').DataTable({
-                                processing: true,
-                                serverSide: true,
-                                order: [[0, 'ASC']],
-                                lengthMenu: [[10, 50, 100, 250, 500, 1000], [10, 50, 100, 250, 500, 1000]],
-                                pageLength: 10,
-                                searching: true,
-                                ajax: {
-                                    url: "/getupdatemotorVehicleCertificateSuperadminSuperadmin",
-                                    data: function (data) {
-                                        data.cmpid = cmpid
-                                        // data.search_key = $("#searchKey").val(),
-                                        // data.search_val = $("#searchVal").val()
-                                    },
-                                    type: "GET",
-                                },
-                                columns: [
-                                    { "data": "slno" },
-                                    { "data": "firstName" },
-                                    { "data": "action" }
-                                ],
-                                select: true
-                            });
+                                // if(adminsignaturePath == ""){
+                                //     $('body #clearingHouseConsent #adminSignature').attr("src", adminsignaturePath);
+                                // }else{
+                                //     $('body #clearingHouseConsent #signatureDiv').hide();
+                                // }
+
+                                if (data.CertificateauthDtls) {
+                                    $('body #viewmodalclearingHouseConsent #CertificateauthDtls').text("Driver Approved");
+                                } else {
+                                    $('body #viewmodalclearingHouseConsent #CertificateauthDtls').text("Waiting for Driver Approval");
+                                }
+                                $('body #viewmodalclearingHouseConsent').modal('show');
+
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+                $('body #viewmodalcompensatedwork #signatureDiv').hide();
+                $(document).on('click', '#viewmodalcompensatedwork', function () {
+                    // alert('test')
+                    let driverID = $(this).attr('data-id');
+                    let company_id = $(this).attr('data-company_id');
+                    let certificateID = $(this).attr('data-certificateID');
+                    // alert(certificateID)
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                        type: "GET",
+                        data: { id: driverID, company_id: company_id, certificateID: certificateID },
+                        success: function (data) {
+                            console.log(data);
+                            console.log(data.driverName);
+                            if (data.status) {
+                                //   alert(data.certificateIDSixFirtstPrams)
+                                console.log('-----------------');
+                                if (data.CertificateauthDtlsf) {
+                                    // $('body #viewmodalcompensatedwork #signatureDiv').hide();
+                                    $('body #viewmodalcompensatedwork #Iagree').attr('checked', 'checked');
+                                    $('body #viewmodalcompensatedwork #Iagree').attr('disabled', true);
+
+                                } else {
+                                    // $('body #viewmodalcompensatedwork #signatureDiv').show();
+                                    $('body #viewmodalcompensatedwork').show();
+                                }
+
+                                //     let date1
+                                // if (data.certificateDate) {
+                                // var event = new Date(data.certificateDate);
+
+                                //     date1 = JSON.stringify(event)
+                                //     date1 = date1.slice(1, 11)
+                                // }else{
+                                //     date1 = '';
+                                // }
+
+                                // alert(data.companyProvince)
+                                if (data.adminSignature == "") {
+                                    $('body #viewmodalcompensatedwork #signatureDiv').show();
+                                    $('body #viewmodalcompensatedwork #adminSignature').hide();
+                                }
+                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                $("body #viewmodalcompensatedwork #signature").attr("src", signaturePath);
+                                $('body #viewmodalcompensatedwork #driverName').text(data.driverName);
+                                $("body #viewmodalcompensatedwork #certificateIDSixFirtstPrams [value=" + '"' + data.certificateIDSixFirtstPrams + '"' + "]").attr("selected", true);
+                                $("body #viewmodalcompensatedwork #certificateIDSixSecondPrams [value=" + '"' + data.certificateIDSixSecondPrams + '"' + "]").attr("selected", true);
+                                $('#certificateIDSixSecondPrams #Iagree').attr('checked', 'checked');
+                                $('#certificateIDSixSecondPrams #Iagree').attr('disabled', true);
+                                $('body #viewmodalcompensatedwork #dob').text(data.dob);
+                                $('body #viewmodalcompensatedwork #driver_id').val(driverID);
+                                $('body #viewmodalcompensatedwork #company_id').val(company_id);
+                                $('body #viewmodalcompensatedwork #certificateDate').text(data.certificateDate);
+                                $('body #viewmodalcompensatedwork #companyProvince').text(data.companyProvince);
+                                if (data.CertificateauthDtls) {
+                                    $('body #viewmodalcompensatedwork #CertificateauthDtls').text("Driver Approved");
+                                } else {
+                                    $('body #viewmodalcompensatedwork #CertificateauthDtls').text("Waiting for Driver Approval");
+                                }
+                                $('body #viewmodalcompensatedwork').modal('show');
+
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+
+                $('body #viewmodaldrugAndAlcohol #signatureDiv').hide();
+                $(document).on('click', '#viewmodaldrugAndAlcohol', function () {
+                    // alert('test')
+                    let driverID = $(this).attr('data-id');
+                    let company_id = $(this).attr('data-company_id');
+                    let certificateID = $(this).attr('data-certificateID');
+                    // alert(certificateID)
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/editupdatemotorVehicleCertificateSuperadminSuperadmin",
+                        type: "GET",
+                        data: { id: driverID, company_id: company_id, certificateID: certificateID },
+                        success: function (data) {
+                            // console.log(data.drugAlcoholPointone);
+                            // console.log(data.driverName);
+
+                            if (data.status) {
+                                //   alert(data.certificateIDSixFirtstPrams)
+                                // console.log('-----------------');
+                                if (data) {
+                                    // $('body #viewmodaldrugAndAlcohol #signatureDiv').hide();
+                                    $('body #viewmodaldrugAndAlcohol #Iagree').attr('checked', 'checked');
+                                    $('body #viewmodaldrugAndAlcohol #Iagree').attr('disabled', true);
+                                    $('body #viewmodaldrugAndAlcohol #drugAlcoholPointone').text(data.drugAlcoholPointone);
+                                    $('body #viewmodaldrugAndAlcohol #drugAlcoholPointtwo').html(data.drugAlcoholPointtwo);
+                                    $('body #viewmodaldrugAndAlcohol #drugAlcoholPointthree').html(data.drugAlcoholPointthree);
+                                    $('body #viewmodaldrugAndAlcohol #drugAlcoholPointfour').html(data.drugAlcoholPointfour);
+                                    $('body #viewmodaldrugAndAlcohol #drugAlcoholPointfive').html(data.drugAlcoholPointfive);
+                                    $('body #viewmodaldrugAndAlcohol #drugAlcoholPointsix').html(data.drugAlcoholPointsix);
+
+                                } else {
+                                    // $('body #viewmodaldrugAndAlcohol #signatureDiv').show();
+                                    $('body #viewmodaldrugAndAlcohol').show();
+                                }
+
+                                let date1
+                                // if (data.certificateDate) {
+                                //     var event = new Date(data.certificateDate);
+
+                                //     date1 = JSON.stringify(event)
+                                //     date1 = date1.slice(1, 11)
+                                // } else {
+                                //     date1 = '';
+                                // }
+
+
+
+                                let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.signature;
+                                $("body #viewmodaldrugAndAlcohol #signature").attr("src", signaturePath);
+                                $('body #viewmodaldrugAndAlcohol #driverName').text(data.driverName);
+                                $('body #viewmodaldrugAndAlcohol #companyName').text(data.companyName);
+                                $('#certificateIDSixSecondPrams #Iagree').attr('checked', 'checked');
+                                $('#certificateIDSixSecondPrams #Iagree').attr('disabled', true);
+                                $('body #viewmodaldrugAndAlcohol #dob').text(data.dob);
+                                $('body #viewmodaldrugAndAlcohol #driver_id').val(driverID);
+                                $('body #viewmodaldrugAndAlcohol #company_id').val(company_id);
+                                $('body #viewmodaldrugAndAlcohol #certificateDate').text(data.certificateDate);
+                                $('body #viewmodaldrugAndAlcohol #companyProvince').text(data.companyProvince);
+                                if (data.CertificateauthDtls) {
+                                    $('body #viewmodaldrugAndAlcohol #CertificateauthDtls').text("Driver Approved");
+                                } else {
+                                    $('body #viewmodaldrugAndAlcohol #CertificateauthDtls').text("Waiting for Driver Approval");
+                                }
+                                $('body #viewmodaldrugAndAlcohol').modal('show');
+
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+
+
+                $(document).on('click', '#viewmodalDisclaimer', function () {
+                    let driverID = $(this).attr('data-id');
+                    let company_id = $(this).attr('data-company_id');
+                    let certificateID = $(this).attr('data-certificateID');
+                    $.ajax({
+                        url: "/getDisclaimer",
+                        type: "GET",
+                        data: { driverId: driverID, company_id: company_id },
+                        success: function (data) {
+                            if (data.status) {
+                                // let signaturePath = 'uploads/attachment/disclaimerSignature/' + data.signature;
+                                $("body #viewmodalDisclaimer #signature").attr("src", data.signature);
+                                $("body #viewmodalDisclaimer #Disclaimer_type [value=" + '"' + data.data.Disclaimer_type + '"' + "]").attr("selected", true);
+                                $('body #viewmodalDisclaimer #Iagree').attr('checked', 'checked');
+                                $('body #viewmodalDisclaimer #Iagree').attr('disabled', true);
+                                // $('body #viewmodalDisclaimer #driver_id').val(data.data.driverID);
+                                $('body #viewmodalDisclaimer #driverName').text(data.data.driverName);
+                                // $('body #viewmodalDisclaimer #company_id').val(data.data.company_id);
+
+                                $('body #viewmodalDisclaimer').modal('show');
+
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'No Diclaimer found',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // $("body #updateDriver_details_view #submitBtn").text('Create');
+                                // $('body #updateDriver_details_view #actionData').val('Create');
+                                // $("body #updateDriver_details_view #fastCardAttachment_file_link").hide();
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+
+
+
+
+                $('body #viewmodalclearingHouseConsent #Iagree').on('change', function () {
+					let ccompany = $('#ccompany').val();
+					if(ccompany == "" || ccompany == ""){
+						$('#Iagree').prop('checked', false); // Unchecks it
+						Swal.fire({
+										title: 'Error!',
+										text: 'Please fill all fields',
+										icon: 'error',
+										confirmButtonText: 'Ok'
+									})
+									// window.location = "/";
+									return false;
+					}
+                    if (this.checked) {
+                        // alert(this.checked)
+                        let company_id = $("#clearingHouseConsent #company_id").val();
+                        let driverId = $("#clearingHouseConsent #driver_id").val();
+                        let certificateDate = $("clearingHouseConsent #certificateDate").val();
+
+                        if ($('.signpad').length > 0) {
+                            var signpad = $(".signpad").val();
+                            if (signpad == "" || signpad == "undefined" || signpad == null || signpad == "0") {
+                                flag = false;
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Signature requird to proceed further',
+                                    icon: 'error',
+                                    confirmButtonText: 'Ok'
+                                })
+
+                                $('body #clearingHouseConsent #Iagree').prop('checked', false);
+                                return false
+                            }
+                            // values['signature'] = signpad;
+                        }
+                        // alert(driverId)
+                        // console.log(signpad);
+                        $.ajax({
+                            url: "/certificateapprovalUpdate",
+                            type: "POST",
+                            data: { company_id: company_id, driverId: driverId, certificateID: 5, approve: this.checked, date: certificateDate, adminSignature: signpad,orgName:ccompany },
+                            success: function (data) {
+                                console.log(data.data);
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                    // window.location = "/";
+                                }
+
+                            }
+                        });
+                    } else {
+                        // $("#ifbelowthreeYears").hide();
+                        // alert('un checked')
+                        // alert(this.checked)
+                    }
+
+                })
+            });
+
+            function convertToBase64(inputfile, parms) {
+                //Read File
+                // alert(inputfile)
+                // alert(parms)
+
+                var selectedFile = document.getElementById(inputfile).files;
+                console.log(selectedFile);
+                //Check File is not Empty
+                if (selectedFile.length > 0) {
+                    // Select the very first file from list
+                    var fileToLoad = selectedFile[0];
+                    var filesize = selectedFile[0].size;
+                    if (filesize <= '2069405') {
+                        console.log(filesize);
+                        // FileReader function for read the file.
+                        var fileReader = new FileReader();
+                        var base64;
+                        // Onload of file read the file content
+                        fileReader.onload = function (fileLoadedEvent) {
+                            base64 = fileLoadedEvent.target.result;
+                            // Print data in console
+                            console.log(parms);
+                            $("#" + parms).val(base64);
+                            var div = document.getElementById(parms);
+                            div.innerHTML += base64;
+
+                        };
+                        // Convert data to base64
+                        fileReader.readAsDataURL(fileToLoad);
+                    } else {
+                        Swal.fire(
+                            'Too Big!',
+                            'Upload image size within 2 MB.',
+                            'danger'
+                        )
+                        return false;
+                    }
+                }
+            }
+
+
+
+            // $('#exptype').on('change', function () {
+            // let cmpid = this.value;
+            // alert(cmpid)
+            let cmpid = $('body #originData #company_id').val();
+            // alert(cmpid)
+            $("#updateDrivingHistory").dataTable().fnDestroy();
+
+            let customer = $('#updateDrivingHistory').DataTable({
+                processing: true,
+                serverSide: true,
+                order: [[0, 'ASC']],
+                lengthMenu: [[10, 50, 100, 250, 500, 1000], [10, 50, 100, 250, 500, 1000]],
+                pageLength: 10,
+                searching: true,
+                ajax: {
+                    url: "/getupdatemotorVehicleCertificateSuperadminSuperadmin",
+                    data: function (data) {
+                        data.cmpid = cmpid
+                        // data.search_key = $("#searchKey").val(),
+                        // data.search_val = $("#searchVal").val()
+                    },
+                    type: "GET",
+                },
+                columns: [
+                    { "data": "slno" },
+                    { "data": "firstName" },
+                    { "data": "action" }
+                ],
+                select: true
+            });
 
 
                             // });
@@ -1986,8 +2164,8 @@
 
 
 
-                        </script>
-                        <script src="sweetAlert/sweetalert2.min.js"></script>
+        </script>
+        <script src="sweetAlert/sweetalert2.min.js"></script>
 </body>
 
 </html>

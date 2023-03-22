@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Favicon icon -->
+        <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+        <title>
+            <%- title %>
+        </title>
+        <!-- Custom CSS -->
+        <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="dist/css/style.min.css" rel="stylesheet">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+        <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+        <link href="dist/css/style.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+        <link rel="stylesheet" type="text/css"
+            href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+        <style type="text/css">
+            .gap {
+                text-align: center;
+                background-color: #e2181870;
+            }
+            .thClass {
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .disableClick {
+                pointer-events: none;
+            }
+            .modal {
+                padding: 0 !important;
+            }
+            .modal .modal-dialog {
+                width: 100%;
+                max-width: none;
+                height: 100%;
+                margin: 0;
+            }
+            .modal .modal-content {
+                height: 100%;
+                border: 0;
+                border-radius: 0;
+            }
+            .modal .modal-body {
+                overflow-y: auto;
+            }
+            .col-md-6 {
+                width: 50%;
+                float: left;
+            }
+            .col-md-12 {
+                width: 100%;
+                float: left;
+                margin-bottom:15px;
+            }
+            .col-md-4{
+                float: left;
+                width: 25%;
+            }
+            .col-md-3{
+                float: left;
+                width: 33.33%;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div class="lds-pos"></div>
+                <div class="lds-pos"></div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <div id="main-wrapper">
+            <!-- ============================================================== -->
+            <!-- Topbar header - style you can find in pages.scss -->
+            <!-- ============================================================== -->
+            <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarDriver.ejs') %>
+            <!-- Page wrapper  -->
+            <!-- ============================================================== -->
+            <div class="page-wrapper">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="page-breadcrumb">
+                    <div class="row">
+                        <div class="col-12 d-flex no-block align-items-center">
+                            <h4 class="page-title">
+                                <%- title %>
+                            </h4>
+                            <div class="ml-auto text-right">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            <%- title %>
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Container fluid  -->
+                <!-- ============================================================== -->
+                <div class="container-fluid" style="background-color: #fff; ">
+                    <div class="card-body">
+                        <div class="row p-b-30">
+                            <div class="col-12">
+                                <div class="card-body" id="updateEmployment_details">
+                                    <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                    <div style="text-align: center;">
+                                        <span>
+                                            <h3>MOTOR VEHICLE DRIVER’S CERTIFICATION OF VIOLATIONS</h3>
+                                        </span>
+                                        <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="hidden" name="company_id" id="company_id"
+                                            value="<%-company_id %>">
+                                        <input type="hidden" name="driverId" id="driverId"
+                                            value="<%-driverId %>">
+                                           
+                                            <p align="justify"><input type="checkbox" id="certify" value="1">  I certify that the following is a true and complete list of traffic violations (other than parking violations) for which I have been convicted or forfeited bond or collateral during the past 12 months.</p>
+                                            <table style="width: 100%;border-collapse: separate;border-spacing: 0 1em;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Offence</th>
+                                                        <th>Location</th>
+                                                        <th>Type of Vehicle Operated</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><input type="text" id="date1" class="mydatepicker" placeholder="mm/dd/yyyy" readonly></td>
+                                                        <td><input type="text"  id="offence1"></td>
+                                                        <td><input type="text"  id="location1"></td>
+                                                        <td><input type="text"  id="vehicle1"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text"  id="date2" class="mydatepicker" placeholder="mm/dd/yyyy" readonly></td>
+                                                        <td><input type="text"  id="offence2"></td>
+                                                        <td><input type="text"  id="location2"></td>
+                                                        <td><input type="text"  id="vehicle2"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text"  id="date3" class="mydatepicker" placeholder="mm/dd/yyyy" readonly></td>
+                                                        <td><input type="text" id="offence3"></td>
+                                                        <td><input type="text" id="location3"></td>
+                                                        <td><input type="text" id="vehicle3"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" id="date4" class="mydatepicker" placeholder="mm/dd/yyyy" readonly></td>
+                                                        <td><input type="text" id="offence4"></td>
+                                                        <td><input type="text" id="location3"></td>
+                                                        <td><input type="text" id="vehicle4"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p>If no violations are listed above, I certify that I have not been convicted or forfeited bond or collateral on account of any violation (other than those I have provided under Part 383) required to be listed during the past 12 months</p>
+                                            <div class="col-md-12" style="padding-left: 0px;">
+                                                <div class="col-md-3" style="padding-left: 0px;">
+                                                    <div class="col-md-6"  style="padding-left: 0px;">Driver’s License No:</div>
+                                                    <div class="col-md-6"><input type="text" value="<%- driver_license %>" readonly  style="width: 100%;"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="col-md-6">State:</div>
+                                                    <div class="col-md-6"><input type="text" value="<%- driverstate %>" readonly style="width: 100%;"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="col-md-6">Expiration Date:</div>
+                                                    <div class="col-md-6"><input type="text" value="<%- license_expiry %>" readonly  style="width: 100%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12"  style="padding-left: 0px;">
+                                                <div class="col-md-12"  style="padding-left: 0px;">
+                                                    <div class="col-md-6"  style="padding-left: 0px;"><input type="text" class="mydatepicker" placeholder="mm/dd/yyyy" id="date_certification" readonly></div>
+                                                    <div class="col-md-4"></div>
+                                                    <div class="col-md-4">
+                                                        <input type="hidden" id="annualreview1" value="<%- annualreview %>">
+                                                        <%if (annualreview=="Yes" ) { %>
+                                                            <div id="signatureDiv" style="float:right;margin-right:50px;">
+                                                                <div class="row">
+                                                                    <div class="col-md-3 col-xs-hidden">
+                                                                    </div>
+                                                                    <div style="text-align: center"
+                                                                        class="col-md-6 col-xs-12">
+                                                                       
+                                                                        <section class="signature-component">
+                                                                            <canvas
+                                                                                style="background-color: #fff;border: 2px solid #131212;"
+                                                                                id="signature-pad" width="350"
+                                                                                height="200"></canvas>
+                                                                            <div>
+                                                                                <button id="clear"
+                                                                                    class="clear">Clear
+                                                                                    Signature</button>
+                                                                            </div>
+                                                                        </section>
+
+                                                                    </div>
+                                                                    <div class="col-md-3 col-xs-hidden">
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <br />
+                                                            </div>
+
+                                                            <% } %>
+                                                        
+                                                        <img
+                                                        src="uploads/attachment/drivinghistoryaddressSignature/<%- getDrivinghistorySignature %>"
+                                                        alt="user" width="150" style="height:45px;"></div>
+                                                </div>
+                                                <div class="col-md-12"  style="padding-left: 0px;">
+                                                    <div class="col-md-6"  style="padding-left: 0px;">Date of Certification</div>
+                                                    <div class="col-md-4"></div>
+                                                    <div class="col-md-4">Driver’s Signature</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-left: 0px;">
+                                                <div class="col-md-6" style="padding-left: 0px;">Company Name</div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4">Company Address</div>
+                                                <div class="col-md-6" style="padding-left: 0px;"><input type="text" value="<%- company_name %>" readonly></div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4"><input type="text"  value="<%- companyAddress %>" readonly></div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-left: 0px;">
+                                                <div class="col-md-6" style="padding-left: 0px;"></div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4"><input type="text" readonly id="t_title"></div>
+                                                <div class="col-md-6" style="padding-left: 0px;">Reviewed By: (Signature)</div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4">Title</div>
+                                            </div>
+                                            <div class="col-md-12 float_left">
+                                                <hr><br>
+                                                <input class="form-check-input" id="Iagree"
+                                                    name="Iagree" type="checkbox" value="1"
+                                                    >
+
+                                                I certify that I have read and
+                                                understood the above requirements.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center">
+                <!-- All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a> -->
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Wrapper -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <%- include('includes/footer.ejs') %>
+        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <script src="sweetAlert/sweetalert2.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(document).ready(function () {
+                    let company_id = $("#company_id").val();
+                    let driverId = $("#driverId").val();
+                    $.ajax({
+                        url: "/getmotorvehicledrivercertificate",
+                        type: "GET",
+						timeout: 15000,
+                        data: { driverId: driverId},
+                        success: function (data) {
+                            if (data.status) {
+                                var reqdata = data.message;
+                                $('#Iagree').attr('checked','checked');
+                                $('#Iagree').attr('disabled',true);
+                                $('#certify').attr('checked','checked');
+                                $('#certify').attr('disabled',true);
+
+                                var d1 = new Date(reqdata.date1);
+		                        var date1 = (d1.getMonth() + 1) + '/'+ d1.getDate()+'/'+d1.getFullYear() ;
+
+                                var d2 = new Date(reqdata.date2);
+		                        var date2 = (d2.getMonth() + 1) + '/'+ d2.getDate()+'/'+d2.getFullYear() ;
+
+                                var d3 = new Date(reqdata.date3);
+		                        var date3 = (d3.getMonth() + 1) + '/'+ d3.getDate()+'/'+d3.getFullYear() ;
+
+                                var d4 = new Date(reqdata.date4);
+		                        var date4 = (d4.getMonth() + 1) + '/'+ d4.getDate()+'/'+d4.getFullYear() ;
+
+                                if(reqdata.date1 && reqdata.date1!='0000-00-00')
+                                    $("#date1").val(date1);
+                                if(reqdata.date2 && reqdata.date2!='0000-00-00')
+                                    $("#date2").val(date2);
+                                if(reqdata.date3 && reqdata.date3!='0000-00-00')
+                                    $("#date3").val(date3);
+                                if(reqdata.date4 && reqdata.date4!='0000-00-00')
+                                    $("#date4").val(date4);
+
+                                $("#offence1").val(reqdata.offence1);
+                                $("#offence2").val(reqdata.offence2);
+                                $("#offence3").val(reqdata.offence3);
+                                $("#offence4").val(reqdata.offence4);
+
+                                $("#location1").val(reqdata.location1);
+                                $("#location2").val(reqdata.location2);
+                                $("#location3").val(reqdata.location3);
+                                $("#location4").val(reqdata.location4);
+
+                                $("#vehicle1").val(reqdata.vehicle1);
+                                $("#vehicle2").val(reqdata.vehicle2);
+                                $("#vehicle3").val(reqdata.vehicle3);
+                                $("#vehicle4").val(reqdata.vehicle4);
+
+
+                                $("#t_title").val(reqdata.title);
+
+                                var d5 = new Date(reqdata.date_certificate);
+		                        var date_certificate = (d5.getMonth() + 1) + '/'+ d5.getDate()+'/'+d5.getFullYear() ;
+
+                                $("#date_certification").val(date_certificate);
+                                    
+                            } else {
+                                $('#Iagree').show();
+                            }
+
+                        }
+                    });
+                })
+
+                $('#Iagree').on('change', function () {
+                    let date1 = $("#date1").val();
+                    let date2 = $("#date2").val();
+                    let date3 = $("#date3").val();
+                    let date4 = $("#date4").val();
+
+                    let offence1 = $("#offence1").val();
+                    let offence2 = $("#offence2").val();
+                    let offence3 = $("#offence3").val();
+                    let offence4 = $("#offence4").val();
+
+                    let location1 = $("#location1").val();
+                    let location2 = $("#location2").val();
+                    let location3 = $("#location3").val();
+                    let location4 = $("#location").val();
+
+                    let vehicle1 = $("#vehicle1").val();
+                    let vehicle2 = $("#vehicle2").val();
+                    let vehicle3 = $("#vehicle3").val();
+                    let vehicle4 = $("#vehicle4").val();
+
+                    let annualreview1 = $("#annualreview1").val();
+                    if (annualreview1 == "Yes") {
+                        var signpad = signaturePad.toDataURL('image/png');
+                        if (signpad == "" || signpad == "undefined" || signpad == null || signpad == "0") {
+                                flag = false;
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Signature requird to proceed further',
+                                    icon: 'error',
+                                    confirmButtonText: 'Ok'
+                                })
+                                return false
+                            }
+                    }
+                    else{
+                        let signpad = ""
+                    }
+                    
+                    let date_certificate = $("#date_certification").val();
+
+                    if(!$('#certify' ).is(":checked")){
+                        $('#Iagree').prop('checked', false); // Unchecks it
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please check I certify that the following is a true ',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                        return false;
+
+                    }
+
+                   else if(date_certificate==''){
+                        $('#Iagree').prop('checked', false); // Unchecks it
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please fill date of certification',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                        return false;
+
+                    }
+                    
+                    else if((date1!='' && offence1!='' && location1!='' && vehicle1!='') || (date2!='' && offence2!='' && location2!='' && vehicle2!='') || (date3!='' && offence3!='' && location3!='' && vehicle3!='') || (date4!='' && offence4!='' && location4!='' && vehicle4!='') )
+                    {
+                        
+                       
+                        let company_id = $("#company_id").val();
+                        let driverId = $("#driverId").val();
+                        $.ajax({
+                            url: "/create_motor_vehicle_driver",
+                            type: "POST",
+                            data: { company_id: company_id,driverId:driverId,date1:date1,date2:date2,date3:date3,date4:date4,offence1:offence1,offence2:offence2,offence3:offence3,offence4:offence4,location1:location1,location2:location2,location3:location3,location4:location4,vehicle1:vehicle1,vehicle2:vehicle2,vehicle3:vehicle3,vehicle4:vehicle4,date_certificate:date_certificate, signature: signpad },
+                            success: function (data) {
+                                console.log(data.data);
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    if(data.logout==1){
+                                        setTimeout(function () {
+                                            //window.location.reload();
+                                            window.location = "/logout";
+                                        }, 2000);
+                                    }
+                                    else{
+                                        setTimeout(function () {
+                                            //window.location.reload();
+                                        }, 2000);
+                                     }
+                                        
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                    // window.location = "/";
+                                }
+
+                            }
+                        });
+                    }
+                    else{
+                        $('#Iagree').prop('checked', false); // Unchecks it
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Please fill atleast all one fields',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        })
+                        // window.location = "/";
+                        return false;
+
+                    }
+
+
+                });
+                $('.mydatepicker').datepicker();
+                
+            });
+        </script>
+        <script>
+            var SignaturePad = (function (document) {
+                "use strict";
+
+                var log = console.log.bind(console);
+
+                var SignaturePad = function (canvas, options) {
+                    var self = this,
+                        opts = options || {};
+
+                    this.velocityFilterWeight = opts.velocityFilterWeight || 0.7;
+                    this.minWidth = opts.minWidth || 0.5;
+                    this.maxWidth = opts.maxWidth || 2.5;
+                    this.dotSize = opts.dotSize || function () {
+                        return (self.minWidth + self.maxWidth) / 2;
+                    };
+                    this.penColor = opts.penColor || "black";
+                    this.backgroundColor = opts.backgroundColor || "rgba(0,0,0,0)";
+                    this.throttle = opts.throttle || 0;
+                    this.throttleOptions = {
+                        leading: true,
+                        trailing: true
+                    };
+                    this.minPointDistance = opts.minPointDistance || 0;
+                    this.onEnd = opts.onEnd;
+                    this.onBegin = opts.onBegin;
+
+                    this._canvas = canvas;
+                    this._ctx = canvas.getContext("2d");
+                    this._ctx.lineCap = 'round';
+                    this.clear();
+
+                    // we need add these inline so they are available to unbind while still having
+                    //  access to 'self' we could use _.bind but it's not worth adding a dependency
+                    this._handleMouseDown = function (event) {
+                        if (event.which === 1) {
+                            self._mouseButtonDown = true;
+                            self._strokeBegin(event);
+                        }
+                    };
+
+                    var _handleMouseMove = function (event) {
+                        event.preventDefault();
+                        if (self._mouseButtonDown) {
+                            self._strokeUpdate(event);
+                            if (self.arePointsDisplayed) {
+                                var point = self._createPoint(event);
+                                self._drawMark(point.x, point.y, 5);
+                            }
+                        }
+                    };
+
+                    // this._handleMouseMove = _.throttle(_handleMouseMove, self.throttle, self.throttleOptions);
+                    this._handleMouseMove = _handleMouseMove;
+
+                    this._handleMouseUp = function (event) {
+                        if (event.which === 1 && self._mouseButtonDown) {
+                            self._mouseButtonDown = false;
+                            self._strokeEnd(event);
+                        }
+                    };
+
+                    this._handleTouchStart = function (event) {
+                        if (event.targetTouches.length == 1) {
+                            var touch = event.changedTouches[0];
+                            self._strokeBegin(touch);
+                        }
+                    };
+
+                    var _handleTouchMove = function (event) {
+                        // Prevent scrolling.
+                        event.preventDefault();
+
+                        var touch = event.targetTouches[0];
+                        self._strokeUpdate(touch);
+                        if (self.arePointsDisplayed) {
+                            var point = self._createPoint(touch);
+                            self._drawMark(point.x, point.y, 5);
+                        }
+                    };
+                    // this._handleTouchMove = _.throttle(_handleTouchMove, self.throttle, self.throttleOptions);
+                    this._handleTouchMove = _handleTouchMove;
+
+                    this._handleTouchEnd = function (event) {
+                        var wasCanvasTouched = event.target === self._canvas;
+                        if (wasCanvasTouched) {
+                            event.preventDefault();
+                            self._strokeEnd(event);
+                        }
+                    };
+
+                    this._handleMouseEvents();
+                    this._handleTouchEvents();
+                };
+
+                SignaturePad.prototype.clear = function () {
+                    var ctx = this._ctx,
+                        canvas = this._canvas;
+
+                    ctx.fillStyle = this.backgroundColor;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    this._reset();
+                };
+
+                // SignaturePad.prototype.showPointsToggle = function() {
+                //     this.arePointsDisplayed = !this.arePointsDisplayed;
+                // };
+
+                SignaturePad.prototype.toDataURL = function (imageType, quality) {
+                    var canvas = this._canvas;
+                    return canvas.toDataURL.apply(canvas, arguments);
+                };
+
+                SignaturePad.prototype.fromDataURL = function (dataUrl) {
+                    var self = this,
+                        image = new Image(),
+                        ratio = window.devicePixelRatio || 1,
+                        width = this._canvas.width / ratio,
+                        height = this._canvas.height / ratio;
+
+                    this._reset();
+                    image.src = dataUrl;
+                    image.onload = function () {
+                        self._ctx.drawImage(image, 0, 0, width, height);
+                    };
+                    this._isEmpty = false;
+                };
+
+                SignaturePad.prototype._strokeUpdate = function (event) {
+                    var point = this._createPoint(event);
+                    if (this._isPointToBeUsed(point)) {
+                        this._addPoint(point);
+                    }
+                };
+
+                var pointsSkippedFromBeingAdded = 0;
+                SignaturePad.prototype._isPointToBeUsed = function (point) {
+                    // Simplifying, De-noise
+                    if (!this.minPointDistance)
+                        return true;
+
+                    var points = this.points;
+                    if (points && points.length) {
+                        var lastPoint = points[points.length - 1];
+                        if (point.distanceTo(lastPoint) < this.minPointDistance) {
+                            // log(++pointsSkippedFromBeingAdded);
+                            return false;
+                        }
+                    }
+                    return true;
+                };
+
+                SignaturePad.prototype._strokeBegin = function (event) {
+                    this._reset();
+                    this._strokeUpdate(event);
+                    if (typeof this.onBegin === 'function') {
+                        this.onBegin(event);
+                    }
+                };
+
+                SignaturePad.prototype._strokeDraw = function (point) {
+                    var ctx = this._ctx,
+                        dotSize = typeof (this.dotSize) === 'function' ? this.dotSize() : this.dotSize;
+
+                    ctx.beginPath();
+                    this._drawPoint(point.x, point.y, dotSize);
+                    ctx.closePath();
+                    ctx.fill();
+                };
+
+                SignaturePad.prototype._strokeEnd = function (event) {
+                    var canDrawCurve = this.points.length > 2,
+                        point = this.points[0];
+
+                    if (!canDrawCurve && point) {
+                        this._strokeDraw(point);
+                    }
+                    if (typeof this.onEnd === 'function') {
+                        this.onEnd(event);
+                    }
+                };
+
+                SignaturePad.prototype._handleMouseEvents = function () {
+                    this._mouseButtonDown = false;
+
+                    this._canvas.addEventListener("mousedown", this._handleMouseDown);
+                    this._canvas.addEventListener("mousemove", this._handleMouseMove);
+                    document.addEventListener("mouseup", this._handleMouseUp);
+                };
+
+                SignaturePad.prototype._handleTouchEvents = function () {
+                    // Pass touch events to canvas element on mobile IE11 and Edge.
+                    this._canvas.style.msTouchAction = 'none';
+                    this._canvas.style.touchAction = 'none';
+
+                    this._canvas.addEventListener("touchstart", this._handleTouchStart);
+                    this._canvas.addEventListener("touchmove", this._handleTouchMove);
+                    this._canvas.addEventListener("touchend", this._handleTouchEnd);
+                };
+
+                SignaturePad.prototype.on = function () {
+                    this._handleMouseEvents();
+                    this._handleTouchEvents();
+                };
+
+                SignaturePad.prototype.off = function () {
+                    this._canvas.removeEventListener("mousedown", this._handleMouseDown);
+                    this._canvas.removeEventListener("mousemove", this._handleMouseMove);
+                    document.removeEventListener("mouseup", this._handleMouseUp);
+
+                    this._canvas.removeEventListener("touchstart", this._handleTouchStart);
+                    this._canvas.removeEventListener("touchmove", this._handleTouchMove);
+                    this._canvas.removeEventListener("touchend", this._handleTouchEnd);
+                };
+
+                SignaturePad.prototype.isEmpty = function () {
+                    return this._isEmpty;
+                };
+
+                SignaturePad.prototype._reset = function () {
+                    this.points = [];
+                    this._lastVelocity = 0;
+                    this._lastWidth = (this.minWidth + this.maxWidth) / 2;
+                    this._isEmpty = true;
+                    this._ctx.fillStyle = this.penColor;
+                };
+
+                SignaturePad.prototype._createPoint = function (event) {
+                    var rect = this._canvas.getBoundingClientRect();
+                    return new Point(
+                        event.clientX - rect.left,
+                        event.clientY - rect.top
+                    );
+                };
+
+                SignaturePad.prototype._addPoint = function (point) {
+                    var points = this.points,
+                        c2, c3,
+                        curve, tmp;
+
+                    points.push(point);
+
+                    if (points.length > 2) {
+                        // To reduce the initial lag make it work with 3 points
+                        // by copying the first point to the beginning.
+                        if (points.length === 3) points.unshift(points[0]);
+
+                        tmp = this._calculateCurveControlPoints(points[0], points[1], points[2]);
+                        c2 = tmp.c2;
+                        tmp = this._calculateCurveControlPoints(points[1], points[2], points[3]);
+                        c3 = tmp.c1;
+                        curve = new Bezier(points[1], c2, c3, points[2]);
+                        this._addCurve(curve);
+
+                        // Remove the first element from the list,
+                        // so that we always have no more than 4 points in points array.
+                        points.shift();
+                    }
+                };
+
+                SignaturePad.prototype._calculateCurveControlPoints = function (s1, s2, s3) {
+                    var dx1 = s1.x - s2.x,
+                        dy1 = s1.y - s2.y,
+                        dx2 = s2.x - s3.x,
+                        dy2 = s2.y - s3.y,
+
+                        m1 = {
+                            x: (s1.x + s2.x) / 2.0,
+                            y: (s1.y + s2.y) / 2.0
+                        },
+                        m2 = {
+                            x: (s2.x + s3.x) / 2.0,
+                            y: (s2.y + s3.y) / 2.0
+                        },
+
+                        l1 = Math.sqrt(1.0 * dx1 * dx1 + dy1 * dy1),
+                        l2 = Math.sqrt(1.0 * dx2 * dx2 + dy2 * dy2),
+
+                        dxm = (m1.x - m2.x),
+                        dym = (m1.y - m2.y),
+
+                        k = l2 / (l1 + l2),
+                        cm = {
+                            x: m2.x + dxm * k,
+                            y: m2.y + dym * k
+                        },
+
+                        tx = s2.x - cm.x,
+                        ty = s2.y - cm.y;
+
+                    return {
+                        c1: new Point(m1.x + tx, m1.y + ty),
+                        c2: new Point(m2.x + tx, m2.y + ty)
+                    };
+                };
+
+                SignaturePad.prototype._addCurve = function (curve) {
+                    var startPoint = curve.startPoint,
+                        endPoint = curve.endPoint,
+                        velocity, newWidth;
+
+                    velocity = endPoint.velocityFrom(startPoint);
+                    velocity = this.velocityFilterWeight * velocity +
+                        (1 - this.velocityFilterWeight) * this._lastVelocity;
+
+                    newWidth = this._strokeWidth(velocity);
+                    this._drawCurve(curve, this._lastWidth, newWidth);
+
+                    this._lastVelocity = velocity;
+                    this._lastWidth = newWidth;
+                };
+
+                SignaturePad.prototype._drawPoint = function (x, y, size) {
+                    var ctx = this._ctx;
+
+                    ctx.moveTo(x, y);
+                    ctx.arc(x, y, size, 0, 2 * Math.PI, false);
+                    this._isEmpty = false;
+                };
+
+                SignaturePad.prototype._drawMark = function (x, y, size) {
+                    var ctx = this._ctx;
+
+                    ctx.save();
+                    ctx.moveTo(x, y);
+                    ctx.arc(x, y, size, 0, 2 * Math.PI, false);
+                    ctx.fillStyle = 'rgba(255, 0, 0, 0.2)';
+                    ctx.fill();
+                    ctx.restore();
+                };
+
+                SignaturePad.prototype._drawCurve = function (curve, startWidth, endWidth) {
+                    var ctx = this._ctx,
+                        widthDelta = endWidth - startWidth,
+                        drawSteps, width, i, t, tt, ttt, u, uu, uuu, x, y;
+
+                    drawSteps = Math.floor(curve.length());
+                    ctx.beginPath();
+                    for (i = 0; i < drawSteps; i++) {
+                        // Calculate the Bezier (x, y) coordinate for this step.
+                        t = i / drawSteps;
+                        tt = t * t;
+                        ttt = tt * t;
+                        u = 1 - t;
+                        uu = u * u;
+                        uuu = uu * u;
+
+                        x = uuu * curve.startPoint.x;
+                        x += 3 * uu * t * curve.control1.x;
+                        x += 3 * u * tt * curve.control2.x;
+                        x += ttt * curve.endPoint.x;
+
+                        y = uuu * curve.startPoint.y;
+                        y += 3 * uu * t * curve.control1.y;
+                        y += 3 * u * tt * curve.control2.y;
+                        y += ttt * curve.endPoint.y;
+
+                        width = startWidth + ttt * widthDelta;
+                        this._drawPoint(x, y, width);
+                    }
+                    ctx.closePath();
+                    ctx.fill();
+                };
+
+                SignaturePad.prototype._strokeWidth = function (velocity) {
+                    return Math.max(this.maxWidth / (velocity + 1), this.minWidth);
+                };
+
+                var Point = function (x, y, time) {
+                    this.x = x;
+                    this.y = y;
+                    this.time = time || new Date().getTime();
+                };
+
+                Point.prototype.velocityFrom = function (start) {
+                    return (this.time !== start.time) ? this.distanceTo(start) / (this.time - start.time) : 1;
+                };
+
+                Point.prototype.distanceTo = function (start) {
+                    return Math.sqrt(Math.pow(this.x - start.x, 2) + Math.pow(this.y - start.y, 2));
+                };
+
+                var Bezier = function (startPoint, control1, control2, endPoint) {
+                    this.startPoint = startPoint;
+                    this.control1 = control1;
+                    this.control2 = control2;
+                    this.endPoint = endPoint;
+                };
+
+                // Returns approximated length.
+                Bezier.prototype.length = function () {
+                    var steps = 10,
+                        length = 0,
+                        i, t, cx, cy, px, py, xdiff, ydiff;
+
+                    for (i = 0; i <= steps; i++) {
+                        t = i / steps;
+                        cx = this._point(t, this.startPoint.x, this.control1.x, this.control2.x, this.endPoint.x);
+                        cy = this._point(t, this.startPoint.y, this.control1.y, this.control2.y, this.endPoint.y);
+                        if (i > 0) {
+                            xdiff = cx - px;
+                            ydiff = cy - py;
+                            length += Math.sqrt(xdiff * xdiff + ydiff * ydiff);
+                        }
+                        px = cx;
+                        py = cy;
+                    }
+                    return length;
+                };
+
+                Bezier.prototype._point = function (t, start, c1, c2, end) {
+                    return start * (1.0 - t) * (1.0 - t) * (1.0 - t) +
+                        3.0 * c1 * (1.0 - t) * (1.0 - t) * t +
+                        3.0 * c2 * (1.0 - t) * t * t +
+                        end * t * t * t;
+                };
+
+                return SignaturePad;
+            })(document);
+
+            var signaturePad = new SignaturePad(document.getElementById('signature-pad'), {
+                backgroundColor: 'rgba(255, 255, 255, 0)',
+                penColor: 'rgb(0, 0, 0)',
+                velocityFilterWeight: .7,
+                minWidth: 0.5,
+                maxWidth: 2.5,
+                throttle: 16, // max x milli seconds on event update, OBS! this introduces lag for event update
+                minPointDistance: 3,
+            });
+            var saveButton = document.getElementById('save'),
+                clearButton = document.getElementById('clear'),
+                showPointsToggle = document.getElementById('showPointsToggle');
+
+            // saveButton.addEventListener('click', function(event) {
+            //     var data = signaturePad.toDataURL('image/png');
+            //     window.open(data);
+            // });
+            clearButton.addEventListener('click', function (event) {
+                signaturePad.clear();
+            });
+        </script>
+    </body>
+</html>

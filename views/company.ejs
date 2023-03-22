@@ -135,6 +135,7 @@
                                                 <th>Company ID</th>
                                                 <th>Company Name</th>
                                                 <th>Alert</th>
+                                                <th>Active</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -196,22 +197,20 @@
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="form-group row">
+                                                                        <label for="username"
+                                                                            class="col-sm-3 text-right1 control-label col-form-label">Logo</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input id="fileupload" type="file" accept="image/png, image/jpeg, image/gif" onchange="convertToBase64('fileupload','fileupload_file');" />
+                                                                            <input type="hidden" name="fileupload_file" id="fileupload_file">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
                                                                         <label for="name"
                                                                             class="col-sm-3 control-label col-form-label">Name
                                                                             of the Company</label>
                                                                         <div class="col-md-9">
                                                                             <input type="text" class="form-control"
-                                                                                name="name" value="" id="name">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <label for="management_name"
-                                                                            class="col-sm-3 control-label col-form-label">Management
-                                                                            Name</label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control"
-                                                                                name="management_name" value=""
-                                                                                id="management_name">
+                                                                                name="name" required value="" id="name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -230,6 +229,149 @@
                                                                             <input required type="text"
                                                                                 class="form-control" name="password"
                                                                                 value="" id="password">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="companyAddress"
+                                                                            class="col-sm-3 control-label col-form-label">Company
+                                                                            Address</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" required class="form-control"
+                                                                                name="companyAddress" value="" id="companyAddress">
+                                                                        </div>
+                                                                    </div>
+                
+                                                                    <div class="form-group row">
+                                                                        <label for="companyCity"
+                                                                            class="col-sm-3 control-label col-form-label">City</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control" required name="companyCity"
+                                                                                value="" id="companyCity">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="companyCountry"
+                                                                            class="col-sm-3 control-label col-form-label">Company
+                                                                            Country</label>
+                                                                        <div class="col-md-9">
+                                                                            <select required class="form-select form-control" name="companyCountry"
+                                                                                id="companyCountry" onchange="get_province(this.value,'')">
+                                                                                <option value="">Select Country</option>
+                                                                                <option value="US">US</option>
+                                                                                <option value="Canada">Canada</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="companyProvince"
+                                                                            class="col-sm-3 control-label col-form-label">Company
+                                                                            Province/State</label>
+                                                                        <div class="col-md-9">
+                                                                            <select required class="form-select form-control" name="companyProvince"
+                                                                                id="companyProvince" >
+                                                                                <option value="" selected>Select Province/State</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="TimeZone"
+                                                                            class="col-sm-3 control-label col-form-label">Company
+                                                                            Timezone</label>
+                                                                        <div class="col-md-9">
+                                                                            <div class="col-xs-3 col-xs-offset-4">
+                                                                                <div id="calContainer">
+                                                                                    <input type="hidden" id="eventsCalTimezoneHidden">
+                                                                                    <select class="form-control timezone-selector"
+                                                                                    required name="eventsCalCountry" id="eventsCalCountry">
+                                                                                        <option value="CA">Canada</option>
+                                                                                        <option value="US">United States</option>
+                                                                                    </select>  <select
+                                                                                    class="form-control timezone-selector"
+                                                                                    name="eventsCalTimezone"
+                                                                                    id="eventsCalTimezone">
+                                                                                    <option value="Eastern">
+                                                                                        (UTC-05:00)
+                                                                                        Eastern</option>
+                                                                                    <option value="Central">
+                                                                                        (UTC-06:00)
+                                                                                        Central</option>
+                                                                                    <option value="Mountain">
+                                                                                        (UTC-07:00)
+                                                                                        Mountain</option>
+                                                                                    <option value="Mountain-AZ">
+                                                                                        (UTC-07:00)
+                                                                                        Mountain - AZ</option>
+                                                                                    <option value="Pacific">
+                                                                                        (UTC-08:00)
+                                                                                        Pacific</option>
+                                                                                    <option value="Alaskan">
+                                                                                        (UTC-09:00)
+                                                                                        Alaskan</option>
+                                                                                    <option value="Hawaiian">
+                                                                                        (UTC-10:00)
+                                                                                        Hawaiian</option>
+                
+                
+                                                                                    <option value="Newfoundland">
+                                                                                        (UTC-02:30) Newfoundland
+                                                                                    </option>
+                                                                                    <option value="Atlantic-Halifax">
+                                                                                        (UTC-03:00) Atlantic - Halifax
+                                                                                    </option>
+                                                                                    <option value="Eastern-Toronto">
+                                                                                        (UTC-04:00) Eastern - Toronto
+                                                                                    </option>
+                                                                                    <option value="Eastern-Iqaluitt">
+                                                                                        (UTC-04:00) Eastern - Iqaluit
+                                                                                    </option>
+                                                                                    <option value="Central-Winnipeg">
+                                                                                        (UTC-05:00) Central - Winnipeg
+                                                                                    </option>
+                                                                                    <option value="Central-Regina">
+                                                                                        (UTC-06:00) Central - Regina
+                                                                                    </option>
+                                                                                    <option value="Mountain-Edmonton">
+                                                                                        (UTC-06:00) Mountain - Edmonton
+                                                                                    </option>
+                                                                                    <option value="Mountain-Yellowknife">
+                                                                                        (UTC-06:00) Mountain -
+                                                                                        Yellowknife</option>
+                                                                                    <option
+                                                                                        value="Dawson-Creek">
+                                                                                        (UTC-07:00) Dawson Creek
+                                                                                    </option>
+                                                                                    <option value="Pacific-Vancouver">
+                                                                                        (UTC-07:00) Pacific - Vancouver
+                                                                                    </option>
+                                                                                    <option value="Pacific-Whitehorse">
+                                                                                        (UTC-07:00) Pacific - Whitehorse
+                                                                                    </option>
+                                                                                     </select>
+                                                                                </div>
+                
+                                                                            </div>
+                
+                
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="companyPostalCode"
+                                                                            class="col-sm-3 control-label col-form-label">Company
+                                                                            PostalCode</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" required class="form-control"
+                                                                                name="companyPostalCode" value=""
+                                                                                id="companyPostalCode">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="management_name"
+                                                                            class="col-sm-3 control-label col-form-label">Management
+                                                                            Name</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="management_name" value=""
+                                                                                id="management_name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -794,18 +936,8 @@
                                                                             class="col-sm-3 control-label col-form-label">Name
                                                                             of the Company</label>
                                                                         <div class="col-md-9">
-                                                                            <input type="text" class="form-control"
+                                                                            <input type="text" class="form-control" required
                                                                                 name="name" value="" id="name">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <label for="management_name"
-                                                                            class="col-sm-3 control-label col-form-label">Management
-                                                                            Name</label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control"
-                                                                                name="management_name" value=""
-                                                                                id="management_name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -824,6 +956,149 @@
                                                                             <input required type="text"
                                                                                 class="form-control" name="password"
                                                                                 value="" id="password">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="companyAddress"
+                                                                            class="col-sm-3 control-label col-form-label">Company
+                                                                            Address</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" required class="form-control"
+                                                                                name="companyAddress" value="" id="ecompanyAddress">
+                                                                        </div>
+                                                                    </div>
+                
+                                                                    <div class="form-group row">
+                                                                        <label for="companyCity"
+                                                                            class="col-sm-3 control-label col-form-label">City</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control" required name="companyCity"
+                                                                                value="" id="ecompanyCity">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="companyCountry"
+                                                                            class="col-sm-3 control-label col-form-label">Company
+                                                                            Country</label>
+                                                                        <div class="col-md-9">
+                                                                            <select class="form-select form-control" required name="companyCountry"
+                                                                                id="ecompanyCountry" onchange="get_province(this.value,'e')">
+                                                                                <option value="">Select Country</option>
+                                                                                <option value="US">US</option>
+                                                                                <option value="Canada">Canada</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="companyProvince"
+                                                                            class="col-sm-3 control-label col-form-label">Company
+                                                                            Province/State</label>
+                                                                        <div class="col-md-9">
+                                                                            <select class="form-select form-control" required name="companyProvince"
+                                                                                id="ecompanyProvince" >
+                                                                                <option value="" selected>Select Province/State</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="TimeZone"
+                                                                            class="col-sm-3 control-label col-form-label">Company
+                                                                            Timezone</label>
+                                                                        <div class="col-md-9">
+                                                                            <div class="col-xs-3 col-xs-offset-4">
+                                                                                <div id="calContainer">
+                                                                                    <input type="hidden" id="eeventsCalTimezoneHidden">
+                                                                                    <select class="form-control timezone-selector" required
+                                                                                        name="eventsCalCountry" id="eeventsCalCountry">
+                                                                                        <option value="CA">Canada</option>
+                                                                                        <option value="US">United States</option>
+                                                                                    </select>  <select
+                                                                                    class="form-control timezone-selector"
+                                                                                    name="eventsCalTimezone"
+                                                                                    id="eventsCalTimezone">
+                                                                                    <option value="Eastern">
+                                                                                        (UTC-05:00)
+                                                                                        Eastern</option>
+                                                                                    <option value="Central">
+                                                                                        (UTC-06:00)
+                                                                                        Central</option>
+                                                                                    <option value="Mountain">
+                                                                                        (UTC-07:00)
+                                                                                        Mountain</option>
+                                                                                    <option value="Mountain-AZ">
+                                                                                        (UTC-07:00)
+                                                                                        Mountain - AZ</option>
+                                                                                    <option value="Pacific">
+                                                                                        (UTC-08:00)
+                                                                                        Pacific</option>
+                                                                                    <option value="Alaskan">
+                                                                                        (UTC-09:00)
+                                                                                        Alaskan</option>
+                                                                                    <option value="Hawaiian">
+                                                                                        (UTC-10:00)
+                                                                                        Hawaiian</option>
+                
+                
+                                                                                    <option value="Newfoundland">
+                                                                                        (UTC-02:30) Newfoundland
+                                                                                    </option>
+                                                                                    <option value="Atlantic-Halifax">
+                                                                                        (UTC-03:00) Atlantic - Halifax
+                                                                                    </option>
+                                                                                    <option value="Eastern-Toronto">
+                                                                                        (UTC-04:00) Eastern - Toronto
+                                                                                    </option>
+                                                                                    <option value="Eastern-Iqaluitt">
+                                                                                        (UTC-04:00) Eastern - Iqaluit
+                                                                                    </option>
+                                                                                    <option value="Central-Winnipeg">
+                                                                                        (UTC-05:00) Central - Winnipeg
+                                                                                    </option>
+                                                                                    <option value="Central-Regina">
+                                                                                        (UTC-06:00) Central - Regina
+                                                                                    </option>
+                                                                                    <option value="Mountain-Edmonton">
+                                                                                        (UTC-06:00) Mountain - Edmonton
+                                                                                    </option>
+                                                                                    <option value="Mountain-Yellowknife">
+                                                                                        (UTC-06:00) Mountain -
+                                                                                        Yellowknife</option>
+                                                                                    <option
+                                                                                        value="Dawson-Creek">
+                                                                                        (UTC-07:00) Dawson Creek
+                                                                                    </option>
+                                                                                    <option value="Pacific-Vancouver">
+                                                                                        (UTC-07:00) Pacific - Vancouver
+                                                                                    </option>
+                                                                                    <option value="Pacific-Whitehorse">
+                                                                                        (UTC-07:00) Pacific - Whitehorse
+                                                                                    </option>
+                                                                                     </select>
+                                                                                </div>
+                
+                                                                            </div>
+                
+                
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="companyPostalCode"
+                                                                            class="col-sm-3 control-label col-form-label">Company
+                                                                            PostalCode</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="companyPostalCode" required value=""
+                                                                                id="ecompanyPostalCode">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="management_name"
+                                                                            class="col-sm-3 control-label col-form-label">Management
+                                                                            Name</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="management_name" value=""
+                                                                                id="management_name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -1392,16 +1667,6 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label for="management_name"
-                                                                        class="col-sm-3 control-label col-form-label">Management
-                                                                        Name</label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="text" class="form-control"
-                                                                            name="management_name" value=""
-                                                                            id="management_name">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
                                                                     <label for="username"
                                                                         class="col-sm-3 control-label col-form-label">Username</label>
                                                                     <div class="col-md-9">
@@ -1416,6 +1681,149 @@
                                                                     <div class="col-md-9">
                                                                         <input required type="text" class="form-control"
                                                                             name="password" value="" id="password">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="companyAddress"
+                                                                        class="col-sm-3 control-label col-form-label">Company
+                                                                        Address</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="companyAddress" value="" id="vcompanyAddress">
+                                                                    </div>
+                                                                </div>
+            
+                                                                <div class="form-group row">
+                                                                    <label for="companyCity"
+                                                                        class="col-sm-3 control-label col-form-label">City</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control" name="companyCity"
+                                                                            value="" id="vcompanyCity">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="companyCountry"
+                                                                        class="col-sm-3 control-label col-form-label">Company
+                                                                        Country</label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-select form-control" name="companyCountry"
+                                                                            id="vcompanyCountry" onchange="get_province(this.value,'v')">
+                                                                            <option value="">Select Country</option>
+                                                                            <option value="US">US</option>
+                                                                            <option value="Canada">Canada</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="companyProvince"
+                                                                        class="col-sm-3 control-label col-form-label">Company
+                                                                        Province/State</label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-select form-control" name="companyProvince"
+                                                                            id="vcompanyProvince" >
+                                                                            <option value="" selected>Select Province/State</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="TimeZone"
+                                                                        class="col-sm-3 control-label col-form-label">Company
+                                                                        Timezone</label>
+                                                                    <div class="col-md-9">
+                                                                        <div class="col-xs-3 col-xs-offset-4">
+                                                                            <div id="calContainer">
+                                                                                <input type="hidden" id="veventsCalTimezoneHidden">
+                                                                                <select class="form-control timezone-selector"
+                                                                                    name="eventsCalCountry" id="eventsCalCountry">
+                                                                                    <option value="CA">Canada</option>
+                                                                                    <option value="US">United States</option>
+                                                                                </select>  <select
+                                                                                class="form-control timezone-selector"
+                                                                                name="eventsCalTimezone"
+                                                                                id="eventsCalTimezone">
+                                                                                <option value="Eastern">
+                                                                                    (UTC-05:00)
+                                                                                    Eastern</option>
+                                                                                <option value="Central">
+                                                                                    (UTC-06:00)
+                                                                                    Central</option>
+                                                                                <option value="Mountain">
+                                                                                    (UTC-07:00)
+                                                                                    Mountain</option>
+                                                                                <option value="Mountain-AZ">
+                                                                                    (UTC-07:00)
+                                                                                    Mountain - AZ</option>
+                                                                                <option value="Pacific">
+                                                                                    (UTC-08:00)
+                                                                                    Pacific</option>
+                                                                                <option value="Alaskan">
+                                                                                    (UTC-09:00)
+                                                                                    Alaskan</option>
+                                                                                <option value="Hawaiian">
+                                                                                    (UTC-10:00)
+                                                                                    Hawaiian</option>
+            
+            
+                                                                                <option value="Newfoundland">
+                                                                                    (UTC-02:30) Newfoundland
+                                                                                </option>
+                                                                                <option value="Atlantic-Halifax">
+                                                                                    (UTC-03:00) Atlantic - Halifax
+                                                                                </option>
+                                                                                <option value="Eastern-Toronto">
+                                                                                    (UTC-04:00) Eastern - Toronto
+                                                                                </option>
+                                                                                <option value="Eastern-Iqaluitt">
+                                                                                    (UTC-04:00) Eastern - Iqaluit
+                                                                                </option>
+                                                                                <option value="Central-Winnipeg">
+                                                                                    (UTC-05:00) Central - Winnipeg
+                                                                                </option>
+                                                                                <option value="Central-Regina">
+                                                                                    (UTC-06:00) Central - Regina
+                                                                                </option>
+                                                                                <option value="Mountain-Edmonton">
+                                                                                    (UTC-06:00) Mountain - Edmonton
+                                                                                </option>
+                                                                                <option value="Mountain-Yellowknife">
+                                                                                    (UTC-06:00) Mountain -
+                                                                                    Yellowknife</option>
+                                                                                <option
+                                                                                    value="Dawson-Creek">
+                                                                                    (UTC-07:00) Dawson Creek
+                                                                                </option>
+                                                                                <option value="Pacific-Vancouver">
+                                                                                    (UTC-07:00) Pacific - Vancouver
+                                                                                </option>
+                                                                                <option value="Pacific-Whitehorse">
+                                                                                    (UTC-07:00) Pacific - Whitehorse
+                                                                                </option>
+                                                                                 </select>
+                                                                            </div>
+            
+                                                                        </div>
+            
+            
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="companyPostalCode"
+                                                                        class="col-sm-3 control-label col-form-label">Company
+                                                                        PostalCode</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="companyPostalCode" value=""
+                                                                            id="vcompanyPostalCode">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="management_name"
+                                                                        class="col-sm-3 control-label col-form-label">Management
+                                                                        Name</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" class="form-control"
+                                                                            name="management_name" value=""
+                                                                            id="management_name">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -2029,6 +2437,68 @@
                 })
             });
 
+            $(document).on('click', '.statuscheckbox', function () {
+                let id = $(this).attr('data-id');
+                let status;
+                // alert(id)
+                if(this.checked == true){
+                    status = 1
+                }else{
+                    status = 0
+                }
+               /* Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You Want update status?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {*/
+
+
+                        $.ajax({
+                            url: "/updatestatusCompany",
+                            type: "POST",
+                            data: { id: id,status:status },
+                            success: function (data) {
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    }); setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+
+                            }
+                        });
+
+
+                   /* }
+                })*/
+            });
+
+
 
             /****************************************
              *       Basic Table                   *
@@ -2074,6 +2544,7 @@
                         { "data": "id" },
                         { "data": "name" },
                         { "data": "alert" },
+                        { "data": "status" },
                         { "data": "action" }
                     ],
                     select: true
@@ -2182,6 +2653,14 @@
                             $('body #viewmodal #view_company_details #dashcam_password').val(data.data.dashcam_password);
                             $('body #viewmodal #view_company_details #trailer_trackers').val(data.data.trailer_trackers);
                             $('body #viewmodal #view_company_details #trailer_password').val(data.data.trailer_password);
+                            $('body #viewmodal #view_company_details #vcompanyAddress').val(data.data.companyAddress);
+                            $('body #viewmodal #view_company_details #vcompanyCity').val(data.data.companyCity);
+                            $('body #viewmodal #view_company_details #vcompanyCountry').val(data.data.companyCountry);
+                            get_province(data.data.companyCountry,'v');
+                            $('body #viewmodal #view_company_details #vcompanyProvince').val(data.data.companyProvince);
+                            $('body #viewmodal #view_company_details #veventsCalTimezone').val(data.data.eventsCalTimezone);
+                            $('body #viewmodal #view_company_details #veventsCalCountry').val(data.data.eventsCalCountry);
+                            $('body #viewmodal #view_company_details #vcompanyPostalCode').val(data.data.companyPostalCode);
                             $('body #viewmodal').modal('show');
                         } else {
                             // Swal.fire('Any fool can use a computer')
@@ -2265,6 +2744,14 @@
                             $('body #editmodal #edit_company_details #dashcam_password').val(data.data.dashcam_password);
                             $('body #editmodal #edit_company_details #trailer_trackers').val(data.data.trailer_trackers);
                             $('body #editmodal #edit_company_details #trailer_password').val(data.data.trailer_password);
+                            $('body #editmodal #edit_company_details #ecompanyAddress').val(data.data.companyAddress);
+                            $('body #editmodal #edit_company_details #ecompanyCity').val(data.data.companyCity);
+                            $('body #editmodal #edit_company_details #ecompanyCountry').val(data.data.companyCountry);
+                            get_province(data.data.companyCountry,'e');
+                            $('body #editmodal #edit_company_details #ecompanyProvince').val(data.data.companyProvince);
+                            $('body #editmodal #edit_company_details #eeventsCalTimezone').val(data.data.eventsCalTimezone);
+                            $('body #editmodal #edit_company_details #eeventsCalCountry').val(data.data.eventsCalCountry);
+                            $('body #editmodal #edit_company_details #ecompanyPostalCode').val(data.data.companyPostalCode);
                             $('body #editmodal').modal('show');
                         } else {
                             // Swal.fire('Any fool can use a computer')
@@ -2539,6 +3026,36 @@
                     }
                 })
             });
+
+            function get_province(country,a)
+			{
+				$('#companyProvince').children('option:not(:first)').remove();
+				if(country=='Canada' )
+				{
+					
+					$("#"+a+"companyProvince").append('<option value="AB">AB</option>');
+					$("#"+a+"companyProvince").append('<option value="BC">BC</option>');
+					$("#"+a+"companyProvince").append('<option value="MB">MB</option>');
+					$("#"+a+"companyProvince").append('<option value="NB">NB</option>');
+					$("#"+a+"companyProvince").append('<option value="NF">NF</option>');
+					$("#"+a+"companyProvince").append('<option value="NT">NT</option>');
+					$("#"+a+"companyProvince").append('<option value="NU">NU</option>');
+					$("#"+a+"companyProvince").append('<option value="ON">ON</option>');
+					$("#"+a+"companyProvince").append('<option value="PE">PE</option>');
+					$("#"+a+"companyProvince").append('<option value="PQ">PQ</option>');
+					$("#"+a+"companyProvince").append('<option value="SK">SK</option>');
+					$("#"+a+"companyProvince").append('<option value="YT">YT</option>');
+				}
+				else if(country=='US' )
+				{
+					$("#"+a+"companyProvince").append('<option value="AS">AS</option>');
+					$("#"+a+"companyProvince").append('<option value="GU">GU</option>');
+					$("#"+a+"companyProvince").append('<option value="MP">MP</option>');
+					$("#"+a+"companyProvince").append('<option value="PR">PR</option>');
+					$("#"+a+"companyProvince").append('<option value="VI">VI</option>');
+				}
+				return true;
+			}
 
 
         </script>

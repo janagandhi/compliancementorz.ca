@@ -156,15 +156,14 @@
                                         <div class="card">
                                             <!-- <img src="/images/default-profile-picture.jpg"> -->
 
-                                            <%if (getUsers.image.length> 0) { %>
-                                                <img src="/uploads/<%- getUsers.image %>">
+                                            <%if (getUsers.logo!="" && getUsers.logo!=null && getUsers.logo.length> 0) { %>
+                                                <img src="uploads/company_logo/<%- getUsers.logo %>">
                                                 <% } else { %>
                                                     <img src="/images/default-profile-picture.jpg">
                                                     <% } %>
 
-                                                        <a class="open-modal l but lrg w3-button w3-green w3-margin">Update
-                                                            Profile Picture</a>
-
+                                                       <!--<a class="open-modal l but lrg w3-button w3-green w3-margin">Update Profile Picture</a>-->
+													<a class=" l but lrg w3-button w3-green w3-margin" onclick="chooseFile();">Choose Profile Picture</a>
                                         </div>
                                     </div>
 
@@ -176,6 +175,10 @@
                                             <form class="form-horizontal" id="UpdateProfile">
                                                 <div class="card-body">
                                                     <h4 align="center" class="card-title">Update Profile</h4>
+													<div  style="display:none">
+                                                   <input  type="file" id="fileupload" accept="image/png, image/jpeg, image/gif" onchange="convertToBase64('fileupload','fileupload_file');"/>
+												   <input type="hidden" name="fileupload_file" id="fileupload_file">
+													</div>
                                                     <div class="form-group row">
                                                         <label for="username"
                                                             class="col-sm-3 text-right control-label col-form-label">username</label>
@@ -292,19 +295,63 @@
 
 
                     <script>
+                        function convertToBase64(inputfile, parms) {
+                            var selectedFile = document.getElementById(inputfile).files;
+                            console.log(selectedFile);
+                            //Check File is not Empty
+                            if (selectedFile.length > 0) {
+                                // Select the very first file from list
+                                var fileToLoad = selectedFile[0];
+                                var filesize = selectedFile[0].size;
+                                if (filesize <= '2069405') {
+                                    console.log(filesize);
+                                    // FileReader function for read the file.
+                                    var fileReader = new FileReader();
+                                    var base64;
+                                    // Onload of file read the file content
+                                    fileReader.onload = function (fileLoadedEvent) {
+                                        base64 = fileLoadedEvent.target.result;
+                                        // Print data in console
+                                        console.log(parms);
+                                        $("#" + parms).val(base64);
+                                        var div = document.getElementById(parms);
+                                        div.innerHTML += base64;
+
+                                    };
+                                    // Convert data to base64
+                                    fileReader.readAsDataURL(fileToLoad);
+                                } else {
+                                    Swal.fire(
+                                        'Too Big!',
+                                        'Upload image size within 2 MB.',
+                                        'danger'
+                                    )
+                                    return false;
+                                }
+                            }
+                        }
+						function chooseFile(){
+							$("#fileupload").click();
+						}
                         $(document).ready(function () {
                             $("#save_image").hide();
             
             
-            
+						
             
                             $('#UpdateProfile').submit(function (event) {
                                 event.preventDefault();
                                 let formdata = $('#UpdateProfile').serialize();
+                                var values = {};
+                                $.each($('#UpdateProfile').serializeArray(), function (i, field) {
+                                    values[field.name] = field.value;
+                                    // console.log(values[field.name]);
+                                });
+                                console.info(values);
                                 $.ajax({
                                     url: '/UpdateProfile',
                                     method: 'POST',
-                                    data: formdata,
+                                    data: values,
                                     success: function (data) {
                                         if (data.status) {
                                             const Toast = Swal.mixin({
@@ -336,6 +383,8 @@
                                 event.preventDefault();
                                 let base64image = $('.result-image').attr('src');
                                 // console.log(base64image);
+								var fileupload_file = $('#fileupload_file').val();
+	console.log(fileupload_file);
             
                                 // postvalues = {base64image: base64image};
                                 // postvalues = base64image;

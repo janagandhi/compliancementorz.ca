@@ -1,95 +1,254 @@
 <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin5">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-            
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav" class="p-t-30">
-                      <h4 style="border-radius: 35px;background-color: #27a9e369;text-align: center;color: #fff;"> <%= sessName %></h4>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companydashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li> 
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/driver" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Manage Driver</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/truck" aria-expanded="false"><i class="mdi mdi-truck"></i><span class="hide-menu">Manage Truck</span></a></li> 
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/trailer" aria-expanded="false"><i class="mdi mdi-truck-trailer"></i><span class="hide-menu">Manage Trailer</span></a></li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-bell"></i><span class="hide-menu">Manage Alerts </span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                              <li class="sidebar-item">
-                               <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/GetDriveralertModule" aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Driver Alert</span></a>
-                              </li>
-                              <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/GettruckalertModule" aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Truck Alert</span></a>
-                               </li>
-                               <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="GettraileralertModule" aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Trailer Alert</span></a>
-                               </li>
-                            </ul>
-                          </li>
-                          <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Manage Alerts History </span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                              <li class="sidebar-item">
-                               <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/GetDriveralerthistory" aria-expanded="false"><i class="mdi mdi-bell"></i><span class="hide-menu">Driver Alert History</span></a>
-                              </li>
-                              <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/GetTruckalerthistory" aria-expanded="false"><i class="mdi mdi-bell"></i><span class="hide-menu">Truck Alert History</span></a>
-                               </li>
-                               <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/GetTraileralerthistory" aria-expanded="false"><i class="mdi mdi-bell"></i><span class="hide-menu">Trailer Alert History</span></a>
-                               </li>
-                            </ul>
-                          </li>
-                          <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-folder-plus"></i><span class="hide-menu">Driver Application Form </span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                              <li class="sidebar-item">
-                               <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companyupdateDriverDetailsForm" aria-expanded="false"><i class="mdi mdi-folder-star"></i><span class="hide-menu">Personal Information</span></a>
-                              </li>
-                              <li class="sidebar-item">
-                               <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companyemploymenthistoryForm" aria-expanded="false"><i class="mdi mdi-folder-upload"></i><span class="hide-menu">Employment History</span></a>
-                              </li>
-                              <li class="sidebar-item">
-                               <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companydrivingHistoryForm" aria-expanded="false"><i class="mdi mdi-folder-multiple"></i><span class="hide-menu">Driving History</span></a>
-                              </li>
-                              
-                            </ul>
-                          </li>
-                           <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/updatecompanymotorVehicleCertificate" aria-expanded="false"><i class="mdi mdi-certificate"></i><span class="hide-menu">Certificate</span></a>
-                           </li>
-                           <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/hosCompany" aria-expanded="false"><i class="mdi mdi-alarm-check"></i><span class="hide-menu">Hos</span></a>
-                           </li>
+<!-- End Topbar header -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar" data-sidebarbg="skin5">
+  <!-- Sidebar scroll-->
+  <div class="scroll-sidebar">
 
-                           <li class="sidebar-item">
-                            <a target="_blank" class="sidebar-link waves-effect waves-dark sidebar-link" href="https://ashaviglobal.com/agreement/"
-                              aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Annual Review</span></a>
-                          </li>
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav">
+      <ul id="sidebarnav" class="p-t-30">
+        <h4 style="border-radius: 35px;background-color: #27a9e369;text-align: center;color: #fff;">
+          <%= sessName %>
+        </h4>
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companydashboard"
+            aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
+        </li>
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/driver"
+            aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Manage Driver</span></a></li>
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/truck"
+            aria-expanded="false"><i class="mdi mdi-truck"></i><span class="hide-menu">Manage Truck</span></a></li>
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/trailer"
+            aria-expanded="false"><i class="mdi mdi-truck-trailer"></i><span class="hide-menu">Manage Trailer</span></a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+              class="mdi mdi-bell"></i><span class="hide-menu">Manage Alerts </span></a>
+          <ul aria-expanded="false" class="collapse first-level">
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/GetDriveralertModule"
+                aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Driver Alert</span></a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/GettruckalertModule"
+                aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Truck Alert</span></a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="GettraileralertModule"
+                aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Trailer Alert</span></a>
+            </li>
+          </ul>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+              class="mdi mdi-alert"></i><span class="hide-menu">Manage Alerts History </span></a>
+          <ul aria-expanded="false" class="collapse first-level">
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/GetDriveralerthistory"
+                aria-expanded="false"><i class="mdi mdi-bell"></i><span class="hide-menu">Driver Alert
+                  History</span></a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/GetTruckalerthistory"
+                aria-expanded="false"><i class="mdi mdi-bell"></i><span class="hide-menu">Truck Alert History</span></a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/GetTraileralerthistory"
+                aria-expanded="false"><i class="mdi mdi-bell"></i><span class="hide-menu">Trailer Alert
+                  History</span></a>
+            </li>
+          </ul>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+              class="mdi mdi-folder-plus"></i><span class="hide-menu">Driver Application Form </span></a>
+          <ul aria-expanded="false" class="collapse first-level">
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companyupdateDriverDetailsForm"
+                aria-expanded="false"><i class="mdi mdi-folder-star"></i><span class="hide-menu">Personal
+                  Information</span></a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companyemploymenthistoryForm"
+                aria-expanded="false"><i class="mdi mdi-folder-upload"></i><span class="hide-menu">Employment
+                  History</span></a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companydrivingHistoryForm"
+                aria-expanded="false"><i class="mdi mdi-folder-multiple"></i><span class="hide-menu">Driving
+                  History</span></a>
+            </li>
 
-                          <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="generateReportCompany" aria-expanded="false"><i class="mdi mdi-file-pdf"></i><span class="hide-menu">Genrerate Report</span></a></li>
-                          <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="companyfileuploadForm" aria-expanded="false"><i class="mdi mdi-folder-upload"></i><span class="hide-menu">File Upload</span></a></li>
+          </ul>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/updatecompanymotorVehicleCertificate"
+            aria-expanded="false"><i class="mdi mdi-certificate"></i><span class="hide-menu">Certificate</span></a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/hosCompany" aria-expanded="false"><i
+              class="mdi mdi-alarm-check"></i><span class="hide-menu">Hours of Service</span></a>
+        </li>
+
+        <!--<li class="sidebar-item">
+          <a target="_blank" class="sidebar-link waves-effect waves-dark sidebar-link"
+            href="https://ashaviglobal.com/agreement/" aria-expanded="false"><i class="mdi mdi-account"></i><span
+              class="hide-menu">Annual Review</span></a>
+        </li>-->
+
+        <li class="sidebar-item">
+          <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Annual Review </span></a>
+           <ul aria-expanded="false" class="collapse first-level">
+        <li class="sidebar-item">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companyAnnualReview" aria-expanded="false"><i
+              class="mdi mdi-book-open"></i><span class="hide-menu">ANNUAL REVIEW OF DRIVING RECORD</span></a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companymotordriver" aria-expanded="false"><i
+              class="mdi mdi-worker"></i><span class="hide-menu">MOTOR VEHICLE DRIVER’S CERTIFICATION OF Violations</span></a>
+        </li>
+      </ul>
+    </li>
+
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+            href="generateReportCompany" aria-expanded="false"><i class="mdi mdi-file-pdf"></i><span
+              class="hide-menu">Genrerate Report</span></a></li>
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+            href="companyfileuploadForm" aria-expanded="false"><i class="mdi mdi-folder-upload"></i><span
+              class="hide-menu">File Upload</span></a></li>
+        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Questionnaire </span></a>
+                             <ul aria-expanded="false" class="collapse first-level">
                           <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companyQuestions" aria-expanded="false"><i
-                                class="mdi mdi-comment-question-outline"></i><span class="hide-menu">Invterview Questions</span></a>
+                                class="mdi mdi-book-open"></i><span class="hide-menu">Invterview Questions</span></a>
+                          </li>
+						  <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companydrivermanual" aria-expanded="false"><i
+                                class="mdi mdi-worker"></i><span class="hide-menu">Driver Manual</span></a>
+                          </li>
+                        </ul>
+                      </li>
+       <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-calendar-question"></i><span class="hide-menu">Quiz</span></a>
+                            <ul aria-expanded="false" class="collapse first-level">
+						  <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companycanadahosmanual" aria-expanded="false"><i
+class="mdi mdi-comment-question-outline"></i><span class="hide-menu">HOS Questionnaire for Canada </span></a>
                           </li>
                           <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companydrivermanual" aria-expanded="false"><i
-                                class="mdi mdi-comment-question-outline"></i><span class="hide-menu">Driver Manual</span></a>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companyusquestionmanual" aria-expanded="false"><i
+class="mdi mdi-comment-question-outline"></i><span class="hide-menu">HOS Questionnaire for US </span></a>
                           </li>
+                          <li class="sidebar-item weightdimensions">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companyweightDimensions" aria-expanded="false"><i
+    class="mdi mdi-weight"></i><span class="hide-menu">Weight & Dimensions </span></a>
+                          </li>
+                          <li class="sidebar-item safetylawsquiz">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companysafetylaws" aria-expanded="false"><i
+                                class="mdi mdi-lock"></i><span class="hide-menu">Safety Laws Quiz </span></a>
+                          </li>
+                        </ul>
+                      </li>
+       <li class="sidebar-item flatbed_checklists_item all_checklist">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-mouse"></i><span class="hide-menu">Check Lists </span></a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                          <li class="sidebar-item flatbed_checklists_item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companyflatbed_Checklists" aria-expanded="false"><i
+                              class="mdi mdi-checkbox-marked"></i><span class="hide-menu">Flabted Checklist </span></a>
+                          </li>
+                          <li class="sidebar-item orientation_Checklists_item ">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companyorientation_Checklists" aria-expanded="false"><i
+class="mdi mdi-checkbox-marked-outline"></i><span class="hide-menu">Dry Van Checklist </span></a>
+                          </li>
+                          <li class="sidebar-item dry_van_checklists_item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/companydryvan_Checklists" aria-expanded="false"><i
+class="mdi mdi-check"></i><span class="hide-menu">Dump Truck Checklist </span></a>
+                          </li>
+                        </ul>
+                      </li>
+                      
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
         </aside>
+        
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
+<script>
+function checklist(){
+  $('#flatbed_checklists_item').hide();
+	$('#orientation_Checklists_item').hide();
+	$('#dry_van_checklists_item').hide();
+  $('.all_checklist').hide();
+	$.ajax({
+		url: "/getcompanychecklists",
+		type: "GET",
+		data: {},
+		success: function (data) {
+			$('.flatbed_checklists_item').hide();
+			$('.orientation_Checklists_item').hide();
+			$('.dry_van_checklists_item').hide();
+			if (data.status) {
+				if(data.data.flatbed_checklists==1){
+					$('.flatbed_checklists_item').show();
+          $('.all_checklist').show();
+        }
+				if(data.data.orientation_Checklists==1){	
+					$('.orientation_Checklists_item').show();
+          $('.all_checklist').show();
+        }
+				if(data.data.dry_van_checklists==1){
+					$('.dry_van_checklists_item').show();
+          $('.all_checklist').show();
+        }
+			}
+      
+		}
+	});
+}
+function quiz(){
+  $('.weightdimensions').hide();
+  $('.safetylawsquiz').hide();
+	$.ajax({
+		url: "/getcompanyquiz",
+		type: "GET",
+		data: {},
+		success: function (data) {
+      $('.weightdimensions').hide();
+      $('.safetylawsquiz').hide();
+			if (data.status) {
+        if(data.data.weightdimensions==1){
+          $('.weightdimensions').show();
+        }
+        if(data.data.safetylawsquiz==1){
+          $('.safetylawsquiz').show();
+        }
+			}
+      
+		}
+	});
+}
+function cheklogo(){
+  $.ajax({
+		url: "/getcompanylogo",
+		type: "GET",
+		data: {company_id:''},
+		success: function (data) {
+			$(".light-logo").attr("src",data.data);
+		}
+	});
+}
+function disclaimer(){
+	$('.sidebar-nav').show();
+}
+</script>

@@ -417,8 +417,10 @@
 
                                             <input type="hidden" class="form-control" value="<%- driverID %>"
                                                 name="driverId" value="" id="id">
-                                            <input type="hidden" class="form-control" value="<%- company_id %>"
-                                                name="company_id" value="" id="company_id">
+                                                <input type="hidden" class="form-control" value="<%- driverID %>"
+                                                name="driverId" value="" id="id">
+                                            <input type="hidden" class="form-control" value="<%- getaddress %>"
+                                                name="getaddress" value="" id="getaddress">
                                             <input type="hidden" class="form-control" name="approveStatus" value="0"
                                                 id="approveStatus">
                                             <input type="hidden" class="form-control" name="actionData" value=""
@@ -480,22 +482,15 @@
                                                                 value="" id="companyCity">
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
-                                                        <label for="companyState"
-                                                            class="col-sm-3 control-label col-form-label">Company
-                                                            State</label>
-                                                        <div class="col-md-9">
-                                                            <input type="text" class="form-control" name="companyState"
-                                                                value="" id="companyState">
-                                                        </div>
-                                                    </div>
+                                                    <!--<div class="form-group row"><label for="companyState" class="col-sm-3 control-label col-form-label">Company State</label><div class="col-md-9"><input type="text" class="form-control" name="companyState" value="" id="companyState"></div></div> -->
+													<input type="hidden" name="companyState" value="" id="companyState">
                                                     <div class="form-group row">
                                                         <label for="companyCountry"
                                                             class="col-sm-3 control-label col-form-label">Company
                                                             Country</label>
                                                         <div class="col-md-9">
                                                             <select class="form-select" name="companyCountry"
-                                                                id="companyCountry">
+                                                                id="companyCountry" onchange="get_province(this.value)">
                                                                 <option value="">Select Country</option>
                                                                 <option value="US">US</option>
                                                                 <option value="Canada">Canada</option>
@@ -505,10 +500,12 @@
                                                     <div class="form-group row">
                                                         <label for="companyProvince"
                                                             class="col-sm-3 control-label col-form-label">Company
-                                                            Province</label>
+                                                            Province/State</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" class="form-control"
-                                                                name="companyProvince" value="" id="companyProvince">
+															<select class="form-select form-control" name="companyProvince"
+                                                                id="companyProvince" >
+                                                                <option value="" selected>Select Province/State</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -528,47 +525,67 @@
                                                                         name="eventsCalCountry" id="eventsCalCountry">
                                                                         <option value="CA">Canada</option>
                                                                         <option value="US">United States</option>
-                                                                    </select> <select
+                                                                    </select>  <select
                                                                     class="form-control timezone-selector"
-                                                                    name="eventsCalTimezone" id="eventsCalTimezone">
-                                                                    <option value="Eastern">(UTC-05:00)
+                                                                    name="eventsCalTimezone"
+                                                                    id="eventsCalTimezone">
+                                                                    <option value="Eastern">
+                                                                        (UTC-05:00)
                                                                         Eastern</option>
-                                                                    <option value="Central">(UTC-06:00)
+                                                                    <option value="Central">
+                                                                        (UTC-06:00)
                                                                         Central</option>
-                                                                    <option value="Mountain">(UTC-07:00)
+                                                                    <option value="Mountain">
+                                                                        (UTC-07:00)
                                                                         Mountain</option>
-                                                                    <option value="Mountain-AZ">(UTC-07:00)
+                                                                    <option value="Mountain-AZ">
+                                                                        (UTC-07:00)
                                                                         Mountain - AZ</option>
-                                                                    <option value="Pacific">(UTC-08:00)
+                                                                    <option value="Pacific">
+                                                                        (UTC-08:00)
                                                                         Pacific</option>
-                                                                    <option value="Alaskan">(UTC-09:00)
+                                                                    <option value="Alaskan">
+                                                                        (UTC-09:00)
                                                                         Alaskan</option>
-                                                                    <option value="Hawaiian">(UTC-10:00)
+                                                                    <option value="Hawaiian">
+                                                                        (UTC-10:00)
                                                                         Hawaiian</option>
 
 
-                                                                    <option value="Newfoundland">(UTC-02:30)
-                                                                        Newfoundland</option>
-                                                                    <option value="Atlantic-Halifax">(UTC-03:00)
-                                                                        Atlantic - Halifax</option>
-                                                                    <option value="Eastern-Toronto">(UTC-04:00)
-                                                                        Eastern - Toronto</option>
-                                                                    <option value="Eastern-Iqaluit">(UTC-04:00)
-                                                                        Eastern - Iqaluit</option>
-                                                                    <option value="Central-Winnipeg">(UTC-05:00)
-                                                                        Central - Winnipeg</option>
-                                                                    <option value="Central-Regina">(UTC-06:00)
-                                                                        Central - Regina</option>
-                                                                    <option value="Mountain-Edmonton">(UTC-06:00)
-                                                                        Mountain - Edmonton</option>
-                                                                    <option value="Mountain-Yellowknife">(UTC-06:00)
-                                                                        Mountain - Yellowknife</option>
-                                                                    <option value="Dawson Creek">(UTC-07:00)
-                                                                        Dawson Creek</option>
-                                                                    <option value="Pacific-Vancouver">(UTC-07:00)
-                                                                        Pacific - Vancouver</option>
-                                                                    <option value="Pacific-Whitehorse">(UTC-07:00)
-                                                                        Pacific - Whitehorse</option>
+                                                                    <option value="Newfoundland">
+                                                                        (UTC-02:30) Newfoundland
+                                                                    </option>
+                                                                    <option value="Atlantic-Halifax">
+                                                                        (UTC-03:00) Atlantic - Halifax
+                                                                    </option>
+                                                                    <option value="Eastern-Toronto">
+                                                                        (UTC-04:00) Eastern - Toronto
+                                                                    </option>
+                                                                    <option value="Eastern-Iqaluitt">
+                                                                        (UTC-04:00) Eastern - Iqaluit
+                                                                    </option>
+                                                                    <option value="Central-Winnipeg">
+                                                                        (UTC-05:00) Central - Winnipeg
+                                                                    </option>
+                                                                    <option value="Central-Regina">
+                                                                        (UTC-06:00) Central - Regina
+                                                                    </option>
+                                                                    <option value="Mountain-Edmonton">
+                                                                        (UTC-06:00) Mountain - Edmonton
+                                                                    </option>
+                                                                    <option value="Mountain-Yellowknife">
+                                                                        (UTC-06:00) Mountain -
+                                                                        Yellowknife</option>
+                                                                    <option
+                                                                        value="Dawson-Creek">
+                                                                        (UTC-07:00) Dawson Creek
+                                                                    </option>
+                                                                    <option value="Pacific-Vancouver">
+                                                                        (UTC-07:00) Pacific - Vancouver
+                                                                    </option>
+                                                                    <option value="Pacific-Whitehorse">
+                                                                        (UTC-07:00) Pacific - Whitehorse
+                                                                    </option>
                                                                      </select>
                                                                 </div>
 
@@ -602,7 +619,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="sin"
-                                                            class="col-sm-3 control-label col-form-label">Sin</label>
+                                                            class="col-sm-3 control-label col-form-label">Social Insurance Number</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" name="sin" value=""
                                                                 id="sin">
@@ -914,7 +931,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="referred"
-                                                            class="col-sm-3 control-label col-form-label">Where you
+                                                            class="col-sm-3 control-label col-form-label">Were you
                                                             Referred</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" name="referred"
@@ -1429,7 +1446,7 @@
                     e.preventDefault();
                     if (x < max_fields) {
                         x++;
-                        $(wrapper).append('<div>   <div class="form-group row"><label for="DriverAddress"class="col-sm-3 control-label col-form-label">DriverAddress</label><div class="col-md-9"><input type="text" class="form-control" name="DriverAddress[]"value="" id="DriverAddress"></div> </div> <div class="form-group row"><label for="DriverCity"class="col-sm-3 control-label col-form-label">Driver City</label><div class="col-md-9"> <input type="text" class="form-control" name="DriverCity[]" value="" id="DriverCity"> </div></div><div class="form-group row"><label for="DriverState" class="col-sm-3 control-label col-form-label">Driver State</label><div class="col-md-9"><input type="text" class="form-control" name="DriverState[]"value="" id="DriverState"></div></div><div class="form-group row"><label for="DriverCountry"class="col-sm-3 control-label col-form-label">Driver Country</label><div class="col-md-9"> <input type="text" class="form-control" name="DriverCountry[]" value="" id="DriverCountry"></div></div><div class="form-group row"><label for="DriverProvince"class="col-sm-3 control-label col-form-label">Driver Province</label> <div class="col-md-9"><input type="text" class="form-control" name="DriverProvince[]" value="" id="Driver Province"></div></div><div class="form-group row"><label for="DriverPostalCode"class="col-sm-3 control-label col-form-label">Driver PostalCode</label><div class="col-md-9"><input type="text" class="form-control" name="DriverPostalCode[]" value="" id="DriverPostalCode"></div></div><div class="form-group row"><label for="DriverPostalCode" class="col-sm-3 control-label col-form-label">From Date</label><div class="col-md-9"><input type="date" class="form-control" name="fromDate[]"  value="" data-fromDate="' + x + '" id="fromDate' + x + '"></div></div><div class="form-group row"><label for=""class="col-sm-3 control-label col-form-label">To Date</label> <div class="col-md-9"><input type="date" class="form-control" onfocusout="toDate1(' + x + ')"  name="toDate[]"  id="toDate' + x + '"></div></div> <input type="hidden" name="singleDurationInput[]"  id="singleDurationInput' + x + '"> <span id="singleDuration' + x + '"></span>   <br ><a href="#" class="btn btn-danger delete">Delete</a></div></div>'); //add input box
+                        $(wrapper).append('<div>   <div class="form-group row"><label for="DriverAddress"class="col-sm-3 control-label col-form-label">DriverAddress</label><div class="col-md-9"><input type="text" class="form-control" name="DriverAddress[]"value="" id="DriverAddress"></div> </div> <div class="form-group row"><label for="DriverCity"class="col-sm-3 control-label col-form-label">Driver City</label><div class="col-md-9"> <input type="text" class="form-control" name="DriverCity[]" value="" id="DriverCity"> </div></div><div class="form-group row"><label for="DriverState" class="col-sm-3 control-label col-form-label">Driver State</label><div class="col-md-9"><input type="text" class="form-control" name="DriverState[]"value="" id="DriverState"></div></div><div class="form-group row"><label for="DriverCountry"class="col-sm-3 control-label col-form-label">Driver Country</label><div class="col-md-9"> <input type="text" class="form-control" name="DriverCountry[]" value="" id="DriverCountry"></div></div><div class="form-group row"><label for="DriverProvince"class="col-sm-3 control-label col-form-label">Driver Province</label> <div class="col-md-9"><input type="text" class="form-control" name="DriverProvince[]" value="" id="Driver Province"></div></div><div class="form-group row"><label for="DriverPostalCode"class="col-sm-3 control-label col-form-label">Driver PostalCode</label><div class="col-md-9"><input type="text" class="form-control" name="DriverPostalCode[]" value="" id="DriverPostalCode"></div></div><div class="form-group row"><label for="DriverPostalCode" class="col-sm-3 control-label col-form-label">From Date</label><div class="col-md-9"><input type="date" class="form-control" name="fromDate[]"  value="" data-fromDate="' + x + '" id="fromDate' + x + '"></div></div><div class="form-group row"><label for=""class="col-sm-3 control-label col-form-label">To Date</label> <div class="col-md-9"><input type="date" class="form-control cto_date" onfocusout="toDate1(' + x + ')"  name="toDate[]"  id="toDate' + x + '"></div></div> <input type="hidden" name="singleDurationInput[]"  id="singleDurationInput' + x + '"> <span id="singleDuration' + x + '"></span>   <br ><a href="#" class="btn btn-danger delete">Delete</a></div></div>'); //add input box
                     } else {
                         alert('You Reached the limits')
                     }
@@ -1560,6 +1577,7 @@
             $("body #updateDriver_details #comments").hide('');
             let id = $('#updateDriver_details #id').val();
             // console.log($(this).attr("data-id"));
+           
             console.log(id);
             $.ajax({
                 url: "/editupdateDriverDetailsForm",
@@ -1568,7 +1586,6 @@
                 success: function (data) {
                     // console.log(data.data.eventsCalTimezone);
                     // alert('test '+data.data.eventsCalTimezone)
-
                     if (data.status) {
                         let approveStatus;
                         if (data.data.approveStatus == 0) {
@@ -1587,16 +1604,22 @@
                         $('body #updateDriver_details #middleName').val(data.data.middleName);
                         $('body #updateDriver_details #lastName').val(data.data.lastName);
                         $('body #updateDriver_details #DOA').val(data.data.DOA);
-                        $('body #updateDriver_details #companyAddress').val(data.data.companyAddress);
-                        $('body #updateDriver_details #companyCity').val(data.data.companyCity);
+                        $('body #updateDriver_details #companyAddress').val(data.company.companyAddress).attr('readonly','readonly');
+                        $('body #updateDriver_details #companyCity').val(data.company.companyCity).attr('readonly','readonly');;
                         $('body #updateDriver_details #companyState').val(data.data.companyState);
-                        $("body #updateDriver_details #companyCountry [value=" + '"' + data.data.companyCountry + '"' + "]").attr("selected", true);
-                        $('body #updateDriver_details #companyProvince').val(data.data.companyProvince);
-                        $('body #updateDriver_details #companyPostalCode').val(data.data.companyPostalCode);
+                        $("body #updateDriver_details #companyCountry [value=" + '"' + data.company.companyCountry + '"' + "]").attr("selected", true);
+                        $('#companyCountry option:not(:selected)').attr('disabled', true);
+						get_province(data.company.companyCountry);
+						
+                        $('body #updateDriver_details #companyProvince').val(data.company.companyProvince);
+                        $('body #updateDriver_details #companyPostalCode').val(data.company.companyPostalCode).attr('readonly','readonly');
+                        $('#companyProvince option:not(:selected)').attr('disabled', true);
                         $("body #updateDriver_details #position [value=" + '"' + data.data.position + '"' + "]").attr("selected", true);
-                        $("body #updateDriver_details #eventsCalCountry [value=" + '"' + data.data.eventsCalCountry + '"' + "]").attr("selected", true);
-                        $("body #updateDriver_details #eventsCalTimezone [value=" + '"' + data.data.eventsCalTimezone + '"' + "]").attr("selected", true);
-                        $('body #updateDriver_details #eventsCalTimezoneHidden').val(data.data.eventsCalTimezone);
+                        $("body #updateDriver_details #eventsCalCountry [value=" + '"' + data.company.eventsCalCountry + '"' + "]").attr("selected", true);
+                        $('#eventsCalCountry option:not(:selected)').attr('disabled', true);
+                        $("body #updateDriver_details #eventsCalTimezone [value=" + '"' + data.company.eventsCalTimezone + '"' + "]").attr("selected", true);
+                        $('#eventsCalTimezone option:not(:selected)').attr('disabled', true);
+                        $('body #updateDriver_details #eventsCalTimezoneHidden').val(data.company.eventsCalTimezone);
                         $('body #updateDriver_details #sin').val(data.data.sin);
                         $('body #updateDriver_details #DriverAddress').val(data.data.DriverAddress);
                         $('body #updateDriver_details #DriverState').val(data.data.DriverState);
@@ -1691,6 +1714,20 @@
                         $("body #updateDriver_details #fastCardAttachment_file_link").hide();
                         $("body #updateDriver_details #legalRightUSAAtachment_file_link").hide();
                         $("body #updateDriver_details #legalRightAtachment_file_link").hide();
+                        $('body #updateDriver_details #companyAddress').val(data.company.companyAddress).attr('readonly','readonly');
+                        $('body #updateDriver_details #companyCity').val(data.company.companyCity).attr('readonly','readonly');;
+                        $("body #updateDriver_details #companyCountry [value=" + '"' + data.company.companyCountry + '"' + "]").attr("selected", true);
+                        $('#companyCountry option:not(:selected)').attr('disabled', true);
+						get_province(data.company.companyCountry);
+						
+                        $('body #updateDriver_details #companyProvince').val(data.company.companyProvince);
+                        $('body #updateDriver_details #companyPostalCode').val(data.company.companyPostalCode).attr('readonly','readonly');
+                        $('#companyProvince option:not(:selected)').attr('disabled', true);
+                        $("body #updateDriver_details #eventsCalCountry [value=" + '"' + data.company.eventsCalCountry + '"' + "]").attr("selected", true);
+                        $('#eventsCalCountry option:not(:selected)').attr('disabled', true);
+                        $("body #updateDriver_details #eventsCalTimezone [value=" + '"' + data.company.eventsCalTimezone + '"' + "]").attr("selected", true);
+                        $('#eventsCalTimezone option:not(:selected)').attr('disabled', true);
+                        $('body #updateDriver_details #eventsCalTimezoneHidden').val(data.company.eventsCalTimezone);
                         // window.location = "/";
                     }
 
@@ -1699,7 +1736,35 @@
             // });
 
 
-
+			function get_province(country)
+			{
+				$('#companyProvince').children('option:not(:first)').remove();
+				if(country=='Canada' )
+				{
+					
+					$("#companyProvince").append('<option value="AB">AB</option>');
+					$("#companyProvince").append('<option value="BC">BC</option>');
+					$("#companyProvince").append('<option value="MB">MB</option>');
+					$("#companyProvince").append('<option value="NB">NB</option>');
+					$("#companyProvince").append('<option value="NF">NF</option>');
+					$("#companyProvince").append('<option value="NT">NT</option>');
+					$("#companyProvince").append('<option value="NU">NU</option>');
+					$("#companyProvince").append('<option value="ON">ON</option>');
+					$("#companyProvince").append('<option value="PE">PE</option>');
+					$("#companyProvince").append('<option value="PQ">PQ</option>');
+					$("#companyProvince").append('<option value="SK">SK</option>');
+					$("#companyProvince").append('<option value="YT">YT</option>');
+				}
+				else if(country=='US' )
+				{
+					$("#companyProvince").append('<option value="AS">AS</option>');
+					$("#companyProvince").append('<option value="GU">GU</option>');
+					$("#companyProvince").append('<option value="MP">MP</option>');
+					$("#companyProvince").append('<option value="PR">PR</option>');
+					$("#companyProvince").append('<option value="VI">VI</option>');
+				}
+				return true;
+			}
 
             function handlemultipleNames(parms, values) {
                 let arr = []
@@ -1751,6 +1816,43 @@
 
                 let singleDurationInput = []
                 var total = 0;
+                var check_date = '';
+                $('input[name="toDate[]"]').each(function () {
+                    var d = new Date();
+                    if((d.getMonth()+1)<10){
+                        var cMonth = '0'+(d.getMonth()+1);
+                    }
+                    else{
+                        var cMonth = d.getMonth()+1;
+                    }
+                    var date = d.getFullYear()+'-'+(cMonth)+'-11';
+                    var date2 = this.value;
+                   // var date1 = date2.getFullYear+'-'+(d.getMonth()+1)+'-'+d.getDate();
+                   ////// date2.setHours(10, 0, 0);
+                    //date1.setHours(10, 0, 0);
+                   // date2.setDate(11);
+                    
+                    let currentdate1 = date.split("-");
+                    let givendate1   = date2.split("-");
+                    console.log(currentdate1);
+                    let curMonth = currentdate1[1];
+                    let curYear  = currentdate1[0];
+                    let gnMonth  = givendate1[1];
+                    let gnYear   = givendate1[0];
+                    if(curMonth == gnMonth && curYear == gnYear) {
+                        check_date = 1;
+                    }
+                });
+                let getaddress = $('#getaddress').val();
+                if(check_date != 1 && getaddress==0){
+                    Swal.fire({
+                            title: 'Error!',
+                            text: 'Please choose current date in anyone of todate',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                        return false;
+                }
                 $('input[name="singleDurationInput[]"]').each(function () {
                     singleDurationInput.push(this.value);
                     total += parseInt(this.value)
@@ -1968,7 +2070,7 @@
         <!-- <script src="./script.js"></script> -->
         <script>
 
-            function onCountryChange() {
+            function onCountryChange1() {
                 // $("#eventsCalTimezone").empty();
                 var countryCode = $("#eventsCalCountry").val();
                 var eventsCalTimezoneHidden = $("#eventsCalTimezoneHidden").val();

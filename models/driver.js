@@ -165,6 +165,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: true
     },
+    abstract_date: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
     cvor_abstract_date: {
       type: DataTypes.TEXT,
       allowNull: true
@@ -234,6 +238,18 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     message_details: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    Disclaimer_type: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    Disclaimer_type: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    annualreview: {
       type: DataTypes.TEXT,
       allowNull: true
     },

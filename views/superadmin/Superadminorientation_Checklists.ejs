@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <style type="text/css">
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+		.float_left{
+			float:left;
+		}
+		.form-group{
+			width:100%
+		}
+		.col-md-1{
+		  max-width:11%
+		}
+		.l_10 {
+			margin-left: 10px;
+		}
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('../includes/header.ejs') %>
+            <%- include('../includes/sidebar.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        Select Company
+                                        <select class="form-select selectboxcss" name="exptype" id="exptype">
+                                            <option value="">Select Company</option>
+                                            <% getCompanydata.forEach(function(row){ %>
+                                                <option value="<%= row.id %>">
+                                                    <%= row.name %>
+                                                </option>
+                                                <% }) %>
+
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <!-- <button class="btn btn-success" id="create_trailer_button"> Add Trailer <span class="glyphicon glyphicon-edit"></span>   <i style="font-size: 15px;" class="fas fa-plus"></i></button> -->
+                                <h5 align="center" class="card-title">
+                                    <!-- <%- title %> -->
+                                </h5>
+                                <div class="table-responsive">
+                                    <table id="updateQuestionsDetails" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:10%">Id</th>
+                                                <th >First Name</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- view modal -->
+
+
+
+                        <div id="viewmodal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 class="card-title">View Dry Van Checklist</h3>
+                                       
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+                                                    <div class="card-body" id="updateQuestions_details_view">
+                                                        <br>
+
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="driverId" value="" id="driverId">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="company_id" value="" id="company_id">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="approveStatus" value="1" id="approveStatus">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="actionData" value="" id="actionData">
+                                                        <div class="row">
+
+                                                            <div class="col-md-12">
+
+																<div class="card-body" id="updateQuestions_details_view">
+                                                        
+																	<input type="hidden" class="form-control" readonly
+																		name="driverId" value="" id="driverId">
+																	<input type="hidden" class="form-control" readonly
+																		name="company_id" value="" id="company_id">
+																	<input type="hidden" class="form-control" readonly
+																		name="actionData" value="" id="actionData">
+																	<div class="row">
+																		<div class="col-md-12">
+																		<table border="2">
+																			<thead>
+																				<th>
+																					<ul>
+																						<li class="arrow_bullet">DRY VAN CHECKLIST</li>
+																					</ul>
+																					</th>
+																			</thead>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Hours of Service</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Pre-Trip Inspection</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Load Securement</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Company CVOR ,SMS and CVOR and Abstract</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Accident Reporting</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Incident Reporting procedure</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Gate Procedure</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Pet Policy</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Cell and Text Policy</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Defensive Driving/Topics</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Adverse Driving Conditions</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Approaching intersections</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Backing a Rig Safely</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Changing Lanes</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Following too close</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Speed Management</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Distracted Driving/Cell Phone</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Jackknifing</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>CT PAT Procedure</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Drug & Alcohol Policy</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Safety Equipment Policy</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Dispatch Procedures</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Accounting Procedures</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Bonus Program</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>First Aid</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Fire Extinguisher</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Maintenance Policy for Owner Operators</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Speed Policy</li>
+																					</ul>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<ul>
+																						<li>Disciplinary Policy</li>
+																					</ul>
+																				</td>
+																			</tr>
+																		</table><br>
+																		</div><div class="col-md-12">
+																		<b>Driver’s Name (Printed)</b>: <span id="driver_name1"></span><br>
+																			<b>Drivers Signature:</b> <span id="driver_sign"></span></a> <br>
+																			<b>Date:</b>
+																			<span id="driver_date1"></span><br>
+																			<input class="form-check-input" id="Iagree"
+																			name="Iagree" type="checkbox" value="1"
+																			id="flexCheckDefault Iagree" checked disabled>
+			
+																		I certify that I have read and
+																		understood the above requirements.
+																		<br><br><br>
+																		</div>
+																	</div>
+			
+																</div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- </form> -->
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- create trailer -->
+
+
+
+
+
+                        <!-- ============================================================== -->
+                        <!-- End Page wrapper  -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Wrapper -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <%- include('../includes/footer.ejs') %>
+                        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+                        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+                        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+
+                        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                        <script>
+
+
+
+                            /****************************************
+                             *       Basic Table                   *
+                             ****************************************/
+                            // $('#zero_config').DataTable();
+
+                            $(document).ready(function () {
+
+
+                                let date = new Date();
+                                var currentdate =
+                                    ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+                                    ("00" + date.getDate()).slice(-2) + "/" +
+                                    date.getFullYear();
+
+                                $(document).on('click', '#viewmodalid', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    // alert(id)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/edit_Checklists",
+                                        type: "GET",
+                                        data: { id: id,certificateID:9 },
+                                        success: function (data) {
+                                            console.log(data);
+                                            if (data.status) {
+                                                let approveStatus;
+												
+												$('#driver_name1').html(data.driverData.driver_name);
+                                                $('#driver_date1').html(data.data.date);
+                                                if(data.getDrivinghistory!=null && data.getDrivinghistory.signature!=''){
+                                                   $('#driver_sign').html('<img src="uploads/attachment/drivinghistoryaddressSignature/'+data.getDrivinghistory.signature+'" alt="user" width="150">');
+                                                }
+                                                $('body #viewmodal').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                 window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+
+                                $('#exptype').on('change', function () {
+                                // let cmpid = $('body #company_id').val();
+                                let cmpid = this.value;
+                                // alert(cmpid) 
+                                $('body #create_trailer #company_id').val(cmpid);
+                                $("#create_trailer_button").show()
+
+                                $("#updateQuestionsDetails").dataTable().fnDestroy();
+
+                                let customer = $('#updateQuestionsDetails').DataTable({
+                                    processing: true,
+                                    serverSide: true,
+                                    order: [[0, 'ASC']],
+                                    lengthMenu: [[10, 50, 100, 250, 500, 1000], [10, 50, 100, 250, 500, 1000]],
+                                    pageLength: 10,
+                                    searching: true,
+                                    ajax: {
+                                        url: "/company_get_checklist",
+                                        data: function (data) {
+                                            data.cmpid = cmpid,
+											data.certificateID = 9
+                                            // data.search_key = $("#searchKey").val(),
+                                            // data.search_val = $("#searchVal").val()
+                                        },
+                                        type: "GET",
+                                    },
+                                    columns: [
+                                        { "data": "slno" },
+                                        { "data": "driver_name" },
+                                        { "data": "action" }
+                                    ],
+                                    select: true
+                                });
+
+
+                                });
+                            });
+
+
+
+                            $(document).on('click', '#deletedriverDtls', function () {
+                                let id = $(this).attr('data-id');
+
+                                // alert(id)
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to revert this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, delete it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+
+
+                                        $.ajax({
+                                            url: "/companydeletechecklist",
+                                            type: "POST",
+                                            data: { id: id ,certificateID:10},
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    }); setTimeout(function () {
+                                                        window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+
+
+                        </script>
+                        <script src="sweetAlert/sweetalert2.min.js"></script>
+</body>
+
+</html>

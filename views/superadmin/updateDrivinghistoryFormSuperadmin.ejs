@@ -229,187 +229,293 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="addmodalaccident" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h3 align="center" class="card-title">Add Accident</h3>
+                                                <div class="card-body">
+                                                    <form class="form-horizontal" id="addaccident"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="addaccident_details">
+                                                            <br>
+                                                            <input type="hidden" id="addcompany_id"
+                                                                        name="company_id">
+                                                            <input type="hidden" id="adddriverId" name="driverId">
+                                                            <button class="add_form_fieldaccidentsDiv btn-primary">Add
+                                                                driver history accidents &nbsp;
+                                                                <span style="font-size:16px; font-weight:bold;">+
+                                                                </span>
+                                                            </button>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group row">
+                                                                        <label for="FromDate"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Date</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="date" class="form-control"
+                                                                                name="accidentsDate[]" value=""
+                                                                                id="aaccidentsDate" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="accidentsNature"
+                                                                            class="col-sm-3 control-label col-form-label">Nature
+                                                                            of
+                                                                            Accident </label>
+                                                                        <div class="col-md-9">
+                                                                            <select class="form-select"
+                                                                                name="accidentsNature[]"
+                                                                                id="aaccidentsNature" required>
+                                                                                <option value="">Select</option>
+                                                                                <option value="HEAD-ON">HEAD-ON</option>
+                                                                                <option value="REAR-END">REAR-END
+                                                                                </option>
+                                                                                <option value="UPSET">UPSET</option>
+                                                                                <option value="ETC">ETC</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="accidentsFatalities"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Fatalities</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="accidentsFatalities[]" value=""
+                                                                                id="aaccidentsFatalities" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="accidentsInjuries"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Injuries</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="accidentsInjuries[]" value=""
+                                                                                id="aaccidentsInjuries" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="accidentsHazardous"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Hazardous Material Spill </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="accidentsHazardous[]" value=""
+                                                                                id="aaccidentsHazardous" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button type="Submit" id="asubmitBtn"
+                                                                    class="btn btn-primary">Add</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div id="editmodalaccident" class="modal fade" tabindex="-1" role="dialog"
-                        aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
-                        data-keyboard="false">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h3 align="center" class="card-title">Edit Accident</h3>
-                                            <div class="card-body">
-                                                <form class="form-horizontal" id="updateaccident"
-                                                    style="background: #27a9e324;border-radius: 35px;">
-                                                    <div class="card-body" id="updateaccident_details">
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <input type="hidden" name="id" id="id">
-                                                                <div class="form-group row">
-                                                                    <label for="FromDate"
-                                                                        class="col-sm-3 control-label col-form-label">
-                                                                        Date</label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="date" class="form-control"
-                                                                            name="accidentsDate" value=""
-                                                                            id="accidentsDate">
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h3 align="center" class="card-title">Edit Accident</h3>
+                                                <div class="card-body">
+                                                    <form class="form-horizontal" id="updateaccident"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="updateaccident_details">
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input type="hidden" name="id" id="id">
+                                                                    <div class="form-group row">
+                                                                        <label for="FromDate"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Date</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="date" class="form-control"
+                                                                                name="accidentsDate" value=""
+                                                                                id="accidentsDate">
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="accidentsNature"
-                                                                        class="col-sm-3 control-label col-form-label">Nature
-                                                                        of
-                                                                        Accident </label>
-                                                                    <div class="col-md-9">
-                                                                        <select class="form-select"
-                                                                            name="accidentsNature"
-                                                                            id="accidentsNature">
-                                                                            <option value="">Select</option>
-                                                                            <option value="HEAD-ON">HEAD-ON</option>
-                                                                            <option value="REAR-END">REAR-END
-                                                                            </option>
-                                                                            <option value="UPSET">UPSET</option>
-                                                                            <option value="ETC">ETC</option>
-                                                                        </select>
+                                                                    <div class="form-group row">
+                                                                        <label for="accidentsNature"
+                                                                            class="col-sm-3 control-label col-form-label">Nature
+                                                                            of
+                                                                            Accident </label>
+                                                                        <div class="col-md-9">
+                                                                            <select class="form-select"
+                                                                                name="accidentsNature"
+                                                                                id="accidentsNature">
+                                                                                <option value="">Select</option>
+                                                                                <option value="HEAD-ON">HEAD-ON</option>
+                                                                                <option value="REAR-END">REAR-END
+                                                                                </option>
+                                                                                <option value="UPSET">UPSET</option>
+                                                                                <option value="ETC">ETC</option>
+                                                                            </select>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="accidentsFatalities"
-                                                                        class="col-sm-3 control-label col-form-label">
-                                                                        Fatalities</label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="text" class="form-control"
-                                                                            name="accidentsFatalities" value=""
-                                                                            id="accidentsFatalities">
+                                                                    <div class="form-group row">
+                                                                        <label for="accidentsFatalities"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Fatalities</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="accidentsFatalities" value=""
+                                                                                id="accidentsFatalities">
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="accidentsInjuries"
-                                                                        class="col-sm-3 control-label col-form-label">
-                                                                        Injuries</label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="text" class="form-control"
-                                                                            name="accidentsInjuries" value=""
-                                                                            id="accidentsInjuries">
+                                                                    <div class="form-group row">
+                                                                        <label for="accidentsInjuries"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Injuries</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="accidentsInjuries" value=""
+                                                                                id="accidentsInjuries">
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="accidentsHazardous"
-                                                                        class="col-sm-3 control-label col-form-label">
-                                                                        Hazardous Material Spill </label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="text" class="form-control"
-                                                                            name="accidentsHazardous" value=""
-                                                                            id="accidentsHazardous">
+                                                                    <div class="form-group row">
+                                                                        <label for="accidentsHazardous"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Hazardous Material Spill </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="accidentsHazardous" value=""
+                                                                                id="accidentsHazardous">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="border-top">
-                                                        <div style="text-align: center;" class="card-body">
-                                                            <button type="Submit" id="submitBtn"
-                                                                class="btn btn-primary">Update</button>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button type="Submit" id="submitBtn"
+                                                                    class="btn btn-primary">Update</button>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </form>
+                                                    </form>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-2">
+                                            <div class="col-md-2">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="editmodalviolations" class="modal fade" tabindex="-1" role="dialog"
-                        aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
-                        data-keyboard="false">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h3 align="center" class="card-title">Edit violations</h3> 
-                                            <div class="card-body">
-                                                <form class="form-horizontal" id="updateviolations"
-                                                    style="background: #27a9e324;border-radius: 35px;">
-                                                    <div class="card-body" id="updateviolations_details">
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <input type="hidden" name="id" id="id">
-                                                                <div class="form-group row">
-                                                                    <label for="traficConvintionsDate"
-                                                                        class="col-sm-3 control-label col-form-label">
-                                                                        Date</label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="date" class="form-control"
-                                                                            name="traficConvintionsDate" value=""
-                                                                            id="traficConvintionsDate">
+                        <div id="editmodalviolations" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h3 align="center" class="card-title">Edit violations</h3>
+                                                <div class="card-body">
+                                                    <form class="form-horizontal" id="updateviolations"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="updateviolations_details">
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input type="hidden" name="id" id="id">
+                                                                    <div class="form-group row">
+                                                                        <label for="traficConvintionsDate"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Date</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="date" class="form-control"
+                                                                                name="traficConvintionsDate" value=""
+                                                                                id="traficConvintionsDate">
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="traficConvintionsCharge"
-                                                                        class="col-sm-3 control-label col-form-label">
-                                                                        Charge </label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="text" class="form-control"
-                                                                            name="traficConvintionsCharge" value=""
-                                                                            id="traficConvintionsCharge">
+                                                                    <div class="form-group row">
+                                                                        <label for="traficConvintionsCharge"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Charge </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="traficConvintionsCharge" value=""
+                                                                                id="traficConvintionsCharge">
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="traficConvintionsLocation"
-                                                                        class="col-sm-3 control-label col-form-label">
-                                                                        Location </label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="text" class="form-control"
-                                                                            name="traficConvintionsLocation"
-                                                                            value="" id="traficConvintionsLocation">
+                                                                    <div class="form-group row">
+                                                                        <label for="traficConvintionsLocation"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Location </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="traficConvintionsLocation"
+                                                                                value="" id="traficConvintionsLocation">
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="traficConvintionsPenalty"
-                                                                        class="col-sm-3 control-label col-form-label">
-                                                                        Penalty </label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="text" class="form-control"
-                                                                            name="traficConvintionsPenalty" value=""
-                                                                            id="traficConvintionsPenalty">
+                                                                    <div class="form-group row">
+                                                                        <label for="traficConvintionsPenalty"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Penalty </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="traficConvintionsPenalty" value=""
+                                                                                id="traficConvintionsPenalty">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="border-top">
-                                                        <div style="text-align: center;" class="card-body">
-                                                            <button type="Submit" id="submitBtn"
-                                                                class="btn btn-primary">Update</button>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button type="Submit" id="submitBtn"
+                                                                    class="btn btn-primary">Update</button>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </form>
+                                                    </form>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-2">
+                                            <div class="col-md-2">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                         <div id="addmodaladdress" class="modal fade" tabindex="-1" role="dialog"
                             aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
@@ -588,93 +694,189 @@
 
 
                         <div id="viewmodalaccident" class="modal fade" tabindex="-1" role="dialog"
-                        aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
-                        data-keyboard="false">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <h3 align="center" class="card-title">View Accident</h3>
-                                    <div class="card-body">
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">View Accident</h3>
+                                        <div class="card-body">
 
-                                        <h5 align="center" class="card-title">
-                                            <!-- <%- title %> -->
-                                        </h5>
-                                        <div style="padding-top: 20px;" class="table-responsive">
-
-                                            <table id="tableviewmodalaccident" class="table table-striped table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <!-- <th>Id</th> -->
-                                                        <th class="thClass">Accidents Date</th>
-                                                        <th class="thClass">Accidents Nature</th>
-                                                        <th class="thClass">Accidents Fatalities</th>
-                                                        <th class="thClass">Accidents Injuries</th>
-                                                        <th class="thClass">Accidents Hazardous</th>
-                                                        <th class="thClass">Edit</th>
-                                                        <!-- <th class="thClass">Delete</th> -->
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                </tbody>
-                                            </table>
+                                            <h5 align="center" class="card-title">
+                                                <!-- <%- title %> -->
+                                            </h5>
+                                            <div style="padding-top: 20px;" class="table-responsive">
+                                                <a href="javascript:void();" class="hide" id="taccident">Add Accident</a>
+                                                <table id="tableviewmodalaccident"
+                                                    class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <!-- <th>Id</th> -->
+                                                            <th class="thClass">Accidents Date</th>
+                                                            <th class="thClass">Accidents Nature</th>
+                                                            <th class="thClass">Accidents Fatalities</th>
+                                                            <th class="thClass">Accidents Injuries</th>
+                                                            <th class="thClass">Accidents Hazardous</th>
+                                                            <th class="thClass">Edit</th>
+                                                            <!-- <th class="thClass">Delete</th> -->
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="viewmodalviolations" class="modal fade" tabindex="-1" role="dialog"
-                        aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
-                        data-keyboard="false">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <h3 align="center" class="card-title">View Violations</h3>
-                                    <div class="card-body">
 
-                                        <h5 align="center" class="card-title">
-                                            <!-- <%- title %> -->
-                                        </h5>
-                                        <div style="padding-top: 20px;" class="table-responsive">
-
-                                            <table id="tableviewmodalviolations" class="table table-striped table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <!-- <th>Id</th> -->
-                                                        <th class="thClass">Traffic convictions Date</th>
-                                                        <th class="thClass">Traffic convictions Charge</th>
-                                                        <th class="thClass">Traffic convictions Location</th>
-                                                        <th class="thClass">Traffic convictions Penalty</th>
-                                                        <th class="thClass">Edit</th>
-                                                        <!-- <th class="thClass">Delete</th> -->
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <!-- <span id="tableDtls"></span> -->
-
-
-                                                </tbody>
-                                            </table>
+                        <div id="addmodalviolations" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h3 align="center" class="card-title">Add violations</h3>
+                                                <div class="card-body">
+                                                    <form class="form-horizontal" id="addviolations"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="addviolations_details">
+                                                            <br>
+                                                            <input type="hidden" id="vcompany_id"
+                                                                        name="company_id">
+                                                            <input type="hidden" id="vdriverId" name="driverId">
+                                                            <button class="add_form_fieldviolationDiv btn-primary">Add
+                                                                driver history violation &nbsp;
+                                                                <span style="font-size:16px; font-weight:bold;">+
+                                                                </span>
+                                                            </button>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group row">
+                                                                        <label for="traficConvintionsDate"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Date</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="date" class="form-control"
+                                                                                name="traficConvintionsDate[]" value=""
+                                                                                id="addtraficConvintionsDate" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="traficConvintionsCharge"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Charge </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="traficConvintionsCharge[]" value=""
+                                                                                id="addtraficConvintionsCharge" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="traficConvintionsLocation"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Location </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="traficConvintionsLocation[]"
+                                                                                value="" id="addtraficConvintionsLocation" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="traficConvintionsPenalty"
+                                                                            class="col-sm-3 control-label col-form-label">
+                                                                            Penalty </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control"
+                                                                                name="traficConvintionsPenalty[]" value=""
+                                                                                id="addtraficConvintionsPenalty" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button type="Submit" id="violationsubmitBtn"
+                                                                    class="btn btn-primary">Add</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                            </div>
                                         </div>
-
-
-
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <div id="viewmodalviolations" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">View Violations</h3>
+                                        <div class="card-body">
+
+                                            <h5 align="center" class="card-title">
+                                                <!-- <%- title %> -->
+                                            </h5>
+                                            <div style="padding-top: 20px;" class="table-responsive">
+                                                <a href="javascript:void();" class="hide" id="tviolation">Add Violations</a>
+                                                <table id="tableviewmodalviolations"
+                                                    class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <!-- <th>Id</th> -->
+                                                            <th class="thClass">Traffic convictions Date</th>
+                                                            <th class="thClass">Traffic convictions Charge</th>
+                                                            <th class="thClass">Traffic convictions Location</th>
+                                                            <th class="thClass">Traffic convictions Penalty</th>
+                                                            <th class="thClass">Edit</th>
+                                                            <!-- <th class="thClass">Delete</th> -->
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- <span id="tableDtls"></span> -->
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
 
 
 
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<style>
+    .hide{
+        display: none;
+    }
+    .show{
+        display: block;
+    }
+</style>
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
@@ -715,11 +917,7 @@
 
                             </div>
                         </div>
-
-
                         <!-- view modal -->
-
-
 
                         <div id="viewmodal" class="modal fade" tabindex="-1" role="dialog"
                             aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
@@ -735,7 +933,7 @@
                                     <div class="modal-body">
                                         <h3 align="center" class="card-title">View Driving history Details</h3>
                                         <h4 align="center" class="card-title">
-                                           
+
                                         </h4>
                                         <div class="card-body">
 
@@ -1176,9 +1374,6 @@
                         <!-- edit modal -->
 
                         <!-- edit modal -->
-
-
-
                         <div id="editmodal" class="modal fade" tabindex="-1" role="dialog"
                             aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
                             data-keyboard="false">
@@ -1193,7 +1388,7 @@
                                     <div class="modal-body">
                                         <h3 align="center" class="card-title">Edit Driving history Details</h3>
                                         <h4 align="center" class="card-title">
-                                           
+
                                         </h4>
                                         <div class="card-body">
 
@@ -1418,7 +1613,7 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <div id="drivingExperienceDiv">
+                                                                    <div id="drivingExperienceDivEdit">
                                                                         <div class="form-group row">
                                                                             <label for="classofEquipment"
                                                                                 class="col-sm-3 control-label col-form-label">Class
@@ -1585,23 +1780,8 @@
 
                         </div>
                     </div>
-
                     <!-- edit modal -->
-
-
-
-
-
-
-
-
-
-
                     <!-- create trailer -->
-
-
-
-
 
                     <!-- ============================================================== -->
                     <!-- End Page wrapper  -->
@@ -1618,9 +1798,6 @@
 
                     <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
                     <script>
-
-
-
                         /****************************************
                          *       Basic Table                   *
                          ****************************************/
@@ -1702,12 +1879,14 @@
                                 }
 
                             })
-                            $('#drivingExperience').on('change', function () {
+                            $('body #editmodal #drivingExperience').on('change', function () {
 
-                                if ($('#drivingExperience').val() == "Yes") {
-                                    $("#drivingExperienceDiv").show();
-                                } else if ($('#drivingExperience').val() == "No") {
-                                    $("#drivingExperienceDiv").hide();
+                                if ($('body #editmodal #drivingExperience').val() == "Yes") {
+                                    // alert($('body #editmodal #drivingExperience').val())
+                                    jQuery("body #editmodal #drivingExperienceDivEdit").show();
+                                    // alert('test')
+                                } else {
+                                    jQuery("body #editmodal #drivingExperienceDivEdit").hide();
                                 }
 
                             })
@@ -1764,6 +1943,11 @@
                                             $("body #updateEmployment #deniedLicense [value=" + '"' + data.data.deniedLicense + '"' + "]").attr("selected", true);
                                             $("body #updateEmployment #licensePermit [value=" + '"' + data.data.licensePermit + '"' + "]").attr("selected", true);
                                             $("body #updateEmployment #drivingExperience [value=" + '"' + data.data.drivingExperience + '"' + "]").attr("selected", true);
+                                            if (data.data.drivingExperience) {
+                                                $("body #updateEmployment #drivingExperienceDiv").show();
+                                            } else {
+                                                $("body #updateEmployment #drivingExperienceDiv").hide();
+                                            }
                                             $("body #updateEmployment #classofEquipment [value=" + '"' + data.data.classofEquipment + '"' + "]").attr("selected", true);
                                             $("body #updateEmployment #equipmentType [value=" + '"' + data.data.equipmentType + '"' + "]").attr("selected", true);
 
@@ -1861,12 +2045,16 @@
                                             }
 
 
-                                            $('#drivingExperience').on('change', function () {
-                                                if ($('#updateEmployment_details #drivingExperience').val() == 'Yes') {
-                                                    $("#drivingExperienceDiv").show();
+                                            $('body #editmodal #drivingExperience').on('change', function () {
+
+                                                if ($('body #editmodal #drivingExperience').val() == "Yes") {
+                                                    // alert($('body #editmodal #drivingExperience').val())
+                                                    jQuery("body #editmodal #updateEmployment_details #drivingExperienceDivEdit").show();
+                                                    // alert('test')
                                                 } else {
-                                                    $("#drivingExperienceDiv").hide();
+                                                    jQuery("body #editmodal #updateEmployment_details #drivingExperienceDivEdit").hide();
                                                 }
+
                                             })
                                             if ($('#updateEmployment_details #drivingExperience').val() == 'Yes') {
                                                 $("#drivingExperienceDiv").show();
@@ -1884,6 +2072,7 @@
                                             $("body #editmodal #updateEmployment_details #commentsSection").html('<input required type="text" class="form-control" placeholder="Please enter comments this will help admin to approve this request" name="comment" value="" id="comments">');
                                             $("body #editmodal #updateEmployment_details #driverId").val(data.data.driverId);
                                             $("body #editmodal #updateEmployment_details #company_id").val(data.data.company_id);
+                                           
                                             $("body #editmodal #updateEmployment_details #approveStatus").text(approveStatus);
                                             $("body #editmodal #updateEmployment_details #submitBtn").text('Update');
                                             $('body #editmodal #updateEmployment_details #actionData').val('Update');
@@ -1901,6 +2090,13 @@
                                             $("body #editmodal #updateEmployment_details #deniedLicense [value=" + '"' + data.data.deniedLicense + '"' + "]").attr("selected", true);
                                             $("body #editmodal #updateEmployment_details #licensePermit [value=" + '"' + data.data.licensePermit + '"' + "]").attr("selected", true);
                                             $("body #editmodal #updateEmployment_details #drivingExperience [value=" + '"' + data.data.drivingExperience + '"' + "]").attr("selected", true);
+                                            // alert(data.data.drivingExperience)
+                                            if (data.data.drivingExperience == 'Yes') {
+                                                $("body #updateEmployment_details #drivingExperienceDivEdit").show();
+                                            } else {
+                                                $("body #updateEmployment_details #drivingExperienceDivEdit").hide();
+                                            }
+
                                             $("body #editmodal #updateEmployment_details #classofEquipment [value=" + '"' + data.data.classofEquipment + '"' + "]").attr("selected", true);
                                             $("body #editmodal #updateEmployment_details #equipmentType [value=" + '"' + data.data.equipmentType + '"' + "]").attr("selected", true);
 
@@ -1955,6 +2151,7 @@
                                     ajax: {
                                         url: "/getupdatedrivingHistoryFormSuperadmin",
                                         data: function (data) {
+                                            console.info(data);
                                             data.cmpid = cmpid
                                             // data.search_key = $("#searchKey").val(),
                                             // data.search_val = $("#searchVal").val()
@@ -1972,8 +2169,6 @@
 
                             });
                         });
-
-
 
                         $(document).on('click', '#deletedriverDtls', function () {
                             let id = $(this).attr('data-id');
@@ -2030,7 +2225,6 @@
                                 }
                             })
                         });
-
 
                         function convertToBase64(inputfile, parms) {
                             //Read File
@@ -2260,128 +2454,188 @@
                                 }
                             })
                         });
+                        $("#addaccident").submit(function (event) {
+                            event.preventDefault();
+                            var values = {};
+                            $.each($('#addaccident').serializeArray(), function (i, field) {
+                                values[field.name] = field.value;
+                                // console.log(values[field.name]);
+                            });
+
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You want to add this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, add it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    $("#asubmitBtn").text('Please wait');
+                                    $("#asubmitBtn").attr('disabled', true);
+                                    $.ajax({
+                                        url: "/adddrivingHistoryAccidentID",
+                                        type: "POST",
+                                        data: values,
+                                        success: function (data) {
+                                            if (data.status) {
+                                                const Toast = Swal.mixin({
+                                                    toast: true,
+                                                    position: 'top-end',
+                                                    showConfirmButton: false,
+                                                    timer: 2000,
+                                                    timerProgressBar: true,
+                                                    didOpen: (toast) => {
+                                                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                    }
+                                                })
+                                                Toast.fire({
+                                                    icon: 'success',
+                                                    title: data.message
+                                                });
+                                                setTimeout(function () {
+                                                    window.location.reload();
+                                                }, 2000);
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                            }
+
+                                        }
+                                    });
+
+
+                                }
+                            })
+                        });
                         $("#updateaccident").submit(function (event) {
-                                event.preventDefault();
-                                var values = {};
-                                $.each($('#updateaccident').serializeArray(), function (i, field) {
-                                    values[field.name] = field.value;
-                                    // console.log(values[field.name]);
-                                });
-
-                                // alert(datas)
-                                Swal.fire({
-                                    title: 'Are you sure?',
-                                    text: "You want to update this!",
-                                    icon: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Yes, update it!'
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        $("#submitBtn").text('Please wait');
-                                        $("#submitBtn").attr('disabled', true);
-                                        $.ajax({
-                                            url: "/UpdatedrivingHistoryAccidentID",
-                                            type: "POST",
-                                            data: values,
-                                            success: function (data) {
-                                                if (data.status) {
-                                                    const Toast = Swal.mixin({
-                                                        toast: true,
-                                                        position: 'top-end',
-                                                        showConfirmButton: false,
-                                                        timer: 2000,
-                                                        timerProgressBar: true,
-                                                        didOpen: (toast) => {
-                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                                        }
-                                                    })
-                                                    Toast.fire({
-                                                        icon: 'success',
-                                                        title: data.message
-                                                    });
-                                                    setTimeout(function () {
-                                                        window.location.reload();
-                                                    }, 2000);
-                                                } else {
-                                                    Swal.fire({
-                                                        title: 'Error!',
-                                                        text: 'Something went wrong',
-                                                        icon: 'error',
-                                                        confirmButtonText: 'Cool'
-                                                    })
-                                                }
-
-                                            }
-                                        });
-
-
-                                    }
-                                })
+                            event.preventDefault();
+                            var values = {};
+                            $.each($('#updateaccident').serializeArray(), function (i, field) {
+                                values[field.name] = field.value;
+                                // console.log(values[field.name]);
                             });
-                            $("#updateviolations").submit(function (event) {
-                                event.preventDefault();
-                                var values = {};
-                                $.each($('#updateviolations').serializeArray(), function (i, field) {
-                                    values[field.name] = field.value;
-                                    // console.log(values[field.name]);
-                                });
 
-                                // alert(datas)
-                                Swal.fire({
-                                    title: 'Are you sure?',
-                                    text: "You want to update this!",
-                                    icon: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Yes, update it!'
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        $("#submitBtn").text('Please wait');
-                                        $("#submitBtn").attr('disabled', true);
-                                        $.ajax({
-                                            url: "/UpdatedrivingHistoryViolationsID",
-                                            type: "POST",
-                                            data: values,
-                                            success: function (data) {
-                                                if (data.status) {
-                                                    const Toast = Swal.mixin({
-                                                        toast: true,
-                                                        position: 'top-end',
-                                                        showConfirmButton: false,
-                                                        timer: 2000,
-                                                        timerProgressBar: true,
-                                                        didOpen: (toast) => {
-                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                                        }
-                                                    })
-                                                    Toast.fire({
-                                                        icon: 'success',
-                                                        title: data.message
-                                                    });
-                                                    setTimeout(function () {
-                                                        window.location.reload();
-                                                    }, 2000);
-                                                } else {
-                                                    Swal.fire({
-                                                        title: 'Error!',
-                                                        text: 'Something went wrong',
-                                                        icon: 'error',
-                                                        confirmButtonText: 'Cool'
-                                                    })
-                                                }
-
+                            // alert(datas)
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You want to update this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, update it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    $("#submitBtn").text('Please wait');
+                                    $("#submitBtn").attr('disabled', true);
+                                    $.ajax({
+                                        url: "/UpdatedrivingHistoryAccidentID",
+                                        type: "POST",
+                                        data: values,
+                                        success: function (data) {
+                                            if (data.status) {
+                                                const Toast = Swal.mixin({
+                                                    toast: true,
+                                                    position: 'top-end',
+                                                    showConfirmButton: false,
+                                                    timer: 2000,
+                                                    timerProgressBar: true,
+                                                    didOpen: (toast) => {
+                                                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                    }
+                                                })
+                                                Toast.fire({
+                                                    icon: 'success',
+                                                    title: data.message
+                                                });
+                                                setTimeout(function () {
+                                                    window.location.reload();
+                                                }, 2000);
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
                                             }
-                                        });
+
+                                        }
+                                    });
 
 
-                                    }
-                                })
+                                }
+                            })
+                        });
+                        $("#updateviolations").submit(function (event) {
+                            event.preventDefault();
+                            var values = {};
+                            $.each($('#updateviolations').serializeArray(), function (i, field) {
+                                values[field.name] = field.value;
+                                // console.log(values[field.name]);
                             });
+
+                            // alert(datas)
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You want to update this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, update it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    $("#submitBtn").text('Please wait');
+                                    $("#submitBtn").attr('disabled', true);
+                                    $.ajax({
+                                        url: "/UpdatedrivingHistoryViolationsID",
+                                        type: "POST",
+                                        data: values,
+                                        success: function (data) {
+                                            if (data.status) {
+                                                const Toast = Swal.mixin({
+                                                    toast: true,
+                                                    position: 'top-end',
+                                                    showConfirmButton: false,
+                                                    timer: 2000,
+                                                    timerProgressBar: true,
+                                                    didOpen: (toast) => {
+                                                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                    }
+                                                })
+                                                Toast.fire({
+                                                    icon: 'success',
+                                                    title: data.message
+                                                });
+                                                setTimeout(function () {
+                                                    window.location.reload();
+                                                }, 2000);
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                            }
+
+                                        }
+                                    });
+
+
+                                }
+                            })
+                        });
                         $("#addAddress").submit(function (event) {
                             event.preventDefault();
                             var values = {};
@@ -2444,6 +2698,67 @@
                             })
                         });
 
+                        $("#addviolations").submit(function (event) {
+                            event.preventDefault();
+                            var values = {};
+                            $.each($('#addviolations').serializeArray(), function (i, field) {
+                                values[field.name] = field.value;
+                                // console.log(values[field.name]);
+                            });
+
+                            // alert(datas)
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You want to add this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, add it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    $("#violationsubmitBtn").text('Please wait');
+                                    $("#violationsubmitBtn").attr('disabled', true);
+                                    $.ajax({
+                                        url: "/adddrivingHistoryViolationsID",
+                                        type: "POST",
+                                        data: values,
+                                        success: function (data) {
+                                            if (data.status) {
+                                                const Toast = Swal.mixin({
+                                                    toast: true,
+                                                    position: 'top-end',
+                                                    showConfirmButton: false,
+                                                    timer: 2000,
+                                                    timerProgressBar: true,
+                                                    didOpen: (toast) => {
+                                                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                    }
+                                                })
+                                                Toast.fire({
+                                                    icon: 'success',
+                                                    title: data.message
+                                                });
+                                                setTimeout(function () {
+                                                    window.location.reload();
+                                                }, 2000);
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                            }
+
+                                        }
+                                    });
+
+
+                                }
+                            })
+                        });
                         $(document).on('click', '.viewmodalclass', function () {
                             // alert('test')
                             let id = $(this).attr('data-id');
@@ -2456,11 +2771,11 @@
                                 type: "GET",
                                 data: { id: id },
                                 success: function (data) {
+                                    
                                     console.log(data.data);
                                     if (data.status) {
                                         $("body #table tbody").html(data.data);
                                         // $('body #viewmodal >table > tbody').html(data.data);
-
                                         $('body #viewmodal').modal('show');
                                     } else {
                                         // Swal.fire('Any fool can use a computer')
@@ -2592,135 +2907,207 @@
                                 }
                             });
                         });
+                       
+                        
+                        $(document).on('click', '#taccident', function () {
+                            $('body #viewmodalaccident').modal('hide');
+                            $('body #addmodalaccident').modal('show');
+                        });
+                        $(document).on('click', '#tviolation', function () {
+                            $('body #viewmodalviolations').modal('hide');
+                            $('body #addmodalviolations').modal('show');
+                        });
+                        var max_fieldsAccident = 10;
+                        var wrapperAccident = $("#addaccident_details");
+                        var add_buttonAccident = $(".add_form_fieldaccidentsDiv");
+
+                        var x = 2;
+                        $(add_buttonAccident).click(function (e) {
+                            e.preventDefault();
+                            if (x < max_fieldsAccident) {
+                                x++;
+                                let onchangeData = "convertToBase64('atachment" + x + "','atachment_file" + x + "');";
+                                $(wrapperAccident).append('<div> <div class="form-group row"><label for="FromDate" class="col-sm-3 control-label col-form-label">Date</label><div class="col-md-9"><input type="date" class="form-control" name="accidentsDate[]" required value="" id="accidentsDate"></div></div><div class="form-group row"><label for="accidentsNature" class="col-sm-3 control-label col-form-label">Nature of Accident</label><div class="col-md-9"><select class="form-select" name="accidentsNature[]" id="accidentsNature" required><option value="">Select</option><option value="HEAD-ON">HEAD-ON</option><option value="REAR-END">REAR-END</option><option value="UPSET">UPSET</option><option value="ETC">ETC</option></select></div></div><div class="form-group row"><label for="accidentsFatalities" class="col-sm-3 control-label col-form-label">Fatalities</label><div class="col-md-9"><input type="text" class="form-control" name="accidentsFatalities[]" value="" id="accidentsFatalities" required></div></div><div class="form-group row"><label for="accidentsInjuries" class="col-sm-3 control-label col-form-label">Injuries</label><div class="col-md-9"><input type="text" class="form-control" name="accidentsInjuries[]" value="" id="accidentsInjuries" required></div></div><div class="form-group row"><label for="accidentsHazardous" class="col-sm-3 control-label col-form-label">Hazardous Material Spill</label><div class="col-md-9"><input type="text" class="form-control" name="accidentsHazardous[]" value="" id="accidentsHazardous" required></div></div> <a href="#" class="btn btn-danger deleteAccident">Delete</a></div>'); //add input box
+                            } else {
+                                alert('You Reached the limits')
+                            }
+                        });
+                        $(wrapperAccident).on("click", ".deleteAccident", function (e) {
+                            e.preventDefault();
+                            $(this).parent('div').remove();
+                            x--;
+                        });
+                        // -----------------------------------Multiple form Violation---------------------------------
+                        var max_fieldsviolation = 10;
+                        var wrapperviolation = $("#addviolations_details");
+                        var add_buttonviolation = $(".add_form_fieldviolationDiv");
+
+                        var x = 2;
+                        $(add_buttonviolation).click(function (e) {
+                            e.preventDefault();
+                            if (x < max_fieldsviolation) {
+                                x++;
+                                let onchangeData = "convertToBase64('atachment" + x + "','atachment_file" + x + "');";
+                                $(wrapperviolation).append('<div> <div class="form-group row"><label for="traficConvintionsDate" class="col-sm-3 control-label col-form-label">Date</label><div class="col-md-9"><input type="date" class="form-control" name="traficConvintionsDate[]" required id="traficConvintionsDate"></div></div><div class="form-group row"><label for="traficConvintionsCharge" class="col-sm-3 control-label col-form-label">Charge</label><div class="col-md-9"><input type="text" class="form-control" name="traficConvintionsCharge[]" value="" id="traficConvintionsCharge" required></div></div><div class="form-group row"><label for="traficConvintionsLocation" class="col-sm-3 control-label col-form-label">Location</label><div class="col-md-9"><input type="text" class="form-control" name="traficConvintionsLocation[]" value="" id="traficConvintionsLocation" required></div></div><div class="form-group row"><label for="traficConvintionsPenalty" class="col-sm-3 control-label col-form-label">Penalty</label><div class="col-md-9"><input type="text" class="form-control" name="traficConvintionsPenalty[]" value="" id="traficConvintionsPenalty" required></div></div> <a href="#" class="btn btn-danger deleteviolation">Delete</a></div>'); //add input box
+                            } else {
+                                alert('You Reached the limits')
+                            }
+                        });
+
+                        $(wrapperviolation).on("click", ".deleteviolation", function (e) {
+                            e.preventDefault();
+                            $(this).parent('div').remove();
+                            x--;
+                        })
                         $(document).on('click', '.viewmodalclassaccident', function () {
-                                // alert('test')
-                                let id = $(this).attr('data-id');
-                                // let id = $('body #updateDriver #id').val();
-                                // alert(id)
-                                console.log(id);
-                                // console.log($(this).attr("data-id"));
-                                $.ajax({
-                                    url: "/getdrivingHistoryAccident",
-                                    type: "GET",
-                                    data: { id: id },
-                                    success: function (data) {
-                                        console.log(data.data);
-                                        if (data.status) {
-                                            $("body #viewmodalaccident tbody ").html(data.data);
-                                            // $('body #viewmodal >table > tbody').html(data.data);
-
-                                            $('body #viewmodalaccident').modal('show');
-                                        } else {
-                                            // Swal.fire('Any fool can use a computer')
-                                            Swal.fire({
-                                                title: 'Error!',
-                                                text: 'No Record found',
-                                                icon: 'error',
-                                                confirmButtonText: 'Cool'
-                                            })
-                                            // window.location = "/";
+                            // alert('test')
+                            let id = $(this).attr('data-id');
+                            $('#adddriverId').val(id);
+                            let company_id = $('#exptype').val();
+                            $('#addcompany_id').val(company_id);
+                            // let id = $('body #updateDriver #id').val();
+                            // alert(id)
+                            console.log(id);
+                            // console.log($(this).attr("data-id"));
+                            $.ajax({
+                                url: "/getdrivingHistoryAccident",
+                                type: "GET",
+                                data: { id: id },
+                                success: function (data) {
+                                    console.log(data.data);
+                                    if (data.status) {
+                                        $("body #viewmodalaccident tbody ").html(data.data);
+                                        // $('body #viewmodal >table > tbody').html(data.data);
+                                        if(data.add){
+                                            $('#taccident').removeClass('hide');
+                                            $('#taccident').addClass('show');
                                         }
-
-                                    }
-                                });
-                            });
-                            $(document).on('click', '.editmodalclassaccident', function () {
-                                // alert('test')
-                                let id = $(this).attr('data-id');
-                                // let id = $('body #updateDriver #id').val();
-                                // alert(id)
-                                console.log(id);
-                                // console.log($(this).attr("data-id"));
-                                $.ajax({
-                                    url: "/getupdatedrivingHistoryAccident",
-                                    type: "GET",
-                                    data: { id: id },
-                                    success: function (data) {
-                                        if (data.status) {
-                                            $('body #updateaccident #id').val(data.data.id);
-                                            $('body #updateaccident #accidentsDate').val(data.data.accidentsDate);
-                                            $('body #updateaccident #accidentsNature').val(data.data.accidentsNature);
-                                            $('body #updateaccident #accidentsFatalities').val(data.data.accidentsFatalities);
-                                            $('body #updateaccident #accidentsInjuries').val(data.data.accidentsInjuries);
-                                            $('body #updateaccident #accidentsHazardous').val(data.data.accidentsHazardous);
-                                            $('body #viewmodalaccident').modal('hide');
-                                            $('body #editmodalaccident').modal('show');
-                                        } else {
-                                            // Swal.fire('Any fool can use a computer')
-                                            Swal.fire({
-                                                title: 'Error!',
-                                                text: 'No Record found',
-                                                icon: 'error',
-                                                confirmButtonText: 'Cool'
-                                            })
-                                            // window.location = "/";
+                                        else{
+                                            $('#taccident').removeClass('show');
+                                            $('#taccident').addClass('hide');
                                         }
-
+                                        $('body #viewmodalaccident').modal('show');
+                                    } else {
+                                        // Swal.fire('Any fool can use a computer')
+                                        Swal.fire({
+                                            title: 'Error!',
+                                            text: 'No Record found',
+                                            icon: 'error',
+                                            confirmButtonText: 'Cool'
+                                        })
+                                        // window.location = "/";
                                     }
-                                });
-                            });
-                            $(document).on('click', '.viewmodalclassviolations', function () {
-                                // alert('test')
-                                let id = $(this).attr('data-id');
-                                // let id = $('body #updateDriver #id').val();
-                                // alert(id)
-                                console.log(id);
-                                // console.log($(this).attr("data-id"));
-                                $.ajax({
-                                    url: "/getdrivingHistoryViolations",
-                                    type: "GET",
-                                    data: { id: id },
-                                    success: function (data) {
-                                        console.log(data.data);
-                                        if (data.status) {
-                                            $("body #tableviewmodalviolations tbody").html(data.data);
-                                            // $('body #viewmodal >table > tbody').html(data.data);
 
-                                            $('body #viewmodalviolations').modal('show');
-                                        } else {
-                                            // Swal.fire('Any fool can use a computer')
-                                            Swal.fire({
-                                                title: 'Error!',
-                                                text: 'No Violation Found',
-                                                icon: 'error',
-                                                confirmButtonText: 'Cool'
-                                            })
-                                            // window.location = "/";
+                                }
+                            });
+                        });
+                        $(document).on('click', '.editmodalclassaccident', function () {
+                            // alert('test')
+                            let id = $(this).attr('data-id');
+                            // let id = $('body #updateDriver #id').val();
+                            // alert(id)
+                            console.log(id);
+                            // console.log($(this).attr("data-id"));
+                            $.ajax({
+                                url: "/getupdatedrivingHistoryAccident",
+                                type: "GET",
+                                data: { id: id },
+                                success: function (data) {
+                                    if (data.status) {
+                                        $('body #updateaccident #id').val(data.data.id);
+                                        $('body #updateaccident #accidentsDate').val(data.data.accidentsDate);
+                                        $('body #updateaccident #accidentsNature').val(data.data.accidentsNature);
+                                        $('body #updateaccident #accidentsFatalities').val(data.data.accidentsFatalities);
+                                        $('body #updateaccident #accidentsInjuries').val(data.data.accidentsInjuries);
+                                        $('body #updateaccident #accidentsHazardous').val(data.data.accidentsHazardous);
+                                        $('body #viewmodalaccident').modal('hide');
+                                        $('body #editmodalaccident').modal('show');
+                                    } else {
+                                        // Swal.fire('Any fool can use a computer')
+                                        Swal.fire({
+                                            title: 'Error!',
+                                            text: 'No Record found',
+                                            icon: 'error',
+                                            confirmButtonText: 'Cool'
+                                        })
+                                        // window.location = "/";
+                                    }
+
+                                }
+                            });
+                        });
+                        $(document).on('click', '.viewmodalclassviolations', function () {
+                            // alert('test')
+                            let id = $(this).attr('data-id');
+                            // let id = $('body #updateDriver #id').val();
+                            // alert(id)
+                            console.log(id);
+                            $('#vdriverId').val(id);
+                            let company_id = $('#exptype').val();
+                            $('#vcompany_id').val(company_id);
+                            // console.log($(this).attr("data-id"));
+                            $.ajax({
+                                url: "/getdrivingHistoryViolations",
+                                type: "GET",
+                                data: { id: id },
+                                success: function (data) {
+                                    console.log(data.data);
+                                    if (data.status) {
+                                        $("body #tableviewmodalviolations tbody").html(data.data);
+                                        // $('body #viewmodal >table > tbody').html(data.data);
+                                        if(data.add){
+                                            $('#tviolation').removeClass('hide');
+                                            $('#tviolation').addClass('show');
                                         }
-
-                                    }
-                                });
-                            });
-                            $(document).on('click', '.editmodalclassViolations', function () {
-                                // alert('test')
-                                let id = $(this).attr('data-id');
-                                $.ajax({
-                                    url: "/getupdatedrivingHistoryviolations",
-                                    type: "GET",
-                                    data: { id: id },
-                                    success: function (data) {
-                                        if (data.status) {
-                                            $('body #updateviolations #id').val(data.data.id);
-                                            $('body #updateviolations #traficConvintionsDate').val(data.data.traficConvintionsDate);
-                                            $('body #updateviolations #traficConvintionsCharge').val(data.data.traficConvintionsCharge);
-                                            $('body #updateviolations #traficConvintionsLocation').val(data.data.traficConvintionsLocation);
-                                            $('body #updateviolations #traficConvintionsPenalty').val(data.data.traficConvintionsPenalty);
-                                            $('body #viewmodalviolations').modal('hide');
-                                            $('body #editmodalviolations').modal('show');
-                                        } else {
-                                            // Swal.fire('Any fool can use a computer')
-                                            Swal.fire({
-                                                title: 'Error!',
-                                                text: 'Something went wrong',
-                                                icon: 'error',
-                                                confirmButtonText: 'Cool'
-                                            })
-                                            // window.location = "/";
+                                        else{
+                                            $('#tviolation').removeClass('show');
+                                            $('#tviolation').addClass('hide');
                                         }
-
+                                        $('body #viewmodalviolations').modal('show');
+                                    } else {
+                                        // Swal.fire('Any fool can use a computer')
+                                        Swal.fire({
+                                            title: 'Error!',
+                                            text: 'No Violation Found',
+                                            icon: 'error',
+                                            confirmButtonText: 'Cool'
+                                        })
+                                        // window.location = "/";
                                     }
-                                });
+
+                                }
                             });
+                        });
+                        $(document).on('click', '.editmodalclassViolations', function () {
+                            // alert('test')
+                            let id = $(this).attr('data-id');
+                            $.ajax({
+                                url: "/getupdatedrivingHistoryviolations",
+                                type: "GET",
+                                data: { id: id },
+                                success: function (data) {
+                                    if (data.status) {
+                                        $('body #updateviolations #id').val(data.data.id);
+                                        $('body #updateviolations #traficConvintionsDate').val(data.data.traficConvintionsDate);
+                                        $('body #updateviolations #traficConvintionsCharge').val(data.data.traficConvintionsCharge);
+                                        $('body #updateviolations #traficConvintionsLocation').val(data.data.traficConvintionsLocation);
+                                        $('body #updateviolations #traficConvintionsPenalty').val(data.data.traficConvintionsPenalty);
+                                        $('body #viewmodalviolations').modal('hide');
+                                        $('body #editmodalviolations').modal('show');
+                                    } else {
+                                        // Swal.fire('Any fool can use a computer')
+                                        Swal.fire({
+                                            title: 'Error!',
+                                            text: 'Something went wrong',
+                                            icon: 'error',
+                                            confirmButtonText: 'Cool'
+                                        })
+                                        // window.location = "/";
+                                    }
+
+                                }
+                            });
+                        });
                         $(document).on('click', '.addmodalclassaddress', function () {
                             // alert('addmodalclassaddress')
                             // let id = $(this).attr('data-id');

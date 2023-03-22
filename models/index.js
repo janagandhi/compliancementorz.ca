@@ -56,9 +56,21 @@ db.hos = require("./hos.js")(sequelize, Sequelize);
 db.questiongroupone = require("./questiongroupone.js")(sequelize, Sequelize);
 db.questiongrouptwo = require("./questiongrouptwo.js")(sequelize, Sequelize);
 db.reference = require("./reference.js")(sequelize, Sequelize);
+db.canadahos = require("./canadahos.js")(sequelize, Sequelize);
+db.usquestion = require("./usquestion.js")(sequelize, Sequelize);
+db.weightDimensions = require("./weightDimensions.js")(sequelize, Sequelize);
+db.flabted_checklist = require("./flabted_checklist.js")(sequelize, Sequelize);
+db.companychecklist = require("./companychecklist.js")(sequelize, Sequelize);
+db.companyquiz = require("./companyquiz.js")(sequelize, Sequelize);
+db.disclaimer = require("./disclaimer.js")(sequelize, Sequelize);
+db.driverCompany = require("./driverCompany.js")(sequelize, Sequelize);
+db.visitor = require("./visitor.js")(sequelize, Sequelize);
+db.purpose = require("./purpose.js")(sequelize, Sequelize);
+db.safetyLaws = require("./safetyLaws.js")(sequelize, Sequelize);
+db.motorVehicleDriverCertificate = require("./motor_vehicle_driver.js")(sequelize, Sequelize);
+db.annualreview = require("./annualReview.js")(sequelize, Sequelize);
 
-
-fs
+// fs
   // .readdirSync(__dirname)
   // .filter(file => {
   //   return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');

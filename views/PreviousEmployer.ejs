@@ -270,7 +270,7 @@
                             <h4 style="text-align:center;">SAFETY PERFORMANCE HISTORY
                                 RECORDS REQUEST</h4>
                             <h5 style="text-align:center;">PART 1: TO BE COMPLETED BY
-                                PROSPECTIVE EMPLOYEE</h5>
+                                PROSPECTIVE EMPLOYER</h5>
                             <div class="form-group row">
                                 <label for="prospectiveEmployerName"
                                     class="col-md-2 control-label col-form-label">I</label>
@@ -417,7 +417,7 @@
                                 <label for="name" class="col-md-3 control-label col-form-label">
                                     Date:</label>
                                 <div class="col-md-3">
-                                    <input type="date" class="form-control" placeholder="applicantDate"
+                                    <input readonly type="date" class="form-control" placeholder="applicantDate"
                                         name="applicantDate" value="" id="applicantDate">
                                 </div>
                             </div>
@@ -468,11 +468,11 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div id="whattypediv" class="form-group row">
                                 <label for="whatType" class="col-md-9 control-label col-form-label">If
                                     yes, what type?</label>
                                 <div class="col-md-3">
-                                    <select required class="select2 form-control custom-select" id="whatType" name="whatType"
+                                    <select class="select2 form-control custom-select" id="whatType" name="whatType"
                                         style="width: 100%; height:36px;">
                                         <option value="">Select Here</option>
                                         <option value="Straight Truck">Straight Truck
@@ -485,9 +485,9 @@
                                         </option>
                                         <option value="Other">Other</option>
                                     </select>
-                                    <input required type="text" class="form-control" placeholder="Other" name="whatTypeOther"
+                                    <input type="text" class="form-control" placeholder="Other" name="whatTypeOther"
                                         value="" id="whatTypeOther">
-                                    <input required type="text" class="form-control" placeholder="Comment" name="whatTypeComment"
+                                    <input type="text" class="form-control" placeholder="Comment" name="whatTypeComment"
                                         value="" id="whatTypeComment">
                                 </div>
                             </div>
@@ -564,6 +564,7 @@
                                 </div>
                                 <label for="name" class="col-md-3 control-label col-form-label">Date:</label>
                                 <div class="col-md-3">
+                                    <span id="created_date"></span>
                                     <!-- <input type="date" class="form-control"
                                     placeholder="Date" name="previousEmployerDate" value="" 
                                     id="previousEmployerDate"> -->
@@ -746,6 +747,7 @@
 
                     $(document).ready(function () {
                         $("#create_driver_button").hide()
+                        $("body #whattypediv").hide();
                         $("#create_driver_button").click(function () {
 
                             $('body #module_content_modal').modal('show');
@@ -759,6 +761,15 @@
                                 $("body .part3table").show();
                             } else {
                                 $("body .part3table").hide();
+                            }
+                        })
+
+                        $('body #motorVehicleForYou').on('change', function () {
+                            // alert($("body #motorVehicleForYou").val())
+                            if ($("body #motorVehicleForYou").val() == "YES") {
+                                $("body #whattypediv").show();
+                            } else {
+                                $("body #whattypediv").hide();
                             }
                         })
 
@@ -818,6 +829,7 @@
                                 $("body #previousEmployerStreet").val(data.data.previousEmployerStreet);
                                 $("body #previousEmployerFax").val(data.data.previousEmployerFax);
                                 $("body #previousEmployerPhone").val(data.data.previousEmployerPhone);
+                                $("body #created_date").html(data.data.created_date);
                                 $("body #previousEmployerDate").val(data.data.previousEmployerDate);
                                 $("body #previousEmployerAnyInuries [value=" + '"' + data.data.previousEmployerAnyInuries + '"' + "]").attr("selected", true);
 

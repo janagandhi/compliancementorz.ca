@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
+    orgName: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
     company_id: {
       type: DataTypes.TEXT,
       allowNull: true
@@ -43,6 +47,30 @@ module.exports = function(sequelize, DataTypes) {
     certificateIDSixSecondPrams: {
       type: DataTypes.TEXT,
       allowNull: true
+    },
+    drugAlcoholPointone: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    drugAlcoholPointtwo: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    drugAlcoholPointthree: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    drugAlcoholPointfour: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    drugAlcoholPointfive: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    drugAlcoholPointsix: {
+      type: DataTypes.TEXT,
+      allowNull: true
     }
   }, {
     sequelize,
@@ -59,6 +87,13 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
+  certificateauth.associate = (models) => {
+    certificateauth.belongsTo(models.driver, {
+      as : "d",
+      foreignKey : "driverId",
+      targetKey : "id"
+    })
+  }
   sequelizePaginate.paginate(certificateauth);
   return certificateauth;
 };

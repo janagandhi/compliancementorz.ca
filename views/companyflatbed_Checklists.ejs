@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+        <link rel="stylesheet" type="text/css"
+        href="https://ashaviglobal.com/agreement/template/dist/css/jquery.signature.css">
+    <style type="text/css">
+		.float_left {
+			float: left;
+		}
+		.padding_right{
+			padding-right:10px;
+		}
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+		.float_left{
+			float:left;
+		}
+		.form-group{
+			width:100%
+		}
+		.col-md-3{
+		  max-width:11%
+		}
+		.l_10 {
+			margin-left: 10px;
+		}
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+        .col-md-12 {
+			width: 100%;
+			float: left;
+		}
+		.col-md-6 {
+			width: 50%;
+			float: left;
+		}
+		.col-md-10 {
+			width: 80%;
+			float: left;
+		}
+		.col-md-2 {
+			width: 20%;
+			float: left;
+			margin-bottom:10px;
+		}
+		.col-md-9 {
+			width: 75%;
+			float: left;
+		}
+		.col-md-3 {
+			width: 25%;
+			float: left;
+		}
+          /* Signature */
+          .kbw-signature {
+            background-color: #fff;
+            /* width: 100%; */
+            /* height: 250px; */
+        }
+
+        /* .signature canvas {
+            width: 100% !important;
+            height: auto;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarCompany.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" va id="company_id" value="<%- company_id %>" name="company_id">
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+
+                                    <!-- <div class="col-md-6">
+                                        Select Company
+                                        <select class="form-select selectboxcss" name="exptype" id="exptype">
+                                            <option value="">Select Company</option>
+                                            <% getCompanydata.forEach(function(row){ %>
+                                                <option value="<%= row.id %>">
+                                                    <%= row.name %>
+                                                </option>
+                                                <% }) %>
+
+                                        </select>
+                                    </div> -->
+
+                                </div>
+                                <!-- <button class="btn btn-success" id="create_trailer_button"> Add Trailer <span class="glyphicon glyphicon-edit"></span>   <i style="font-size: 15px;" class="fas fa-plus"></i></button> -->
+                                <h5 align="center" class="card-title">
+                                    <!-- <%- title %> -->
+                                </h5>
+                                <div class="table-responsive">
+                                    <table id="updatedrivermanualDetails" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:10%">Id</th>
+                                                <th style="width:25%">First Name</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- view modal -->
+
+
+
+                        <div id="viewmodal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">View FLATBED CHECK LIST</h3>
+                                        <h4 align="center" class="card-title">
+
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+
+                                                    <!-- <form class="form-horizontal" id="updateQuestions" style="background: #27a9e324;border-radius: 35px;"> -->
+                                                    <div class="card-body" id="updateQuestions_details_view">
+                                                      
+                                                        <br>
+
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="driverId" value="" id="driverId">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="company_id" value="" id="company_id">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="approveStatus" value="1" id="approveStatus">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="actionData" value="" id="actionData">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-12 float_left">
+                                                                    <label class="col-md-6">Name of Driver </label>
+                                                                    <div class="col-md-6 float_left">
+                                                                        <span id="v_driver_name"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <label class="col-md-6">Company Name</label>
+                                                                    <div class="col-md-6 float_left">
+                                                                        <span id="v_company"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <label class="col-md-6">Driving License#</label>
+                                                                    <div class="col-md-6 float_left">
+                                                                        <span id="v_license"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-9 float_left">
+                                                                        <h3 style=" text-decoration: underline;"><b>Online Trainings</b></h3>
+                                                                    </div>
+                                                                    <div class="col-md-3 float_left">
+                                                                        <h3 style="text-align:center">Initials</h3>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        1. Defensive Training.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vonline1" id="vonline1" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        2. Hours of Service and Log Books.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vonline2" id="vonline2" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        3. Vehicle Inspections.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vonline3" id="vonline3" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        4. Cargo Securement for Drivers – Flatbed/Step-decks.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vonline4" id="vonline4" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        5. Safety Laws.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vonline5" id="vonline5" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-9 float_left">
+                                                                        <h3 style=" text-decoration: underline;"><b>Practical Trainings</b></h3>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        1. Hours of Service and Log Books.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vpractical1" id="vpractical1" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        2. Vehicle Inspections.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vpractical2" id="vpractical2" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        3. Backing the Trucks/Trailers.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vpractical3" id="vpractical3" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        4. Practical Cargo Securement for drivers – Flatbed/Step-decks.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vpractical4" id="vpractical4" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        5. Weight & Dimension Training.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vpractical5" id="vpractical5" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        6. Communicating with Shippers and Receivers.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vpractical6" id="vpractical6" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        7. Border Crossing.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vpractical7" id="vpractical7" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        8. Backing the Trucks/Trailers.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vpractical8" id="vpractical8" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        9. Preparing Loading/Unloading paper-works.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vpractical9" id="vpractical9" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        10. Fuelling.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vpractical10" id="vpractical10" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        11. How to use Abord/ELD system.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vpractical11" id="vpractical11" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-10" style="margin-left:10px;">
+                                                                        12. Driver Manual, policies and Procedures.
+                                                                    </div>
+                                                                    <div class="col-md-2 float_left">
+                                                                        <input type="text" name="vpractical12" id="vpractical12" maxlength="2" readonly="true">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-6" >
+                                                                        <label class="col-md-6">Start Date</label>
+                                                                        <div class="col-md-6">
+                                                                            <input type="text" name="vstart_date" id="vstart_date" readonly="true">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 float_left">
+                                                                        <label class="col-md-6">End Date</label>
+                                                                        <div class="col-md-6">
+                                                                            <input type="text" name="vend_date" id="vend_date" readonly="true">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <div class="col-md-6 float_left">
+                                                                        <label class="col-md-6">Signature</label>
+                                                                        <div class="col-md-6">
+                                                                          <span class="v_driver_sign"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 float_left">
+                                                                        <label class="col-md-6">Signature</label>
+                                                                        <div class="col-md-6">
+                                                                            <span class="v_driver_sign"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <hr><br>
+                                                                    <input class="form-check-input" id="vIagree"
+                                                                        name="vIagree" type="checkbox" value="1"
+                                                                       checked disabled>
+            
+                                                                    I certify that I have read and
+                                                                    understood the above requirements.
+                                                                </div>
+                                                                <div class="col-md-12 float_left">
+                                                                    <hr>
+                                                                    <div class="col-md-6 float_left">
+                                                                        <span class="v_admin_sign"></span>
+                                                                    </div>
+                                                                    <div class="col-md-6 float_left">
+                                                                        <span class="v_driver_sign"></span>
+                                                                    </div>
+                                                                    <br><br><br>
+                                                                </div>
+                                                                <div class="col-md-6 float_left">
+                                                                    Signature of the Supervisor
+                                                                </div>
+                                                                <div class="col-md-6 float_left">
+                                                                    Signature of the Driver
+                                                                </div>
+                                                                <div class="col-md-12" style="padding:0px 0px 0px 28%">
+                                                                <div class="col-md-6" >
+                                                                    <span class="v_sign"></span><br><br><br>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12" style="padding:0px 0px 0px 28%">
+                                                                <div class="col-md-12" >
+                                                                    Witness Signature 
+                                                                </div>
+                                                            </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- </form> -->
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    </div>
+                        <!-- edit modal -->
+
+                        <!-- edit modal -->
+
+
+
+                        <div id="editmodal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
+                            data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">Edit Flabted Checklist</h3>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+
+                                                    <form class="form-horizontal" id="updateQuestions"
+                                                        style="background: #27a9e324;border-radius: 35px;">
+                                                        <div class="card-body" id="updateQuestions_details">
+                                                            
+                                                            <br>
+
+                                                            <input type="hidden" class="form-control" name="driverId"
+                                                                value="" id="edriverId">
+                                                            <input type="hidden" class="form-control" name="company_id"
+                                                                value="" id="ecompany_id">
+                                                            <input type="hidden" class="form-control"
+                                                                name="approveStatus" value="1" id="approveStatus">
+                                                            <input type="hidden" class="form-control" name="actionData"
+                                                                value="" id="actionData">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+																	<div class="col-md-12 float_left">
+                                                                        <label class="col-md-6">Name of Driver </label>
+                                                                        <div class="col-md-6 float_left">
+                                                                            <span id="e_driver_name"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <label class="col-md-6">Company Name</label>
+                                                                        <div class="col-md-6 float_left">
+                                                                            <span id="e_company"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <label class="col-md-6">Driving License#</label>
+                                                                        <div class="col-md-6 float_left">
+                                                                            <span id="e_license"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-9 float_left">
+                                                                            <h3 style=" text-decoration: underline;"><b>Online Trainings</b></h3>
+                                                                        </div>
+                                                                        <div class="col-md-3 float_left">
+                                                                            <h3 style="text-align:center">Initials</h3>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            1. Defensive Training.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="online1" id="online1" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            2. Hours of Service and Log Books.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="online2" id="online2" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            3. Vehicle Inspections.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="online3" id="online3" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            4. Cargo Securement for Drivers – Flatbed/Step-decks.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="online4" id="online4" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            5. Safety Laws.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="online5" id="online5" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-9 float_left">
+                                                                            <h3 style=" text-decoration: underline;"><b>Practical Trainings</b></h3>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            1. Hours of Service and Log Books.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="practical1" id="practical1" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            2. Vehicle Inspections.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="practical2" id="practical2" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            3. Backing the Trucks/Trailers.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="practical3" id="practical3" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            4. Practical Cargo Securement for drivers – Flatbed/Step-decks.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="practical4" id="practical4" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            5. Weight & Dimension Training.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="practical5" id="practical5" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            6. Communicating with Shippers and Receivers.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="practical6" id="practical6" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            7. Border Crossing.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="practical7" id="practical7" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            8. Backing the Trucks/Trailers.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="practical8" id="practical8" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            9. Preparing Loading/Unloading paper-works.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="practical9" id="practical9" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            10. Fuelling.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="practical10" id="practical10" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            11. How to use Abord/ELD system.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="practical11" id="practical11" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-10" style="margin-left:10px;">
+                                                                            12. Driver Manual, policies and Procedures.
+                                                                        </div>
+                                                                        <div class="col-md-2 float_left">
+                                                                            <input type="text" name="practical12" id="practical12" maxlength="2" class="checklist">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-6" >
+                                                                            <label class="col-md-6">Start Date</label>
+                                                                            <div class="col-md-6">
+                                                                                <input type="date" name="start_date" id="start_date" >
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 float_left">
+                                                                            <label class="col-md-6">End Date</label>
+                                                                            <div class="col-md-6">
+                                                                                <input type="date" name="end_date" id="end_date" >
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <div class="col-md-6 float_left">
+                                                                            <label class="col-md-6">Signature</label>
+                                                                            <div class="col-md-6">
+                                                                                <span class="v_driver_sign"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 float_left">
+                                                                            <label class="col-md-6">Signature</label>
+                                                                            <div class="col-md-6">
+                                                                                <span class="v_driver_sign"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <hr><br>
+                                                                        <input class="form-check-input" id="Iagree"
+                                                                            name="Iagree" type="checkbox" value="1"
+                                                                           checked disabled>
+                
+                                                                        I certify that I have read and
+                                                                        understood the above requirements.
+                                                                    </div>
+                                                                    <div class="col-md-12 float_left">
+                                                                        <hr>
+                                                                        <div class="col-md-6 float_left">
+                                                                            <!--:<input class="form-check-input" 
+                                                                            type="textbox" readonly="true"
+                                                                            >-->
+                                                                        </div>
+                                                                        <div class="col-md-6 float_left">
+                                                                            <span class="v_driver_sign"></span>
+                                                                        </div>
+                                                                        <br><br><br>
+                                                                    </div>
+                                                                    <div class="col-md-6 float_left">
+                                                                        <div id="signatureDiv1">
+                                                                            <div id="" class="signature1"></div>
+                                                                            <br />
+                                                                            <button id="clear1" class="clear">Clear Signature</button>
+                                                                        <textarea id="signpad1" class="signpad1" name="signature_image1"
+                                                                        style="display: none"></textarea><br><br><br>
+                                                                        </div>
+                                                                        Signature of the Supervisor
+                                                                    </div>
+                                                                    <div class="col-md-6 float_left">
+                                                                        Signature of the Driver
+                                                                    </div>
+                                                                    <div class="col-md-12" style="padding:0px 0px 0px 28%">
+                                                                    <div class="col-md-6" >
+                                                                        <div id="signatureDiv">
+                                                                            <div id="" class="signature"></div>
+                                                                            <br />
+                                                                            <button id="clear" class="clear">Clear Signature</button>
+                                                                        <textarea id="signpad" class="signpad" name="signature_image"
+                                                                        style="display: none"></textarea><br><br><br>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12" style="padding:0px 0px 0px 28%">
+                                                                    <div class="col-md-12" >
+                                                                        Witness Signature 
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+
+
+
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="border-top">
+                                                            <div style="text-align: center;" class="card-body">
+                                                                <button type="Submit" id="submitBtn"
+                                                                    class="btn btn-primary">Update</button>
+                                                            </div>
+                                                        </div>
+                                                </div>
+
+                                                </form>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- edit modal -->
+
+                        <!-- create trailer -->
+
+
+
+
+
+                        <!-- ============================================================== -->
+                        <!-- End Page wrapper  -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Wrapper -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <%- include('includes/footer.ejs') %>
+					<style>
+					.checklist {
+						text-transform: uppercase;
+					}
+					</style>
+                        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+                        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+                        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+
+                        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                        <script type="text/javascript"
+                            src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+                        <script type="text/javascript"
+                            src="assets/extra-libs/signature/jquery.signature.min.js"></script>
+                        <script>
+
+                            var signature = $('.signature').signature({ syncField: '.signpad', syncFormat: 'PNG' });
+
+                            $('.signpad').draggable();
+                            $('.clear').click(function (e) {
+                                // alert('ddd');
+                                e.preventDefault();
+                                signature.signature('clear');
+                                $(".signpad").val('');
+                            });
+
+                            var signature1 = $('.signature1').signature({ syncField: '.signpad1', syncFormat: 'PNG' });
+
+                            $('.signpad1').draggable();
+                            $('.clear').click(function (e) {
+                                // alert('ddd');
+                                e.preventDefault();
+                                signature1.signature('clear');
+                                $(".signpad1").val('');
+                            });
+
+                            /****************************************
+                             *       Basic Table                   *
+                             ****************************************/
+                            // $('#zero_config').DataTable();
+
+                            $(document).ready(function () {
+
+
+                                let date = new Date();
+                                var currentdate =
+                                    ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+                                    ("00" + date.getDate()).slice(-2) + "/" +
+                                    date.getFullYear();
+
+                                $(document).on('click', '#viewmodalid', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    let cmpid = $('#company_id').val();
+                                    // alert(id)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/edit_flatbed_Checklists",
+                                        type: "GET",
+                                        data: { id: id ,certificateID:8,cmpid:cmpid},
+                                        success: function (data) {
+                                          //  console.log(data);
+                                            if (data.status) {
+                                                let approveStatus;
+                                               
+                                                $("body #updateQuestions_details_view #approveStatus").text(approveStatus);
+                                                $("body #updateQuestions_details_view #submitBtn").text('Update');
+                                                $('body #updateQuestions_details_view #actionData').val('Update');
+												$('#vdriverName').html(data.driverData.driver_name);
+                                                $('#v_driver_name').html(data.driverData.driver_name);
+                                                $('#v_license').html(data.driverData.driver_license);
+                                                $('#v_company').html(data.company.name);
+                                                $('#vonline1').val(data.flabted_checklist.online1);
+                                                $('#vonline2').val(data.flabted_checklist.online2);
+                                                $('#vonline3').val(data.flabted_checklist.online3);
+                                                $('#vonline4').val(data.flabted_checklist.online4);
+                                                $('#vonline5').val(data.flabted_checklist.online5);
+                                                $('#vpractical1').val(data.flabted_checklist.practical1);
+                                                $('#vpractical2').val(data.flabted_checklist.practical12);
+                                                $('#vpractical3').val(data.flabted_checklist.practical3);
+                                                $('#vpractical4').val(data.flabted_checklist.practical4);
+                                                $('#vpractical5').val(data.flabted_checklist.practical5);
+                                                $('#vpractical6').val(data.flabted_checklist.practical6);
+                                                $('#vpractical6').val(data.flabted_checklist.practical6);
+                                                $('#vpractical7').val(data.flabted_checklist.practical7);
+                                                $('#vpractical8').val(data.flabted_checklist.practical8);
+                                                $('#vpractical9').val(data.flabted_checklist.practical9);
+                                                $('#vpractical10').val(data.flabted_checklist.practical10);
+                                                $('#vpractical11').val(data.flabted_checklist.practical11);
+                                                $('#vpractical12').val(data.flabted_checklist.practical12);
+                                                $('#vstart_date').val(data.flabted_checklist.start_date);
+                                                $('#vend_date').val(data.flabted_checklist.end_date);
+                                                 if(data.getDrivinghistory!=null ){
+                                                if(data.getDrivinghistory!='' && data.getDrivinghistory.signature!=''){
+                                                    $('.v_driver_sign').html('<img src="'+data.getDrivinghistory.signature+'" alt="user" width="150" class="sign_img4">');
+                                                    let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.getDrivinghistory.signature;
+                                                    $(".sign_img4").attr("src", signaturePath);
+
+                                                }
+                                            }
+                                                if(data.data.signature!=''){
+                                                    $('.v_sign').html('<img src="" alt="user" width="150" id="sign_img5">');
+                                                    let signaturePath = 'uploads/attachment/checklist/' + data.data.signature;
+                                                    $("#sign_img5").attr("src", signaturePath);
+                                                    
+                                                }
+                                                if(data.data.adminSignature!=''){
+                                                    $('.v_admin_sign').html('<img src="" alt="user" width="150" id="sign_img6">');
+                                                    let signaturePath1 = 'uploads/attachment/checklist/' + data.data.adminSignature;
+                                                    $("#sign_img6").attr("src", signaturePath1);
+                                                   
+                                                }
+                                                $('body #viewmodal').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                // window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+
+                                $(document).on('click', '#editmodalid', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    let cmpid = $('#company_id').val();
+                                    // alert(id)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/edit_flatbed_Checklists",
+                                        type: "GET",
+                                        data: { id: id,certificateID:8,cmpid:cmpid },
+                                        success: function (data) {
+                                            console.log(data);
+                                            if (data.status) {
+                                                let approveStatus;
+                                                
+                                                $("body #updateQuestions_details #edriverId").val(data.driverData.id);
+                                                $("body #updateQuestions_details #ecompany_id").val(data.driverData.company_id);
+                                                $("body #updateQuestions_details #approveStatus").text(approveStatus);
+                                                $("body #updateQuestions_details #driverName").text(data.driverData.driver_name);
+                                                $("body #updateQuestions_details #submitBtn").text('Update');
+                                                $('body #updateQuestions_details #actionData').val('Update');
+												
+												$('#e_driver_name').html(data.driverData.driver_name);
+                                                $('#e_license').html(data.driverData.driver_license);
+                                                $('#e_company').html(data.company.name);
+                                                $('#online1').val(data.flabted_checklist.online1);
+                                                $('#online2').val(data.flabted_checklist.online2);
+                                                $('#online3').val(data.flabted_checklist.online3);
+                                                $('#online4').val(data.flabted_checklist.online4);
+                                                $('#online5').val(data.flabted_checklist.online5);
+                                                $('#practical1').val(data.flabted_checklist.practical1);
+                                                $('#practical2').val(data.flabted_checklist.practical12);
+                                                $('#practical3').val(data.flabted_checklist.practical3);
+                                                $('#practical4').val(data.flabted_checklist.practical4);
+                                                $('#practical5').val(data.flabted_checklist.practical5);
+                                                $('#practical6').val(data.flabted_checklist.practical6);
+                                                $('#practical7').val(data.flabted_checklist.practical7);
+                                                $('#practical8').val(data.flabted_checklist.practical8);
+                                                $('#practical9').val(data.flabted_checklist.practical9);
+                                                $('#practical10').val(data.flabted_checklist.practical10);
+                                                $('#practical11').val(data.flabted_checklist.practical11);
+                                                $('#practical12').val(data.flabted_checklist.practical12);
+                                                $('#start_date').val(data.flabted_checklist.start_date);
+                                                $('#end_date').val(data.flabted_checklist.end_date);
+                                                console.log(data.getDtls);
+                                                if(data.getDrivinghistory!=null ){
+                                                if(data.getDrivinghistory!='' && data.getDrivinghistory.signature!=''){
+                                                    $('.v_driver_sign').html('<img src="'+data.getDrivinghistory.signature+'" alt="user" width="150" class="sign_img2">');
+                                                    let signaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.getDrivinghistory.signature;
+                                                    $(".sign_img2").attr("src", signaturePath);
+
+                                                }
+                                                }
+                                                if(data.data.signature!=''){
+                                                    $('#signatureDiv').html('<img src="" alt="user" width="150" id="sign_img">');
+                                                    let signaturePath = 'uploads/attachment/checklist/' + data.data.signature;
+                                                    $("#sign_img").attr("src", signaturePath);
+                                                    
+                                                }
+                                                if(data.data.adminSignature!=''){
+                                                    $('#signatureDiv1').html('<img src="" alt="user" width="150" id="sign_img1">');
+                                                    if(data.getDrivinghistory!='' && data.getDrivinghistory.signature!=''){
+                                                        let signaturePath1 = 'uploads/attachment/checklist/' + data.data.adminSignature;
+                                                     $("#sign_img1").attr("src", signaturePath1);
+                                                    }
+                                                }
+                                                $('body #editmodal').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                            }
+
+                                        }
+                                    });
+                                });
+
+                            });
+
+							$(document).ready(function () {
+								let cmpid = $('body #company_id').val();
+								$('body #create_trailer #company_id').val(cmpid);
+								$("#create_trailer_button").show()
+								$("#updatedrivermanualDetails").dataTable().fnDestroy();
+								let customer = $('#updatedrivermanualDetails').DataTable({
+									processing: true,
+									serverSide: true,
+									order: [[0, 'ASC']],
+									lengthMenu: [[10, 50, 100, 250, 500, 1000], [10, 50, 100, 250, 500, 1000]],
+									pageLength: 10,
+									searching: true,
+									ajax: {
+										url: "/company_get_flatbed_checklist",
+										data: function (data) {
+											data.cmpid = cmpid
+											//data.search_key = $("#searchKey").val(),
+											//data.search_val = $("#searchVal").val()
+										},
+										type: "GET",
+									},
+									columns: [
+									{ "data": "slno" },
+									{ "data": "driver_name" },
+									{ "data": "action" }
+									],
+									select: true
+								});
+							});
+
+
+                            $(document).on('click', '#deletedriverDtls', function () {
+                                let id = $(this).attr('data-id');
+
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to revert this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, delete it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+
+
+                                        $.ajax({
+                                            url: "/companyflatbeddeletechecklist",
+                                            type: "POST",
+                                            data: { id: id },
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    }); setTimeout(function () {
+                                                        window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+
+
+
+                            $("#updateQuestions").submit(function (event) {
+                                event.preventDefault();
+
+                                var values = {};
+								var req_val = '';
+                                $.each($('#updateQuestions').serializeArray(), function (i, field) {
+									req_val = field.value;
+                                    values[field.name] = req_val.toUpperCase();
+                                    // console.log(values[field.name]);
+                                });
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You want to update this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, update it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        $("#submitBtn").text('Please wait');
+                                        $("#submitBtn").attr('disabled', true);
+										 var form = $(this);
+                                        $.ajax({
+                                            url: "/updatecompanyflatedchecklist",
+                                            type: "POST",
+											//data: form.serialize(),
+                                            data: values,
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    });
+                                                    setTimeout(function () {
+                                                       window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+
+
+$(function () {
+	  $(".checklist").bind("keyup", function (e) {
+		$(".checklist").val(this.value);
+	  });
+	});
+
+
+                        </script>
+                        <script src="sweetAlert/sweetalert2.min.js"></script>
+</body>
+
+</html>

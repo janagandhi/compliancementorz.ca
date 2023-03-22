@@ -148,9 +148,11 @@
                                         <thead>
                                             <tr>
                                                 <th style="width:5%;">Id</th>
-                                                <th style="width:20%;">Driver ID</th>
+                                                <th style="width:10%;">Driver ID</th>
                                                 <th style="width:20%;">Driver Name</th>
-                                                <th style="width:20%;">Active</th>
+                                                <th style="width:20%;">Password</th>
+                                                <th style="width:20%;">Disclaimer</th>
+                                                <th style="width:15%;">Active</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -240,6 +242,28 @@
                                                                             <input type="text" class="form-control"
                                                                                 name="driver_license" value=""
                                                                                 id="driver_license" required>
+                                                                        </div>
+                                                                    </div>
+																	<div class="form-group row">
+                                                                        <label for=""
+                                                                            class="col-sm-3 control-label col-form-label">Disclaimer</label>
+                                                                        <div class="col-md-9">
+                                                                            <select class="form-control form-select" name="Disclaimer_type" id="Disclaimer_type">
+                                                                                <option value="No">No</option>
+                                                                                <option value="Yes">Yes</option>
+                                                                            </select>
+                                                                                
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for=""
+                                                                            class="col-sm-3 control-label col-form-label">Annual Review</label>
+                                                                        <div class="col-md-9">
+                                                                            <select class="form-control form-select" name="annualreview" id="annualreview">
+                                                                                <option value="No">No</option>
+                                                                                <option value="Yes">Yes</option>
+                                                                            </select>
+                                                                                
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -457,7 +481,7 @@
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label for="sin"
-                                                                            class="col-sm-3 control-label col-form-label">SIN</label>
+                                                                            class="col-sm-3 control-label col-form-label">Social Insurance Number</label>
                                                                         <div class="col-md-9">
                                                                             <input type="text" class="form-control"
                                                                                 name="sin" value="" id="sin">
@@ -594,6 +618,18 @@
                                                                                 class="form-control mydatepicker"
                                                                                 name="work_permit_expiry" value=""
                                                                                 id="work_permit_expiry">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="abstract_date"
+                                                                            class="col-sm-3 control-label col-form-label">Abstract Date</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" name="abstract_date"
+                                                                                id="abstract_date"
+                                                                                class="form-control mydatepicker"
+                                                                                placeholder="">
+                                                                            <div class="input-group-append">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -966,6 +1002,28 @@
                                                                                 name="address" value="" id="address">
                                                                         </div>
                                                                     </div>
+																	<div class="form-group row">
+                                                                        <label for=""
+                                                                            class="col-sm-3 control-label col-form-label">Disclaimer</label>
+                                                                        <div class="col-md-9">
+                                                                            <select class="form-control form-select" name="Disclaimer_type" id="Disclaimer_type">
+                                                                                <option value="No">No</option>
+                                                                                <option value="Yes">Yes</option>
+                                                                            </select>
+                                                                                
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for=""
+                                                                            class="col-sm-3 control-label col-form-label">Annual Review</label>
+                                                                        <div class="col-md-9">
+                                                                            <select class="form-control form-select" name="annualreview" id="aannualreview">
+                                                                                <option value="No">No</option>
+                                                                                <option value="Yes">Yes</option>
+                                                                            </select>
+                                                                                
+                                                                        </div>
+                                                                    </div>
                                                                     <div class="form-group row">
                                                                         <label for="driver_license"
                                                                             class="col-sm-3 control-label col-form-label">Driver
@@ -1179,7 +1237,7 @@
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label for="sin"
-                                                                            class="col-sm-3 control-label col-form-label">SIN</label>
+                                                                            class="col-sm-3 control-label col-form-label">Social Insurance Number</label>
                                                                         <div class="col-md-9">
                                                                             <input type="text" class="form-control"
                                                                                 name="sin" value="" id="sin">
@@ -1306,6 +1364,18 @@
                                                                                 class="form-control mydatepicker"
                                                                                 name="work_permit_expiry" value=""
                                                                                 id="work_permit_expiry">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="abstract_date"
+                                                                            class="col-sm-3 control-label col-form-label">Abstract Date</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" name="abstract_date"
+                                                                                id="abstract_date"
+                                                                                class="form-control mydatepicker"
+                                                                                placeholder="">
+                                                                            <div class="input-group-append">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -1569,6 +1639,7 @@
                                                                                 id="message_details">
                                                                         </div>
                                                                     </div>
+                                                                    
                                                                 </div>
 
 
@@ -1679,6 +1750,28 @@
                                                                                         class="form-control"
                                                                                         name="driver_license" value=""
                                                                                         id="driver_license" required>
+                                                                                </div>
+                                                                            </div>
+																			<div class="form-group row">
+                                                                                <label for=""
+                                                                                    class="col-sm-3 control-label col-form-label">Disclaimer</label>
+                                                                                <div class="col-md-9">
+                                                                                    <select class="form-control form-select" name="Disclaimer_type" id="Disclaimer_type">
+                                                                                        <option value="No">No</option>
+                                                                                        <option value="Yes">Yes</option>
+                                                                                    </select>
+                                                                                        
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for=""
+                                                                                    class="col-sm-3 control-label col-form-label">Annual Review</label>
+                                                                                <div class="col-md-9">
+                                                                                    <select class="form-control form-select" name="annualreview" id="addannualreview">
+                                                                                        <option value="No">No</option>
+                                                                                        <option value="Yes">Yes</option>
+                                                                                    </select>
+                                                                                        
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -1916,7 +2009,7 @@
                                                                             </div>
                                                                             <div class="form-group row">
                                                                                 <label for="sin"
-                                                                                    class="col-sm-3 control-label col-form-label">SIN</label>
+                                                                                    class="col-sm-3 control-label col-form-label">Social Insurance Number</label>
                                                                                 <div class="col-md-9">
                                                                                     <input type="text"
                                                                                         class="form-control" name="sin"
@@ -2064,6 +2157,18 @@
                                                                                         name="work_permit_expiry"
                                                                                         value=""
                                                                                         id="work_permit_expiry">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label for="abstract_date"
+                                                                                    class="col-sm-3 control-label col-form-label">Abstract Date</label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text" name="abstract_date"
+                                                                                        id="abstract_date"
+                                                                                        class="form-control mydatepicker"
+                                                                                        placeholder="">
+                                                                                    <div class="input-group-append">
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -2326,6 +2431,7 @@
                                                                                         id="message_details">
                                                                                 </div>
                                                                             </div>
+                                                                            
                                                                         </div>
 
 
@@ -2501,6 +2607,8 @@
                                             { "data": "slno" },
                                             { "data": "driver_id" },
                                             { "data": "driver_name" },
+                                            { "data": "password" },
+                                            { "data": "disclaimer_type" },
                                             { "data": "active" },
                                             { "data": "action" }
                                         ],
@@ -2589,6 +2697,7 @@
                                             $('body #viewmodal #view_driver_details #work_permit').val(data.data.work_permit);
                                             $('body #viewmodal #view_driver_details #svi_number').val(data.data.svi_number);
                                             $('body #viewmodal #view_driver_details #work_permit_expiry').val(data.data.work_permit_expiry);
+                                            $('body #viewmodal #view_driver_details #abstract_date').val(data.data.abstract_date);
                                             $('body #viewmodal #view_driver_details #cvor').val(data.data.cvor);
                                             $('body #viewmodal #view_driver_details #broker_detail').val(data.data.broker_detail);
 
@@ -2666,6 +2775,8 @@
                                             $('body #viewmodal #view_driver_details #date').val(data.data.date);
                                             $('body #viewmodal #view_driver_details #communication').val(data.data.communication);
                                             $('body #viewmodal #view_driver_details #message_details').val(data.data.message_details);
+                                            $("body #viewmodal #view_driver_details #Disclaimer_type [value=" + '"' + data.data.Disclaimer_type + '"' + "]").attr("selected", true);
+                                            $("body #viewmodal #view_driver_details #aannualreview [value=" + '"' + data.data.annualreview + '"' + "]").attr("selected", true);
                                             $('body #viewmodal').modal('show');
                                         } else {
                                             // Swal.fire('Any fool can use a computer')
@@ -2736,6 +2847,7 @@
                                             $('body #editmodal #edit_driver_details #work_permit').val(data.data.work_permit);
                                             $('body #editmodal #edit_driver_details #svi_number').val(data.data.svi_number);
                                             $('body #editmodal #edit_driver_details #work_permit_expiry').val(data.data.work_permit_expiry);
+                                            $('body #editmodal #edit_driver_details #abstract_date').val(data.data.abstract_date);
                                             $('body #editmodal #edit_driver_details #cvor').val(data.data.cvor);
                                             $('body #editmodal #edit_driver_details #broker_detail').val(data.data.broker_detail);
 
@@ -2814,6 +2926,7 @@
                                             $('body #editmodal #edit_driver_details #communication').val(data.data.communication);
                                             $('body #editmodal #edit_driver_details #message_details').val(data.data.message_details);
                                             $('body #editmodal').modal('show');
+                                            $("body #editmodal #edit_driver_details #annualreview [value=" + '"' + data.data.annualreview + '"' + "]").attr("selected", true);
                                         } else {
                                             // Swal.fire('Any fool can use a computer')
                                             Swal.fire({
@@ -2946,9 +3059,9 @@
                                 var values = {};
                                 $.each($('#edit_driver').serializeArray(), function (i, field) {
                                     values[field.name] = field.value;
-                                    // console.log(values[field.name]);
+                                     //console.log(values[field.name]);
                                 });
-
+                                console.log(values);
                                 Swal.fire({
                                     title: 'Are you sure?',
                                     text: "You won't be able to update this!",

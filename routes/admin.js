@@ -8,6 +8,7 @@ const router = express.Router();
 let loginContoller = require('../controllers/login');
 let mainContoller = require('../controllers/main');
 let superadminController = require('../controllers/superadminController');
+let apiContoller = require('../controllers/apiController');
 const auth = require('../middleware/logincheck');
 const session = require('express-session');
 app.use(session({
@@ -50,6 +51,9 @@ router.get('/checkEmail', async (req, res) => {
 });
 router.get('/alertCron', async (req, res) => {
     superadminController.alertCron(req, res);
+});
+router.get('/referenceCron', async (req, res) => {
+    superadminController.referenceCron(req, res);
 });
 router.get('/profile',auth.companycheck,async(req,res) => {
     mainContoller.Profile(req,res);
@@ -394,6 +398,12 @@ router.post('/superadmintraileractive', auth.Common,async (req, res) => {
 router.get('/superadmindriver', auth.superadminCheck,async (req, res) => {
     superadminController.driver(req, res);
 });
+router.get('/superadminsearchdriver', auth.superadminCheck,async (req, res) => {
+    superadminController.searchdriver(req, res);
+});
+router.get('/superadmingetsearchDriver', auth.superadminCheck,async (req, res) => {
+    superadminController.getsearchDriver(req, res);
+});
 // LIST Driver for table
 router.get('/superadmingetDriver', auth.superadminCheck,async (req, res) => {
     superadminController.getDriver(req, res);
@@ -615,11 +625,17 @@ router.get('/getupdatedrivingHistoryAccident',async (req, res) => {
 router.post('/UpdatedrivingHistoryAccidentID',async (req, res) => {
     mainContoller.UpdatedrivingHistoryAccidentID(req, res);
 });
+router.post('/adddrivingHistoryAccidentID',async (req, res) => {
+    mainContoller.adddrivingHistoryAccidentID(req, res);
+});
 router.get('/getupdatedrivingHistoryViolations',async (req, res) => {
     mainContoller.getupdatedrivingHistoryViolations(req, res);
 });
 router.post('/UpdatedrivingHistoryViolationsID',async (req, res) => {
     mainContoller.UpdatedrivingHistoryViolationsID(req, res);
+});
+router.post('/adddrivingHistoryViolationsID',async (req, res) => {
+    mainContoller.adddrivingHistoryViolationsID(req, res);
 });
 router.get('/getupdatedrivingHistoryAddress',async (req, res) => {
     mainContoller.getupdatedrivingHistoryAddress(req, res);
@@ -816,6 +832,10 @@ router.post('/superadminCreateReference', auth.superadminCheck,async (req, res) 
 router.post('/superadminCreateReferenceExisting', auth.superadminCheck,async (req, res) => {
     superadminController.CreateReferenceExisting(req, res);
 });
+// Delete ref
+router.post('/deleteReference', auth.superadminCheck,async (req, res) => {
+    superadminController.deleteReference(req, res);
+});
 
 router.get('/superadminGetPrevEmpdetails', auth.superadminCheck,async (req, res) => {
     superadminController.superadminGetPrevEmpdetails(req, res);
@@ -847,6 +867,153 @@ router.get('/companydrivermanual', auth.Common,async (req, res) => {
 });
 //end
 
+
+//Rajesh Code
+router.get('/canadahosmanual', auth.drivercheck,async (req, res) => {
+    mainContoller.canadahosmanual(req, res);
+});
+router.get('/Superadmincanadahosmanual', auth.Common,async (req, res) => {
+    superadminController.Superadmincanadahosmanual(req, res);
+});
+router.get('/companycanadahosmanual', auth.Common,async (req, res) => {
+    mainContoller.companycanadahosmanual(req, res);
+});
+router.get('/editcanadahosmanual', auth.Common,async (req, res) => {
+    mainContoller.editcanadahosmanual(req, res);
+});
+
+router.get('/company_get_canadahosmanual', auth.Common,async (req, res) => {
+    mainContoller.company_get_canadahosmanual(req, res);
+});
+router.post('/updatecanadahosmanual', auth.Common,async (req, res) => {
+    mainContoller.updatecanadahosmanual(req, res);
+});
+router.post('/companyapprovecanadahos', auth.Common,async (req, res) => {
+    mainContoller.companyapprovecanadahos(req, res);
+}); 
+
+router.get('/Superadminchecklists', auth.Common,async (req, res) => {
+    superadminController.Superadminchecklists(req, res);
+});
+router.post('/Superadminaddchecklists', auth.Common,async (req, res) => {
+    superadminController.Superadminaddchecklists(req, res);
+});
+router.post('/Superadmingetchecklists', auth.Common,async (req, res) => {
+    superadminController.Superadmingetchecklists(req, res);
+});
+router.get('/getchecklists', auth.Common,async (req, res) => {
+    mainContoller.getchecklists(req, res);
+});
+router.get('/getcompanychecklists', auth.Common,async (req, res) => {
+    mainContoller.getcompanychecklists(req, res);
+});
+
+router.get('/getquiz', auth.Common,async (req, res) => {
+    mainContoller.getquiz(req, res);
+});
+router.get('/getcompanyquiz', auth.Common,async (req, res) => {
+    mainContoller.getcompanyquiz(req, res);
+});
+
+router.get('/usquestionmanual', auth.drivercheck,async (req, res) => {
+    mainContoller.usquestionmanual(req, res);
+});
+router.get('/Superadminusquestionmanual', auth.Common,async (req, res) => {
+    superadminController.Superadminusquestionmanual(req, res);
+});
+router.get('/companyusquestionmanual', auth.Common,async (req, res) => {
+    mainContoller.companyusquestionmanual(req, res);
+});
+router.get('/editusquestionmanual', auth.Common,async (req, res) => {
+    mainContoller.editusquestionmanual(req, res);
+});
+
+router.get('/company_get_usquestionmanual', auth.Common,async (req, res) => {
+    mainContoller.company_get_usquestionmanual(req, res);
+});
+router.post('/updateusquestionmanual', auth.Common,async (req, res) => {
+    mainContoller.updateusquestionmanual(req, res);
+});
+router.post('/companyapproveusquestion', auth.Common,async (req, res) => {
+    mainContoller.companyapproveusquestion(req, res);
+}); 
+
+
+router.get('/orientation_Checklists', auth.Common,async (req, res) => {
+    mainContoller.orientation_Checklists(req, res);
+});
+router.get('/Superadminorientation_Checklists', auth.Common,async (req, res) => {
+    superadminController.Superadminorientation_Checklists(req, res);
+});
+router.get('/dry_van_Checklists', auth.Common,async (req, res) => {
+    mainContoller.dry_van_Checklists(req, res);
+});
+router.get('/Superadmindry_van_Checklists', auth.Common,async (req, res) => {
+    superadminController.Superadmindry_van_Checklists(req, res);
+});
+router.get('/flatbed_Checklists', auth.Common,async (req, res) => {
+    mainContoller.flatbed_Checklists(req, res);
+});
+router.get('/Superadminflatbed_Checklists', auth.Common,async (req, res) => {
+    superadminController.Superadminflatbed_Checklists(req, res);
+});
+router.post('/create_flatbed_checklists', auth.Common,async (req, res) => {
+    mainContoller.create_flatbed_checklists(req, res);
+});
+router.get('/get_flatbed_checklist', auth.Common,async (req, res) => {
+    mainContoller.get_flatbed_checklist(req, res);
+});
+
+router.get('/companyorientation_Checklists', auth.Common,async (req, res) => {
+    mainContoller.companyorientation_Checklists(req, res);
+});
+router.get('/companyflatbed_Checklists', auth.Common,async (req, res) => {
+    mainContoller.companyflatbed_Checklists(req, res);
+});
+router.get('/companydryvan_Checklists', auth.Common,async (req, res) => {
+    mainContoller.companydryvan_Checklists(req, res);
+});
+router.get('/company_get_flatbed_checklist', auth.Common,async (req, res) => {
+    mainContoller.company_get_flatbed_checklist(req, res);
+});
+router.get('/edit_Checklists', auth.Common,async (req, res) => {
+    mainContoller.edit_Checklists(req, res);
+});
+router.get('/company_get_Checklist', auth.Common,async (req, res) => {
+    mainContoller.company_get_Checklist(req, res);
+});
+router.post('/create_flatbed_checklists', auth.Common,async (req, res) => {
+    mainContoller.create_flatbed_checklists(req, res);
+});
+router.get('/edit_flatbed_Checklists', auth.Common,async (req, res) => {
+    mainContoller.edit_flatbed_Checklists(req, res);
+});
+router.post('/updatecompanyflatedchecklist', auth.Common,async (req, res) => {
+    mainContoller.updatecompanyflatedchecklist(req, res);
+});
+router.post('/companydeletechecklist', auth.Common,async (req, res) => {
+    mainContoller.companydeletechecklist(req, res);
+});
+router.post('/companyflatbeddeletechecklist', auth.Common,async (req, res) => {
+    mainContoller.companyflatbeddeletechecklist(req, res);
+});
+//end
+
+
+//Disclaimer
+router.get('/Disclaimer',auth.Common,async (req, res) => {
+    mainContoller.Disclaimer(req, res);
+});
+router.post('/addDisclaimer', auth.Common,async (req, res) => {
+    mainContoller.addDisclaimer(req, res);
+});
+router.get('/getDisclaimer',auth.Common,async (req, res) => {
+    mainContoller.getDisclaimer(req, res);
+});
+router.get('/checkDisclaimer',auth.Common,async (req, res) => {
+    mainContoller.checkDisclaimer(req, res);
+});
+
 // Email url to prev email
 router.get('/PreviousEmployer/:id',async (req, res) => {
     superadminController.PreviousEmployer(req, res);
@@ -854,11 +1021,170 @@ router.get('/PreviousEmployer/:id',async (req, res) => {
 router.post('/PreviousEmployerDatas/',async (req, res) => {
     superadminController.PreviousEmployerDatas(req, res);
 });
-// ReferenceManagement CURL
 
+
+//Quiz
+router.get('/Superadminquiz', auth.Common,async (req, res) => {
+    superadminController.Superadminquiz(req, res);
+});
+router.post('/Superadmingetquiz', auth.Common,async (req, res) => {
+    superadminController.Superadmingetquiz(req, res);
+});
+router.post('/Superadminaddquiz', auth.Common,async (req, res) => {
+    superadminController.Superadminaddquiz(req, res);
+});
+//Weight & Dimensions
+router.get('/SuperadminweightDimensions', auth.Common,async (req, res) => {
+    superadminController.SuperadminweightDimensions(req, res);
+});
+router.get('/company_get_weightDimensions', auth.Common,async (req, res) => {
+    mainContoller.company_get_weightDimensions(req, res);
+});
+router.get('/companyweightDimensions', auth.Common,async (req, res) => {
+    mainContoller.companyweightDimensions(req, res);
+});
+router.get('/weightDimensions', auth.drivercheck,async (req, res) => {
+    mainContoller.weightDimensions(req, res);
+});
+router.get('/editweightdimensions', auth.Common,async (req, res) => {
+    mainContoller.editweightdimensions(req, res);
+});
+router.post('/updateweightdimensions', auth.Common,async (req, res) => {
+    mainContoller.updateweightdimensions(req, res);
+});
+router.post('/companydeleteusquestionmanual', auth.Common,async (req, res) => {
+    mainContoller.companydeleteusquestionmanual(req, res);
+});
+router.post('/companydeleteweightdimensionsmanual', auth.Common,async (req, res) => {
+    mainContoller.companydeleteweightdimensionsmanual(req, res);
+});
+
+//safety laws
+router.get('/Superadminsafetylaws', auth.Common,async (req, res) => {
+    superadminController.Superadminsafetylaws(req, res);
+});
+router.get('/company_get_safetylaws', auth.Common,async (req, res) => {
+    mainContoller.company_get_safetylaws(req, res);
+});
+router.get('/companysafetylaws', auth.Common,async (req, res) => {
+    mainContoller.companysafetylaws(req, res);
+});
+router.get('/safetyLaws', auth.drivercheck,async (req, res) => {
+    mainContoller.safetyLaws(req, res);
+});
+router.get('/editsafetylaws', auth.Common,async (req, res) => {
+    mainContoller.editsafetylaws(req, res);
+});
+router.post('/updatesafetylaws', auth.Common,async (req, res) => {
+    mainContoller.updatesafetylaws(req, res);
+});
+router.post('/updatecompanysafetylaws', auth.Common,async (req, res) => {
+    mainContoller.updatecompanysafetylaws(req, res);
+});
+
+router.get('/checkDriverdtails', auth.drivercheck,async (req, res) => {
+    mainContoller.checkDriverdtails(req, res);
+});
+// ReferenceManagement CURL
+router.get('/getlogo',async (req, res) => {
+    mainContoller.getlogo(req, res);
+});
+
+router.get('/annualReview',auth.Common,async (req, res) => {
+    mainContoller.annualReview(req, res);
+});
+router.get('/motorvehicledrivercerificate',auth.Common,async (req, res) => {
+    mainContoller.motorvehicledrivercerificate(req, res);
+});
+router.post('/create_motor_vehicle_driver',auth.drivercheck,async (req, res) => {
+    mainContoller.create_motor_vehicle_driver(req, res);
+});
+router.get('/getmotorvehicledrivercertificate',auth.drivercheck,async (req, res) => {
+    mainContoller.getmotorvehicledrivercertificate(req, res);
+});
+
+router.get('/SuperadminMotorVehicleDriverCertificate', auth.Common,async (req, res) => {
+    superadminController.SuperadminMotorVehicleDriverCertificate(req, res);
+});
+router.get('/Superadminanualreview', auth.Common,async (req, res) => {
+    superadminController.Superadminanualreview(req, res);
+});
+router.get('/company_get_motorVehicleDriverCertificate', auth.Common,async (req, res) => {
+    mainContoller.company_get_motorVehicleDriverCertificate(req, res);
+});
+router.get('/company_get_annualReview', auth.Common,async (req, res) => {
+    mainContoller.company_get_annualReview(req, res);
+});
+router.post('/updatemotorVehicleDriverCertificate', auth.Common,async (req, res) => {
+    mainContoller.updatemotorVehicleDriverCertificate(req, res);
+});
+
+router.post('/updateannualReview', auth.Common,async (req, res) => {
+    mainContoller.updateannualReview(req, res);
+});
+
+router.get('/edit_motorVehicleDriverCertificate', auth.Common,async (req, res) => {
+    mainContoller.edit_motorVehicleDriverCertificate(req, res);
+});
+router.get('/edit_annualreview', auth.Common,async (req, res) => {
+    mainContoller.edit_annualreview(req, res);
+});
+
+router.post('/updatestatusCompany', auth.superadminCheck,async (req, res) => {
+    superadminController.updatestatusCompany(req, res);
+});
+
+router.get('/companyAnnualReview', auth.Common,async (req, res) => {
+    mainContoller.companyAnnualReview(req, res);
+});
+
+router.get('/companymotordriver', auth.Common,async (req, res) => {
+    mainContoller.companymotordriver(req, res);
+});
+
+router.get('/superadmindriverexport', auth.Common,async (req, res) => {
+    superadminController.superadmindriverexport(req, res);
+});
+
+router.post('/superadminexportcsvdriver', auth.Common,async (req, res) => {
+    superadminController.superadminexportcsvdriver(req, res);
+});
+
+router.get('/getcompanylogo',async (req, res) => {
+    mainContoller.getcompanylogo(req, res);
+});
 // LOGOUT SESSION
 router.get('/logout', async (req, res) => {
-    req.session.destroy();
-    res.redirect('/login');
+    console.log('checking session'+req.session.adminRole);
+    if(req.session.adminRole ==2){
+        req.session.destroy();
+        res.redirect('/driverLogin');
+    }
+    else if(req.session.adminRole ==1){
+        req.session.destroy();
+        res.redirect('/adminLogin');
+    }
+    else{
+        req.session.destroy();
+        res.redirect('/login');
+    }
 });
+
+router.post('/apivisitorregister', async (req, res) => {
+    apiContoller.vistorRegisteration(req, res);
+});
+router.post('/apivisitorlist', async (req, res) => {
+    apiContoller.visitorlist(req, res);
+});
+router.get('/apipurposelist', async (req, res) => {
+    apiContoller.purposelist(req, res);
+});
+router.post('/apiadminlogin', async (req, res) => {
+    apiContoller.adminlogin(req, res);
+});
+router.post('/apiexcellink', async (req, res) => {
+    apiContoller.excellink(req, res);
+});
+
+
 module.exports = router;

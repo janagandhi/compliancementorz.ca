@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <style type="text/css">
+		.float_left {
+			float: left;
+		}
+		.padding_right{
+			padding-right:10px;
+		}
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+		.float_left{
+			float:left;
+		}
+		.form-group{
+			width:100%
+		}
+		.col-md-3{
+		  max-width:11%
+		}
+		.l_10 {
+			margin-left: 10px;
+		}
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+        .green{
+			color:green;
+		}
+		.red{
+			color:red;
+		}
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarCompany.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" va id="company_id" value="<%- company_id %>" name="company_id">
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6"></div>
+                                    <!-- <div class="col-md-6">
+                                        Select Company
+                                        <select class="form-select selectboxcss" name="exptype" id="exptype">
+                                            <option value="">Select Company</option>
+                                            <% getCompanydata.forEach(function(row){ %>
+                                                <option value="<%= row.id %>">
+                                                    <%= row.name %>
+                                                </option>
+                                                <% }) %>
+
+                                        </select>
+                                    </div> -->
+
+                                </div>
+                                <!-- <button class="btn btn-success" id="create_trailer_button"> Add Trailer <span class="glyphicon glyphicon-edit"></span>   <i style="font-size: 15px;" class="fas fa-plus"></i></button> -->
+                                <h5 align="center" class="card-title">
+                                    <!-- <%- title %> -->
+                                </h5>
+                                <div class="table-responsive">
+                                    <table id="updatedrivermanualDetails" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:10%">Id</th>
+                                                <th style="width:15%">First Name</th>
+                                                <th style="width:15%">Approve Status</th>
+                                                <th>Result</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                         <!-- view modal -->
+
+                         <div id="viewmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <!-- <h4 class="modal-title">Delete List</h4> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 align="center" class="card-title">View Weight & Dimensions</h3>
+                                        <h4 align="center" class="card-title">
+
+                                        </h4>
+                                        <div class="card-body">
+
+                                            <div class="row p-b-30">
+                                                <div class="col-12">
+
+                                                    <!-- <form class="form-horizontal" id="updateQuestions" style="background: #27a9e324;border-radius: 35px;"> -->
+                                                    <div class="card-body" id="updateQuestions_details_view">
+                                                       
+                                                        <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                                        <div style="text-align: center;">
+                                                            <span>
+                                                                <h4></h4>
+                                                            </span>
+                                                            <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                                        </div>
+                                                        <br>
+
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="driverId" value="" id="driverId">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="company_id" value="" id="company_id">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="approveStatus" value="1" id="approveStatus">
+                                                        <input type="hidden" class="form-control" readonly
+                                                            name="actionData" value="" id="actionData">
+                                                        <div class="row">
+
+
+
+
+
+                                                            <div class="col-md-2">
+
+
+                                                            </div>
+
+                                                            <div class="col-md-8">
+                                                                <div class="col-md-6 float_left">
+																	<b>Name of Driver : </b><span id="vdriverName"></span> 
+																</div>
+																<div class="col-md-6 float_left">
+                                                                    <b  id="weightDateb">Date  : <span id="weightDate"></span> </b><br>
+																	<b>Result : </b><span id="vans_percentage"></span>
+																</div>
+																<div class="col-md-6 float_left">
+                                                                    <b>Licence : </b><span id="vdriverlicence"></span> 
+                                                                </div>
+                                                                <br><br><br>
+
+                                                               <div class="form-group row">
+														<label for="question1"
+															class="col-sm-12 control-label col-form-label">1. Which of the following statements is not true about the Memorandum of Understanding?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer1 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text1" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer1 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">New vehicle categories may not be added</span>
+																
+															</div>
+															
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label class="col-md-12">2. The Gross Vehicle Weight Rating (GVWR) is explained by which of the following formulas?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer2 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text2" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer2 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">Tare Weight + Payload = GVWR</span>
+															</div>
+															
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question2"
+															class="col-sm-12 control-label col-form-label">3. The trailer manufacturer’s rating for the rear tandem axle of Lisa’s vehicle is 35 200 lbs (16 000 kgs). Under the MoU, what is the maximum weight can be carried on that axle?</label>
+															<div class="col-md-12 float_left">
+																<div class="col-md-12 float_left select_answer3 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text3" class="green"></span>
+																</div>
+															<div class="col-md-12 float_left correct_answer3 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">16000 kgs</span>
+																
+															</div>
+															</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question4"
+															class="col-sm-12 control-label col-form-label">4. Doug’s carrier has just provided new APUs for every truck in the fleet. How much extra weight can be added to the combined steer and drive axle groups?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<div class="col-md-12 float_left select_answer4 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text4" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer4 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">225 kg</span>
+															</div>
+															
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question5"
+															class="col-sm-12 control-label col-form-label">5. Which of the following combination vehicles is connected using a fifth wheel connected to the forward trailer?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<div class="col-md-12 float_left select_answer5 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text5" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer5 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">An B-train double</span>
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question6"
+															class="col-sm-12 control-label col-form-label">6. The maximum weight for the axles highlighted in the diagram below are restricted when Dimension A is less than:</label>
+														<div class="col-md-12">
+                                                            <div class="col-md-12"  style="margin-bottom:15px;">
+																<img src="images/wdqs6.png">
+															</div>
+															<div class="col-md-12 float_left select_answer6 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text6" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer6 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">3 metres</span>
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question7"
+															class="col-sm-12 control-label col-form-label">7. Is the vehicle pictured in compliance with weight restrictions outlined in the MoU?</label>
+														<div class="col-md-12">
+                                                            <div class="col-md-12"  style="margin-bottom:15px;">
+																<img src="images/wdqs7.png">
+															</div>
+															<div class="col-md-12 float_left select_answer7 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text7" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer7 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">No</span>
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question8"
+															class="col-sm-12 control-label col-form-label">8. The dual tires on Lisa’s tandem axle trailer are 265 mm wide. What is the total weight the trailer tires can support?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer8 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text8" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer8 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">21200 kg</span>
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question9"
+															class="col-sm-12 control-label col-form-label">9. Lisa weighs her vehicle right after fueling up. She purchased 500 litres and found that 220 kg (52%) of weight were added to her steer axle and 205 kg (48%) were added to her drive axle. If she purchases another 100 litres, roughly how much more weight will be added to her drive axle?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer9 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text9" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer9 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">41 kg</span>
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question10"
+															class="col-sm-12 control-label col-form-label">10. Why are spring thaw road restrictions in place?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer10 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text10" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer10 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">Excessive water weakens the roadway</span>
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question12"
+															class="col-sm-12 control-label col-form-label">11. Trailer wheelbase is the distance measured between:</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer11 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text11" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer11 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">The kingpin and the center of the rear axle unit</span>
+															</div>
+															
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question12"
+															class="col-sm-12 control-label col-form-label">12. Interaxle spacing is calculated by measuring the distance between:</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer12 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text12" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer12 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">The centres of two adjacent axle groups</span>
+															</div>
+															
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question10"
+															class="col-sm-12 control-label col-form-label">13. Under the Memorandum of Understanding, what does the maximum box length of a combination vehicle refer to?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer13 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text13" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer13 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">The total length A and B plus the space between them (A + B + C)</span>
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question11"
+															class="col-sm-12 control-label col-form-label">14. Janice’s vehicle is a tractor semitrailer. Under the Memorandum of Understanding, what is the overall length limit of her vehicle?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer14 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text14" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer14 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">23 m</span>
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question12"
+															class="col-sm-12 control-label col-form-label">15. Which of the following is the best definition of a vehicle’s axle group spread?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer15 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text15" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer15 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">The distance between the axles within an axle group and is measured from the centre of the first axle to the centre of the rear axle in the group</span>
+															</div>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label for="question12"
+															class="col-sm-12 control-label col-form-label">16. Lisa is operating a tandem-axle tractor. What is her drive axle’s maximum axle spread?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer16 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text16" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer16 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">1.85 m</span>
+															</div>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label for="question12"
+															class="col-sm-12 control-label col-form-label">17. The length of the wheelbase of your semitrailer is 12.45 metres. What is the distance of the trailer's effective rear overhang?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer17 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text17" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer17 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">4.36 m</span>
+															</div>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label for="question12"
+															class="col-sm-12 control-label col-form-label">18. According to the Memorandum of Understanding, what is the gross vehicle weight limit of this vehicle?</label>
+														<div class="col-md-12">
+                                                            <div class="col-md-12"  style="margin-bottom:15px;">
+																<img src="images/wdqs18.png">
+															</div>
+															<div class="col-md-12 float_left select_answer18 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text18" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer18 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">52300 kg</span>
+															</div>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label for="question12"
+															class="col-sm-12 control-label col-form-label">19. What happens when you slide the rear trailer axle to the rear?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer19 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text19" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer19 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">Weight is shifted from the rear axle to the drive axle</span>
+															</div>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label for="question12"
+															class="col-sm-12 control-label col-form-label">20. After shifting the tandem axles, engage the tractor and trailer brakes and check to make sure ____________.</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left select_answer20 hide_div" style="display:none"><label>Selected Answer</label><br><span id="answer_text20" class="green"></span></div>
+															<div class="col-md-12 float_left correct_answer20 hide_div" style="display:none">
+																<label>Correct Answer</label><br>
+																<span class="green">The landing gear has been lowered to the ground</span>
+															</div>
+														</div>
+													</div>
+
+
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- </form> -->
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- create trailer -->
+                        <!-- ============================================================== -->
+                        <!-- End Page wrapper  -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Wrapper -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <%- include('includes/footer.ejs') %>
+                        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+                        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+                        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+
+                        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                        <script>
+                            /****************************************
+                             *       Basic Table                   *
+                             ****************************************/
+                            // $('#zero_config').DataTable();
+
+                            $(document).ready(function () {
+
+
+                                let date = new Date();
+                                var currentdate =
+                                    ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+                                    ("00" + date.getDate()).slice(-2) + "/" +
+                                    date.getFullYear();
+
+									$(document).on('click', '#viewmodalid', function () {
+                                    // alert('test')
+                                    let id = $(this).attr('data-id');
+                                    // alert(id)
+                                    // console.log($(this).attr("data-id"));
+                                    $.ajax({
+                                        url: "/editweightdimensions",
+                                        type: "GET",
+                                        data: { id: id },
+                                        success: function (data) {
+                                            console.log(data);
+                                            if (data.status) {
+                                                let approveStatus;
+												
+                                                if (data.data.approveStatus == 0) {
+													
+													$('.l_10').hide();
+													$('.no_result').show();
+													$('.no_result').html('No Result');
+                                                } else {
+													$('#vans_percentage').show();
+													$('.no_result').hide();
+													var rest = (parseFloat(data.data.result)/20)*100;
+													$('#vans_percentage').html(rest.toFixed(2)+'%-'+data.data.result+' out of 20');
+                                                }
+												if(data.data.rightorwrong != ''){
+													var right_wrongs = JSON.parse(data.data.rightorwrong);
+													if(right_wrongs.length>0){
+														for(i =0; i<20;i++){
+															j = i +1;
+															if(right_wrongs[i] ==1){
+																//$( "#vans"+j ).prop( "checked", true );
+															}
+															else{
+																//$( "#vans_"+j ).prop( "checked", true );
+															}
+														}
+													}
+												}
+												$('#vdriverName').html(data.driverData.driver_name);
+												$('#vdriverlicence').html(data.driverData.driver_license);
+                                                $("body #updateQuestions_details_view #submitBtn").text('Update');
+                                                $('body #updateQuestions_details_view #actionData').val('Update');
+												$('.hide_div').hide();
+                                                $('.select_answer1').show();
+                                                $('#answer_text1').html(data.data.question1);
+                                                $('#weightDate').html(data.data.create_date);
+                                                $('#weightDate').show();
+							                    $('#weightDateb').show();
+                                                if(data.data.question1 !='New vehicle categories may not be added'){
+                                                    $('.correct_answer1').show();
+                                                    $("#answer_text1").addClass("red");
+                                                    $("#answer_text1").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text1").removeClass("red");
+                                                    $("#answer_text1").addClass("green");
+                                                }
+												$('.select_answer2').show();
+                                                $('#answer_text2').html(data.data.question2);
+                                                if(data.data.question2 !='Tare Weight + Payload = GVWR'){
+                                                    $('.correct_answer2').show();
+                                                    $("#answer_text2").addClass("red");
+                                                    $("#answer_text2").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text2").removeClass("red");
+                                                    $("#answer_text2").addClass("green");
+                                                }
+												$('.select_answer3').show();
+                                                $('#answer_text3').html(data.data.question3);
+                                                if(data.data.question3 !='16000 kgs'){
+                                                    $('.correct_answer3').show();
+                                                    $("#answer_text3").addClass("red");
+                                                    $("#answer_text3").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text3").removeClass("red");
+                                                    $("#answer_text3").addClass("green");
+                                                }
+                                                $('.select_answer4').show();
+                                                $('#answer_text4').html(data.data.question4);
+                                                if(data.data.question4 !='225 kg'){
+                                                    $('.correct_answer4').show();
+                                                    $("#answer_text4").addClass("red");
+                                                    $("#answer_text4").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text4").removeClass("red");
+                                                    $("#answer_text4").addClass("green");
+                                                }
+
+                                                $('.select_answer5').show();
+                                                $('#answer_text5').html(data.data.question5);
+                                                if(data.data.question5 !='An B-train double'){
+                                                    $('.correct_answer5').show();
+                                                    $("#answer_text5").addClass("red");
+                                                    $("#answer_text5").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text5").removeClass("red");
+                                                    $("#answer_text5").addClass("green");
+                                                }
+                                                $('.select_answer6').show();
+                                                $('#answer_text6').html(data.data.question6);
+                                                if(data.data.question6 !='3 metres'){
+                                                    $('.correct_answer6').show();
+                                                    $("#answer_text6").addClass("red");
+                                                    $("#answer_text6").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text6").removeClass("red");
+                                                    $("#answer_text6").addClass("green");
+                                                }
+                                                $('.select_answer7').show();
+                                                $('#answer_text7').html(data.data.question7);
+                                                if(data.data.question7 !='No'){
+                                                    $('.correct_answer7').show();
+                                                    $("#answer_text7").addClass("red");
+                                                    $("#answer_text7").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text7").removeClass("red");
+                                                    $("#answer_text7").addClass("green");
+                                                }
+                                                $('.select_answer8').show();
+                                                $('#answer_text8').html(data.data.question8);
+                                                if(data.data.question8 !='21200 kg'){
+                                                    $('.correct_answer8').show();
+                                                    $("#answer_text8").addClass("red");
+                                                    $("#answer_text8").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text8").removeClass("red");
+                                                    $("#answer_text8").addClass("green");
+                                                }
+                                                $('.select_answer9').show();
+                                                $('#answer_text9').html(data.data.question9);
+                                                if(data.data.question9 !='41 kg'){
+                                                    $('.correct_answer9').show();
+                                                    $("#answer_text9").addClass("red");
+                                                    $("#answer_text9").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text9").removeClass("red");
+                                                    $("#answer_text9").addClass("green");
+                                                }
+                                                $('.select_answer10').show();
+                                                $('#answer_text10').html(data.data.question10);
+                                                if(data.data.question10 !='Excessive water weakens the roadway'){
+                                                    $('.correct_answer10').show();
+                                                    $("#answer_text10").addClass("red");
+                                                    $("#answer_text10").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text10").removeClass("red");
+                                                    $("#answer_text10").addClass("green");
+                                                }
+                                                $('.select_answer11').show();
+                                                $('#answer_text11').html(data.data.question11);
+                                                if(data.data.question11 !='The kingpin and the center of the rear axle unit'){
+                                                    $('.correct_answer11').show();
+                                                    $("#answer_text11").addClass("red");
+                                                    $("#answer_text11").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text11").removeClass("red");
+                                                    $("#answer_text11").addClass("green");
+                                                }
+                                                $('.select_answer12').show();
+                                                $('#answer_text12').html(data.data.question12);
+                                                if(data.data.question12 !='The centres of two adjacent axle groups'){
+                                                    $('.correct_answer12').show();
+                                                    $("#answer_text12").addClass("red");
+                                                    $("#answer_text12").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text12").removeClass("red");
+                                                    $("#answer_text12").addClass("green");
+                                                }
+
+                                                $('.select_answer13').show();
+                                                $('#answer_text13').html(data.data.question13);
+                                                if(data.data.question13 !='The total length A and B plus the space between them (A + B + C)'){
+                                                    $('.correct_answer13').show();
+                                                    $("#answer_text13").addClass("red");
+                                                    $("#answer_text13").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text13").removeClass("red");
+                                                    $("#answer_text13").addClass("green");
+                                                }
+                                                $('.select_answer14').show();
+                                                $('#answer_text14').html(data.data.question14);
+                                                if(data.data.question14 !='23 m'){
+                                                    $('.correct_answer14').show();
+                                                    $("#answer_text14").addClass("red");
+                                                    $("#answer_text14").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text14").removeClass("red");
+                                                    $("#answer_text14").addClass("green");
+                                                }
+                                                $('.select_answer15').show();
+                                                $('#answer_text15').html(data.data.question15);
+                                                if(data.data.question15 !='The distance between the axles within an axle group and is measured from the centre of the first axle to the centre of the rear axle in the group'){
+                                                    $('.correct_answer15').show();
+                                                    $("#answer_text15").addClass("red");
+                                                    $("#answer_text15").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text15").removeClass("red");
+                                                    $("#answer_text15").addClass("green");
+                                                }
+
+                                                $('.select_answer16').show();
+                                                $('#answer_text16').html(data.data.question16);
+                                                if(data.data.question16 !='1.85 m'){
+                                                    $('.correct_answer16').show();
+                                                    $("#answer_text16").addClass("red");
+                                                    $("#answer_text16").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text16").removeClass("red");
+                                                    $("#answer_text16").addClass("green");
+                                                }
+                                                $('.select_answer17').show();
+                                                $('#answer_text17').html(data.data.question17);
+                                                if(data.data.question17 !='4.36 m'){
+                                                    $('.correct_answer17').show();
+                                                    $("#answer_text17").addClass("red");
+                                                    $("#answer_text17").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text17").removeClass("red");
+                                                    $("#answer_text17").addClass("green");
+                                                }
+                                                $('.select_answer18').show();
+                                                $('#answer_text18').html(data.data.question18);
+                                                if(data.data.question18 !='52300 kg'){
+                                                    $('.correct_answer18').show();
+                                                    $("#answer_text18").addClass("red");
+                                                    $("#answer_text18").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text18").removeClass("red");
+                                                    $("#answer_text18").addClass("green");
+                                                }
+                                                $('.select_answer19').show();
+                                                $('#answer_text19').html(data.data.question19);
+                                                if(data.data.question19 !='Weight is shifted from the rear axle to the drive axle'){
+                                                    $('.correct_answer19').show();
+                                                    $("#answer_text19").addClass("red");
+                                                    $("#answer_text19").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text19").removeClass("red");
+                                                    $("#answer_text19").addClass("green");
+                                                }
+                                                $('.select_answer20').show();
+                                                $('#answer_text20').html(data.data.question16);
+                                                if(data.data.question20 !='The landing gear has been lowered to the ground'){
+                                                    $('.correct_answer20').show();
+                                                    $("#answer_text20").addClass("red");
+                                                    $("#answer_text20").removeClass("green");
+                                                }
+                                                else{
+                                                    $("#answer_text20").removeClass("red");
+                                                    $("#answer_text20").addClass("green");
+                                                }
+
+                                                $('body #viewmodal').modal('show');
+
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Error!',
+                                                    text: 'Something went wrong',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'Cool'
+                                                })
+                                                 window.location = "/";
+                                            }
+
+                                        }
+                                    });
+                                });
+
+
+                            });
+
+							$(document).ready(function () {
+								let cmpid = $('body #company_id').val();
+								$('body #create_trailer #company_id').val(cmpid);
+								$("#create_trailer_button").show()
+								$("#updatedrivermanualDetails").dataTable().fnDestroy();
+								let customer = $('#updatedrivermanualDetails').DataTable({
+									processing: true,
+									serverSide: true,
+									order: [[0, 'ASC']],
+									lengthMenu: [[10, 50, 100, 250, 500, 1000], [10, 50, 100, 250, 500, 1000]],
+									pageLength: 10,
+									searching: true,
+									ajax: {
+										url: "/company_get_weightDimensions",
+										data: function (data) {
+											data.cmpid = cmpid
+											//data.search_key = $("#searchKey").val(),
+											//data.search_val = $("#searchVal").val()
+										},
+										type: "GET",
+									},
+									columns: [
+									{ "data": "slno" },
+									{ "data": "driver_name" },
+									{ "data": "approve" },
+									{ "data": "result" },
+									{ "data": "action" }
+									],
+									select: true
+								});
+							});
+
+
+                            $(document).on('click', '#deletedriverDtls', function () {
+                                let id = $(this).attr('data-id');
+
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to revert this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, delete it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+
+
+                                        $.ajax({
+                                            url: "/companydeleteweightdimensionsmanual",
+                                            type: "POST",
+                                            data: { id: id },
+                                            success: function (data) {
+                                                if (data.status) {
+                                                    const Toast = Swal.mixin({
+                                                        toast: true,
+                                                        position: 'top-end',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        timerProgressBar: true,
+                                                        didOpen: (toast) => {
+                                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                    })
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: data.message
+                                                    }); setTimeout(function () {
+                                                        window.location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: 'Something went wrong',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Cool'
+                                                    })
+                                                }
+
+                                            }
+                                        });
+
+
+                                    }
+                                })
+                            });
+                        </script>
+                        <script src="sweetAlert/sweetalert2.min.js"></script>
+</body>
+
+</html>

@@ -189,6 +189,44 @@
                                                     <p style="color:red">* Make sure file size below 1 MB And only Image and PDF &nbsp; <br>
                                                     </p> <br>
                                                     <!-- <p style="color:red" >* Please Make sure images should be in clear visibility</p> -->
+                                                    <!-- ---------Licence upload frontside -------------- -->
+                                                    <div style="width: 100%" class="container_licenceFront">
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <%if (getlicencefrontcount> 0 ) { %>
+                                                            <a href="javascript:void(0)" data-id="<%- driverID %>"
+                                                                data-filetype="LICENCE FRONT"
+                                                                class="btn btn-info viewmodalclass"><span
+                                                                    class="fas fa-search"> View  Licence Upload Frontside</span></a>
+                                                        <% } else{ %>
+                                                            <button class="btn btn-primary add_form_field_licenceFront">Add Licence Upload Frontside &nbsp;
+                                                                <span style="font-size:16px; font-weight:bold;">+
+                                                                </span>
+                                                            </button>
+                                                        <% } %>
+                                                            <br>
+                                                            <hr>
+                                                    </div>
+                                                    <!-- ---------Licence upload backside -------------- -->
+                                                    <div style="width: 100%" class="container_licenceBack">
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <%if (getlicencebackcount> 0 ) { %>
+                                                            <a href="javascript:void(0)" data-id="<%- driverID %>"
+                                                                data-filetype="LICENCE BACK"
+                                                                class="btn btn-info viewmodalclass"><span
+                                                                    class="fas fa-search"> View  Licence Upload Backside</span></a>
+                                                        <% } else{ %>
+                                                            <button class="btn btn-primary add_form_field_licenceBack">Add Licence Upload Backside &nbsp;
+                                                                <span style="font-size:16px; font-weight:bold;">+
+                                                                </span>
+                                                            </button>
+                                                        <% } %>
+                                                            <br>
+                                                            <hr>
+                                                    </div>
                                                     <!-- ---------CVOR -------------- -->
                                                     <!-- <h3>CVOR File upload</h3> -->
                                                     <div style="width: 100%" class="container_cvor">
@@ -292,16 +330,16 @@
                                                                 class="btn btn-info viewmodalclass"><span
                                                                     class="fas fa-search"> View Secondary
                                                                     ID</span></a>
-                                                            <% } else{ %>
-                                                                <button
-                                                                    class="btn btn-primary add_form_field_secondary_id">Add
-                                                                    Secondary ID Files &nbsp;
-                                                                    <span style="font-size:16px; font-weight:bold;">+
-                                                                    </span>
-                                                                </button>
-                                                                <% } %>
-                                                                    <br>
-                                                                    <hr>
+                                                        <% } else{ %>
+                                                            <button
+                                                                class="btn btn-primary add_form_field_secondary_id">Add
+                                                                Secondary ID Files &nbsp;
+                                                                <span style="font-size:16px; font-weight:bold;">+
+                                                                </span>
+                                                            </button>
+                                                        <% } %>
+                                                        <br>
+                                                        <hr>
                                                     </div>
                                                 </div>
                                                 <div class="border-top">
@@ -437,8 +475,47 @@
 
             var max_fields = 10;
             var x = 1;
-            // --------------------------------------Multiple form CVOR ---------------------------------
+            // --------------------------------------Multiple form licence front ---------------------------------
 
+            var wrapper_licenceFront = $(".container_licenceFront");
+            var add_button = $(".add_form_field_licenceFront");
+            $(add_button).click(function (e) {
+                e.preventDefault();
+                if (x < max_fields) {
+                    x++;
+                    let onchangeData = "convertToBase64('atachment" + x + "','atachment_file" + x + "');";
+                    $(wrapper_licenceFront).append('<div class="FrontDiv"> <input type="hidden" name="fileType_licence_front[]" id="fileType_licence_front" value="LICENCE FRONT">  <div class="form-group row"><label for="attachment"class="col-sm-3 control-label col-form-label">Upload LICENCE FRONT Document</label><div class="col-md-9"> <input type="file" id="atachment' + x + '" accept="application/pdf,image/png, image/jpeg" onchange="' + onchangeData + '" /><input type="hidden" name="attachment_file_licece_front[]" id="atachment_file' + x + '">  <a href="#" data-fid = ' + x + ' class="btn btn-danger delete">Delete </a>  <hr id="" style="height:2px;border-width:0;color:gray;background-color:gray">  </div></div></div>'); //add input box
+                } else {
+                    alert('You Reached the limits')
+                }
+            });
+            $(wrapper_licenceFront).on("click", ".delete", function (e) {
+                e.preventDefault();
+                // $(this).parent('div').remove();
+                $(this).closest('.FrontDiv').remove();
+                x--;
+            })
+            // --------------------------------------Multiple form licence back ---------------------------------
+
+            var wrapper_licenceBack = $(".container_licenceBack");
+            var add_button = $(".add_form_field_licenceBack");
+            $(add_button).click(function (e) {
+                e.preventDefault();
+                if (x < max_fields) {
+                    x++;
+                    let onchangeData = "convertToBase64('atachment" + x + "','atachment_file" + x + "');";
+                    $(wrapper_licenceBack).append('<div class="BackDiv"> <input type="hidden" name="fileType_licence_back[]" id="fileType_licence_front" value="LICENCE BACK">  <div class="form-group row"><label for="attachment"class="col-sm-3 control-label col-form-label">Upload LICENCE BACK Document</label><div class="col-md-9"> <input type="file" id="atachment' + x + '" accept="application/pdf,image/png, image/jpeg" onchange="' + onchangeData + '" /><input type="hidden" name="attachment_file_licece_back[]" id="atachment_file' + x + '">  <a href="#" data-fid = ' + x + ' class="btn btn-danger delete">Delete </a>  <hr id="" style="height:2px;border-width:0;color:gray;background-color:gray">  </div></div></div>'); //add input box
+                } else {
+                    alert('You Reached the limits')
+                }
+            });
+            $(wrapper_licenceBack).on("click", ".delete", function (e) {
+                e.preventDefault();
+                // $(this).parent('div').remove();
+                $(this).closest('.BackDiv').remove();
+                x--;
+            })
+            // --------------------------------------Multiple form CVOR ---------------------------------
             var wrapper_cvor = $(".container_cvor");
             var add_button = $(".add_form_field_cvor");
             $(add_button).click(function (e) {
@@ -548,6 +625,28 @@
                 $.each($('#uploadFiles').serializeArray(), function (i, field) {
                     values[field.name] = field.value;
                 });
+
+                var fileType_licenceFront = [];
+                var fileType_licenceFront = $("input[name='fileType_licenceFront[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['fileTypearr_licenceFront'] = fileType_licenceFront
+                var atachment_file_licenceFront = $("input[name='attachment_file_licenceFront[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['atachment_fileArr_licenceFront'] = atachment_file_licenceFront
+
+
+
+
+                var fileType_licenceBack = [];
+                var fileType_licenceBack = $("input[name='fileType_licenceBack[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['fileTypearr_licenceBack'] = fileType_licenceBack
+                var atachment_file_licenceBack = $("input[name='attachment_file_licenceBack[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['atachment_fileArr_licenceBack'] = atachment_file_licenceBack
+
+
+
 
                 var fileType_cvor = [];
                 var fileType_cvor = $("input[name='fileType_cvor[]']")

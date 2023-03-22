@@ -287,7 +287,7 @@
                                                                                 My signature below confirms that
                                                                                 I agree to allow the Company or
                                                                                 their representative,
-                                                                                Denning Health Group, to conduct
+                                                                                <input type="text" id="ccompany">, to conduct
                                                                                 an Annual Limited Query on my
                                                                                 record with the Commercial
                                                                                 Driver’s License (CDL) Drug and
@@ -505,7 +505,7 @@
                             let adminsignaturePath = 'uploads/attachment/drivinghistoryaddressSignature/' + data.message.adminSignature;
                             console.log(adminsignaturePath);
                             $('body #adminSignature').attr("src", adminsignaturePath);
-
+                            $('#ccompany').val(data.message.orgName)
                             $('#Iagree').attr('checked', 'checked');
                             $('#Iagree').attr('disabled', true);
 
@@ -521,49 +521,64 @@
 
 
             $('#Iagree').on('change', function () {
+                let ccompany = $('#ccompany').val();
+                if(ccompany == "" || ccompany == ""){
+                    $('#Iagree').prop('checked', false); // Unchecks it
+                    Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Please fill all fields',
+                                    icon: 'error',
+                                    confirmButtonText: 'Ok'
+                                })
+                                // window.location = "/";
+                                return false;
+                }
                 if (this.checked) {
                     // alert(this.checked)
                     let company_id = $("#company_id").val();
                     let driverId = $("#driverId").val();
+                    
+                    if(ccompany!=''){
                     // let certificateDate = $("#certificateDate").val();
-                    $.ajax({
-                        url: "/certificateapproval",
-                        type: "POST",
-                        data: { company_id: company_id, driverId: driverId, certificateID: 5, approve: this.checked },
-                        success: function (data) {
-                            console.log(data.data);
-                            if (data.status) {
-                                const Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 2000,
-                                    timerProgressBar: true,
-                                    didOpen: (toast) => {
-                                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                    }
-                                })
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: data.message
-                                });
-                                setTimeout(function () {
-                                    window.location.reload();
-                                }, 2000);
+                        $.ajax({
+                            url: "/certificateapproval",
+                            type: "POST",
+                            data: { company_id: company_id,orgName:ccompany, driverId: driverId, certificateID: 5, approve: this.checked },
+                            success: function (data) {
+                                console.log(data.data);
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
 
-                            } else {
-                                Swal.fire({
-                                    title: 'Error!',
-                                    text: 'Something went wrong',
-                                    icon: 'error',
-                                    confirmButtonText: 'Cool'
-                                })
-                                // window.location = "/";
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                    // window.location = "/";
+                                }
+
                             }
-
-                        }
-                    });
+                        });
+                    }
                 } else {
                     // $("#ifbelowthreeYears").hide();
                     // alert('un checked')

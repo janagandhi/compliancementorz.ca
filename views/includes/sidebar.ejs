@@ -18,6 +18,11 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="superadmincompany" aria-expanded="false"><i class="mdi mdi-factory"></i><span class="hide-menu">Manage Company</span></a></li>
                         <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/GetDriveralertModule" aria-expanded="false"><i class="mdi mdi-truck-trailer"></i><span class="hide-menu">Driver Alert</span></a></li> -->
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/superadmindriver" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Manage Driver</span></a></li>
+						<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/superadminsearchdriver" aria-expanded="false"><i class="mdi mdi-account-search"></i><span class="hide-menu">Search Driver</span></a></li>
+
+
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/superadmindriverexport" aria-expanded="false"><i class="mdi mdi-export"></i><span class="hide-menu">Driver Report</span></a></li>
+
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/superadmintruck" aria-expanded="false"><i class="mdi mdi-truck"></i><span class="hide-menu">Manage Truck</span></a></li> 
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/superadmintrailer" aria-expanded="false"><i class="mdi mdi-truck-trailer"></i><span class="hide-menu">Manage Trailer</span></a></li>
                         <li class="sidebar-item">
@@ -69,26 +74,90 @@
                             </ul>
                           </li>
 
-                          <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="hosSuperadmin" aria-expanded="false"><i class="mdi mdi-steering"></i><span class="hide-menu">Hos</span></a></li>
+                          <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="hosSuperadmin" aria-expanded="false"><i class="mdi mdi-steering"></i><span class="hide-menu">Hours of Service</span></a></li>
                           <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="generateReportPageSuperadmin" aria-expanded="false"><i class="mdi mdi-steering"></i><span class="hide-menu">Genrerate Report</span></a></li>
-                         
+
                           <li class="sidebar-item">
-                            <a target="_blank" class="sidebar-link waves-effect waves-dark sidebar-link" href="https://ashaviglobal.com/agreement/"
-                              aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Annual Review</span></a>
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Annual Review </span></a>
+                             <ul aria-expanded="false" class="collapse first-level">
+                          <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Superadminanualreview" aria-expanded="false"><i
+                                class="mdi mdi-book-open"></i><span class="hide-menu">ANNUAL REVIEW OF DRIVING RECORD</span></a>
                           </li>
+						              <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/SuperadminMotorVehicleDriverCertificate" aria-expanded="false"><i
+                                class="mdi mdi-worker"></i><span class="hide-menu">MOTOR VEHICLE DRIVER’S CERTIFICATION OF Violations</span></a>
+                          </li>
+                        </ul>
+                      </li>
+                         
+                       
                           <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="superadminfileuploadForm" aria-expanded="false"><i class="mdi mdi-briefcase-upload"></i><span class="hide-menu">File Upload</span></a></li>
+                            <li class="sidebar-item">
+                          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/superadminReferenceManagement" aria-expanded="false"><i
+                              class="mdi mdi-verified"></i><span class="hide-menu">Reference Management</span></a>
+                        </li>
+                          <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Questionnaire </span></a>
+                             <ul aria-expanded="false" class="collapse first-level">
                           <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/SuperadminQuestions" aria-expanded="false"><i
-                                class="mdi mdi-comment-question-outline"></i><span class="hide-menu">Invterview Questions</span></a>
+                                class="mdi mdi-book-open"></i><span class="hide-menu">Invterview Questions</span></a>
                           </li>
-                          <li class="sidebar-item">
+						  <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Superadmindrivermanual" aria-expanded="false"><i
                                 class="mdi mdi-worker"></i><span class="hide-menu">Driver Manual</span></a>
                           </li>
+                        </ul>
+                      </li>
                           <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/superadminReferenceManagement" aria-expanded="false"><i
-                                class="mdi mdi-verified"></i><span class="hide-menu">Reference Management</span></a>
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-calendar-question"></i><span class="hide-menu">Quiz</span></a>
+                             <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item">
+                                  <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Superadmincanadahosmanual" aria-expanded="false"><i
+                                    class="mdi mdi-comment-question-outline"></i><span class="hide-menu">HOS Questionnaire for Canada</span></a>
+                                </li>
+                                <li class="sidebar-item">
+                                  <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Superadminusquestionmanual" aria-expanded="false"><i
+                                      class="mdi mdi-comment-question-outline"></i><span class="hide-menu">HOS Questionnaire for US</span></a>
+                                </li>
+                                <li class="sidebar-item">
+                                  <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/superadminquiz" aria-expanded="false"><i
+                                      class="mdi mdi-calendar-question"></i><span class="hide-menu">Quiz</span></a>
+                                </li>
+                                <li class="sidebar-item weightdimensions">
+                                  <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/SuperadminweightDimensions" aria-expanded="false"><i
+                                      class="mdi mdi-weight"></i><span class="hide-menu">Weight & Dimensions</span></a>
+                                </li>
+                                <li class="sidebar-item safetylawsquiz">
+                                  <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Superadminsafetylaws" aria-expanded="false"><i
+                                      class="mdi mdi-lock"></i><span class="hide-menu">Safety Laws Quiz </span></a>
+                                </li>
+                            </ul>
+                       </li>
+                          <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-mouse"></i><span class="hide-menu">Check Lists </span></a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                              <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Superadminchecklists" aria-expanded="false"><i
+                                    class="mdi mdi-comment-question-outline"></i><span class="hide-menu">Check Lists</span></a>
+                              </li>
+
+                              <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Superadminflatbed_Checklists" aria-expanded="false"><i
+                                    class="mdi mdi-checkbox-marked"></i><span class="hide-menu">Flatbed Check Lists</span></a>
+                              </li>
+                              <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Superadminorientation_Checklists" aria-expanded="false"><i
+                                    class="mdi mdi-checkbox-marked-outline"></i><span class="hide-menu">Dry Van Check Lists</span></a>
+                              </li>
+                              <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Superadmindry_van_Checklists" aria-expanded="false"><i
+                                    class="mdi mdi-check"></i><span class="hide-menu">Dump Truck Check Lists</span></a>
+                              </li>
+                            </ul>
                           </li>
+                          
                         </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -101,3 +170,15 @@
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
+        <script>
+function checklist(){
+}
+function quiz(){
+  
+}
+function cheklogo(){
+}
+function disclaimer(){
+	$('.sidebar-nav').show();
+}
+</script>

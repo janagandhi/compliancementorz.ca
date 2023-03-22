@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <style type="text/css">
+        .gap {
+            text-align: center;
+            background-color: #e2181870;
+
+        }
+
+        .thClass {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+		.arrow_bullet {
+		  list-style-type: none;
+		  position: relative;
+		  padding-left: 15px;
+		}
+
+		.arrow_bullet:before {
+		  content: "\25BA \0020";
+		  font-size: 25px;
+		  position: absolute;
+		  top: 7px;
+		  left: -17px;
+		}
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarDriver.ejs') %>
+
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid" style="background-color: #fff; ">
+                        <div class="container-fluid" style="background-color: #fff; ">
+
+
+
+
+
+                            <div class="card-body">
+                                <div class="row p-b-30">
+                                    <div class="col-12">
+
+
+                                        <div class="card-body" id="updateEmployment_details">
+                                            <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                            <div style="text-align: center;">
+                                                <span>
+                                                    <h3>
+                                                        Dry Van Checklist
+                                                    </h3>
+                                                </span>
+                                                <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                            </div>
+                                            <br>
+
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+
+
+                                                    <input type="hidden" name="company_id" id="company_id" value="<%-company_id %>">
+                                                    <input type="hidden" name="driverId" id="driverId" value="<%-driverId %>">
+													<table border="2">
+														<thead>
+															<th>
+																<ul>
+																	<li class="arrow_bullet">DRY VAN CHECKLIST</li>
+																</ul>
+																</th>
+														</thead>
+														<tr>
+															<td>
+																<ul>
+																	<li>Hours of Service</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Pre-Trip Inspection</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Load Securement</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Company CVOR ,SMS and CVOR and Abstract</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Accident Reporting</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Incident Reporting procedure</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Gate Procedure</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Pet Policy</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Cell and Text Policy</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Defensive Driving/Topics</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Adverse Driving Conditions</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Approaching intersections</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Backing a Rig Safely</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Changing Lanes</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Following too close</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Speed Management</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Distracted Driving/Cell Phone</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Jackknifing</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>CT PAT Procedure</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Drug & Alcohol Policy</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Safety Equipment Policy</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Dispatch Procedures</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Accounting Procedures</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Bonus Program</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>First Aid</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Fire Extinguisher</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Maintenance Policy for Owner Operators</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Speed Policy</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<ul>
+																	<li>Disciplinary Policy</li>
+																</ul>
+															</td>
+														</tr>
+													</table>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <b>Driver’s Name (Printed)</b>: <%- driverName %><br>
+                                                        <b>Drivers Signature:</b> <img
+                                                            src="uploads/attachment/drivinghistoryaddressSignature/<%- getDrivinghistorySignature %>"
+                                                            alt="user" width="150"></a> <br>
+                                                        <b>Date:</b>
+                                                        <%- getupdatedDate %><br>
+                                                            <input class="form-check-input" id="Iagree"
+                                                                name="Iagree" type="checkbox" value="1"
+                                                                id="flexCheckDefault Iagree">
+
+                                                            I certify that I have read and
+                                                            understood the above requirements.
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Container fluid  -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- footer -->
+                    <!-- ============================================================== -->
+                    <footer class="footer text-center">
+                        <!-- All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a> -->
+                    </footer>
+                    <!-- ============================================================== -->
+                    <!-- End footer -->
+                    <!-- ============================================================== -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Page wrapper  -->
+                <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <%- include('includes/footer.ejs') %>
+        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script>
+            //   jQuery(document).ready(function () {
+
+            // $("#toDate").on("change",function(){
+            //                 $("#toDate").focusout(function() {
+            //                 alert('qwwe')
+            //     var selected = $(this).val();
+            //     alert(selected);
+            // });
+
+
+
+            $(document).ready(function () {
+                    let company_id = $("#company_id").val();
+                    let driverId = $("#driverId").val();
+                    $.ajax({
+                        url: "/getcertificateDtls",
+                        type: "GET",
+						timeout: 15000,
+                        data: { driverId: driverId,certificateID:9},
+                        success: function (data) {
+                            console.log(data.message);
+                            if (data.message.approve) {
+                                $('#Iagree').attr('checked','checked');
+                                $('#Iagree').attr('disabled',true);
+                                    
+                            } else {
+                                $('#Iagree').show();
+                            }
+
+                        }
+                    });
+                })
+
+
+
+
+            $('#Iagree').on('change', function () {
+                if (this.checked) {
+                    // alert(this.checked)
+                    let company_id = $("#company_id").val();
+                    let driverId = $("#driverId").val();
+                    $.ajax({
+                        url: "/certificateapproval",
+                        type: "POST",
+                        data: { company_id: company_id,driverId:driverId,certificateID:9,approve:this.checked },
+                        success: function (data) {
+                            console.log(data.data);
+                            if (data.status) {
+                                const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                    
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                } else {
+                    // $("#ifbelowthreeYears").hide();
+                    // alert('un checked')
+                    alert(this.checked)
+                }
+
+            })
+
+            function getMonthDifference(startDate, endDate) {
+                console.log(startDate);
+                console.log(endDate);
+                return (
+                    endDate.getMonth() -
+                    startDate.getMonth() +
+                    12 * (endDate.getFullYear() - startDate.getFullYear())
+                );
+            }
+            function toDate1(parms) {
+                let fromDate = jQuery('#fromDate' + parms).val();
+                if (fromDate == 'undefined' || fromDate == '') {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Please fill From Date before To Date',
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                    })
+                    jQuery('#toDate' + parms).val('');
+                } else {
+                    let todate = jQuery('#toDate' + parms).val();
+                    let currentDuration = getMonthDifference(new Date(fromDate), new Date(todate));
+
+
+                    jQuery('#singleDurationInput' + parms).val(currentDuration);
+                    jQuery('#singleDuration' + parms).html('<b>Duration in month</b> : ' + currentDuration)
+                }
+            }
+            // })
+
+
+            //     $('#toDate'+parms).on("keyup", function() {
+            //        alert('test')
+            //     console.log(fromdate);
+            //    console.log(todate);
+            //    })
+            /****************************************
+             *       Basic Table                   *
+             ****************************************/
+            // $('#zero_config').DataTable();
+            function convertToBase64(inputfile, parms) {
+                //Read File
+                // alert(inputfile)
+                // alert(parms)
+
+                var selectedFile = document.getElementById(inputfile).files;
+                console.log(selectedFile);
+                //Check File is not Empty
+                if (selectedFile.length > 0) {
+                    // Select the very first file from list
+                    var fileToLoad = selectedFile[0];
+                    var filesize = selectedFile[0].size;
+                    if (filesize <= '2069405') {
+                        console.log(filesize);
+                        // FileReader function for read the file.
+                        var fileReader = new FileReader();
+                        var base64;
+                        // Onload of file read the file content
+                        fileReader.onload = function (fileLoadedEvent) {
+                            base64 = fileLoadedEvent.target.result;
+                            // Print data in console
+                            console.log(parms);
+                            $("#" + parms).val(base64);
+                            var div = document.getElementById(parms);
+                            div.innerHTML += base64;
+
+                        };
+                        // Convert data to base64
+                        fileReader.readAsDataURL(fileToLoad);
+                    } else {
+                        Swal.fire(
+                            'Too Big!',
+                            'Upload image size within 2 MB.',
+                            'danger'
+                        )
+                        return false;
+                    }
+                }
+            }
+
+            $(document).ready(function () {
+
+                $(document).on('click', '.viewmodalclass', function () {
+                    // alert('test') 
+                    // let id = $(this).attr('data-id');
+                    let id = $('body #updateEmployment #updateEmployment_details #id').val();
+                    // alert(id)
+                    console.log(id);
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/getemploymenthistory",
+                        type: "GET",
+                        data: { id: id },
+                        success: function (data) {
+                            console.log(data.data);
+                            if (data.status) {
+                                $("body #table tbody").html(data.data);
+                                // $('body #viewmodal >table > tbody').html(data.data);
+
+                                $('body #viewmodal').modal('show');
+                            } else {
+                                // Swal.fire('Any fool can use a computer')
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+
+
+                $(document).on('click', '.editmodalclass', function () {
+                    // alert('test')
+                    let id = $(this).attr('data-id');
+                    // let id = $('body #updateDriver #id').val();
+                    // alert(id)
+                    console.log(id);
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/getupdateemploymenthistoryAddress",
+                        type: "GET",
+                        data: { id: id },
+                        success: function (data) {
+                            if (data.status) {
+                                $('body #editmodal #id').val(data.data.id);
+                                $('body #editmodal #address').val(data.data.address);
+                                $('body #editmodal #state').val(data.data.state);
+                                $('body #editmodal #city').val(data.data.city);
+                                $('body #editmodal #country').val(data.data.country);
+                                $('body #editmodal #province').val(data.data.province);
+                                $('body #editmodal #postalCode').val(data.data.postalCode);
+                                $('body #editmodal #fromDate').val(data.data.fromDate);
+                                $('body #editmodal #toDate').val(data.data.toDate);
+                                // $('body #viewmodal >table > tbody').html(data);
+                                $('body #viewmodal').modal('hide');
+                                $('body #editmodal').modal('show');
+                            } else {
+                                // Swal.fire('Any fool can use a computer')
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+                $(document).on('click', '.addmodalclass', function () {
+                    // alert('test')
+                    let id = $(this).attr('data-id');
+                    let prvTo = $(this).attr('data-prvTo');
+                    let currFrom = $(this).attr('data-currFrom');
+                    let company_id = $(this).attr('data-company_id');
+                    let driverId = $(this).attr('data-driverId');
+                    // let id = $('body #updateDriver #id').val();
+                    // alert(id)
+                    console.log(id);
+                    // console.log($(this).attr("data-id"));
+                    $.ajax({
+                        url: "/getupdateemploymenthistoryAddress",
+                        type: "GET",
+                        data: { id: id },
+                        success: function (data) {
+                            if (data.status) {
+                                $('body #addmodal #id').val(data.data.id);
+                                $('body #addmodal #fromDate').val(prvTo);
+                                $('body #addmodal #toDate').val(currFrom);
+                                $('body #addmodal #company_id').val(company_id);
+                                $('body #addmodal #driverId').val(driverId);
+                                $('body #viewmodal').modal('hide');
+                                $('body #addmodal').modal('show');
+                            } else {
+                                // Swal.fire('Any fool can use a computer')
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something went wrong',
+                                    icon: 'error',
+                                    confirmButtonText: 'Cool'
+                                })
+                                // window.location = "/";
+                            }
+
+                        }
+                    });
+                });
+                $(document).on('click', '.deletemodalclass', function () {
+                    // alert('test')
+                    let id = $(this).attr('data-id');
+                    console.log(id);
+                    // console.log($(this).attr("data-id"));
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to update this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, update it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                            $.ajax({
+                                url: "/deleteemploymenthistoryAddress",
+                                type: "POST",
+                                data: { id: id },
+
+                                success: function (data) {
+                                    if (data.status) {
+                                        const Toast = Swal.mixin({
+                                            toast: true,
+                                            position: 'top-end',
+                                            showConfirmButton: false,
+                                            timer: 2000,
+                                            timerProgressBar: true,
+                                            didOpen: (toast) => {
+                                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                            }
+                                        })
+                                        Toast.fire({
+                                            icon: 'success',
+                                            title: data.message
+                                        });
+                                        setTimeout(function () {
+                                            window.location.reload();
+                                        }, 2000);
+                                    } else {
+                                        Swal.fire({
+                                            title: 'Error!',
+                                            text: 'Something went wrong',
+                                            icon: 'error',
+                                            confirmButtonText: 'Cool'
+                                        })
+                                    }
+
+                                }
+                            });
+
+
+                        }
+                    })
+                });
+
+                // jQuery('#fromDate').datepicker({
+                //     format: 'dd/mm/yyyy',
+                //     maxDate: new Date(),
+                //     closeOnSelected: true,
+                //     autoclose: true,
+                //     endDate: "today"
+                // });
+                jQuery('.mydatepickerDOB').datepicker({
+                    format: 'dd/mm/yyyy',
+                    maxDate: new Date(),
+                    closeOnSelected: true,
+                    autoclose: true,
+                    endDate: "today"
+                });
+
+                jQuery('.mydatepicker').datepicker({
+                    format: 'dd/mm/yyyy',
+                    closeOnSelected: true,
+                    autoclose: true,
+                });
+                jQuery('#datepicker-autoclose').datepicker({
+                    autoclose: true,
+                    todayHighlight: true,
+                    maxDate: new Date()
+                });
+
+                // --------------------------------------Multiple form---------------------------------
+                var max_fields = 10;
+                var wrapper = $(".container1");
+                var add_button = $(".add_form_field");
+
+                var x = 1;
+                $(add_button).click(function (e) {
+                    e.preventDefault();
+                    if (x < max_fields) {
+                        x++;
+                        $(wrapper).append('<div>   <div class="form-group row"><label for="address"class="col-sm-3 control-label col-form-label">Address</label><div class="col-md-9"><input type="text" class="form-control" name="address[]"value="" id="address"></div> </div><div class="form-group row"><label for="state" class="col-sm-3 control-label col-form-label">State</label><div class="col-md-9"><input type="text" class="form-control" name="state[]"value="" id="state"></div></div><div class="form-group row"><label for="city"class="col-sm-3 control-label col-form-label">City</label><div class="col-md-9"> <input type="text" class="form-control" name="city[]" value="" id="city"> </div></div><div class="form-group row"><label for="country"class="col-sm-3 control-label col-form-label">Country</label><div class="col-md-9"> <input type="text" class="form-control" name="country[]" value="" id="country"></div></div><div class="form-group row"><label for="province"class="col-sm-3 control-label col-form-label">Province</label> <div class="col-md-9"><input type="text" class="form-control" name="province[]" value="" id="province"></div></div><div class="form-group row"><label for="postalCode"class="col-sm-3 control-label col-form-label">PostalCode</label><div class="col-md-9"><input type="text" class="form-control" name="postalCode[]" value="" id="postalCode"></div></div><div class="form-group row"><label for="postalCode" class="col-sm-3 control-label col-form-label">From Date</label><div class="col-md-9"><input type="date" class="form-control" name="fromDate[]"  value="" data-fromDate="' + x + '" id="fromDate' + x + '"></div></div><div class="form-group row"><label for=""class="col-sm-3 control-label col-form-label">To Date</label> <div class="col-md-9"><input type="date" class="form-control" onfocusout="toDate1(' + x + ')"  name="toDate[]"  id="toDate' + x + '"></div></div> <input type="hidden" name="singleDurationInput[]"  id="singleDurationInput' + x + '"> <span id="singleDuration' + x + '"></span>  </div> <br ><a href="#" class="btn btn-danger delete">Delete</a></div>'); //add input box
+                    } else {
+                        alert('You Reached the limits')
+                    }
+                });
+
+                $(wrapper).on("click", ".delete", function (e) {
+                    e.preventDefault();
+                    $(this).parent('div').remove();
+                    x--;
+                })
+
+
+                // $(document).on('click', '#fromDate', function () {
+                //     alert(this.id);
+                //     alert($('#fromDate').data('fromDate'));
+                // jQuery('#fromDate').datepicker({
+                //     format: 'dd/mm/yyyy',
+                //     maxDate: new Date(),
+                //     closeOnSelected: true,
+                //     autoclose: true,
+                //     endDate: "today"
+                // });
+
+
+
+                // })
+                // $(document).on('click', '#toDate', function () {
+                // jQuery('#toDate').datepicker({
+                //     format: 'dd/mm/yyyy',
+                //     maxDate: new Date(),
+                //     closeOnSelected: true,
+                //     autoclose: true,
+                //     endDate: "today"
+                // });
+                // })
+                // --------------------------------------Multiple form---------------------------------
+
+            });
+            let date = new Date();
+            var currentdate =
+                ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+                ("00" + date.getDate()).slice(-2) + "/" +
+                date.getFullYear();
+            function calculateAge(birthDate, otherDate) {
+                birthDate = new Date(birthDate);
+                otherDate = new Date(otherDate);
+
+                var years = (otherDate.getFullYear() - birthDate.getFullYear());
+
+                if (otherDate.getMonth() < birthDate.getMonth() ||
+                    otherDate.getMonth() == birthDate.getMonth() && otherDate.getDate() < birthDate.getDate()) {
+                    years--;
+                }
+
+                return years;
+            }
+
+
+            // var age = calculateAge("02/24/1991", "02/24/2010");
+
+
+            $("#ifbelowthreeYears").hide();
+            $("#legalRightUSAAtachmentdiv").hide();
+            $("#legalRightyesnoData").hide();
+            $("#fastCardyesnoData").hide();
+            $("#nofastcarddiv").hide();
+
+            $('#DOB').on('change', function () {
+                $('body #updateEmployment_details #age').val('')
+                // alert(currentdate)
+                var age = calculateAge(this.value, currentdate);
+                // alert(age)
+                $('body #updateEmployment_details #age').val(age)
+
+            })
+            $('#belowThree').on('change', function () {
+
+                if (this.checked) {
+                    $("#ifbelowthreeYears").show();
+                    // alert('checked')
+                } else {
+                    $("#ifbelowthreeYears").hide();
+                    // alert('un checked')
+                }
+
+            })
+            $('#legalRightUSA').on('change', function () {
+
+                if ($('#legalRightUSA').val() == "Yes") {
+                    $("#legalRightUSAAtachmentdiv").show();
+                    // alert('checked')
+                } else if ($('#legalRightUSA').val() == "No") {
+                    $("#legalRightUSAAtachmentdiv").hide();
+                    // alert('un checked')
+                }
+
+            })
+            $('#legalRightyesno').on('change', function () {
+
+                if ($('#legalRightyesno').val() == "Yes") {
+                    $("#legalRightyesnoData").show();
+                    // alert('checked')
+                } else if ($('#legalRightyesno').val() == "No") {
+                    $("#legalRightyesnoData").hide();
+                    // alert('un checked')
+                }
+
+            })
+            $('#fastCardyesno').on('change', function () {
+
+                if ($('#fastCardyesno').val() == "Yes") {
+                    $("#fastCardyesnoData").show();
+                } else if ($('#fastCardyesno').val() == "No") {
+
+                    $("#nofastcarddiv").show();
+                    $("#fastCardyesnoData").hide();
+                }
+
+            })
+            $('#legalRight').on('change', function () {
+                let dtls = $("#legalRight").val() + " Attachment Canada"
+                $("#legalRightAtachmentText").html(dtls)
+            })
+            $('#fmcrs').on('change', function () {
+                if ($('#fmcrs').val() == "Yes") {
+                    $("body #updateEmployment_details #jobDesignated [value=No]").attr("selected", false);
+                    $("body #updateEmployment_details #jobDesignated [value=Yes]").attr("selected", true);
+                } else if ($('#fmcrs').val() == "No") {
+                    $("body #updateEmployment_details #jobDesignated [value=Yes]").attr("selected", false);
+                    $("body #updateEmployment_details #jobDesignated [value=No]").attr("selected", true);
+                }
+            })
+
+            // $(document).on('click', '.editmodalclass', function () {
+            // alert('test')
+            $("body #updateEmployment_details #comments").hide('');
+            let id = $('#driverId').val();
+            // console.log($(this).attr("data-id"));
+            console.log(id);
+			
+            $.ajax({
+                url: "/editupdateemploymenthistoryForm",
+                type: "GET",
+				timeout: 30000,
+                data: { id: id },
+                success: function (data) {
+                    console.log(data);
+                    if (data.status) {
+                        let approveStatus;
+                        if (data.data.approveStatus == 0) {
+                            // alert(0)
+                            approveStatus = 'Waiting For admin approval'
+                        } else {
+                            // alert(1)
+                            approveStatus = 'Approved'
+                        }
+                        $("body #updateEmployment_details #commentsSection").html('<input required type="text" class="form-control" placeholder="Please enter comments this will help admin to approve this request" name="comment" value="" id="comments">');
+                        $("body #updateEmployment_details #approveStatus").text(approveStatus);
+                        $("body #updateEmployment_details #submitBtn").text('Update');
+                        $('body #updateEmployment_details #actionData').val('Update');
+                        $('body #updateEmployment_details #employerName').val(data.data.employerName);
+                        $('body #updateEmployment_details #employerDate').val(data.data.employerDate);
+                        $('body #updateEmployment_details #employerAddress').val(data.data.employerAddress);
+                        $('body #updateEmployment_details #employerPosition').val(data.data.employerPosition);
+                        $('body #updateEmployment_details #employerContactPerson').val(data.data.employerContactPerson);
+                        $('body #updateEmployment_details #employerContactPersonNumber').val(data.data.employerContactPersonNumber);
+                        $('body #updateEmployment_details #employerContactPersonEmail').val(data.data.employerContactPersonEmail);
+                        $("body #updateEmployment_details #fmcrs [value=" + '"' + data.data.fmcrs + '"' + "]").attr("selected", true);
+                        $("body #updateEmployment_details #jobDesignated [value=" + '"' + data.data.jobDesignated + '"' + "]").attr("selected", true);
+                    } else {
+                        $("body #updateEmployment_details #commentsSection").html('');
+                        $("body #updateEmployment_details #submitBtn").text('Create');
+                        $('body #updateEmployment_details #actionData').val('Create');
+                        // window.location = "/";
+                    }
+
+                }
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+
+    console.log(errorThrown);
+});;
+            // });
+
+
+
+
+            function handlemultipleNames(parms, values) {
+                let arr = []
+                $('input[name="' + parms + '[]"]').each(function () {
+                    arr.push(this.value);
+                    values = arr
+                });
+                return values
+            }
+            $("#updateEmployment").submit(function (event) {
+                event.preventDefault();
+
+                var values = {};
+                $.each($('#updateEmployment').serializeArray(), function (i, field) {
+                    values[field.name] = field.value;
+                    // console.log(values[field.name]);
+                });
+
+
+                // var address = [];
+                // var state = [];
+                // var city = [];
+                // var country = [];
+                // var province = [];
+                // var postalCode = [];
+                // var fromDate = [];
+                // var toDate = [];
+                // address = handlemultipleNames('address', values);
+                // state = handlemultipleNames('state', values);
+                // city = handlemultipleNames('city', values);
+                // country = handlemultipleNames('country', values);
+                // province = handlemultipleNames('province', values);
+                // postalCode = handlemultipleNames('postalCode', values);
+                // fromDate = handlemultipleNames('fromDate', values);
+                // toDate = handlemultipleNames('toDate', values);
+                // values['addressarr'] = address;
+                // values['statearr'] = state;
+                // values['cityarr'] = city;
+                // values['countryarr'] = country;
+                // values['provincearr'] = province;
+                // values['postalCodearr'] = postalCode;
+                // values['fromDatearr'] = fromDate;
+                // values['toDatearr'] = toDate;
+
+                // console.log(DriverAddress.length);
+
+                var address = $("input[name='address[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['addressArr'] = address
+                var state = $("input[name='state[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['stateArr'] = state
+                var city = $("input[name='city[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['cityArr'] = city
+                var country = $("input[name='country[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['countryArr'] = country
+                var province = $("input[name='province[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['provinceArr'] = province
+                var postalCode = $("input[name='postalCode[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['postalCodeArr'] = postalCode
+                var fromDate = $("input[name='fromDate[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['fromDateArr'] = fromDate
+                var toDate = $("input[name='toDate[]']")
+                    .map(function () { return $(this).val(); }).get();
+                values['toDateArr'] = toDate
+
+                console.log(values);
+
+                let singleDurationInput = []
+                var total = 0;
+                $('input[name="singleDurationInput[]"]').each(function () {
+                    singleDurationInput.push(this.value);
+                    total += parseInt(this.value)
+                    // values['singleDurationInput'] = singleDurationInput
+                });
+                // console.log(total);
+                if (actionData != 'Update') {
+                    if (total < 120) {
+                        // alert('atleast')
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Atleast need 120 months to proceed further',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        })
+                        return false
+                    }
+                }
+
+                // alert(datas)
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to update this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            url: "/updateemploymenthistory",
+                            type: "POST",
+                            data: values,
+                            success: function (data) {
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+
+                            }
+                        });
+
+
+                    }
+                })
+            });
+
+
+
+            $("#updateAddress").submit(function (event) {
+                event.preventDefault();
+                var values = {};
+                $.each($('#updateAddress').serializeArray(), function (i, field) {
+                    values[field.name] = field.value;
+                    // console.log(values[field.name]);
+                });
+
+                // alert(datas)
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to update this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            url: "/UpdateemploymenthistoryAddressID",
+                            type: "POST",
+                            data: values,
+                            success: function (data) {
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+
+                            }
+                        });
+
+
+                    }
+                })
+            });
+            $("#addAddress").submit(function (event) {
+                event.preventDefault();
+                var values = {};
+                $.each($('#addAddress').serializeArray(), function (i, field) {
+                    values[field.name] = field.value;
+                    // console.log(values[field.name]);
+                });
+
+                // alert(datas)
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to update this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            url: "/AddemploymenthistoryAddressID",
+                            type: "POST",
+                            data: values,
+                            success: function (data) {
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+
+                            }
+                        });
+
+
+                    }
+                })
+            });
+
+
+    //         function fromDate1(parms){
+    // //    alert('test')
+    // console.log(parms);
+    // // jQuery("#fromDate"+parms).focus();
+    // // jQuery("#fromDate"+parms).blur();
+    // jQuery('#fromDate'+parms).datepicker({
+    //                 format: 'dd/mm/yyyy',
+    //                 maxDate: new Date(),
+    //                 closeOnSelected: true,
+    //                 autoclose: true,
+    //                 endDate: "today"
+    //             })
+    //         }
+        </script>
+        <script src="sweetAlert/sweetalert2.min.js"></script>
+
+</body>
+
+</html>

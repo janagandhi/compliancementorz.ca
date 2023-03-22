@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="extra-libs/signature/jquery.signature.css"> -->
+    <link rel="stylesheet" type="text/css"
+        href="https://ashaviglobal.com/agreement/template/dist/css/jquery.signature.css">
+    <style type="text/css">
+		.float_left {
+			float: left;
+		}
+        .gap {
+            text-align: center;
+            background-color: #e2181870;
+
+        }
+
+        .thClass {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+
+        /* Signature */
+        .kbw-signature {
+            width: 100%;
+            height: 250px;
+        }
+
+        .signature canvas {
+            width: 100% !important;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarDriver.ejs') %>
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <div class="card-body">
+                            <div class="row p-b-30">
+                                <div class="col-12">
+                                    <form class="form-horizontal" id="updateQuestions"
+                                        style="background: #27a9e324;border-radius: 35px;">
+                                        <div class="card-body" id="updateQuestions_details">
+                                            <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                            <div style="text-align: center;">
+                                                <span>
+                                                    <h4>
+                                                        <%- title %>
+                                                    </h4>
+                                                </span>
+                                                <img style="width: 17%" src="images/interview.png" alt="homepage" class="light-logo" />
+                                            </div>
+                                            <br>
+                                            <input type="hidden" class="form-control" value="<%- driverID %>"
+                                                name="driverId" value="" id="id">
+                                            <input type="hidden" class="form-control" value="<%- company_id %>"
+                                                name="company_id" value="" id="company_id">
+                                            <input type="hidden" class="form-control" name="actionData" value="Create"
+                                                id="actionData">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <b>Name of Driver  : </b><span><%- driverName %></span> <br><br><br>
+                                                    <div class="form-group row">
+														<label for="question1"
+															class="col-sm-12 control-label col-form-label">1. The Canada South rule states that a driver may be on duty for maximum 14 hours before he/she:</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question1" id="question11e" name="question1" value="performs a post-trip inspection" required> a. performs a post-trip inspection
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question1" id="question12e" name="question1" value="takes a 14-hour  break" required> b. takes a 14-hour  break
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question1" id="question13e" name="question1" value="performs a 34-hour restart" required> c. performs a 34-hour restart
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question1" id="question14e" name="question1" value="takes a 8-hour break" required> d. takes a 8-hour break
+
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label class="col-md-12">2.  If you are driving a bobtail, you can use personal conveyance to pick up a loaded trailer</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio"  id="question21e" name="question2" value="True" required> a. True
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  id="question22e" name="question2" value="False" required> b. False
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question2"
+															class="col-sm-12 control-label col-form-label">3. As per Canadian South HOS regulation, A driver can make Yard move</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question3" id="question31e" name="question3" value="only when Off duty" required> a. only when Off duty
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question3" id="question32e" name="question3" value="on a side road" required> b. on a side road
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question3" id="question33e" name="question3" value="During personal conveyance" required> c. During personal conveyance
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question3" id="question34e" name="question3" value="only when on duty" required> d. only when on duty
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question4"
+															class="col-sm-12 control-label col-form-label">4. As per Canada South HOS regulation, A driver has to take a minimum ___ hours off  in a day.</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question4" id="question41e" name="question4" value="7" required> a. 7
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question4" id="question42e" name="question4" value="8" required> b. 8
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question4" id="question43e" name="question4" value="9" required> c. 9
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question4" id="question44e" name="question4" value="10" required> d. 10
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question5"
+															class="col-sm-12 control-label col-form-label">5. The Sum of which two duty status are taken into account, to calculate your 70 hours of total on duty time in 7 days?</label>
+														<div class="col-md-12">
+														   <div class="col-md-12 float_left">
+																<input type="radio" class="question5" id="question51e" name="question5" value="sleeper and onduty other than driving" required> a. sleeper and onduty other than driving
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question5" id="question52e" name="question5" value="off duty and driving" required> b. off duty and driving
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question5" id="question53e" name="question5" value="off duty and duty other than driving" required> c. off duty and duty other than driving
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question5" id="question54e" name="question5" value="Driving and on duty other than driving" required> d. Driving and on duty other than driving
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question6"
+															class="col-sm-12 control-label col-form-label">6. In Canada, a driver can defer 2 hours off duty to next day</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question6" id="question61e" name="question6" value="True" required> a.True
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question6" id="question62e" name="question6" value="False" required> b. False
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question7"
+															class="col-sm-12 control-label col-form-label">7. While driving with a co-driver,</label>
+														<div class="col-md-12">
+															 <div class="col-md-12 float_left">
+																<input type="radio" class="question7" id="question71e" name="question7" value="each driver should maintain his own logbook according to applicable HOS regulations" required> a. each driver should maintain his own logbook according to applicable HOS regulations
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question7" id="question72e" name="question7" value="Their driving time should not overlap" required> b. Their driving time should not overlap
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question7" id="question73e" name="question7" value="The odometer readings on their logs should not overlap" required> c. The odometer readings on their logs should not overlap
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question7" id="question74e" name="question7" value="All of the above" required> d. All of the above
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question8"
+															class="col-sm-12 control-label col-form-label">8. Your logbook should always be updated till</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question8" id="question81e" name="question8" value="last off duty period" required> a. last off duty period
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question8" id="question82e" name="question8" value="Last 14 days" required> b. Last 14 days
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question8" id="question83e" name="question8" value="Last change of duty status" required> c. Last change of duty status
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question8" id="question84e" name="question8" value="Last  on duty period" required> d. Last  on duty period
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question9"
+															class="col-sm-12 control-label col-form-label">9. The 16th hour of a shift can be calculated by excluding, more than 2 hours off duty taken by , which is at least 10 hours  when added to next of duty period.</label>
+														<div class="col-md-12">
+														   <div class="col-md-12 float_left">
+																<input type="radio" class="question9" id="question91e" name="question9" value="True" required> a. True
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question9" id="question92e" name="question9" value="False" required> b. False
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question10"
+															class="col-sm-12 control-label col-form-label">10. A driver has take 24 hrs off in any 14 days?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question10" id="question101e" name="question10" value="True" required> a. True
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question10" id="question102e" name="question10" value="False" required> b. False
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question11"
+															class="col-sm-12 control-label col-form-label">11. How many hours of reset time  is required to change from 120 hours /14 days cycle to 70 hours/7 days cycle?</label>
+														<div class="col-md-9">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question11" id="question111e" name="question11" value="36" required> a. 36
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question11" id="question112e" name="question11" value="34" required> b. 34
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question11" id="question113e" name="question11" value="60" required> c. 60
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question11" id="question114e" name="question11" value="72" required> d. 72
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question12"
+															class="col-sm-12 control-label col-form-label">12. Pre trip inspection of a vehicle needs to be done at least once in every 24 hours.</label>
+														<div class="col-md-9">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question12" id="question121e" name="question12" value="True" required> a. True
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question12" id="question122e" name="question12" value="False" required> b. False
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question10"
+															class="col-sm-12 control-label col-form-label">13. In Canada, A driver can drive maximum 13 hours ,</label>
+														<div class="col-md-9">
+																<div class="col-md-12 float_left">
+																	<input type="radio" class="question13" id="question131e" name="question13" value="Only after taking  10 hours consecutive off duty" required> a. Only after taking  10 hours consecutive off duty
+																</div>
+																<div class="col-md-12 float_left">
+																	<input type="radio"  class="question13" id="question132e" name="question13" value="In a day" required> b. In a day
+																</div>
+																<div class="col-md-12 float_left">
+																	<input type="radio" class="question13" id="question133e" name="question13" value="In any shift" required> c. In any shift
+																</div>
+																<div class="col-md-12 float_left">
+																	<input type="radio"  class="question13" id="question134e" name="question13" value="Both b & c" required> d. Both b & c
+																</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question11"
+															class="col-sm-12 control-label col-form-label">14. As per Canadian South HOS regulation,  if a driver can take less than 30 minutes off duty to complete his mandatory 10 hours off duty in a day</label>
+														<div class="col-md-12">
+															 <div class="col-md-12 float_left">
+																<input type="radio" class="question14" id="question141" name="question14" value="True" required> a. True
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question14" id="question142" name="question14" value="False" required> b. False
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question12"
+															class="col-sm-12 control-label col-form-label">15. A  driver driving within 160 km radious, is exempted from HOS rules</label>
+														<div class="col-md-12">
+															 <div class="col-md-12 float_left">
+																<input type="radio" class="question15" id="question151" name="question15" value="True" required> a. True
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question15" id="question152" name="question15" value="False" required> b. False
+															</div>
+														</div>
+													</div>
+                                                </div>
+                                            </div>
+                                            <div class="border-top">
+                                                <div style="text-align: center;" class="card-body">
+                                                    <button type="Submit" id="submitBtn"
+                                                        class="btn btn-primary" value="Submit"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Container fluid  -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <footer class="footer text-center">
+                    <!-- All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a> -->
+                </footer>
+                <!-- ============================================================== -->
+                <!-- End footer -->
+                <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <%- include('includes/footer.ejs') %>
+
+        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script> -->
+        <script type="text/javascript" src="assets/extra-libs/signature/jquery.signature.min.js"></script>
+        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script>  -->
+        <script>
+
+            /****************************************
+             *       Basic Table                   *
+             ****************************************/
+            // $('#zero_config').DataTable();
+
+
+            $(document).ready(function () {
+
+
+                jQuery('.mydatepickerDOB').datepicker({
+                    format: 'dd/mm/yyyy',
+                    maxDate: new Date(),
+                    closeOnSelected: true,
+                    autoclose: true,
+                    endDate: "today"
+                });
+
+                jQuery('.mydatepicker').datepicker({
+                    format: 'dd/mm/yyyy',
+                    closeOnSelected: true,
+                    autoclose: true,
+                });
+                jQuery('#datepicker-autoclose').datepicker({
+                    autoclose: true,
+                    todayHighlight: true,
+                    maxDate: new Date()
+                });
+
+
+            });
+            let date = new Date();
+            var currentdate =
+                ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+                ("00" + date.getDate()).slice(-2) + "/" +
+                date.getFullYear();
+         
+            $("body #updateQuestions_details #comments").hide('');
+            let id = $('#updateQuestions_details #id').val();
+            // console.log($(this).attr("data-id"));
+            $.ajax({
+                url: "/editcanadahosmanual",
+                type: "GET",
+                data: { id: id },
+                success: function (data) {
+              
+                    if (data.status) {
+                        // $("body #updateQuestions_details #submitBtn").text('Update');
+                        // $('body #updateQuestions_details #actionData').val('Update');
+                        $('body #updateQuestions_details #submitBtn').hide();
+						$("input[name=question1][value='" + data.data.question1 + "']").attr('checked', 'checked');
+						$("input[name=question2][value='" + data.data.question2 + "']").attr('checked', 'checked');
+						$("input[name=question3][value='" + data.data.question3 + "']").attr('checked', 'checked');
+						$("input[name=question4][value='" + data.data.question4 + "']").attr('checked', 'checked');
+						$("input[name=question5][value='" + data.data.question5 + "']").attr('checked', 'checked');
+						$("input[name=question6][value='" + data.data.question6 + "']").attr('checked', 'checked');
+						$("input[name=question7][value='" + data.data.question7 + "']").attr('checked', 'checked');
+						$("input[name=question8][value='" + data.data.question8 + "']").attr('checked', 'checked');
+						$("input[name=question9][value='" + data.data.question9 + "']").attr('checked', 'checked');
+						$("input[name=question10][value='" + data.data.question10 + "']").attr('checked', 'checked');
+						$("input[name=question11][value='" + data.data.question11 + "']").attr('checked', 'checked');
+						$("input[name=question12][value='" + data.data.question12 + "']").attr('checked', 'checked');
+						$("input[name=question13][value='" + data.data.question13 + "']").attr('checked', 'checked');
+						$("input[name=question14][value='" + data.data.question14 + "']").attr('checked', 'checked');
+						$("input[name=question15][value='" + data.data.question15 + "']").attr('checked', 'checked');
+                        
+                    
+                        $('body #updateQuestions_details .container1').hide()
+                    } else {
+                        $("body #updateQuestions_details #submitBtn").text('Create');
+                        $('body #updateQuestions_details #actionData').val('Create');
+                        // window.location = "/";
+                    }
+
+                }
+            });
+            // });
+
+
+
+
+            $("#updateQuestions").submit(function (event) {
+                event.preventDefault();
+                var values = {};
+                $.each($('#updateQuestions').serializeArray(), function (i, field) {
+                    values[field.name] = field.value;
+                });
+           
+       
+
+
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to update this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#updateQuestions #submitBtn").text('Please wait');
+                        $("#updateQuestions #submitBtn").attr('disabled', true);
+                        $.ajax({
+                            url: "/updatecanadahosmanual",
+                            type: "POST",
+                            data: values,
+                            success: function (data) {
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+
+                            }
+                        });
+
+
+                    }
+                })
+            });
+
+
+
+
+        </script>
+        <script src="sweetAlert/sweetalert2.min.js"></script>
+
+</body>
+
+</html>

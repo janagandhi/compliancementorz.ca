@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+    <title>
+        <%- title %>
+    </title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="extra-libs/signature/jquery.signature.css"> -->
+    <link rel="stylesheet" type="text/css"
+        href="https://ashaviglobal.com/agreement/template/dist/css/jquery.signature.css">
+    <style type="text/css">
+		.float_left {
+			float: left;
+		}
+        .gap {
+            text-align: center;
+            background-color: #e2181870;
+
+        }
+
+        .thClass {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .modal {
+            padding: 0 !important;
+        }
+
+        .modal .modal-dialog {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .modal .modal-body {
+            overflow-y: auto;
+        }
+
+        /* Signature */
+        .kbw-signature {
+            width: 100%;
+            height: 250px;
+        }
+
+        .signature canvas {
+            width: 100% !important;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarDriver.ejs') %>
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">
+                                    <%- title %>
+                                </h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <%- title %>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <div class="card-body">
+                            <div class="row p-b-30">
+                                <div class="col-12">
+                                    <form class="form-horizontal" id="updateQuestions"
+                                        style="background: #27a9e324;border-radius: 35px;">
+                                        <div class="card-body" id="updateQuestions_details">
+                                            <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                            <div style="text-align: center;">
+                                                <span>
+                                                    <h4>
+                                                        <%- title %>
+                                                    </h4>
+                                                </span>
+                                                <img style="width: 17%" src="images/interview.png" alt="homepage" class="light-logo" />
+                                            </div>
+                                            <br>
+                                            <input type="hidden" class="form-control" value="<%- driverID %>"
+                                                name="driverId" value="" id="id">
+                                            <input type="hidden" class="form-control" value="<%- company_id %>"
+                                                name="company_id" value="" id="company_id">
+                                            <input type="hidden" class="form-control" name="actionData" value="Create"
+                                                id="actionData">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <b>Name of Driver  : </b><span><%- driverName %></span>
+													<b style="float:right;display:none;" id="weightDateb">Date  : <span id="weightDate"></span> </b>
+													<br><br><br>
+                                                    <div class="form-group row">
+														<label for="question1"
+															class="col-sm-12 control-label col-form-label">1.  Which of the following statements is not true about the Memorandum of Understanding?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question1" id="question11e" name="question1" value="New vehicle categories may not be added" required> a. New vehicle categories may not be added
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question1" id="question12e" name="question1" value="Information about designated highways is included" required> b.	Information about designated highways is included
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question1" id="question13e" name="question1" value="Amendments and clarifications are added on a regular basis" required> c.	Amendments and clarifications are added on a regular basis
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label class="col-md-12">2.	The Gross Vehicle Weight Rating (GVWR) is explained by which of the following formulas?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio"  id="question21e" name="question2" value="Tare Weight + GAWR = GVWR" required> a. Tare Weight + GAWR = GVWR
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  id="question22e" name="question2" value="Tare Weight + Payload = GVWR" required> b. Tare Weight + Payload = GVWR
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  id="question23e" name="question2" value="Payload + GAWR = GVWR" required> c. Payload + GAWR = GVWR
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question2"
+															class="col-sm-12 control-label col-form-label">3. The trailer manufacturer’s rating for the rear tandem axle of Lisa’s vehicle is 35 200 lbs (16 000 kgs). Under the MoU, what is the maximum weight can be carried on that axle?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question3" id="question31e" name="question3" value="16000 kgs" required> a. 16000 kgs
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question3" id="question32e" name="question3" value="17000 kgs" required> b. 17000 kgs
+															</div>
+                                                            <div class="col-md-12 float_left">
+																<input type="radio"  class="question3" id="question33e" name="question3" value="It depends on the axle spread" required> c.	It depends on the axle spread
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question4"
+															class="col-sm-12 control-label col-form-label">4. Doug’s carrier has just provided new APUs for every truck in the fleet. How much extra weight can be added to the combined steer and drive axle groups?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question4" id="question41e" name="question4" value="600 kg" required> a. 600 kg
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question4" id="question42e" name="question4" value="225 kg" required> b. 225 kg
+															</div>
+                                                            <div class="col-md-12 float_left">
+																<input type="radio"  class="question4" id="question42e" name="question4" value="190 kg" required> c. 190 kg
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question5"
+															class="col-sm-12 control-label col-form-label">5. Which of the following combination vehicles is connected using a fifth wheel connected to the forward trailer?</label>
+														<div class="col-md-12">
+														   <div class="col-md-12 float_left">
+																<input type="radio" class="question5" id="question51e" name="question5" value="An A-train double" required> a. An A-train double
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question5" id="question52e" name="question5" value="An B-train double" required> b. An B-train double
+															</div>
+                                                            <div class="col-md-12 float_left">
+																<input type="radio"  class="question5" id="question52e" name="question5" value="An C-train double" required>c. An C-train double
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question6"
+															class="col-sm-12 control-label col-form-label">6. The maximum weight for the axles highlighted in the diagram below are restricted when Dimension A is less than:</label>
+														<div class="col-md-12">
+															<div class="col-md-12" style="margin-bottom:15px;">
+																<img src="images/wdqs6.png" style="width:75%">
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question6" id="question61e" name="question6" value="2 metres" required> a. 2 metres
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question6" id="question62e" name="question6" value="3 metres" required> b. 3 metres
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question6" id="question63e" name="question6" value="4 metres" required> c. 4 metres
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question7"
+															class="col-sm-12 control-label col-form-label">7. Is the vehicle pictured in compliance with weight restrictions outlined in the MoU?</label>
+														<div class="col-md-12">
+															<div class="col-md-12"  style="margin-bottom:15px;">
+																<img src="images/wdqs7.png"  style="width:75%">
+															</div>
+															 <div class="col-md-12 float_left">
+																<input type="radio" class="question7" id="question71e" name="question7" value="Yes" required> a. Yes
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question7" id="question72e" name="question7" value="No" required> b. No
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question8"
+															class="col-sm-12 control-label col-form-label">8. The dual tires on Lisa’s tandem axle trailer are 265 mm wide. What is the total weight the trailer tires can support?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question8" id="question81e" name="question8" value="12200 kg" required> a. 12200 kg
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question8" id="question82e" name="question8" value="21200 kg" required> b. 21200 kg
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question8" id="question83e" name="question8" value="28200 kg" required> c. 28200 kg
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question9"
+															class="col-sm-12 control-label col-form-label">9. Lisa weighs her vehicle right after fueling up. She purchased 500 litres and found that 220 kg (52%) of weight were added to her steer axle and 205 kg (48%) were added to her drive axle. If she purchases another 100 litres, roughly how much more weight will be added to her drive axle?</label>
+														<div class="col-md-12">
+														   <div class="col-md-12 float_left">
+																<input type="radio" class="question9" id="question91e" name="question9" value="32 kg" required> a. 32 kg
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question9" id="question92e" name="question9" value="41 kg" required> b. 41 kg
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question9" id="question92e" name="question9" value="54 kg" required> c. 54 kg
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question10"
+															class="col-sm-12 control-label col-form-label">10. Why are spring thaw road restrictions in place?</label>
+														<div class="col-md-12">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question10" id="question101e" name="question10" value="Excessive water weakens the roadway" required> a. Excessive water weakens the roadway
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question10" id="question102e" name="question10" value="The change in temperature weakens the roadway" required> b. The change in temperature weakens the roadway
+															</div>
+                                                            <div class="col-md-12 float_left">
+																<input type="radio"  class="question10" id="question102e" name="question10" value="There may be flooding in certain areas" required> c. There may be flooding in certain areas
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question11"
+															class="col-sm-12 control-label col-form-label">11. Trailer wheelbase is the distance measured between:</label>
+														<div class="col-md-9">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question11" id="question111e" name="question11" value="The kingpin and the center of the rear axle unit" required> a. The kingpin and the center of the rear axle unit
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question11" id="question112e" name="question11" value="The center of the drive axle unit and the rear of the trailer" required> b. The center of the drive axle unit and the rear of the trailer
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question11" id="question113e" name="question11" value="The center of the steer axle and the center of the rear axle unit." required> c. The center of the steer axle and the center of the rear axle unit.
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question12"
+															class="col-sm-12 control-label col-form-label">12. Interaxle spacing is calculated by measuring the distance between:</label>
+														<div class="col-md-9">
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question12" id="question121e" name="question12" value="The centres of two adjacent axle groups" required> a. The centres of two adjacent axle groups
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question12" id="question122e" name="question12" value="The forward axle of one axle group and the rearward axle of the second axle group" required> b. The forward axle of one axle group and the rearward axle of the second axle group
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio" class="question12" id="question121e" name="question12" value="The centre of the steer axle and the centre of the rear semitrailer axle" required> c. The centre of the steer axle and the centre of the rear semitrailer axle
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question10"
+															class="col-sm-12 control-label col-form-label">13. Under the Memorandum of Understanding, what does the maximum box length of a combination vehicle refer to?</label>
+														<div class="col-md-9">
+																<div class="col-md-12 float_left">
+																	<input type="radio" class="question13" id="question131e" name="question13" value="The total length of the entire vehicle" required> a. The total length of the entire vehicle
+																</div>
+																<div class="col-md-12 float_left">
+																	<input type="radio"  class="question13" id="question132e" name="question13" value="The total length A and B plus the space between them (A + B + C)" required> b. The total length A and B plus the space between them (A + B + C)
+																</div>
+																<div class="col-md-12 float_left">
+																	<input type="radio" class="question13" id="question133e" name="question13" value="The sum of the total length of A and B (A + B)" required> c. The sum of the total length of A and B (A + B)
+																</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question11"
+															class="col-sm-12 control-label col-form-label">14. Janice’s vehicle is a tractor semitrailer. Under the Memorandum of Understanding, what is the overall length limit of her vehicle?</label>
+														<div class="col-md-12">
+															 <div class="col-md-12 float_left">
+																<input type="radio" class="question14" id="question141" name="question14" value="2 m" required> a. 2 m
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question14" id="question142" name="question14" value="20 m" required> b. 20 m
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question14" id="question142" name="question14" value="23 m" required> c. 23 m
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="form-group row">
+														<label for="question12"
+															class="col-sm-12 control-label col-form-label">15. Which of the following is the best definition of a vehicle’s axle group spread?</label>
+														<div class="col-md-12">
+															 <div class="col-md-12 float_left">
+																<input type="radio" class="question15" id="question151" name="question15" value="The distance between the centre of the front axle (or front axle group) to the centre of rear axle group on either your tractor or trailer" required> a. The distance between the centre of the front axle (or front axle group) to the centre of rear axle group on either your tractor or trailer
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question15" id="question152" name="question15" value="The distance separating two axles or axle groups calculated from the centres of the two adjacent axles" required> b. The distance separating two axles or axle groups calculated from the centres of the two adjacent axles
+															</div>
+                                                            <div class="col-md-12 float_left">
+																<input type="radio"  class="question15" id="question152" name="question15" value="The distance between the axles within an axle group and is measured from the centre of the first axle to the centre of the rear axle in the group" required> c. The distance between the axles within an axle group and is measured from the centre of the first axle to the centre of the rear axle in the group
+															</div>
+														</div>
+													</div>
+                                                    <br>
+													<div class="form-group row">
+														<label for="question11"
+															class="col-sm-12 control-label col-form-label">16. Lisa is operating a tandem-axle tractor. What is her drive axle’s maximum axle spread?</label>
+														<div class="col-md-12">
+															 <div class="col-md-12 float_left">
+																<input type="radio" class="question16" id="question161" name="question16" value="1.2 m" required> a. 1.2 m
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question16" id="question162" name="question16" value="1.85 m" required> b. 1.85 m
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question16" id="question163" name="question16" value="2.4 m" required> c. 2.4 m
+															</div>
+														</div>
+													</div>
+                                                    <br>
+													<div class="form-group row">
+														<label for="question11"
+															class="col-sm-12 control-label col-form-label">17. The length of the wheelbase of your semitrailer is 12.45 metres. What is the distance of the trailer's effective rear overhang?</label>
+														<div class="col-md-12">
+															 <div class="col-md-12 float_left">
+																<input type="radio" class="question17" id="question171" name="question17" value="4.22 m" required> a. 4.22 m
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question17" id="question172" name="question17" value="4.36 m" required> b. 4.36 m
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question17" id="question173" name="question17" value="4.50 m" required> c. 4.50 m
+															</div>
+														</div>
+													</div>
+                                                    <br>
+													<div class="form-group row">
+														<label for="question11"
+															class="col-sm-12 control-label col-form-label">18. According to the Memorandum of Understanding, what is the gross vehicle weight limit of this vehicle?</label>
+														<div class="col-md-12">
+															<div class="col-md-12"  style="margin-bottom:15px;">
+																<img src="images/wdqs18.png"  style="width:75%">
+															</div>
+															 <div class="col-md-12 float_left">
+																<input type="radio" class="question18" id="question181" name="question18" value="45300 kg" required> a. 45300 kg
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question18" id="question182" name="question18" value="49300 kg" required> b. 49300 kg
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question18" id="question183" name="question18" value="52300 kg" required> c. 52300 kg
+															</div>
+														</div>
+													</div>
+                                                    <br>
+													<div class="form-group row">
+														<label for="question11"
+															class="col-sm-12 control-label col-form-label">19. What happens when you slide the rear trailer axle to the rear?</label>
+														<div class="col-md-12">
+															 <div class="col-md-12 float_left">
+																<input type="radio" class="question19" id="question191" name="question19" value="Weight is shifted from the rear axle to the drive axle" required> a. Weight is shifted from the rear axle to the drive axle
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question19" id="question192" name="question19" value="Weight is shifted from the drive axle to the rear axle" required> b. Weight is shifted from the drive axle to the rear axle
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question19" id="question193" name="question19" value="Weight is shifted from the steer axle to the drive axle" required> c. Weight is shifted from the steer axle to the drive axle
+															</div>
+														</div>
+													</div>
+                                                    <br>
+													<div class="form-group row">
+														<label for="question11"
+															class="col-sm-12 control-label col-form-label">20. After shifting the tandem axles, engage the tractor and trailer brakes and check to make sure ____________.</label>
+														<div class="col-md-12">
+															 <div class="col-md-12 float_left">
+																<input type="radio" class="question20" id="question201" name="question20" value="The landing gear has been lowered to the ground" required> a. The landing gear has been lowered to the ground
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question20" id="question202" name="question20" value="The pins are securely in holes of the slide rail on both sides" required> 
+                                                                b. The pins are securely in holes of the slide rail on both sides                                                                
+															</div>
+															<div class="col-md-12 float_left">
+																<input type="radio"  class="question20" id="question203" name="question20" value="The tandem axle is unlocked" required> c. The tandem axle is unlocked
+															</div>
+														</div>
+													</div>
+
+                                                </div>
+                                            </div>
+                                            <div class="border-top">
+                                                <div style="text-align: center;" class="card-body">
+                                                    <button type="Submit" id="submitBtn"
+                                                        class="btn btn-primary" value="Submit"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Container fluid  -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <footer class="footer text-center">
+                    <!-- All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a> -->
+                </footer>
+                <!-- ============================================================== -->
+                <!-- End footer -->
+                <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <%- include('includes/footer.ejs') %>
+
+        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script> -->
+        <script type="text/javascript" src="assets/extra-libs/signature/jquery.signature.min.js"></script>
+        <!-- <script type="text/javascript" src="https://ashaviglobal.com/agreement/template/dist/js/jquery.signature.min.js"></script>  -->
+        <script>
+
+            /****************************************
+             *       Basic Table                   *
+             ****************************************/
+            // $('#zero_config').DataTable();
+
+
+            $(document).ready(function () {
+
+
+                jQuery('.mydatepickerDOB').datepicker({
+                    format: 'dd/mm/yyyy',
+                    maxDate: new Date(),
+                    closeOnSelected: true,
+                    autoclose: true,
+                    endDate: "today"
+                });
+
+                jQuery('.mydatepicker').datepicker({
+                    format: 'dd/mm/yyyy',
+                    closeOnSelected: true,
+                    autoclose: true,
+                });
+                jQuery('#datepicker-autoclose').datepicker({
+                    autoclose: true,
+                    todayHighlight: true,
+                    maxDate: new Date()
+                });
+
+
+            });
+            let date = new Date();
+            var currentdate =
+                ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+                ("00" + date.getDate()).slice(-2) + "/" +
+                date.getFullYear();
+         
+            $("body #updateQuestions_details #comments").hide('');
+            let id = $('#updateQuestions_details #id').val();
+            // console.log($(this).attr("data-id"));
+            $.ajax({
+                url: "/editweightdimensions",
+                type: "GET",
+                data: { id: id },
+                success: function (data) {
+              
+                    if (data.status) {
+                        // $("body #updateQuestions_details #submitBtn").text('Update');
+                        // $('body #updateQuestions_details #actionData').val('Update');
+                        $('body #updateQuestions_details #submitBtn').hide();
+						$('#weightDate').html(data.data.create_date);
+						if(data.data.create_date!=''){
+							$('#weightDate').show();
+							$('#weightDateb').show();
+						}
+						$("input[name=question1][value='" + data.data.question1 + "']").attr('checked', 'checked');
+						$("input[name=question2][value='" + data.data.question2 + "']").attr('checked', 'checked');
+						$("input[name=question3][value='" + data.data.question3 + "']").attr('checked', 'checked');
+						$("input[name=question4][value='" + data.data.question4 + "']").attr('checked', 'checked');
+						$("input[name=question5][value='" + data.data.question5 + "']").attr('checked', 'checked');
+						$("input[name=question6][value='" + data.data.question6 + "']").attr('checked', 'checked');
+						$("input[name=question7][value='" + data.data.question7 + "']").attr('checked', 'checked');
+						$("input[name=question8][value='" + data.data.question8 + "']").attr('checked', 'checked');
+						$("input[name=question9][value='" + data.data.question9 + "']").attr('checked', 'checked');
+						$("input[name=question10][value='" + data.data.question10 + "']").attr('checked', 'checked');
+						$("input[name=question11][value='" + data.data.question11 + "']").attr('checked', 'checked');
+						$("input[name=question12][value='" + data.data.question12 + "']").attr('checked', 'checked');
+						$("input[name=question13][value='" + data.data.question13 + "']").attr('checked', 'checked');
+						$("input[name=question14][value='" + data.data.question14 + "']").attr('checked', 'checked');
+						$("input[name=question15][value='" + data.data.question15 + "']").attr('checked', 'checked');
+						$("input[name=question16][value='" + data.data.question16 + "']").attr('checked', 'checked');
+						$("input[name=question17][value='" + data.data.question17 + "']").attr('checked', 'checked');
+						$("input[name=question18][value='" + data.data.question18 + "']").attr('checked', 'checked');
+						$("input[name=question19][value='" + data.data.question19 + "']").attr('checked', 'checked');
+						$("input[name=question20][value='" + data.data.question20 + "']").attr('checked', 'checked');
+                        
+                    
+                        $('body #updateQuestions_details .container1').hide()
+                    } else {
+                        $("body #updateQuestions_details #submitBtn").text('Create');
+                        $('body #updateQuestions_details #actionData').val('Create');
+                        // window.location = "/";
+                    }
+
+                }
+            });
+            // });
+
+
+
+
+            $("#updateQuestions").submit(function (event) {
+                event.preventDefault();
+                var values = {};
+                $.each($('#updateQuestions').serializeArray(), function (i, field) {
+                    values[field.name] = field.value;
+                });
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to update this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#updateQuestions #submitBtn").text('Please wait');
+                        $("#updateQuestions #submitBtn").attr('disabled', true);
+                        $.ajax({
+                            url: "/updateweightdimensions",
+                            type: "POST",
+                            data: values,
+                            success: function (data) {
+                                if (data.status) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Something went wrong',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+
+                            }
+                        });
+
+
+                    }
+                })
+            });
+
+
+
+
+        </script>
+        <script src="sweetAlert/sweetalert2.min.js"></script>
+
+</body>
+
+</html>

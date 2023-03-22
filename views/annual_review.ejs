@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Favicon icon -->
+        <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png"> -->
+        <title>
+            <%- title %>
+        </title>
+        <!-- Custom CSS -->
+        <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="dist/css/style.min.css" rel="stylesheet">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+        <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+        <link href="dist/css/style.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="sweetAlert/sweetalert2.min.css">
+        <link rel="stylesheet" type="text/css"
+            href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+        <style type="text/css">
+            .gap {
+                text-align: center;
+                background-color: #e2181870;
+            }
+            .thClass {
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .disableClick {
+                pointer-events: none;
+            }
+            .modal {
+                padding: 0 !important;
+            }
+            .modal .modal-dialog {
+                width: 100%;
+                max-width: none;
+                height: 100%;
+                margin: 0;
+            }
+            .modal .modal-content {
+                height: 100%;
+                border: 0;
+                border-radius: 0;
+            }
+            .modal .modal-body {
+                overflow-y: auto;
+            }
+            .col-md-6 {
+                width: 50%;
+                float: left;
+            }
+            .col-md-12 {
+                width: 100%;
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div class="lds-pos"></div>
+                <div class="lds-pos"></div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <div id="main-wrapper">
+            <!-- ============================================================== -->
+            <!-- Topbar header - style you can find in pages.scss -->
+            <!-- ============================================================== -->
+            <%- include('includes/header.ejs') %>
+            <%- include('includes/sidebarDriver.ejs') %>
+
+            <!-- Page wrapper  -->
+            <!-- ============================================================== -->
+            <div class="page-wrapper">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="page-breadcrumb">
+                    <div class="row">
+                        <div class="col-12 d-flex no-block align-items-center">
+                            <h4 class="page-title">
+                                <%- title %>
+                            </h4>
+                            <div class="ml-auto text-right">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            <%- title %>
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Container fluid  -->
+                <!-- ============================================================== -->
+                <div class="container-fluid" style="background-color: #fff; ">
+                    <div class="card-body">
+                        <div class="row p-b-30">
+                            <div class="col-12">
+                                <div class="card-body" id="updateEmployment_details">
+                                    <!-- <h3 align="center" class="card-title">Create company</h3> -->
+                                    <div style="text-align: center;">
+                                        <span>
+                                            <h3>U. S. DEPARTMENT OF TRANSPORTATION MOTOR CARRIER SAFETY PROGRAM ANNUAL REVIEW OF DRIVING RECORD</h3>
+                                        </span>
+                                        <!-- <img style="width: 70%" src="images/truck_company.png" alt="homepage" class="light-logo" /> -->
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="hidden" name="company_id" id="company_id"
+                                            value="<%-company_id %>">
+                                        <input type="hidden" name="driverId" id="driverId"
+                                            value="<%-driverId %>">
+                                            <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <input type="text" value="<%-driverName %>" readonly>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" value="<%-sin %>" readonly>
+                                                </div>
+                                                <div class="col-md-6">Name</div>
+                                                <div class="col-md-6">Social Security Number</div>
+                                            </div>
+                                            <p align="justify">This day I reviewed the driving record of the above named driver in accordance with CFR 391.25 of the Motor
+                                                Carrier Safety Regulations. I considered any evidence that the driver has violated applicable provisions of the
+                                                MCS Regulations and the Hazardous Materials Regulations. I considered the driver’s accident record and any
+                                                evidence that he/she has violated laws governing the operation of motor vehicles, and gave great weight to
+                                                violations, such as speeding, reckless driving and operation while under the influence of alcohol or drugs, that
+                                                indicate that the driver has exhibited a disregard for the safety of the public. Having done the above, I find that</p>
+                                            <p id="meet0" class="meets">The driver meets the minimum requirements for safe driving, <span class="meets" style="display: none;">or</span></p>
+                                            <p  id="meet1" class="meets">The driver is disqualified to drive a motor vehicle pursuant to CFR 391.15</p>
+                                              <input type="hidden" id="review2" value="<%- date_review %>"> 
+                                           <div class="col-md-12">
+                                                <div class="col-md-6"><input type="text" readonly  value="<%- annualreview1.date_review %>" id="date_review"></div>
+                                                <div class="col-md-6"><input type="text" value="<%-company_name %>" readonly></div>
+                                                <div class="col-md-6">Date of Review</div>
+                                                <div class="col-md-6">Name of Motor Carrier</div>
+                                                <div class="col-md-12"></div>
+                                                <div class="col-md-6"></div>
+                                                <div class="col-md-6"><img
+                                                    src="uploads/attachment/annualreview/<%- annualreview1.signature %>"
+                                                    alt="user" width="150" style="height:45px;"></div>
+                                                    <div class="col-md-6"></div>
+                                                <div class="col-md-6">Reviewed by: Signature and Title</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center">
+                <!-- All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a> -->
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Wrapper -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <%- include('includes/footer.ejs') %>
+        <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+        <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+        <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+        <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <script src="sweetAlert/sweetalert2.min.js"></script>
+        <script>
+             $(document).ready(function () {
+                $('.meets').hide();
+                var meet = $('#review2').val();
+                if(meet ==''){
+                    $('.meets').show();
+                }
+                if(meet==0){
+                    $('#meet0').show();
+                }
+                else if(meet==1){
+                    $('#meet1').show();
+                }
+             });
+        </script>
+    </body>
+</html>

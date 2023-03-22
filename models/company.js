@@ -6,230 +6,262 @@ module.exports = function(sequelize, DataTypes) {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       primaryKey: true
     },
     name: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    logo: {
       type: DataTypes.TEXT,
       allowNull: true
     },
     username: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     password: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
+    },
+    companyAddress: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    companyCity: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    companyCountry: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    companyProvince: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    eventsCalTimezone: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    eventsCalCountry: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    companyPostalCode: {
+      type: DataTypes.TEXT,
+      allowNull: false
     },
     management_name: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     phone: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     email: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     safety_coordinator: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     safety_coordinator_phone: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     cvor: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     cvor_expiry: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     mc_number: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     mc_pin: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     usdot: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     fmcsa: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     ky: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     nm: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     ny: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     fein: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     ezee: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     ifta: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     business_identificaton: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     mvid: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     sunpass: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     pre_pass: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     best_pass: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     scac: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     carrier_code: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     irp_accountno: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     irp_renewal: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     svi_number: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     insurance_company: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     broker_detail: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     policy_number: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     exp_date: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     drug_alcohol: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     psp_account: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     ctpat: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     ctpat_password: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     smartway: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     pip: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     us_canadian_bond: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     wsib_account: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     eld_username: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     eld_password: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     fuel_company_name: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     fuel_company_username: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     fuel_company_password: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     ace_username: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     ace_password: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     hazmat: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     hazmat_exp: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     dashcam_username: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     dashcam_password: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     trailer_trackers: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     trailer_password: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
-    attention: {
+     attention: {
       type: DataTypes.TEXT,
       allowNull: true
     },
@@ -247,17 +279,21 @@ module.exports = function(sequelize, DataTypes) {
     },
     active: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       defaultValue: 0
     },
     updated_on: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     }, alert_frequency: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
     alert: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    status: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
