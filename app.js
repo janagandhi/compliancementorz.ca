@@ -21,7 +21,7 @@ const mime = require('mime');
 //   console.log("Drop and re-sync db.");
 // });
 
-
+//Jana
 // import swal from 'sweetalert';
 app.use(session({
   secret: 'gtest',
